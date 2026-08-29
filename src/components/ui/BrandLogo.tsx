@@ -21,10 +21,10 @@ export default function BrandLogo({
   asLink = true,
 }: BrandLogoProps) {
   const sizeConfig = {
-    sm: { height: 38, imgClass: 'h-8 md:h-9 w-auto max-w-[160px]' },
-    md: { height: 48, imgClass: 'h-10 md:h-12 w-auto max-w-[210px]' },
-    lg: { height: 60, imgClass: 'h-13 md:h-15 w-auto max-w-[260px]' },
-    hero: { height: 75, imgClass: 'h-16 md:h-20 w-auto max-w-[320px]' },
+    sm: { imgClass: 'h-8 md:h-9 w-auto max-w-[160px]' },
+    md: { imgClass: 'h-10 md:h-12 w-auto max-w-[210px]' },
+    lg: { imgClass: 'h-13 md:h-16 w-auto max-w-[260px]' },
+    hero: { imgClass: 'h-16 md:h-22 w-auto max-w-[320px]' },
   };
 
   const config = sizeConfig[size];
@@ -36,9 +36,15 @@ export default function BrandLogo({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={logoSrc}
-          alt="Rumea Home"
+          alt="rumea home"
           className={`${config.imgClass} object-contain block transition-opacity duration-200 hover:opacity-95`}
           loading="eager"
+          onError={(e) => {
+            const target = e.currentTarget;
+            if (target.src.indexOf('logo.png') === -1) {
+              target.src = '/logo.png';
+            }
+          }}
         />
       </div>
 

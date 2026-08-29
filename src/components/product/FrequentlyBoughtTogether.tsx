@@ -2,10 +2,9 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Product } from '@/types/product';
 import { getRelatedProducts } from '@/lib/products';
-import { Plus, Check, ShoppingCart, MessageCircle } from 'lucide-react';
+import { Plus, ShoppingCart, MessageCircle } from 'lucide-react';
 import { buildAmazonUrl } from '@/lib/amazon';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import { trackAmazonClick, trackWhatsAppClick } from '@/lib/analytics';
@@ -33,13 +32,13 @@ export default function FrequentlyBoughtTogether({ product }: FrequentlyBoughtTo
   const totalSavings = totalMrp - totalPrice;
 
   const toggleItem = (id: string) => {
-    if (id === product.id) return; // Keep main product active
+    if (id === product.id) return; // Keep main product always selected
     setSelectedItems((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
   const handleBundleWhatsApp = () => {
     const itemNames = activeItems.map((i) => `${i.name} (₹${i.pricing.offer.toLocaleString('en-IN')})`).join(', ');
-    const msg = `Hi! I'm interested in the bundle: ${itemNames}. Total: ₹${totalPrice.toLocaleString('en-IN')}. Can you confirm delivery and bundle discount?`;
+    const msg = `Hi Rumea Home! I'm interested in ordering the complete room look: ${itemNames}. Total: ₹${totalPrice.toLocaleString('en-IN')}. Can you confirm delivery and bundle pricing?`;
     window.open(buildWhatsAppUrl(msg), '_blank');
     trackWhatsAppClick({ source: 'pdp', product_id: product.id, product_name: product.name });
   };
@@ -55,16 +54,16 @@ export default function FrequentlyBoughtTogether({ product }: FrequentlyBoughtTo
   };
 
   return (
-    <div className="bg-white rounded-3xl p-6 sm:p-8 border border-warm-sand/70 shadow-card my-12">
+    <div className="bg-white rounded-card p-6 sm:p-8 border border-border-sand shadow-card my-12">
       <div className="mb-6">
-        <span className="text-xs font-bold uppercase tracking-widest text-muted-olive">
-          BUNDLE & SAVE
+        <span className="text-xs font-bold uppercase tracking-widest text-antique-gold">
+          COMPLETE THE ROOM LOOK
         </span>
-        <h3 className="font-display font-bold text-xl sm:text-2xl text-espresso mt-1">
-          Frequently Bought Together
+        <h3 className="font-serif font-bold text-xl sm:text-2xl text-espresso mt-1">
+          Frequently Paired Together
         </h3>
         <p className="text-xs text-soft-taupe mt-1">
-          Complete the look with coordinating solid wood furniture designed for the same space.
+          Coordinating solid Sheesham wood pieces designed to harmonize in finish, proportions, and height.
         </p>
       </div>
 
@@ -75,17 +74,19 @@ export default function FrequentlyBoughtTogether({ product }: FrequentlyBoughtTo
           {allItems.map((item, idx) => (
             <React.Fragment key={item.id}>
               {idx > 0 && (
-                <div className="w-8 h-8 rounded-full bg-warm-ivory text-muted-olive flex items-center justify-center flex-shrink-0 font-bold">
-                  <Plus className="w-4 h-4" />
+                <div className="w-7 h-7 rounded-full bg-warm-ivory text-antique-gold flex items-center justify-center flex-shrink-0 font-bold border border-border-sand">
+                  <Plus className="w-3.5 h-3.5" />
                 </div>
               )}
 
-              <div className={`relative w-28 sm:w-32 rounded-2xl overflow-hidden border-2 transition-all p-2 bg-warm-ivory/50 ${
-                selectedItems[item.id]
-                  ? 'border-espresso shadow-sm ring-1 ring-warm-sand'
-                  : 'border-warm-sand/40 opacity-50'
-              }`}>
-                <div className="relative aspect-square rounded-xl overflow-hidden bg-white mb-2">
+              <div
+                className={`relative w-28 sm:w-36 rounded-card overflow-hidden border transition-all p-2 bg-warm-ivory/50 ${
+                  selectedItems[item.id]
+                    ? 'border-espresso shadow-xs ring-1 ring-espresso'
+                    : 'border-border-sand opacity-50'
+                }`}
+              >
+                <div className="relative aspect-[4/3] rounded-btn overflow-hidden bg-white mb-2 border border-border-sand">
                   <Image
                     src={item.images.primary}
                     alt={item.name}
@@ -93,7 +94,7 @@ export default function FrequentlyBoughtTogether({ product }: FrequentlyBoughtTo
                     className="object-cover"
                   />
                 </div>
-                <p className="font-display font-semibold text-[11px] text-espresso line-clamp-1">
+                <p className="font-serif font-semibold text-[11px] text-espresso line-clamp-1">
                   {item.name}
                 </p>
                 <p className="text-xs font-bold text-espresso mt-0.5">
@@ -104,12 +105,12 @@ export default function FrequentlyBoughtTogether({ product }: FrequentlyBoughtTo
           ))}
         </div>
 
-        {/* Right: Price Total & Action Button */}
-        <div className="lg:col-span-4 bg-warm-ivory/80 p-5 rounded-2xl border border-warm-sand/60 space-y-4">
+        {/* Right: Price Total & Action Buttons */}
+        <div className="lg:col-span-4 bg-warm-ivory p-5 rounded-card border border-border-sand space-y-4">
           <div>
-            <span className="text-xs text-soft-taupe">Total Price for ({activeItems.length} items):</span>
+            <span className="text-xs text-soft-taupe">Total Price for ({activeItems.length} pieces):</span>
             <div className="flex items-baseline gap-2 mt-1">
-              <span className="font-display font-extrabold text-2xl text-espresso">
+              <span className="font-serif font-bold text-2xl text-espresso">
                 ₹{totalPrice.toLocaleString('en-IN')}
               </span>
               <span className="text-xs text-soft-taupe line-through">
@@ -117,8 +118,8 @@ export default function FrequentlyBoughtTogether({ product }: FrequentlyBoughtTo
               </span>
             </div>
             {totalSavings > 0 && (
-              <p className="text-xs font-semibold text-muted-olive mt-0.5">
-                Save ₹{totalSavings.toLocaleString('en-IN')} with this curated room set
+              <p className="text-xs font-bold text-antique-gold mt-0.5">
+                Save ₹{totalSavings.toLocaleString('en-IN')} with this room bundle
               </p>
             )}
           </div>
@@ -135,10 +136,10 @@ export default function FrequentlyBoughtTogether({ product }: FrequentlyBoughtTo
                   checked={!!selectedItems[item.id]}
                   disabled={item.id === product.id}
                   onChange={() => toggleItem(item.id)}
-                  className="mt-0.5 rounded text-espresso focus:ring-espresso"
+                  className="mt-0.5 rounded-btn text-espresso focus:ring-espresso"
                 />
                 <span className="leading-tight">
-                  <strong>{item.id === product.id ? 'This item: ' : ''}</strong>
+                  <strong>{item.id === product.id ? 'This piece: ' : ''}</strong>
                   {item.name} (₹{item.pricing.offer.toLocaleString('en-IN')})
                 </span>
               </label>
@@ -148,7 +149,7 @@ export default function FrequentlyBoughtTogether({ product }: FrequentlyBoughtTo
           <div className="space-y-2 pt-2">
             <button
               onClick={handleBundleAmazon}
-              className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-espresso text-warm-ivory font-semibold text-xs rounded-xl shadow-warm hover:bg-espresso/90 active:scale-95 transition-all"
+              className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-espresso text-warm-ivory font-bold text-xs rounded-btn shadow-warm hover:bg-espresso/90 active:scale-95 transition-all"
             >
               <ShoppingCart className="w-4 h-4 text-warm-sand" />
               <span>Buy Set on Amazon</span>
@@ -156,9 +157,9 @@ export default function FrequentlyBoughtTogether({ product }: FrequentlyBoughtTo
 
             <button
               onClick={handleBundleWhatsApp}
-              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-warm-sand text-espresso font-semibold text-xs rounded-xl hover:bg-warm-sand/80 transition-colors"
+              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-white text-espresso border border-border-sand font-semibold text-xs rounded-btn hover:bg-warm-sand/20 transition-colors"
             >
-              <MessageCircle className="w-4 h-4" />
+              <MessageCircle className="w-4 h-4 text-antique-gold" />
               <span>Enquire Set on WhatsApp</span>
             </button>
           </div>

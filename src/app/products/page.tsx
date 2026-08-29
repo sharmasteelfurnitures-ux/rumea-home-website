@@ -1,24 +1,42 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { products, roomCategories } from '@/lib/products';
 import ProductCard from '@/components/product/ProductCard';
 import Breadcrumb from '@/components/ui/Breadcrumb';
-import { products } from '@/lib/products';
-import { Room } from '@/types/product';
-import { Filter, SlidersHorizontal, X, Search, Check } from 'lucide-react';
-import { trackFilterApplied } from '@/lib/analytics';
+import WhatsAppFloatingButton from '@/components/layout/WhatsAppFloatingButton';
+import { 
+  Filter, 
+  X, 
+  RotateCcw, 
+  SlidersHorizontal, 
+  Grid2X2, 
+  Grid3X3, 
+  Star,
+  Check
+} from 'lucide-react';
 
-export default function ProductsPage() {
-  const [selectedRoom, setSelectedRoom] = useState<string>('all');
-  const [selectedPriceRange, setSelectedPriceRange] = useState<string>('all');
-  const [selectedStyle, setSelectedStyle] = useState<string>('all');
-  const [sortBy, setSortBy] = useState<string>('popularity');
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState<boolean>(false);
-  const [displayCount, setDisplayCount] = useState<number>(12);
+function ProductsPageContent() {
+  const searchParams = useSearchParams();
+  const initialCategory = searchParams.get('category');
+  const initialRoom = searchParams.get('room');
+  const searchQuery = searchParams.get('search');
 
-  const rooms: { id: string; label: string }[] = [
-    { id: 'all', label: 'All Rooms' },
+  // Filter States
+  const [selectedRooms, setSelectedRooms] = useState<string[]>(
+    initialRoom ? [initialRoom] : []
+  );
+  const [selectedStyles, setSelectedStyles] = useState<string[]>([]);
+  const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
+  const [selectedMinRating, setSelectedMinRating] = useState<number>(0);
+  const [maxPrice, setMaxPrice] = useState<number>(60000);
+  const [sortBy, setSortBy] = useState<string>('popular');
+  const [viewMode, setViewMode] = useState<'3col' | '2col'>('3col');
+  const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+
+  // Available Filter Options
+  const roomOptions = [
     { id: 'living-room', label: 'Living Room' },
     { id: 'bedroom', label: 'Bedroom' },
     { id: 'dining-room', label: 'Dining Room' },
@@ -27,460 +45,471 @@ export default function ProductsPage() {
     { id: 'outdoor', label: 'Outdoor' },
   ];
 
-  const priceRanges = [
-    { id: 'all', label: 'All Prices' },
-    { id: 'under-15k', label: 'Under ₹15,000', min: 0, max: 15000 },
-    { id: '15k-30k', label: '₹15,000 – ₹30,000', min: 15000, max: 30000 },
-    { id: '30k-50k', label: '₹30,000 – ₹50,000', min: 30000, max: 50000 },
-    { id: 'above-50k', label: '₹50,000+', min: 50000, max: 999999 },
+  const styleOptions = [
+    { id: 'scandinavian-modern', label: 'Scandinavian Modern' },
+    { id: 'modern-minimalist', label: 'Modern Minimalist' },
+    { id: 'warm-traditional', label: 'Warm Traditional' },
   ];
 
-  const styles = [
-    { id: 'all', label: 'All Styles' },
-    { id: 'scandinavian', label: 'Scandinavian' },
-    { id: 'modern', label: 'Modern Minimalist' },
-    { id: 'traditional', label: 'Warm Traditional' },
+  const materialOptions = [
+    { id: 'Solid Sheesham Wood', label: 'Solid Sheesham Wood' },
+    { id: 'Natural Teak Finish', label: 'Natural Teak Finish' },
+    { id: 'Kiln-Dried Hardwood', label: 'Kiln-Dried Hardwood' },
+    { id: 'Breathable Linen', label: 'Breathable Linen Upholstery' },
   ];
 
-  const sortOptions = [
-    { id: 'popularity', label: 'Popularity & Rating' },
-    { id: 'price-low', label: 'Price: Low to High' },
-    { id: 'price-high', label: 'Price: High to Low' },
-    { id: 'newest', label: 'New Arrivals' },
-  ];
-
-  // Filtering & Sorting
+  // Filtering Logic
   const filteredProducts = useMemo(() => {
-    return products.filter((item) => {
+    return products.filter((p) => {
       // Room match
-      if (selectedRoom !== 'all' && !item.room.includes(selectedRoom as Room)) {
+      if (selectedRooms.length > 0) {
+        const hasRoom = p.room.some((r) => selectedRooms.includes(r));
+        if (!hasRoom) return false;
+      }
+
+      // Style match
+      if (selectedStyles.length > 0 && !selectedStyles.includes(p.collection)) {
+        return false;
+      }
+
+      // Material match
+      if (selectedMaterials.length > 0) {
+        const matchMat = selectedMaterials.some(
+          (m) =>
+            p.materials.frame.toLowerCase().includes(m.toLowerCase()) ||
+            p.materials.finish.some((f) => m.toLowerCase().includes(f.toLowerCase()))
+        );
+        if (!matchMat) return false;
+      }
+
+      // Rating match
+      if (selectedMinRating > 0 && p.seo.rating < selectedMinRating) {
         return false;
       }
 
       // Price match
-      if (selectedPriceRange !== 'all') {
-        const range = priceRanges.find((p) => p.id === selectedPriceRange);
-        if (range && range.min !== undefined && range.max !== undefined && (item.pricing.offer < range.min || item.pricing.offer > range.max)) {
-          return false;
-        }
-      }
-
-      // Style match
-      if (selectedStyle !== 'all' && item.collection !== selectedStyle) {
+      if (p.pricing.offer > maxPrice) {
         return false;
       }
 
-      // Search Query
-      if (searchQuery.trim()) {
+      // Search match
+      if (searchQuery) {
         const q = searchQuery.toLowerCase();
-        const matchesName = item.name.toLowerCase().includes(q);
-        const matchesCategory = item.category.toLowerCase().includes(q);
-        const matchesTagline = item.tagline?.toLowerCase().includes(q) || false;
-        if (!matchesName && !matchesCategory && !matchesTagline) {
-          return false;
-        }
+        const matchSearch =
+          p.name.toLowerCase().includes(q) ||
+          p.category.toLowerCase().includes(q) ||
+          p.room.some((r) => r.toLowerCase().includes(q));
+        if (!matchSearch) return false;
       }
 
       return true;
-    }).sort((a, b) => {
-      if (sortBy === 'price-low') return a.pricing.offer - b.pricing.offer;
-      if (sortBy === 'price-high') return b.pricing.offer - a.pricing.offer;
-      if (sortBy === 'newest') return (b.seo.isNewArrival ? 1 : 0) - (a.seo.isNewArrival ? 1 : 0);
-      // default: popularity / rating
-      return b.seo.rating * b.seo.reviewCount - a.seo.rating * a.seo.reviewCount;
     });
-  }, [selectedRoom, selectedPriceRange, selectedStyle, sortBy, searchQuery]);
+  }, [selectedRooms, selectedStyles, selectedMaterials, selectedMinRating, maxPrice, searchQuery]);
 
-  const activeFilterCount =
-    (selectedRoom !== 'all' ? 1 : 0) +
-    (selectedPriceRange !== 'all' ? 1 : 0) +
-    (selectedStyle !== 'all' ? 1 : 0) +
-    (searchQuery.trim() ? 1 : 0);
+  // Sorting Logic
+  const sortedProducts = useMemo(() => {
+    const list = [...filteredProducts];
+    if (sortBy === 'price-low') list.sort((a, b) => a.pricing.offer - b.pricing.offer);
+    if (sortBy === 'price-high') list.sort((a, b) => b.pricing.offer - a.pricing.offer);
+    if (sortBy === 'rating') list.sort((a, b) => b.seo.rating - a.seo.rating);
+    if (sortBy === 'newest') list.sort((a, b) => (b.seo.isNewArrival ? 1 : 0) - (a.seo.isNewArrival ? 1 : 0));
+    return list;
+  }, [filteredProducts, sortBy]);
 
-  const resetFilters = () => {
-    setSelectedRoom('all');
-    setSelectedPriceRange('all');
-    setSelectedStyle('all');
-    setSearchQuery('');
+  const clearAllFilters = () => {
+    setSelectedRooms([]);
+    setSelectedStyles([]);
+    setSelectedMaterials([]);
+    setSelectedMinRating(0);
+    setMaxPrice(60000);
   };
+
+  const hasActiveFilters =
+    selectedRooms.length > 0 ||
+    selectedStyles.length > 0 ||
+    selectedMaterials.length > 0 ||
+    selectedMinRating > 0 ||
+    maxPrice < 60000;
 
   return (
     <div className="bg-warm-ivory min-h-screen py-6 sm:py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Breadcrumb */}
-        <Breadcrumb items={[{ label: 'Furniture Catalogue' }]} className="mb-4" />
+        {/* Breadcrumb Navigation */}
+        <Breadcrumb
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Catalogue', href: '/products' },
+            ...(selectedRooms.length === 1
+              ? [{ label: roomOptions.find((r) => r.id === selectedRooms[0])?.label || 'Room' }]
+              : []),
+          ]}
+          className="mb-6"
+        />
 
-        {/* Page Title & Intro */}
-        <div className="mb-8">
-          <h1 className="font-display font-extrabold text-2xl sm:text-4xl text-espresso tracking-tight">
-            Furniture for Real Indian Homes
-          </h1>
-          <p className="text-soft-taupe text-sm sm:text-base mt-2 max-w-2xl">
-            Thoughtfully engineered solid wood furniture designed for everyday living, comfort, and decades of durability.
-          </p>
-        </div>
-
-        {/* Top Control Bar: Search + Mobile Filter Trigger + Sort */}
-        <div className="bg-white p-3 sm:p-4 rounded-2xl border border-warm-sand/50 shadow-sm mb-8 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
-          
-          {/* Search bar inside catalog */}
-          <div className="relative flex-1 max-w-md">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search sofas, beds, dining tables, desks..."
-              className="w-full pl-10 pr-4 py-2.5 bg-warm-ivory/60 border border-warm-sand rounded-xl text-xs sm:text-sm text-espresso placeholder-soft-taupe focus:outline-none focus:ring-2 focus:ring-espresso focus:bg-white"
-            />
-            <Search className="w-4 h-4 text-soft-taupe absolute left-3.5 top-3" />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-3 text-soft-taupe hover:text-espresso"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            )}
+        {/* Page Header Banner */}
+        <div className="mb-8 pb-6 border-b border-border-sand flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-widest text-antique-gold">
+              SOLID SHEESHAM COLLECTION
+            </span>
+            <h1 className="font-serif text-3xl sm:text-4xl text-espresso mt-1">
+              Handcrafted Furniture Catalogue
+            </h1>
+            <p className="text-soft-taupe text-sm mt-1 max-w-xl">
+              100% kiln-dried solid hardwood pieces engineered for modern Indian apartments.
+            </p>
           </div>
 
-          <div className="flex items-center justify-between md:justify-end gap-3">
-            {/* Mobile Filter Button */}
-            <button
-              onClick={() => setMobileFiltersOpen(true)}
-              className="md:hidden flex-1 sm:flex-none flex items-center justify-center gap-2 py-2.5 px-4 bg-espresso text-warm-ivory text-xs font-semibold rounded-xl"
-            >
-              <SlidersHorizontal className="w-3.5 h-3.5" />
-              <span>Filters</span>
-              {activeFilterCount > 0 && (
-                <span className="w-4 h-4 rounded-full bg-warm-sand text-espresso text-[10px] font-bold flex items-center justify-center">
-                  {activeFilterCount}
-                </span>
-              )}
-            </button>
-
-            {/* Sort Dropdown */}
-            <div className="flex items-center gap-2 flex-1 sm:flex-none justify-end">
-              <span className="text-xs text-soft-taupe hidden sm:inline">Sort:</span>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="py-2.5 px-3 bg-warm-ivory/60 border border-warm-sand rounded-xl text-xs sm:text-sm text-espresso font-medium focus:outline-none focus:ring-2 focus:ring-espresso"
-              >
-                {sortOptions.map((opt) => (
-                  <option key={opt.id} value={opt.id}>
-                    {opt.label}
-                  </option>
-                ))}
-              </select>
-            </div>
+          <div className="flex items-center gap-3">
+            <span className="text-xs text-soft-taupe font-semibold bg-white px-3 py-1.5 rounded-btn border border-border-sand shadow-xs">
+              Showing {sortedProducts.length} of {products.length} Pieces
+            </span>
           </div>
         </div>
 
-        {/* Active Filters Pill Strip */}
-        {activeFilterCount > 0 && (
-          <div className="mb-6 flex flex-wrap items-center gap-2">
-            <span className="text-xs text-soft-taupe font-medium mr-1">Active Filters:</span>
-            {selectedRoom !== 'all' && (
-              <button
-                onClick={() => setSelectedRoom('all')}
-                className="inline-flex items-center gap-1 px-3 py-1 bg-warm-sand/40 hover:bg-warm-sand text-espresso rounded-full text-xs font-medium transition-colors"
-              >
-                <span>Room: {rooms.find((r) => r.id === selectedRoom)?.label}</span>
-                <X className="w-3 h-3" />
-              </button>
-            )}
-            {selectedPriceRange !== 'all' && (
-              <button
-                onClick={() => setSelectedPriceRange('all')}
-                className="inline-flex items-center gap-1 px-3 py-1 bg-warm-sand/40 hover:bg-warm-sand text-espresso rounded-full text-xs font-medium transition-colors"
-              >
-                <span>Price: {priceRanges.find((p) => p.id === selectedPriceRange)?.label}</span>
-                <X className="w-3 h-3" />
-              </button>
-            )}
-            {selectedStyle !== 'all' && (
-              <button
-                onClick={() => setSelectedStyle('all')}
-                className="inline-flex items-center gap-1 px-3 py-1 bg-warm-sand/40 hover:bg-warm-sand text-espresso rounded-full text-xs font-medium transition-colors"
-              >
-                <span>Style: {styles.find((s) => s.id === selectedStyle)?.label}</span>
-                <X className="w-3 h-3" />
-              </button>
-            )}
-            <button
-              onClick={resetFilters}
-              className="text-xs text-muted-olive underline hover:text-espresso ml-2 font-medium"
-            >
-              Clear All
-            </button>
-          </div>
-        )}
-
-        {/* Main Grid + Desktop Sidebar Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+        {/* Main 12-Column Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Desktop Left Sidebar (260px approx / 3 cols) */}
-          <aside aria-label="Product Filters" className="hidden md:block md:col-span-3 bg-white p-6 rounded-2xl border border-warm-sand/50 shadow-card space-y-6 sticky top-24">
-            <div className="flex items-center justify-between pb-4 border-b border-warm-sand/40">
-              <h3 className="font-display font-bold text-sm text-espresso uppercase tracking-wider flex items-center gap-2">
-                <Filter className="w-4 h-4 text-muted-olive" /> Filters
-              </h3>
-              {activeFilterCount > 0 && (
+          {/* Left Sidebar Filter Panel (Desktop: 3 cols) */}
+          <aside className="hidden lg:block lg:col-span-3 bg-white rounded-card p-6 border border-border-sand shadow-card space-y-6 sticky top-28">
+            <div className="flex items-center justify-between pb-3 border-b border-border-sand">
+              <span className="font-serif font-bold text-base text-espresso flex items-center gap-2">
+                <SlidersHorizontal className="w-4 h-4 text-antique-gold" /> Filter By
+              </span>
+              {hasActiveFilters && (
                 <button
-                  onClick={resetFilters}
-                  className="text-xs text-muted-olive hover:underline font-medium"
+                  onClick={clearAllFilters}
+                  className="text-xs text-antique-gold hover:underline font-semibold"
                 >
-                  Reset
+                  Reset All
                 </button>
               )}
+            </div>
+
+            {/* Price Range Slider */}
+            <div>
+              <label className="text-xs font-bold uppercase tracking-wider text-espresso block mb-2">
+                Max Price: <strong>₹{maxPrice.toLocaleString('en-IN')}</strong>
+              </label>
+              <input
+                type="range"
+                min="12000"
+                max="60000"
+                step="1000"
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(Number(e.target.value))}
+                className="w-full accent-espresso cursor-pointer"
+              />
+              <div className="flex justify-between text-[10px] text-soft-taupe mt-1 font-semibold">
+                <span>₹12,000</span>
+                <span>₹60,000</span>
+              </div>
             </div>
 
             {/* Room Filter */}
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-muted-olive mb-3">
-                Room Category
-              </h4>
-              <div className="space-y-1.5">
-                {rooms.map((room) => (
-                  <button
-                    key={room.id}
-                    onClick={() => {
-                      setSelectedRoom(room.id);
-                      trackFilterApplied('room', room.id);
-                    }}
-                    className={`w-full text-left text-xs py-1.5 px-2.5 rounded-lg flex items-center justify-between transition-colors ${
-                      selectedRoom === room.id
-                        ? 'bg-espresso text-warm-ivory font-semibold'
-                        : 'text-espresso/80 hover:bg-warm-sand/30'
-                    }`}
-                  >
+            <div className="pt-3 border-t border-border-sand/60">
+              <span className="text-xs font-bold uppercase tracking-wider text-espresso block mb-2.5">
+                Room Space
+              </span>
+              <div className="space-y-2">
+                {roomOptions.map((room) => (
+                  <label key={room.id} className="flex items-center gap-2 text-xs text-espresso cursor-pointer select-none">
+                    <input
+                      type="checkbox"
+                      checked={selectedRooms.includes(room.id)}
+                      onChange={(e) => {
+                        if (e.target.checked) setSelectedRooms([...selectedRooms, room.id]);
+                        else setSelectedRooms(selectedRooms.filter((r) => r !== room.id));
+                      }}
+                      className="rounded-btn text-espresso focus:ring-espresso"
+                    />
                     <span>{room.label}</span>
-                    {selectedRoom === room.id && <Check className="w-3.5 h-3.5 text-warm-sand" />}
-                  </button>
+                  </label>
                 ))}
               </div>
             </div>
 
-            {/* Price Range Filter */}
-            <div className="pt-4 border-t border-warm-sand/30">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-muted-olive mb-3">
-                Budget / Price
-              </h4>
-              <div className="space-y-1.5">
-                {priceRanges.map((range) => (
-                  <button
-                    key={range.id}
-                    onClick={() => {
-                      setSelectedPriceRange(range.id);
-                      trackFilterApplied('price', range.id);
-                    }}
-                    className={`w-full text-left text-xs py-1.5 px-2.5 rounded-lg flex items-center justify-between transition-colors ${
-                      selectedPriceRange === range.id
-                        ? 'bg-espresso text-warm-ivory font-semibold'
-                        : 'text-espresso/80 hover:bg-warm-sand/30'
-                    }`}
-                  >
-                    <span>{range.label}</span>
-                    {selectedPriceRange === range.id && <Check className="w-3.5 h-3.5 text-warm-sand" />}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Style Collection Filter */}
-            <div className="pt-4 border-t border-warm-sand/30">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-muted-olive mb-3">
+            {/* Design Style Filter */}
+            <div className="pt-3 border-t border-border-sand/60">
+              <span className="text-xs font-bold uppercase tracking-wider text-espresso block mb-2.5">
                 Design Style
-              </h4>
-              <div className="space-y-1.5">
-                {styles.map((style) => (
-                  <button
-                    key={style.id}
-                    onClick={() => {
-                      setSelectedStyle(style.id);
-                      trackFilterApplied('style', style.id);
-                    }}
-                    className={`w-full text-left text-xs py-1.5 px-2.5 rounded-lg flex items-center justify-between transition-colors ${
-                      selectedStyle === style.id
-                        ? 'bg-espresso text-warm-ivory font-semibold'
-                        : 'text-espresso/80 hover:bg-warm-sand/30'
-                    }`}
-                  >
+              </span>
+              <div className="space-y-2">
+                {styleOptions.map((style) => (
+                  <label key={style.id} className="flex items-center gap-2 text-xs text-espresso cursor-pointer select-none">
+                    <input
+                      type="checkbox"
+                      checked={selectedStyles.includes(style.id)}
+                      onChange={(e) => {
+                        if (e.target.checked) setSelectedStyles([...selectedStyles, style.id]);
+                        else setSelectedStyles(selectedStyles.filter((s) => s !== style.id));
+                      }}
+                      className="rounded-btn text-espresso focus:ring-espresso"
+                    />
                     <span>{style.label}</span>
-                    {selectedStyle === style.id && <Check className="w-3.5 h-3.5 text-warm-sand" />}
-                  </button>
+                  </label>
                 ))}
               </div>
             </div>
 
-            {/* Assurance Box */}
-            <div className="pt-4 border-t border-warm-sand/30 bg-warm-ivory/60 p-3 rounded-xl text-[11px] text-soft-taupe leading-relaxed">
-              <p className="font-semibold text-espresso mb-1">🛡️ The Rumea Promise</p>
-              <p>Free pan-India delivery, 5-year frame warranty, and easy 30-day returns on all items.</p>
+            {/* Material & Finish Filter */}
+            <div className="pt-3 border-t border-border-sand/60">
+              <span className="text-xs font-bold uppercase tracking-wider text-espresso block mb-2.5">
+                Material &amp; Finish
+              </span>
+              <div className="space-y-2">
+                {materialOptions.map((mat) => (
+                  <label key={mat.id} className="flex items-center gap-2 text-xs text-espresso cursor-pointer select-none">
+                    <input
+                      type="checkbox"
+                      checked={selectedMaterials.includes(mat.id)}
+                      onChange={(e) => {
+                        if (e.target.checked) setSelectedMaterials([...selectedMaterials, mat.id]);
+                        else setSelectedMaterials(selectedMaterials.filter((m) => m !== mat.id));
+                      }}
+                      className="rounded-btn text-espresso focus:ring-espresso"
+                    />
+                    <span>{mat.label}</span>
+                  </label>
+                ))}
+              </div>
             </div>
+
+            {/* Customer Rating Filter */}
+            <div className="pt-3 border-t border-border-sand/60">
+              <span className="text-xs font-bold uppercase tracking-wider text-espresso block mb-2.5">
+                Minimum Rating
+              </span>
+              <div className="space-y-1.5">
+                {[4.5, 4.0, 0].map((rating) => (
+                  <label key={rating} className="flex items-center gap-2 text-xs text-espresso cursor-pointer select-none">
+                    <input
+                      type="radio"
+                      name="minRating"
+                      checked={selectedMinRating === rating}
+                      onChange={() => setSelectedMinRating(rating)}
+                      className="text-espresso focus:ring-espresso"
+                    />
+                    <span>{rating === 0 ? 'All Ratings' : `${rating}★ and above`}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
           </aside>
 
-          {/* Right Product Grid (9 cols) */}
-          <main className="col-span-1 md:col-span-9">
-            {/* Results Count Bar */}
-            <div className="flex items-center justify-between mb-4">
-              <p className="text-xs text-soft-taupe font-medium">
-                Showing <span className="font-semibold text-espresso">{Math.min(displayCount, filteredProducts.length)}</span> of{' '}
-                <span className="font-semibold text-espresso">{filteredProducts.length}</span> pieces
-              </p>
+          {/* Right Product Grid Area (Desktop: 9 cols) */}
+          <div className="lg:col-span-9 space-y-6">
+            
+            {/* Top Control Bar: Sort + Mobile Filter Toggle + Grid Toggle */}
+            <div className="bg-white rounded-card p-3 sm:p-4 border border-border-sand shadow-card flex flex-wrap items-center justify-between gap-3">
+              
+              {/* Mobile Filter Button */}
+              <button
+                onClick={() => setMobileFilterOpen(true)}
+                className="lg:hidden inline-flex items-center gap-1.5 px-3 py-2 bg-warm-ivory text-espresso text-xs font-semibold rounded-btn border border-border-sand"
+              >
+                <Filter className="w-4 h-4 text-antique-gold" />
+                <span>Filters {hasActiveFilters ? '(Active)' : ''}</span>
+              </button>
+
+              {/* Sort By Dropdown */}
+              <div className="flex items-center gap-2 text-xs">
+                <span className="text-soft-taupe hidden sm:inline">Sort By:</span>
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="bg-warm-ivory border border-border-sand text-espresso font-semibold text-xs rounded-btn py-1.5 px-3 focus:outline-none focus:ring-1 focus:ring-espresso cursor-pointer"
+                >
+                  <option value="popular">Most Popular</option>
+                  <option value="price-low">Price: Low to High</option>
+                  <option value="price-high">Price: High to Low</option>
+                  <option value="rating">Highest Rated</option>
+                  <option value="newest">New Arrivals</option>
+                </select>
+              </div>
+
+              {/* Grid Column Toggle */}
+              <div className="hidden sm:flex items-center gap-1 border border-border-sand rounded-btn p-0.5 bg-warm-ivory">
+                <button
+                  onClick={() => setViewMode('3col')}
+                  className={`p-1.5 rounded-btn ${viewMode === '3col' ? 'bg-white text-espresso shadow-xs' : 'text-soft-taupe hover:text-espresso'}`}
+                  aria-label="3 column grid"
+                >
+                  <Grid3X3 className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setViewMode('2col')}
+                  className={`p-1.5 rounded-btn ${viewMode === '2col' ? 'bg-white text-espresso shadow-xs' : 'text-soft-taupe hover:text-espresso'}`}
+                  aria-label="2 column grid"
+                >
+                  <Grid2X2 className="w-4 h-4" />
+                </button>
+              </div>
+
             </div>
 
-            {filteredProducts.length === 0 ? (
-              <div className="bg-white rounded-2xl p-12 text-center border border-warm-sand/50 shadow-card">
-                <p className="text-3xl mb-3">🛋️</p>
-                <h3 className="font-display font-bold text-lg text-espresso mb-2">No matching furniture found</h3>
-                <p className="text-soft-taupe text-xs max-w-md mx-auto mb-6">
-                  Try adjusting your search terms or clearing selected room and price filters to view our full collection.
+            {/* Active Filter Pills (if any) */}
+            {hasActiveFilters && (
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-xs text-soft-taupe">Active Filters:</span>
+                {selectedRooms.map((r) => (
+                  <span
+                    key={r}
+                    className="inline-flex items-center gap-1 px-2.5 py-1 bg-white text-espresso text-xs rounded-full border border-border-sand shadow-xs font-medium"
+                  >
+                    {roomOptions.find((o) => o.id === r)?.label}
+                    <button onClick={() => setSelectedRooms(selectedRooms.filter((x) => x !== r))}>
+                      <X className="w-3 h-3 text-soft-taupe hover:text-espresso" />
+                    </button>
+                  </span>
+                ))}
+
+                {selectedStyles.map((s) => (
+                  <span
+                    key={s}
+                    className="inline-flex items-center gap-1 px-2.5 py-1 bg-white text-espresso text-xs rounded-full border border-border-sand shadow-xs font-medium"
+                  >
+                    {styleOptions.find((o) => o.id === s)?.label}
+                    <button onClick={() => setSelectedStyles(selectedStyles.filter((x) => x !== s))}>
+                      <X className="w-3 h-3 text-soft-taupe hover:text-espresso" />
+                    </button>
+                  </span>
+                ))}
+
+                {maxPrice < 60000 && (
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-white text-espresso text-xs rounded-full border border-border-sand shadow-xs font-medium">
+                    Under ₹{maxPrice.toLocaleString('en-IN')}
+                    <button onClick={() => setMaxPrice(60000)}>
+                      <X className="w-3 h-3 text-soft-taupe hover:text-espresso" />
+                    </button>
+                  </span>
+                )}
+
+                <button
+                  onClick={clearAllFilters}
+                  className="text-xs text-antique-gold font-bold underline ml-1"
+                >
+                  Clear All
+                </button>
+              </div>
+            )}
+
+            {/* Product Grid */}
+            {sortedProducts.length === 0 ? (
+              <div className="text-center py-16 bg-white rounded-card border border-border-sand p-8">
+                <p className="font-serif text-2xl text-espresso mb-2">No pieces found</p>
+                <p className="text-xs text-soft-taupe max-w-sm mx-auto mb-6">
+                  No furniture pieces match your selected filter criteria. Try adjusting price or room filters.
                 </p>
                 <button
-                  onClick={resetFilters}
-                  className="px-6 py-2.5 bg-espresso text-warm-ivory text-xs font-semibold rounded-xl"
+                  onClick={clearAllFilters}
+                  className="px-6 py-2.5 bg-espresso text-warm-ivory text-xs font-semibold rounded-btn shadow-warm"
                 >
-                  Clear Filters
+                  Reset All Filters
                 </button>
               </div>
             ) : (
-              <>
-                {/* Product Grid: 2 columns on mobile, 3 columns on desktop */}
-                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                  {filteredProducts.slice(0, displayCount).map((product) => (
-                    <ProductCard key={product.id} product={product} />
-                  ))}
-                </div>
-
-                {/* Load More Button */}
-                {displayCount < filteredProducts.length && (
-                  <div className="mt-12 text-center">
-                    <button
-                      onClick={() => setDisplayCount((prev) => prev + 12)}
-                      className="px-8 py-3.5 bg-white border border-warm-sand text-espresso hover:bg-espresso hover:text-warm-ivory text-sm font-semibold rounded-xl shadow-sm transition-all duration-200"
-                    >
-                      Load More Products
-                    </button>
-                  </div>
-                )}
-              </>
+              <div
+                className={`grid gap-4 sm:gap-6 ${
+                  viewMode === '3col'
+                    ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+                    : 'grid-cols-1 sm:grid-cols-2'
+                }`}
+              >
+                {sortedProducts.map((product, idx) => (
+                  <ProductCard key={product.id} product={product} priority={idx < 6} />
+                ))}
+              </div>
             )}
-          </main>
+
+          </div>
 
         </div>
 
       </div>
 
       {/* Mobile Filter Drawer Modal */}
-      {mobileFiltersOpen && (
-        <div className="fixed inset-0 z-50 md:hidden flex">
-          <div
-            className="fixed inset-0 bg-espresso/60 backdrop-blur-sm"
-            onClick={() => setMobileFiltersOpen(false)}
-          />
-          <div className="relative ml-auto w-4/5 max-w-xs bg-warm-ivory h-full shadow-2xl flex flex-col justify-between overflow-y-auto p-6 z-10 animate-in slide-in-from-right duration-300">
+      {mobileFilterOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden flex">
+          <div className="fixed inset-0 bg-espresso/60 backdrop-blur-xs" onClick={() => setMobileFilterOpen(false)} />
+          <div className="relative w-4/5 max-w-xs bg-warm-ivory h-full shadow-2xl flex flex-col justify-between overflow-y-auto p-6 z-10 border-r border-border-sand">
             <div>
-              <div className="flex items-center justify-between pb-4 border-b border-warm-sand">
-                <h3 className="font-display font-bold text-base text-espresso flex items-center gap-2">
-                  <Filter className="w-4 h-4 text-muted-olive" /> Filter Catalogue
-                </h3>
-                <button
-                  onClick={() => setMobileFiltersOpen(false)}
-                  className="p-1 text-soft-taupe hover:text-espresso"
-                >
+              <div className="flex items-center justify-between pb-4 border-b border-border-sand">
+                <span className="font-serif font-bold text-base text-espresso">Filter Collection</span>
+                <button onClick={() => setMobileFilterOpen(false)} className="p-1.5 text-soft-taupe">
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              {/* Mobile Room */}
-              <div className="mt-5">
-                <p className="text-xs font-bold uppercase tracking-wider text-muted-olive mb-2">
-                  Room Category
-                </p>
-                <div className="space-y-1">
-                  {rooms.map((room) => (
-                    <button
-                      key={room.id}
-                      onClick={() => setSelectedRoom(room.id)}
-                      className={`w-full text-left text-xs py-2 px-3 rounded-lg flex items-center justify-between ${
-                        selectedRoom === room.id
-                          ? 'bg-espresso text-warm-ivory font-semibold'
-                          : 'text-espresso hover:bg-warm-sand/30'
-                      }`}
-                    >
-                      <span>{room.label}</span>
-                      {selectedRoom === room.id && <Check className="w-3.5 h-3.5 text-warm-sand" />}
-                    </button>
-                  ))}
-                </div>
+              {/* Mobile Price Filter */}
+              <div className="py-4 border-b border-border-sand/60">
+                <span className="text-xs font-bold uppercase text-espresso block mb-2">
+                  Max Price: ₹{maxPrice.toLocaleString('en-IN')}
+                </span>
+                <input
+                  type="range"
+                  min="12000"
+                  max="60000"
+                  step="1000"
+                  value={maxPrice}
+                  onChange={(e) => setMaxPrice(Number(e.target.value))}
+                  className="w-full accent-espresso"
+                />
               </div>
 
-              {/* Mobile Price */}
-              <div className="mt-5 pt-4 border-t border-warm-sand/40">
-                <p className="text-xs font-bold uppercase tracking-wider text-muted-olive mb-2">
-                  Budget
-                </p>
-                <div className="space-y-1">
-                  {priceRanges.map((range) => (
-                    <button
-                      key={range.id}
-                      onClick={() => setSelectedPriceRange(range.id)}
-                      className={`w-full text-left text-xs py-2 px-3 rounded-lg flex items-center justify-between ${
-                        selectedPriceRange === range.id
-                          ? 'bg-espresso text-warm-ivory font-semibold'
-                          : 'text-espresso hover:bg-warm-sand/30'
-                      }`}
-                    >
-                      <span>{range.label}</span>
-                      {selectedPriceRange === range.id && <Check className="w-3.5 h-3.5 text-warm-sand" />}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Mobile Style */}
-              <div className="mt-5 pt-4 border-t border-warm-sand/40">
-                <p className="text-xs font-bold uppercase tracking-wider text-muted-olive mb-2">
-                  Style
-                </p>
-                <div className="space-y-1">
-                  {styles.map((style) => (
-                    <button
-                      key={style.id}
-                      onClick={() => setSelectedStyle(style.id)}
-                      className={`w-full text-left text-xs py-2 px-3 rounded-lg flex items-center justify-between ${
-                        selectedStyle === style.id
-                          ? 'bg-espresso text-warm-ivory font-semibold'
-                          : 'text-espresso hover:bg-warm-sand/30'
-                      }`}
-                    >
-                      <span>{style.label}</span>
-                      {selectedStyle === style.id && <Check className="w-3.5 h-3.5 text-warm-sand" />}
-                    </button>
+              {/* Mobile Rooms */}
+              <div className="py-4 border-b border-border-sand/60">
+                <span className="text-xs font-bold uppercase text-espresso block mb-2">Room</span>
+                <div className="space-y-2">
+                  {roomOptions.map((r) => (
+                    <label key={r.id} className="flex items-center gap-2 text-xs text-espresso">
+                      <input
+                        type="checkbox"
+                        checked={selectedRooms.includes(r.id)}
+                        onChange={(e) => {
+                          if (e.target.checked) setSelectedRooms([...selectedRooms, r.id]);
+                          else setSelectedRooms(selectedRooms.filter((x) => x !== r.id));
+                        }}
+                      />
+                      <span>{r.label}</span>
+                    </label>
                   ))}
                 </div>
               </div>
             </div>
 
-            <div className="pt-6 mt-6 border-t border-warm-sand space-y-2">
+            <div className="pt-4 border-t border-border-sand">
               <button
-                onClick={() => setMobileFiltersOpen(false)}
-                className="w-full py-3 bg-espresso text-warm-ivory text-xs font-semibold rounded-xl shadow"
+                onClick={() => setMobileFilterOpen(false)}
+                className="w-full py-3 bg-espresso text-warm-ivory font-bold text-xs rounded-btn shadow-warm"
               >
-                Apply Filters ({filteredProducts.length} Results)
-              </button>
-              <button
-                onClick={resetFilters}
-                className="w-full py-2.5 text-soft-taupe text-xs font-medium hover:text-espresso"
-              >
-                Reset All Filters
+                Apply Filters ({sortedProducts.length} Pieces)
               </button>
             </div>
           </div>
         </div>
       )}
+
+      {/* Floating Bottom-Right WhatsApp Trigger */}
+      <WhatsAppFloatingButton />
     </div>
+  );
+}
+
+export default function ProductsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-warm-ivory py-16 text-center">
+          <div className="max-w-7xl mx-auto px-4">
+            <p className="font-serif text-xl text-espresso">Loading collection...</p>
+          </div>
+        </div>
+      }
+    >
+      <ProductsPageContent />
+    </Suspense>
   );
 }

@@ -13,6 +13,7 @@ import RoomFitGuide from '@/components/product/RoomFitGuide';
 import WoodCareGuide from '@/components/product/WoodCareGuide';
 import RelatedProducts from '@/components/product/RelatedProducts';
 import StickyMobileBuyBar from '@/components/product/StickyMobileBuyBar';
+import WhatsAppFloatingButton from '@/components/layout/WhatsAppFloatingButton';
 
 interface Props {
   params: {
@@ -36,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${product.name} | Rumea Home®`,
+    title: `${product.name} | Solid Sheesham Furniture | Rumea Home®`,
     description: product.meta.description,
     keywords: product.meta.keywords,
     openGraph: {
@@ -46,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         {
           url: product.images.primary,
           width: 1000,
-          height: 800,
+          height: 750,
           alt: product.name,
         },
       ],
@@ -107,8 +108,10 @@ export default function ProductDetailPage({ params }: Props) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
+        {/* Breadcrumb Navigation */}
         <Breadcrumb
           items={[
+            { label: 'Home', href: '/' },
             { label: 'Products', href: '/products' },
             { label: roomName, href: `/rooms/${product.room[0] || 'living-room'}` },
             { label: product.name },
@@ -119,48 +122,49 @@ export default function ProductDetailPage({ params }: Props) {
         {/* Main Product View: 12-Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
-          {/* Left Column (7 cols): Amazon-Grade Multi-Angle Image Gallery with Hover Zoom */}
+          {/* Left Column (7 cols): 4/3 Aspect Ratio Gallery with Hover Magnifier Zoom */}
           <div className="lg:col-span-7">
             <AmazonImageGallery images={product.images} productName={product.name} />
           </div>
 
-          {/* Right Column (5 cols): Pricing, Swatches, No-Cost EMI, Delivery & Buy Actions */}
+          {/* Right Column (5 cols): Buy Box, Pricing, Swatches, EMI, Pincode Checker & CTAs */}
           <div className="lg:col-span-5">
             <ProductInfo product={product} />
           </div>
 
         </div>
 
-        {/* Technical Specifications Table */}
-        <div className="mt-14 max-w-4xl">
-          <ProductSpecs product={product} />
-        </div>
+        {/* 5-Section Technical Specifications Accordion (with Line Diagram) */}
+        <ProductSpecs product={product} />
 
-        {/* Room Sizing & Doorway Clearance Guide (Wooden Street Style) */}
+        {/* "Will It Fit in Your Room?" Sizing & Doorway Clearance Guide */}
         <RoomFitGuide product={product} />
 
-        {/* Amazon-Style Frequently Bought Together / Bundle Builder */}
+        {/* "Complete the Look" / Frequently Bought Together Bundle Builder */}
         <FrequentlyBoughtTogether product={product} />
 
-        {/* Amazon-Style 5-Star Customer Rating Distribution Bar Chart */}
+        {/* Customer Reviews Section with 5-Star Distribution & Verified Reviews */}
         <RatingBreakdown
           rating={product.seo.rating}
           reviewCount={product.seo.reviewCount}
         />
 
-        {/* Solid Hardwood Care & Longevity Guide (Wooden Street Style) */}
+        {/* Solid Hardwood Care & Generational Longevity Guide */}
         <WoodCareGuide />
 
-        {/* Amazon-Style Customer Q&A / FAQs Accordion */}
+        {/* Customer Q&A / FAQs Accordion */}
         <ProductFAQ productName={product.name} />
 
-        {/* Related Products / Complete the Suite Carousel */}
+        {/* Related Products Carousel */}
         <RelatedProducts product={product} />
 
       </div>
 
-      {/* Sticky Mobile Buy Bar for thumb-reach purchase actions */}
+      {/* Sticky Mobile Buy Bar */}
       <StickyMobileBuyBar product={product} />
+
+      {/* Floating WhatsApp Action */}
+      <WhatsAppFloatingButton />
     </div>
   );
 }

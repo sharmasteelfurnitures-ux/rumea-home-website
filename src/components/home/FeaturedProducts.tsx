@@ -1,55 +1,46 @@
-﻿import React from 'react';
+﻿'use client';
+
+import React from 'react';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 import ProductCard from '@/components/product/ProductCard';
 import { getFeaturedProducts } from '@/lib/products';
+import { ArrowRight } from 'lucide-react';
 
 export default function FeaturedProducts() {
-  const featured = getFeaturedProducts(8);
+  const products = getFeaturedProducts().slice(0, 8);
 
   return (
-    <section className="py-16 md:py-24 bg-ivory-dark/40 border-y border-warm-sand/40">
+    <section className="py-16 md:py-24 bg-white border-t border-border-sand">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-12 gap-4">
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-muted-olive mb-2">
-              HANDPICKED FOR YOU
-            </p>
-            <h2 className="font-display font-bold text-2xl sm:text-4xl text-espresso">
-              Beautiful Furniture for Real Homes
+            <span className="text-xs font-bold uppercase tracking-widest text-antique-gold">
+              BESTSELLERS
+            </span>
+            <h2 className="font-serif text-2xl sm:text-4xl text-espresso mt-1">
+              Most Loved by Indian Homeowners
             </h2>
-            <p className="text-soft-taupe text-sm sm:text-base mt-2 max-w-xl">
-              Our most celebrated pieces — handcrafted from kiln-dried hardwood and designed to elevate everyday life.
+            <p className="text-soft-taupe text-sm sm:text-base mt-1.5 max-w-lg">
+              Our 8 most requested solid Sheesham wood pieces, rated 4.7+ stars across 1,200+ homes.
             </p>
           </div>
 
           <Link
             href="/products"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-espresso hover:text-muted-olive transition-colors group"
+            className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-espresso hover:text-antique-gold transition-colors self-start sm:self-auto"
           >
-            <span>View All Products ({featured.length}+)</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <span>Explore All 20+ Pieces</span>
+            <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
 
-        {/* Products Grid: 2 columns on mobile, 4 columns on desktop */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {featured.map((product) => (
-            <ProductCard key={product.id} product={product} />
+        {/* 4-Col Desktop, 2-Col Mobile Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+          {products.map((product, idx) => (
+            <ProductCard key={product.id} product={product} priority={idx < 4} />
           ))}
-        </div>
-
-        {/* Mobile View All Button */}
-        <div className="mt-8 text-center sm:hidden">
-          <Link
-            href="/products"
-            className="inline-flex items-center justify-center w-full py-3.5 px-6 bg-espresso text-warm-ivory text-sm font-medium rounded-xl shadow-sm"
-          >
-            <span>Explore Complete Catalogue</span>
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Link>
         </div>
 
       </div>

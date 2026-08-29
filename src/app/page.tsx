@@ -1,47 +1,39 @@
-import React from 'react';
+﻿import React from 'react';
 import Hero from '@/components/home/Hero';
-import TrustBar from '@/components/home/TrustBar';
 import CategoryGrid from '@/components/home/CategoryGrid';
 import FeaturedProducts from '@/components/home/FeaturedProducts';
-import BrandStory from '@/components/home/BrandStory';
+import CraftStory from '@/components/home/CraftStory';
 import CustomerHomesGallery from '@/components/home/CustomerHomesGallery';
-import Testimonials from '@/components/home/Testimonials';
-import WhatsAppCTA from '@/components/home/WhatsAppCTA';
-import StyleCollections from '@/components/home/StyleCollections';
-import InstagramFeed from '@/components/home/InstagramFeed';
+import CustomerReviews from '@/components/home/CustomerReviews';
+import WhatsAppConcierge from '@/components/home/WhatsAppConcierge';
+import WhatsAppFloatingButton from '@/components/layout/WhatsAppFloatingButton';
 
 export default function HomePage() {
   return (
     <>
-      {/* 1. Hero Section */}
+      {/* 1. Hero Section + Animated Reassurance Strip */}
       <Hero />
 
-      {/* 2. Trust Bar */}
-      <TrustBar />
-
-      {/* 3. Shop by Room (Bento Grid) */}
+      {/* 2. Shop by Space (6 Rooms with Hover Zoom) */}
       <CategoryGrid />
 
-      {/* 4. Featured Products Row */}
+      {/* 3. Bestsellers (8 Products, 4-Col Desktop / 2-Col Mobile) */}
       <FeaturedProducts />
 
-      {/* 5. Brand Story & Woodcraft Engineering */}
-      <BrandStory />
+      {/* 4. Craft Story (Kiln-Dried Hardwood, Mortise & Tenon, Non-Toxic Finish) */}
+      <CraftStory />
 
-      {/* 6. Real Customer Homes & Apartment Showcases (Wooden Street style) */}
+      {/* 5. Real Homes Across India (UGC Photo Grid with City Tags) */}
       <CustomerHomesGallery />
 
-      {/* 7. Customer Testimonials */}
-      <Testimonials />
+      {/* 6. Verified Customer Reviews */}
+      <CustomerReviews />
 
-      {/* 8. WhatsApp Inline CTA */}
-      <WhatsAppCTA />
+      {/* 7. WhatsApp Concierge Consultation (Dark Warm Section) */}
+      <WhatsAppConcierge />
 
-      {/* 9. Style Collections Teaser */}
-      <StyleCollections />
-
-      {/* 10. Instagram UGC */}
-      <InstagramFeed />
+      {/* 8. Floating Bottom-Right WhatsApp Trigger */}
+      <WhatsAppFloatingButton />
     </>
   );
 }

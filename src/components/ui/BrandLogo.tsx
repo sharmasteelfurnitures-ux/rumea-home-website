@@ -1,7 +1,6 @@
 ﻿'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 
 interface BrandLogoProps {
@@ -22,10 +21,10 @@ export default function BrandLogo({
   asLink = true,
 }: BrandLogoProps) {
   const sizeConfig = {
-    sm: { width: 160, height: 43, imgClass: 'h-9 md:h-10 w-auto' },
-    md: { width: 200, height: 53, imgClass: 'h-11 md:h-12 w-auto' },
-    lg: { width: 260, height: 70, imgClass: 'h-14 md:h-16 w-auto' },
-    hero: { width: 320, height: 85, imgClass: 'h-18 md:h-22 w-auto' },
+    sm: { height: 38, imgClass: 'h-8 md:h-9 w-auto max-w-[160px]' },
+    md: { height: 48, imgClass: 'h-10 md:h-12 w-auto max-w-[210px]' },
+    lg: { height: 60, imgClass: 'h-13 md:h-15 w-auto max-w-[260px]' },
+    hero: { height: 75, imgClass: 'h-16 md:h-20 w-auto max-w-[320px]' },
   };
 
   const config = sizeConfig[size];
@@ -34,14 +33,12 @@ export default function BrandLogo({
   const logoContent = (
     <div className={`inline-flex flex-col ${showTagline ? 'items-center text-center' : 'items-start'} ${className}`}>
       <div className="relative flex items-center">
-        <Image
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src={logoSrc}
           alt="Rumea Home"
-          width={config.width}
-          height={config.height}
-          priority
-          unoptimized
-          className={`${config.imgClass} object-contain transition-opacity duration-200 hover:opacity-90`}
+          className={`${config.imgClass} object-contain block transition-opacity duration-200 hover:opacity-95`}
+          loading="eager"
         />
       </div>
 
@@ -59,7 +56,7 @@ export default function BrandLogo({
 
   if (asLink) {
     return (
-      <Link href="/" className="group focus:outline-none inline-block">
+      <Link href="/" className="group focus:outline-none inline-block flex-shrink-0">
         {logoContent}
       </Link>
     );

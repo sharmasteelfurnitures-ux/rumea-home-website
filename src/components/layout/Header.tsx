@@ -151,7 +151,7 @@ export default function Header() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-11 md:h-12 gap-4">
+          <div className="flex items-center justify-between min-h-[48px] md:min-h-[56px] gap-4">
             
             {/* Mobile Hamburger */}
             <div className="flex items-center lg:hidden">

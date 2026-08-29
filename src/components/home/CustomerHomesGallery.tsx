@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Camera, ArrowRight, MapPin } from 'lucide-react';
 
 export default function CustomerHomesGallery() {
@@ -42,11 +43,17 @@ export default function CustomerHomesGallery() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-warm-offwhite border-t border-border-sand">
+    <section className="py-16 md:py-24 bg-warm-offwhite border-t border-border-sand overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-4"
+        >
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-terracotta flex items-center gap-1.5">
               <Camera className="w-3.5 h-3.5" /> REAL SPACES IN REAL HOMES
@@ -61,18 +68,23 @@ export default function CustomerHomesGallery() {
 
           <Link
             href="/products"
-            className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-charcoal hover:text-terracotta transition-colors self-start md:self-auto"
+            className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-charcoal hover:text-terracotta transition-colors self-start md:self-auto group"
           >
             <span>Explore All 20+ Designs</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
-        </div>
+        </motion.div>
 
         {/* 4-Column Visual Photography Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {customerSpaces.map((space) => (
-            <div
+          {customerSpaces.map((space, idx) => (
+            <motion.div
               key={space.id}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -5 }}
               className="group relative flex flex-col bg-white rounded-card overflow-hidden border border-border-sand shadow-card card-hover"
             >
               {/* 4/3 Aspect Ratio Image Viewport */}
@@ -82,11 +94,11 @@ export default function CustomerHomesGallery() {
                   alt={`${space.productName} in ${space.title}`}
                   fill
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                  className="object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
                 />
                 
                 {/* Location Badge */}
-                <div className="absolute top-2.5 left-2.5 px-2 py-0.5 bg-charcoal/80 backdrop-blur-xs text-white text-[10px] font-semibold rounded-btn flex items-center gap-1">
+                <div className="absolute top-2.5 left-2.5 px-2 py-0.5 bg-charcoal/85 backdrop-blur-xs text-white text-[10px] font-semibold rounded-btn flex items-center gap-1 shadow-xs">
                   <MapPin className="w-3 h-3 text-amber-300" />
                   <span>{space.title}</span>
                 </div>
@@ -106,15 +118,15 @@ export default function CustomerHomesGallery() {
                 <div className="mt-3 pt-2.5 border-t border-border-sand/60 flex items-center justify-between">
                   <Link
                     href={`/products/${space.slug}`}
-                    className="text-[11px] font-bold text-terracotta hover:text-charcoal flex items-center gap-1 transition-colors"
+                    className="text-[11px] font-bold text-terracotta hover:text-charcoal flex items-center gap-1 transition-colors group/link"
                   >
                     <span>Shop Look</span>
-                    <ArrowRight className="w-3 h-3" />
+                    <ArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </div>
 
-            </div>
+            </motion.div>
           ))}
         </div>
 

@@ -1,6 +1,7 @@
 ﻿'use client';
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { MessageCircle, Clock, ShieldCheck, Sparkles, Ruler } from 'lucide-react';
 import { buildWhatsAppUrl, getWhatsAppDisplayNumber } from '@/lib/whatsapp';
 import { trackWhatsAppClick } from '@/lib/analytics';
@@ -11,40 +12,80 @@ export default function WhatsAppConcierge() {
   );
 
   return (
-    <section className="bg-charcoal text-white py-16 md:py-20 border-t border-border-sand/20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section className="relative bg-charcoal text-white py-16 md:py-20 border-t border-border-sand/20 overflow-hidden">
+      
+      {/* Subtle Ambient Radial Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
         
         {/* Eyebrow */}
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 text-white text-[11px] font-bold uppercase tracking-widest rounded-btn mb-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 text-white text-[11px] font-bold uppercase tracking-widest rounded-btn mb-4 backdrop-blur-xs"
+        >
           <Ruler className="w-3.5 h-3.5 text-amber-300" /> FREE WOODCRAFT &amp; ROOM SIZING CONSULTATION
-        </div>
+        </motion.div>
 
         {/* Headline */}
-        <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="font-serif text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight"
+        >
           Not Sure What Fits Your Space?
-        </h2>
+        </motion.h2>
 
         {/* Subline */}
-        <p className="text-white/80 text-sm sm:text-base lg:text-lg mt-4 max-w-2xl mx-auto leading-relaxed">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="text-white/80 text-sm sm:text-base lg:text-lg mt-4 max-w-2xl mx-auto leading-relaxed"
+        >
           Share your room dimensions, floor plan, or photos on WhatsApp. We provide honest sizing advice, custom finish previews, and direct delivery estimates.
-        </p>
+        </motion.p>
 
-        {/* CTA Button */}
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackWhatsAppClick({ source: 'homepage' })}
-            className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#25D366] hover:bg-[#20bd5a] text-white font-sans font-bold text-sm sm:text-base rounded-btn shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+        {/* CTA Button with Interactive Hover & Tap */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <motion.div
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 17 }}
           >
-            <MessageCircle className="w-5 h-5 fill-current" />
-            <span>Chat on WhatsApp</span>
-          </a>
-        </div>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick({ source: 'homepage' })}
+              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#25D366] hover:bg-[#20bd5a] text-white font-sans font-bold text-sm sm:text-base rounded-btn shadow-lg hover:shadow-emerald-500/20 transition-all duration-200"
+            >
+              <MessageCircle className="w-5 h-5 fill-current" />
+              <span>Chat on WhatsApp</span>
+            </a>
+          </motion.div>
+        </motion.div>
 
         {/* Trust Ribbon */}
-        <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-white/70 font-medium">
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-white/70 font-medium"
+        >
           <div className="flex items-center gap-1.5">
             <Clock className="w-4 h-4 text-amber-300" />
             <span>Average reply in &lt; 15 mins</span>
@@ -58,7 +99,7 @@ export default function WhatsAppConcierge() {
           <span>Mon–Sat, 9AM–9PM IST</span>
           <span className="hidden sm:inline text-white/30">•</span>
           <span>Direct Line: {getWhatsAppDisplayNumber()}</span>
-        </div>
+        </motion.div>
 
       </div>
     </section>

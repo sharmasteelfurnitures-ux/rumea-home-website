@@ -1,8 +1,8 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Star, CheckCircle2, Quote, MessageSquare } from 'lucide-react';
 import { getTestimonials } from '@/lib/products';
 
@@ -10,11 +10,17 @@ export default function CustomerReviews() {
   const reviews = getTestimonials();
 
   return (
-    <section className="py-16 md:py-24 bg-white border-t border-border-sand">
+    <section className="py-16 md:py-24 bg-white border-t border-border-sand overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-2xl mx-auto mb-12 sm:mb-16"
+        >
           <span className="text-xs font-bold uppercase tracking-widest text-terracotta flex items-center justify-center gap-1.5">
             <MessageSquare className="w-3.5 h-3.5" /> VERIFIED EXPERIENCES
           </span>
@@ -24,13 +30,18 @@ export default function CustomerReviews() {
           <p className="text-mid-gray text-sm sm:text-base mt-2">
             Read authentic experiences from 1,200+ homeowners across Bengaluru, Mumbai, Delhi NCR, and Hyderabad.
           </p>
-        </div>
+        </motion.div>
 
         {/* 3-Column Reviews Grid (Desktop) / Swipeable Rail (Mobile) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {reviews.map((review) => (
-            <div
+          {reviews.map((review, idx) => (
+            <motion.div
               key={review.id}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -5 }}
               className="bg-warm-offwhite rounded-card p-6 sm:p-7 border border-border-sand shadow-card flex flex-col justify-between card-hover"
             >
               <div>
@@ -75,7 +86,7 @@ export default function CustomerReviews() {
                 )}
               </div>
 
-            </div>
+            </motion.div>
           ))}
         </div>
 

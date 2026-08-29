@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { LOGO_DARK_DATA_URI, LOGO_WHITE_DATA_URI } from './logoData';
 
 interface BrandLogoProps {
   variant?: 'dark' | 'light';
@@ -28,7 +29,7 @@ export default function BrandLogo({
   };
 
   const config = sizeConfig[size];
-  const logoSrc = variant === 'light' ? '/images/brand/logo-white.png' : '/images/brand/logo-dark.png';
+  const logoSrc = variant === 'light' ? LOGO_WHITE_DATA_URI : LOGO_DARK_DATA_URI;
 
   const logoContent = (
     <div className={`inline-flex flex-col ${showTagline ? 'items-center text-center' : 'items-start'} ${className}`}>
@@ -37,14 +38,8 @@ export default function BrandLogo({
         <img
           src={logoSrc}
           alt="rumea home"
-          className={`${config.imgClass} object-contain block transition-opacity duration-200 hover:opacity-95`}
+          className={`${config.imgClass} object-contain block transition-opacity duration-200 hover:opacity-90`}
           loading="eager"
-          onError={(e) => {
-            const target = e.currentTarget;
-            if (target.src.indexOf('logo.png') === -1) {
-              target.src = '/logo.png';
-            }
-          }}
         />
       </div>
 

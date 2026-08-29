@@ -1,7 +1,7 @@
 ﻿'use client';
 
 import React from 'react';
-import { Flame, Hammer, ShieldCheck, Check } from 'lucide-react';
+import { Flame, Hammer, ShieldCheck, Check, Sparkles } from 'lucide-react';
 
 export default function CraftStory() {
   const craftPillars = [
@@ -32,19 +32,19 @@ export default function CraftStory() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-white border-y border-border-sand">
+    <section className="py-16 md:py-24 bg-warm-alabaster border-y border-border-sand">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-antique-gold">
-            HONEST WOODCRAFT
+          <span className="text-xs font-bold uppercase tracking-widest text-terracotta flex items-center justify-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5" /> HONEST WOODCRAFT
           </span>
-          <h2 className="font-serif text-2xl sm:text-4xl text-espresso mt-1 leading-tight">
+          <h2 className="font-serif text-2xl sm:text-4xl text-charcoal mt-1 leading-tight">
             How True Solid Furniture Is Built
           </h2>
-          <p className="text-soft-taupe text-sm sm:text-base mt-2">
-            No MDF fillers. No synthetic veneers. Built above local carpenter shortcuts and priced below luxury brand markups.
+          <p className="text-mid-gray text-sm sm:text-base mt-2">
+            No MDF fillers. No synthetic veneers. Built above local carpenter shortcuts and priced below showroom markups.
           </p>
         </div>
 
@@ -55,10 +55,10 @@ export default function CraftStory() {
             return (
               <div
                 key={idx}
-                className="bg-warm-ivory rounded-card p-6 sm:p-8 border border-border-sand flex flex-col justify-between hover:border-espresso/30 shadow-card card-hover"
+                className="bg-white rounded-card p-6 sm:p-8 border border-border-sand flex flex-col justify-between hover:border-charcoal/30 shadow-card card-hover"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-btn bg-espresso text-warm-ivory flex items-center justify-center mb-5 shadow-sm">
+                  <div className="w-12 h-12 rounded-btn bg-charcoal text-white flex items-center justify-center mb-5 shadow-sm">
                     <Icon className="w-6 h-6 text-warm-sand" />
                   </div>
 
@@ -66,19 +66,19 @@ export default function CraftStory() {
                     {pillar.subtitle}
                   </span>
 
-                  <h3 className="font-serif font-bold text-lg sm:text-xl text-espresso mt-1 mb-3">
+                  <h3 className="font-serif font-bold text-lg sm:text-xl text-charcoal mt-1 mb-3">
                     {pillar.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-soft-taupe leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm text-mid-gray leading-relaxed mb-6">
                     {pillar.description}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-border-sand/70 space-y-2 text-xs font-medium text-espresso">
+                <div className="pt-4 border-t border-border-sand/70 space-y-2 text-xs font-medium text-charcoal">
                   {pillar.highlights.map((h, i) => (
                     <div key={i} className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-antique-gold flex-shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
                       <span>{h}</span>
                     </div>
                   ))}

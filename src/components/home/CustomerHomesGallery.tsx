@@ -42,26 +42,26 @@ export default function CustomerHomesGallery() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-white border-t border-border-sand">
+    <section className="py-16 md:py-24 bg-warm-offwhite border-t border-border-sand">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-4">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-antique-gold flex items-center gap-1.5">
+            <span className="text-xs font-bold uppercase tracking-widest text-terracotta flex items-center gap-1.5">
               <Camera className="w-3.5 h-3.5" /> REAL SPACES IN REAL HOMES
             </span>
-            <h2 className="font-serif text-2xl sm:text-4xl text-espresso mt-1">
+            <h2 className="font-serif text-2xl sm:text-4xl text-charcoal mt-1">
               Styled in Modern Indian Apartments
             </h2>
-            <p className="text-soft-taupe text-sm sm:text-base mt-1.5 max-w-xl">
+            <p className="text-mid-gray text-sm sm:text-base mt-1.5 max-w-xl">
               100% solid Sheesham wood pieces photographed in real homes across Bengaluru, Mumbai, Delhi, and Hyderabad.
             </p>
           </div>
 
           <Link
             href="/products"
-            className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-espresso hover:text-antique-gold transition-colors self-start md:self-auto"
+            className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-charcoal hover:text-terracotta transition-colors self-start md:self-auto"
           >
             <span>Explore All 20+ Designs</span>
             <ArrowRight className="w-4 h-4" />
@@ -73,10 +73,10 @@ export default function CustomerHomesGallery() {
           {customerSpaces.map((space) => (
             <div
               key={space.id}
-              className="group relative flex flex-col bg-warm-ivory rounded-card overflow-hidden border border-border-sand shadow-card card-hover"
+              className="group relative flex flex-col bg-white rounded-card overflow-hidden border border-border-sand shadow-card card-hover"
             >
               {/* 4/3 Aspect Ratio Image Viewport */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-ivory-dark">
+              <div className="relative aspect-[4/3] overflow-hidden bg-warm-alabaster">
                 <Image
                   src={space.image}
                   alt={`${space.productName} in ${space.title}`}
@@ -86,8 +86,8 @@ export default function CustomerHomesGallery() {
                 />
                 
                 {/* Location Badge */}
-                <div className="absolute top-2.5 left-2.5 px-2 py-0.5 bg-espresso/80 backdrop-blur-xs text-warm-ivory text-[10px] font-semibold rounded-btn flex items-center gap-1">
-                  <MapPin className="w-3 h-3 text-antique-gold" />
+                <div className="absolute top-2.5 left-2.5 px-2 py-0.5 bg-charcoal/80 backdrop-blur-xs text-white text-[10px] font-semibold rounded-btn flex items-center gap-1">
+                  <MapPin className="w-3 h-3 text-amber-300" />
                   <span>{space.title}</span>
                 </div>
               </div>
@@ -95,10 +95,10 @@ export default function CustomerHomesGallery() {
               {/* Card Footer with Direct Product Link */}
               <div className="p-3.5 flex flex-col justify-between flex-1 bg-white">
                 <div>
-                  <span className="text-[10px] uppercase font-bold text-soft-taupe tracking-wider block">
+                  <span className="text-[10px] uppercase font-bold text-mid-gray tracking-wider block">
                     {space.roomType}
                   </span>
-                  <h3 className="font-serif font-semibold text-xs sm:text-sm text-espresso mt-0.5 truncate">
+                  <h3 className="font-serif font-semibold text-xs sm:text-sm text-charcoal mt-0.5 truncate">
                     {space.productName}
                   </h3>
                 </div>
@@ -106,7 +106,7 @@ export default function CustomerHomesGallery() {
                 <div className="mt-3 pt-2.5 border-t border-border-sand/60 flex items-center justify-between">
                   <Link
                     href={`/products/${space.slug}`}
-                    className="text-[11px] font-bold text-antique-gold hover:text-espresso flex items-center gap-1 transition-colors"
+                    className="text-[11px] font-bold text-terracotta hover:text-charcoal flex items-center gap-1 transition-colors"
                   >
                     <span>Shop Look</span>
                     <ArrowRight className="w-3 h-3" />

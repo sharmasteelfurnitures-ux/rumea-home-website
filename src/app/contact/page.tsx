@@ -1,10 +1,11 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import Breadcrumb from '@/components/ui/Breadcrumb';
-import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import WhatsAppFloatingButton from '@/components/layout/WhatsAppFloatingButton';
 import { buildWhatsAppUrl, getWhatsAppDisplayNumber } from '@/lib/whatsapp';
-import { MessageCircle, Mail, MapPin, Clock, Send, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { trackWhatsAppClick } from '@/lib/analytics';
+import { MessageCircle, Mail, MapPin, Clock, Send, CheckCircle2, ShieldCheck, Phone } from 'lucide-react';
 
 export default function ContactPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -12,7 +13,7 @@ export default function ContactPage() {
     name: '',
     email: '',
     phone: '',
-    subject: 'Product Enquiry',
+    subject: 'Furniture Consultation',
     message: '',
   });
 
@@ -20,6 +21,10 @@ export default function ContactPage() {
     e.preventDefault();
     if (formData.name && formData.email && formData.message) {
       setFormSubmitted(true);
+      // Fallback: Open WhatsApp with pre-filled enquiry details
+      const msg = `Hi Rumea Home! My name is ${formData.name}. Subject: ${formData.subject}. Message: ${formData.message}`;
+      window.open(buildWhatsAppUrl(msg), '_blank');
+      trackWhatsAppClick({ source: 'contact' });
     }
   };
 
@@ -28,18 +33,18 @@ export default function ContactPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb */}
-        <Breadcrumb items={[{ label: 'Contact Support' }]} className="mb-6" />
+        <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Contact & Support' }]} className="mb-6" />
 
         {/* Header Intro */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-muted-olive/10 text-muted-olive text-xs font-bold uppercase tracking-widest rounded-full mb-3">
-            CUSTOMER CARE & CONCIERGE
+          <span className="text-xs font-bold uppercase tracking-widest text-antique-gold block mb-2">
+            CUSTOMER CARE &amp; CONCIERGE
           </span>
-          <h1 className="font-display font-extrabold text-3xl sm:text-5xl text-espresso tracking-tight">
-            Same Values, A Better Tomorrow
+          <h1 className="font-serif text-3xl sm:text-5xl text-espresso tracking-tight">
+            How Can We Assist Your Home?
           </h1>
-          <p className="text-soft-taupe text-sm sm:text-base lg:text-lg mt-4 max-w-2xl mx-auto leading-relaxed">
-            We are a focused design and woodworking team and we personally attend to every customer message. Reach us on WhatsApp for real-time guidance.
+          <p className="text-soft-taupe text-sm sm:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
+            Our woodcraft designers and support team personally attend to every customer message. Reach us on WhatsApp for real-time room sizing guidance and order tracking.
           </p>
         </div>
 
@@ -50,16 +55,16 @@ export default function ContactPage() {
           <div className="lg:col-span-5 space-y-6">
             
             {/* Primary WhatsApp Card */}
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-warm-sand shadow-warm space-y-6">
+            <div className="bg-white rounded-card p-6 sm:p-8 border border-border-sand shadow-card space-y-5">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-muted-olive text-warm-ivory flex items-center justify-center shadow-md">
-                  <MessageCircle className="w-6 h-6" />
+                <div className="w-12 h-12 rounded-btn bg-[#25D366] text-white flex items-center justify-center shadow-md">
+                  <MessageCircle className="w-6 h-6 fill-current" />
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-lg text-espresso">
+                  <h3 className="font-serif font-bold text-lg text-espresso">
                     WhatsApp Concierge
                   </h3>
-                  <p className="text-xs text-soft-taupe">Fastest response channel (under 2 hours)</p>
+                  <p className="text-xs text-soft-taupe">Fastest response channel (&lt; 15 mins)</p>
                 </div>
               </div>
 
@@ -72,77 +77,68 @@ export default function ContactPage() {
                   href={buildWhatsAppUrl("Hi Rumea Home! I'd like help with a furniture enquiry.")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2.5 py-4 px-6 bg-espresso text-warm-ivory font-semibold text-sm rounded-xl shadow hover:bg-espresso/90 transition-colors"
+                  onClick={() => trackWhatsAppClick({ source: 'contact' })}
+                  className="w-full flex items-center justify-center gap-2 py-3.5 px-6 bg-espresso text-warm-ivory font-bold text-xs rounded-btn shadow-warm hover:bg-espresso/90 transition-colors"
                 >
-                  <MessageCircle className="w-5 h-5 text-warm-sand" />
-                  <span>Start WhatsApp Chat &rarr;</span>
+                  <MessageCircle className="w-4 h-4 text-warm-sand" />
+                  <span>Start WhatsApp Conversation &rarr;</span>
                 </a>
                 <p className="text-center text-[11px] text-soft-taupe mt-2">
                   Direct Line: {getWhatsAppDisplayNumber()}
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-warm-sand/40 space-y-2.5 text-xs text-soft-taupe">
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-muted-olive" />
-                  <span>Monday – Saturday: 9:00 AM – 8:00 PM IST</span>
+              <div className="pt-4 border-t border-border-sand/60 space-y-2.5 text-xs text-soft-taupe font-medium">
+                <div className="flex items-center gap-2.5">
+                  <Clock className="w-4 h-4 text-antique-gold flex-shrink-0" />
+                  <span>Monday – Saturday: 9:00 AM – 9:00 PM IST</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-muted-olive" />
+                <div className="flex items-center gap-2.5">
+                  <Mail className="w-4 h-4 text-antique-gold flex-shrink-0" />
                   <span>hello@rumeahome.com</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-muted-olive" />
-                  <span>Design Studios: Bengaluru & New Delhi, India</span>
+                <div className="flex items-center gap-2.5">
+                  <MapPin className="w-4 h-4 text-antique-gold flex-shrink-0" />
+                  <span>Design Studios: Bengaluru &amp; New Delhi, India</span>
                 </div>
               </div>
             </div>
 
-            {/* Guarantee Box */}
-            <div className="bg-muted-olive/10 border border-muted-olive/20 rounded-2xl p-5 text-xs text-espresso/90 flex items-start gap-3">
-              <ShieldCheck className="w-5 h-5 text-muted-olive flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-bold font-display text-sm text-espresso mb-0.5">
-                  Direct Manufacturer Support
-                </p>
-                <p className="text-soft-taupe leading-relaxed">
-                  Every product is fulfilled and backed directly by Rumea Home with genuine 5-year structural warranty documentation.
-                </p>
+            {/* Reassurance Guarantee Box */}
+            <div className="p-5 bg-warm-ivory rounded-card border border-border-sand space-y-2">
+              <div className="flex items-center gap-2 text-espresso font-bold text-xs">
+                <ShieldCheck className="w-4 h-4 text-antique-gold" />
+                <span>Zero Pressure Woodcraft Guidance</span>
               </div>
+              <p className="text-xs text-soft-taupe leading-relaxed">
+                Whether you have questions on room floor plans or solid wood vs veneer differences, our team is here to help without sales pressure.
+              </p>
             </div>
 
           </div>
 
-          {/* Right Column: Email Form (7 cols) */}
-          <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-10 border border-warm-sand shadow-card">
-            <h3 className="font-display font-bold text-xl text-espresso mb-2">
-              Send Us an Email Message
+          {/* Right Column: Contact Message Form (7 cols) */}
+          <div className="lg:col-span-7 bg-white rounded-card p-6 sm:p-8 border border-border-sand shadow-card">
+            <h3 className="font-serif font-bold text-xl text-espresso mb-1">
+              Send an Email Message
             </h3>
-            <p className="text-xs sm:text-sm text-soft-taupe mb-6">
-              Prefer email? Fill in the details below and our team will get back to you within 1 business day.
+            <p className="text-xs text-soft-taupe mb-6">
+              Fill out your details below and we will respond via email and WhatsApp within 24 hours.
             </p>
 
             {formSubmitted ? (
-              <div className="p-8 bg-warm-ivory rounded-2xl border border-muted-olive/30 text-center space-y-3 animate-in fade-in">
-                <CheckCircle2 className="w-12 h-12 text-muted-olive mx-auto" />
-                <h4 className="font-display font-bold text-lg text-espresso">
-                  Thank You, {formData.name}!
-                </h4>
+              <div className="p-8 text-center bg-warm-ivory rounded-card border border-border-sand space-y-3">
+                <CheckCircle2 className="w-10 h-10 text-antique-gold mx-auto" />
+                <h4 className="font-serif font-bold text-lg text-espresso">Thank you, {formData.name}!</h4>
                 <p className="text-xs text-soft-taupe max-w-sm mx-auto">
-                  Your message regarding &quot;{formData.subject}&quot; has been received. Our team will email you at {formData.email} shortly.
+                  Your message has been received. Our team has also initiated a WhatsApp chat to assist you promptly.
                 </p>
-                <button
-                  onClick={() => setFormSubmitted(false)}
-                  className="mt-4 px-6 py-2 bg-espresso text-warm-ivory text-xs font-semibold rounded-xl"
-                >
-                  Send Another Message
-                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-espresso mb-1">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-espresso mb-1.5">
                       Your Name *
                     </label>
                     <input
@@ -150,12 +146,13 @@ export default function ContactPage() {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="e.g. Priya Sharma"
-                      className="w-full px-4 py-3 bg-warm-ivory/50 border border-warm-sand rounded-xl text-xs sm:text-sm text-espresso focus:outline-none focus:ring-2 focus:ring-espresso focus:bg-white"
+                      placeholder="e.g. Rahul Sharma"
+                      className="w-full px-3.5 py-2.5 bg-warm-ivory border border-border-sand text-xs text-espresso rounded-btn focus:outline-none focus:ring-1 focus:ring-espresso"
                     />
                   </div>
+
                   <div>
-                    <label className="block text-xs font-semibold text-espresso mb-1">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-espresso mb-1.5">
                       Email Address *
                     </label>
                     <input
@@ -163,63 +160,64 @@ export default function ContactPage() {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="e.g. priya@example.com"
-                      className="w-full px-4 py-3 bg-warm-ivory/50 border border-warm-sand rounded-xl text-xs sm:text-sm text-espresso focus:outline-none focus:ring-2 focus:ring-espresso focus:bg-white"
+                      placeholder="e.g. rahul@gmail.com"
+                      className="w-full px-3.5 py-2.5 bg-warm-ivory border border-border-sand text-xs text-espresso rounded-btn focus:outline-none focus:ring-1 focus:ring-espresso"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-espresso mb-1">
-                      Phone / WhatsApp (Optional)
+                    <label className="block text-xs font-bold uppercase tracking-wider text-espresso mb-1.5">
+                      Phone / WhatsApp Number
                     </label>
                     <input
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="+91 98765 43210"
-                      className="w-full px-4 py-3 bg-warm-ivory/50 border border-warm-sand rounded-xl text-xs sm:text-sm text-espresso focus:outline-none focus:ring-2 focus:ring-espresso focus:bg-white"
+                      placeholder="e.g. 9876543210"
+                      className="w-full px-3.5 py-2.5 bg-warm-ivory border border-border-sand text-xs text-espresso rounded-btn focus:outline-none focus:ring-1 focus:ring-espresso"
                     />
                   </div>
+
                   <div>
-                    <label className="block text-xs font-semibold text-espresso mb-1">
-                      Subject
+                    <label className="block text-xs font-bold uppercase tracking-wider text-espresso mb-1.5">
+                      Topic
                     </label>
                     <select
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className="w-full px-4 py-3 bg-warm-ivory/50 border border-warm-sand rounded-xl text-xs sm:text-sm text-espresso focus:outline-none focus:ring-2 focus:ring-espresso focus:bg-white"
+                      className="w-full px-3.5 py-2.5 bg-warm-ivory border border-border-sand text-xs text-espresso rounded-btn focus:outline-none focus:ring-1 focus:ring-espresso cursor-pointer"
                     >
-                      <option value="Product Sizing Enquiry">Product Sizing Enquiry</option>
-                      <option value="Custom Order / Bulk">Custom Order / Bulk Furniture</option>
-                      <option value="Delivery Timeline Query">Delivery Timeline Query</option>
-                      <option value="Warranty / Service">Warranty or Service Support</option>
-                      <option value="General Feedback">General Feedback</option>
+                      <option value="Furniture Consultation">Furniture Sizing Consultation</option>
+                      <option value="Delivery Timeline">Delivery &amp; Pincode Enquiry</option>
+                      <option value="Custom Finish">Timber Finish Swatches</option>
+                      <option value="Bulk Order">Commercial / Bulk Order</option>
+                      <option value="Warranty Claim">5-Year Warranty Support</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-espresso mb-1">
-                    Your Message *
+                  <label className="block text-xs font-bold uppercase tracking-wider text-espresso mb-1.5">
+                    Message Details *
                   </label>
                   <textarea
                     required
-                    rows={5}
+                    rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Tell us what you are looking for (room dimensions, product names, or queries)..."
-                    className="w-full px-4 py-3 bg-warm-ivory/50 border border-warm-sand rounded-xl text-xs sm:text-sm text-espresso focus:outline-none focus:ring-2 focus:ring-espresso focus:bg-white"
+                    placeholder="Tell us about the room, preferred timber finish, or dimensions you are considering..."
+                    className="w-full px-3.5 py-2.5 bg-warm-ivory border border-border-sand text-xs text-espresso rounded-btn focus:outline-none focus:ring-1 focus:ring-espresso"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-espresso text-warm-ivory text-xs sm:text-sm font-semibold rounded-xl shadow-warm hover:bg-espresso/90 transition-colors"
+                  className="w-full py-3.5 bg-espresso text-warm-ivory font-bold text-xs rounded-btn shadow-warm hover:bg-espresso/90 transition-colors flex items-center justify-center gap-2"
                 >
-                  <Send className="w-4 h-4" />
-                  <span>Send Message</span>
+                  <Send className="w-4 h-4 text-warm-sand" />
+                  <span>Submit Message</span>
                 </button>
               </form>
             )}
@@ -228,6 +226,9 @@ export default function ContactPage() {
         </div>
 
       </div>
+
+      {/* Floating Bottom-Right WhatsApp Trigger */}
+      <WhatsAppFloatingButton />
     </div>
   );
 }

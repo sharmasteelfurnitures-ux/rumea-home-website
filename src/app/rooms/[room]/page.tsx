@@ -32,10 +32,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${roomCat.name} Furniture | Rumea Home®`,
+    title: `${roomCat.name} Furniture | Rumea Home`,
     description: roomCat.description,
     openGraph: {
-      title: `${roomCat.name} Furniture | Rumea Home®`,
+      title: `${roomCat.name} Furniture | Rumea Home`,
       description: roomCat.description,
       images: [{ url: roomCat.image, width: 1000, height: 600, alt: roomCat.name }],
     },

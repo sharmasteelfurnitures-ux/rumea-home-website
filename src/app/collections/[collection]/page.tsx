@@ -64,10 +64,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${col.name} Collection | Rumea Home®`,
+    title: `${col.name} Collection | Rumea Home`,
     description: col.description,
     openGraph: {
-      title: `${col.name} Collection | Rumea Home®`,
+      title: `${col.name} Collection | Rumea Home`,
       description: col.description,
       images: [{ url: col.image, width: 1200, height: 600, alt: col.name }],
     },

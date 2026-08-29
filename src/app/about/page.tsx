@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -21,11 +21,11 @@ import {
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 export const metadata: Metadata = {
-  title: 'Our Story, Woodcraft & Values | Rumea Home®',
+  title: 'Our Story, Woodcraft & Values | Rumea Home',
   description:
     'Handcrafted solid Sheesham wood furniture for modern Indian homes. Discover our 100% kiln-dried timber, mortise & tenon joinery, and honest direct pricing.',
   openGraph: {
-    title: 'Our Story & Craftsmanship | Rumea Home®',
+    title: 'Our Story & Craftsmanship | Rumea Home',
     description: '100% Solid Sheesham Wood Furniture Handcrafted for Indian Homes.',
     url: 'https://rumeahome.com/about',
   },

@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -75,22 +75,11 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
             </div>
 
             {/* Title in Serif */}
-            <h3 className="font-serif font-semibold text-sm sm:text-base text-espresso line-clamp-2 leading-snug group-hover:text-antique-gold transition-colors">
+            <h3 className="font-serif font-semibold text-sm sm:text-base text-charcoal line-clamp-2 leading-snug group-hover:text-terracotta transition-colors">
               <Link href={`/products/${product.slug}`}>
                 {product.name}
               </Link>
             </h3>
-
-            {/* Star Rating */}
-            <div className="flex items-center gap-1 text-[11px] text-espresso mt-1">
-              <div className="flex text-amber-500">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3 h-3 fill-current" />
-                ))}
-              </div>
-              <span className="font-semibold">{product.seo.rating}</span>
-              <span className="text-soft-taupe text-[10px]">({product.seo.reviewCount})</span>
-            </div>
           </div>
 
           {/* Price Block */}

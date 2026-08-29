@@ -37,11 +37,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${product.name} | Solid Sheesham Furniture | Rumea Home®`,
+    title: `${product.name} | Solid Sheesham Furniture | Rumea Home`,
     description: product.meta.description,
     keywords: product.meta.keywords,
     openGraph: {
-      title: `${product.name} | Rumea Home®`,
+      title: `${product.name} | Rumea Home`,
       description: product.meta.description,
       images: [
         {
@@ -142,12 +142,6 @@ export default function ProductDetailPage({ params }: Props) {
 
         {/* "Complete the Look" / Frequently Bought Together Bundle Builder */}
         <FrequentlyBoughtTogether product={product} />
-
-        {/* Customer Reviews Section with 5-Star Distribution & Verified Reviews */}
-        <RatingBreakdown
-          rating={product.seo.rating}
-          reviewCount={product.seo.reviewCount}
-        />
 
         {/* Solid Hardwood Care & Generational Longevity Guide */}
         <WoodCareGuide />

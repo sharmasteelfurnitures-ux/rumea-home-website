@@ -1,4 +1,4 @@
-﻿import type { Metadata, Viewport } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -15,7 +15,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://rumeahome.com'),
   title: {
-    default: 'Rumea Home® | Thoughtful Furniture for Modern Indian Homes',
+    default: 'Rumea Home | Thoughtful Furniture for Modern Indian Homes',
     template: '%s | Rumea Home',
   },
   description:
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: 'https://rumeahome.com',
     siteName: 'Rumea Home',
-    title: 'Rumea Home® | Thoughtful Furniture for Modern Indian Homes',
+    title: 'Rumea Home | Thoughtful Furniture for Modern Indian Homes',
     description:
       'Thoughtful furniture designed for real Indian homes. Solid wood craftsmanship, 5-year warranty, and free pan-India delivery.',
     images: [
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Rumea Home® | Thoughtful Furniture for Modern Indian Homes',
+    title: 'Rumea Home | Thoughtful Furniture for Modern Indian Homes',
     description:
       'Thoughtful furniture designed for real Indian homes. Solid wood craftsmanship, 5-year warranty, and free pan-India delivery.',
     images: ['/images/brand/logo.png'],

@@ -4,7 +4,6 @@ import CategoryGrid from '@/components/home/CategoryGrid';
 import FeaturedProducts from '@/components/home/FeaturedProducts';
 import CraftStory from '@/components/home/CraftStory';
 import CustomerHomesGallery from '@/components/home/CustomerHomesGallery';
-import CustomerReviews from '@/components/home/CustomerReviews';
 import WhatsAppConcierge from '@/components/home/WhatsAppConcierge';
 import WhatsAppFloatingButton from '@/components/layout/WhatsAppFloatingButton';
 
@@ -26,13 +25,10 @@ export default function HomePage() {
       {/* 5. Real Homes Across India (UGC Photo Grid with City Tags) */}
       <CustomerHomesGallery />
 
-      {/* 6. Verified Customer Reviews */}
-      <CustomerReviews />
-
-      {/* 7. WhatsApp Concierge Consultation (Dark Warm Section) */}
+      {/* 6. WhatsApp Concierge Consultation (Dark Warm Section) */}
       <WhatsAppConcierge />
 
-      {/* 8. Floating Bottom-Right WhatsApp Trigger */}
+      {/* 7. Floating Bottom-Right WhatsApp Trigger */}
       <WhatsAppFloatingButton />
     </>
   );

@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import { Product } from '@/types/product';
@@ -80,25 +80,14 @@ export default function ProductInfo({ product }: ProductInfoProps) {
   return (
     <div className="space-y-6">
       
-      {/* Category Tag & Rating Bar */}
+      {/* Category Tag & Material USP Bar */}
       <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-border-sand/60">
-        <span className="text-xs uppercase tracking-widest font-bold text-antique-gold">
+        <span className="text-xs uppercase tracking-widest font-bold text-terracotta">
           {product.category.replace('-', ' ')} • {product.room.join(' & ')}
         </span>
-
-        {/* Star Rating - Scroll to Reviews */}
-        <button
-          onClick={scrollToReviews}
-          className="flex items-center gap-1.5 text-xs font-semibold text-espresso hover:text-antique-gold transition-colors bg-white px-2.5 py-1 rounded-btn border border-border-sand shadow-xs"
-        >
-          <div className="flex text-amber-500">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-3.5 h-3.5 fill-current" />
-            ))}
-          </div>
-          <span>{product.seo.rating}</span>
-          <span className="text-soft-taupe font-normal underline">({product.seo.reviewCount} reviews)</span>
-        </button>
+        <span className="text-[11px] font-bold text-charcoal bg-warm-alabaster px-2.5 py-1 rounded-btn border border-border-sand">
+          100% Solid Kiln-Dried Sheesham
+        </span>
       </div>
 
       {/* Product Name (H1 in Serif) */}

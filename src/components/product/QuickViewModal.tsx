@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import Image from 'next/image';
@@ -86,20 +86,9 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
                 {product.category.replace('-', ' ')}
               </span>
 
-              <h3 className="font-serif text-xl sm:text-2xl text-espresso mt-0.5 leading-snug">
+              <h3 className="font-serif text-xl sm:text-2xl text-charcoal mt-0.5 leading-snug">
                 {product.name}
               </h3>
-
-              {/* Rating */}
-              <div className="flex items-center gap-1 text-xs text-espresso mt-1.5">
-                <div className="flex text-amber-500">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-current" />
-                  ))}
-                </div>
-                <span className="font-semibold">{product.seo.rating}</span>
-                <span className="text-soft-taupe">({product.seo.reviewCount} ratings)</span>
-              </div>
 
               {/* Price */}
               <div className="flex items-baseline gap-2.5 mt-3">

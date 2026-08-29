@@ -1,0 +1,140 @@
+[
+  {
+    "id": "living-room",
+    "name": "Living Room",
+    "slug": "living-room",
+    "tagline": "The heart of your home where life unfolds",
+    "description": "Handcrafted solid wood sofas, sculptural coffee tables, and elegant TV consoles designed for everyday living and memorable gatherings.",
+    "image": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=80",
+    "itemCount": 5,
+    "tips": [
+      {
+        "title": "Proportion Matters",
+        "description": "Leave at least 18 inches between your sofa and coffee table for comfortable legroom and easy movement."
+      },
+      {
+        "title": "Layer Textures",
+        "description": "Combine solid Sheesham wood with textured cotton upholstery and warm ambient lighting."
+      },
+      {
+        "title": "Focal Anchor",
+        "description": "Position your primary sofa facing the natural light source or central wall unit for balanced energy."
+      }
+    ]
+  },
+  {
+    "id": "bedroom",
+    "name": "Bedroom",
+    "slug": "bedroom",
+    "tagline": "Calm, restorative sanctuaries for deep rest",
+    "description": "Solid Sheesham and teak wood beds with ergonomic headboards, sleek bedside tables, and spacious modular wardrobes.",
+    "image": "https://images.unsplash.com/photo-1540518614846-7ede433c4ef2?auto=format&fit=crop&w=1000&q=80",
+    "itemCount": 4,
+    "tips": [
+      {
+        "title": "Under-Bed Ventilation",
+        "description": "Ensure ample airflow beneath your bed frame to maintain mattress freshness in tropical Indian climates."
+      },
+      {
+        "title": "Bedside Symmetry",
+        "description": "Keep nightstands at matching heights with the mattress top for effortless reach at night."
+      },
+      {
+        "title": "Minimalist Visuals",
+        "description": "Opt for concealed storage to keep clutter out of sight, promoting calmer mental headspace."
+      }
+    ]
+  },
+  {
+    "id": "dining-room",
+    "name": "Dining Room",
+    "slug": "dining-room",
+    "tagline": "Where meals become memories and conversations linger",
+    "description": "Generously sized dining tables crafted from kiln-dried solid Sheesham, paired with ergonomic cushioned dining chairs.",
+    "image": "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1000&q=80",
+    "itemCount": 3,
+    "tips": [
+      {
+        "title": "Clearance Space",
+        "description": "Maintain 36 inches between the table edge and walls to pull chairs out comfortably."
+      },
+      {
+        "title": "Solid Wood Care",
+        "description": "Use trivets and coasters to protect the natural grain and lacquer finish from direct heat."
+      },
+      {
+        "title": "Lighting Height",
+        "description": "Hang your dining pendant light 30 to 36 inches above the table surface for cozy illumination."
+      }
+    ]
+  },
+  {
+    "id": "study",
+    "name": "Study & Work",
+    "slug": "study",
+    "tagline": "Focused workspaces designed for modern productivity",
+    "description": "Ergonomic work desks with integrated cable channels, solid wood bookshelves, and supportive desk chairs.",
+    "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1000&q=80",
+    "itemCount": 3,
+    "tips": [
+      {
+        "title": "Ergonomic Height",
+        "description": "Ensure desktop height is between 29 to 30 inches to keep elbows at a comfortable 90-degree angle."
+      },
+      {
+        "title": "Organized Surfaces",
+        "description": "Use dedicated wire trays and compact drawers to keep the primary working zone clear."
+      },
+      {
+        "title": "Natural Light Orientation",
+        "description": "Position desk perpendicular to windows to avoid screen glare while enjoying daylight."
+      }
+    ]
+  },
+  {
+    "id": "storage",
+    "name": "Storage Solutions",
+    "slug": "storage",
+    "tagline": "Smart, clutter-free storage with timeless silhouettes",
+    "description": "Compact shoe cabinets, multi-tiered bookshelves, and multi-purpose credenzas built to optimize compact apartments.",
+    "image": "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1000&q=80",
+    "itemCount": 3,
+    "tips": [
+      {
+        "title": "Vertical Optimization",
+        "description": "Utilize taller shelving units to maximize storage without consuming floor square footage."
+      },
+      {
+        "title": "Entryway Organization",
+        "description": "Place shoe racks near entry points with a small landing bowl for keys and daily essentials."
+      },
+      {
+        "title": "Multi-functionality",
+        "description": "Choose cabinets that can double as accent consoles for decorative styling."
+      }
+    ]
+  },
+  {
+    "id": "outdoor",
+    "name": "Outdoor & Balcony",
+    "slug": "outdoor",
+    "tagline": "Turn cozy balconies into green morning retreats",
+    "description": "Weather-treated teak and acacia wood balcony sets, bistro tables, and lounge chairs built for Indian weather.",
+    "image": "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=1000&q=80",
+    "itemCount": 2,
+    "tips": [
+      {
+        "title": "Weather Protection",
+        "description": "Cover or oil natural wood frames twice a year before and after the monsoon season."
+      },
+      {
+        "title": "Space-saving Foldables",
+        "description": "Foldable bistro chairs allow flexible space utilization for plants and morning yoga."
+      },
+      {
+        "title": "Outdoor Cushions",
+        "description": "Use quick-dry, UV-resistant fabrics that withstand sunlight and light moisture."
+      }
+    ]
+  }
+]

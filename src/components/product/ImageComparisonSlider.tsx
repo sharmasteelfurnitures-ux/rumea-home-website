@@ -3,7 +3,7 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Sparkles, MoveHorizontal, Sun, Moon, Layers, Trees } from 'lucide-react';
+import { Sparkles, Sun, Layers, Trees, Sliders, RotateCcw, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface ComparisonMode {
   id: string;
@@ -20,8 +20,9 @@ interface ComparisonMode {
 
 export default function ImageComparisonSlider() {
   const [sliderPosition, setSliderPosition] = useState(50); // percentage 0 - 100
-  const [isDragging, setIsDragging] = useState(false);
+  const [isDraggingImage, setIsDraggingImage] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   const comparisonModes: ComparisonMode[] = [
     {
@@ -34,7 +35,7 @@ export default function ImageComparisonSlider() {
       rightImage: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1400&q=85',
       leftTag: 'Natural Golden Sheen',
       rightTag: 'Deep Espresso Grain',
-      description: 'Slide to compare the Oslo 3-Seater in Natural Honey Teak vs. Rich Dark Walnut timber finish.',
+      description: 'Drag the volume track bar below to compare the Oslo 3-Seater in Natural Honey Teak vs. Rich Dark Walnut timber finish.',
     },
     {
       id: 'ambience',
@@ -65,32 +66,32 @@ export default function ImageComparisonSlider() {
   const [activeModeIndex, setActiveModeIndex] = useState(0);
   const activeMode = comparisonModes[activeModeIndex];
 
-  // Handle position calculation on drag
-  const handleMove = useCallback((clientX: number) => {
+  // Handle position calculation on direct image drag
+  const handleImageMove = useCallback((clientX: number) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = clientX - rect.left;
     const width = rect.width;
     const percentage = Math.max(0, Math.min(100, (x / width) * 100));
-    setSliderPosition(percentage);
+    setSliderPosition(Math.round(percentage));
   }, []);
 
   const handleTouchMove = useCallback((e: TouchEvent) => {
-    if (!isDragging) return;
-    handleMove(e.touches[0].clientX);
-  }, [isDragging, handleMove]);
+    if (!isDraggingImage) return;
+    handleImageMove(e.touches[0].clientX);
+  }, [isDraggingImage, handleImageMove]);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
-    if (!isDragging) return;
-    handleMove(e.clientX);
-  }, [isDragging, handleMove]);
+    if (!isDraggingImage) return;
+    handleImageMove(e.clientX);
+  }, [isDraggingImage, handleImageMove]);
 
   const handleMouseUp = useCallback(() => {
-    setIsDragging(false);
+    setIsDraggingImage(false);
   }, []);
 
   useEffect(() => {
-    if (isDragging) {
+    if (isDraggingImage) {
       window.addEventListener('mousemove', handleMouseMove);
       window.addEventListener('mouseup', handleMouseUp);
       window.addEventListener('touchmove', handleTouchMove);
@@ -102,7 +103,16 @@ export default function ImageComparisonSlider() {
       window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleMouseUp);
     };
-  }, [isDragging, handleMouseMove, handleMouseUp, handleTouchMove]);
+  }, [isDraggingImage, handleMouseMove, handleMouseUp, handleTouchMove]);
+
+  // Handle click on flat track bar
+  const handleTrackClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!trackRef.current) return;
+    const rect = trackRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    setSliderPosition(Math.round(percentage));
+  };
 
   return (
     <section className="my-12 sm:my-16 bg-white rounded-card border border-border-sand p-6 sm:p-8 shadow-card overflow-hidden">
@@ -146,14 +156,14 @@ export default function ImageComparisonSlider() {
         </div>
       </div>
 
-      {/* Main Draggable Comparison Stage */}
+      {/* Main Image Stage */}
       <div
         ref={containerRef}
-        onMouseDown={() => setIsDragging(true)}
-        onTouchStart={() => setIsDragging(true)}
+        onMouseDown={() => setIsDraggingImage(true)}
+        onTouchStart={() => setIsDraggingImage(true)}
         className="relative aspect-[16/10] sm:aspect-[16/9] w-full rounded-card overflow-hidden select-none cursor-ew-resize bg-warm-alabaster border border-border-sand shadow-inner"
       >
-        {/* Right Image (Background / Base Layer) */}
+        {/* Right Image (Base Layer) */}
         <div className="absolute inset-0 w-full h-full">
           <Image
             src={activeMode.rightImage}
@@ -188,60 +198,165 @@ export default function ImageComparisonSlider() {
           </div>
         </div>
 
-        {/* Vertical Divider Line with Draggable Handle */}
+        {/* Slim Vertical Divider Line on Image */}
         <div
           className="absolute top-0 bottom-0 z-20 pointer-events-none"
           style={{ left: `${sliderPosition}%` }}
         >
           {/* Vertical Glowing Line */}
-          <div className="absolute top-0 bottom-0 -left-[1.5px] w-[3px] bg-white shadow-[0_0_10px_rgba(0,0,0,0.5)]" />
+          <div className="absolute top-0 bottom-0 -left-[1.5px] w-[3px] bg-white shadow-[0_0_12px_rgba(0,0,0,0.6)]" />
 
-          {/* Center Circular Grabber Pill */}
-          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-charcoal shadow-2xl border-2 border-charcoal flex items-center justify-center pointer-events-auto cursor-ew-resize hover:scale-110 active:scale-95 transition-transform duration-150">
-            <MoveHorizontal className="w-5 h-5 text-terracotta" />
+          {/* Minimal Floating Split Indicator */}
+          <div className="absolute top-4 -translate-x-1/2 px-2 py-0.5 bg-charcoal/90 text-white text-[10px] font-mono font-bold rounded shadow-lg border border-white/30 whitespace-nowrap">
+            {sliderPosition}%
           </div>
         </div>
-
-        {/* Quick Instructions Overlay */}
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 bg-black/50 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-white/20 pointer-events-none">
-          Drag slider horizontally to compare
-        </div>
-
       </div>
 
-      {/* Preset Quick-Jump Controls */}
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-mid-gray pt-2 border-t border-border-sand/60">
-        <div className="flex items-center gap-2">
-          <span className="font-semibold text-charcoal">Quick Views:</span>
+      {/* 🎚️ FLAT VOLUME-STYLE SLIDER BAR CONTROLLER */}
+      <div className="mt-6 bg-warm-alabaster p-4 sm:p-5 rounded-card border border-border-sand">
+        
+        {/* Top Status & End-Point Labels */}
+        <div className="flex items-center justify-between text-xs font-bold text-charcoal mb-2.5">
           <button
-            onClick={() => setSliderPosition(25)}
-            className={`px-2.5 py-1 rounded-btn border text-[11px] font-bold transition-colors ${
-              sliderPosition === 25 ? 'bg-charcoal text-white border-charcoal' : 'bg-warm-alabaster border-border-sand hover:bg-white text-charcoal'
-            }`}
+            onClick={() => setSliderPosition(0)}
+            className="flex items-center gap-1 text-mid-gray hover:text-charcoal transition-colors group"
           >
-            25% Left
+            <span className="w-2 h-2 rounded-full bg-emerald-500 group-hover:scale-125 transition-transform" />
+            <span>{activeMode.leftLabel}</span>
           </button>
+
+          <div className="flex items-center gap-1.5 px-3 py-1 bg-white rounded-full border border-border-sand text-[11px] font-mono shadow-xs text-charcoal">
+            <Sliders className="w-3 h-3 text-terracotta" />
+            <span>{sliderPosition}% {sliderPosition < 50 ? activeMode.leftLabel : sliderPosition > 50 ? activeMode.rightLabel : 'Balanced Split'}</span>
+          </div>
+
           <button
-            onClick={() => setSliderPosition(50)}
-            className={`px-2.5 py-1 rounded-btn border text-[11px] font-bold transition-colors ${
-              sliderPosition === 50 ? 'bg-charcoal text-white border-charcoal' : 'bg-warm-alabaster border-border-sand hover:bg-white text-charcoal'
-            }`}
+            onClick={() => setSliderPosition(100)}
+            className="flex items-center gap-1 text-mid-gray hover:text-charcoal transition-colors group"
           >
-            50% Split
-          </button>
-          <button
-            onClick={() => setSliderPosition(75)}
-            className={`px-2.5 py-1 rounded-btn border text-[11px] font-bold transition-colors ${
-              sliderPosition === 75 ? 'bg-charcoal text-white border-charcoal' : 'bg-warm-alabaster border-border-sand hover:bg-white text-charcoal'
-            }`}
-          >
-            75% Right
+            <span>{activeMode.rightLabel}</span>
+            <span className="w-2 h-2 rounded-full bg-amber-500 group-hover:scale-125 transition-transform" />
           </button>
         </div>
 
-        <span className="text-[11px] italic">
-          100% Solid Kiln-Dried Sheesham Frame • Handcrafted in India
-        </span>
+        {/* Flat Volume-Style Track Bar with Draggable Dot */}
+        <div className="relative py-3 flex items-center">
+          
+          {/* Step Back (-5%) Button */}
+          <button
+            onClick={() => setSliderPosition((prev) => Math.max(0, prev - 10))}
+            title="Step Left"
+            className="w-8 h-8 rounded-full bg-white border border-border-sand hover:bg-warm-offwhite flex items-center justify-center text-charcoal mr-3 flex-shrink-0 shadow-xs active:scale-95 transition-transform"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+
+          {/* Draggable Track Container */}
+          <div
+            ref={trackRef}
+            onClick={handleTrackClick}
+            className="relative flex-1 h-3 bg-border-sand/70 hover:bg-border-sand rounded-full cursor-pointer overflow-hidden transition-colors"
+          >
+            {/* Active Left Fill Track */}
+            <div
+              className="absolute top-0 bottom-0 left-0 bg-terracotta rounded-full transition-all duration-75"
+              style={{ width: `${sliderPosition}%` }}
+            />
+
+            {/* Center Reference Marker Tick (50%) */}
+            <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-0.5 bg-white/80 z-10 pointer-events-none" />
+          </div>
+
+          {/* Native High-Performance HTML5 Range Slider (Invisible Overlay with Stylized Thumb) */}
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={sliderPosition}
+            onChange={(e) => setSliderPosition(Number(e.target.value))}
+            aria-label="Image comparison slider control"
+            className="absolute left-11 right-11 inset-y-0 opacity-0 cursor-pointer w-[calc(100%-5.5rem)] z-30"
+          />
+
+          {/* Stylized Visual Draggable Knob/Dot */}
+          <div
+            className="absolute pointer-events-none transition-all duration-75 z-20"
+            style={{
+              left: `calc(2.75rem + (${sliderPosition} / 100) * (100% - 5.5rem))`,
+              transform: 'translateX(-50%)',
+            }}
+          >
+            <div className="w-6 h-6 rounded-full bg-white border-3 border-terracotta shadow-md flex items-center justify-center scale-100 hover:scale-125 transition-transform">
+              <div className="w-2 h-2 rounded-full bg-charcoal" />
+            </div>
+          </div>
+
+          {/* Step Forward (+5%) Button */}
+          <button
+            onClick={() => setSliderPosition((prev) => Math.min(100, prev + 10))}
+            title="Step Right"
+            className="w-8 h-8 rounded-full bg-white border border-border-sand hover:bg-warm-offwhite flex items-center justify-center text-charcoal ml-3 flex-shrink-0 shadow-xs active:scale-95 transition-transform"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* Bottom Quick Jump Preset Pills */}
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-border-sand/60 text-xs text-mid-gray mt-1">
+          <div className="flex items-center gap-1.5">
+            <span className="font-semibold text-charcoal text-[11px]">Presets:</span>
+            <button
+              onClick={() => setSliderPosition(0)}
+              className={`px-2 py-0.5 rounded text-[11px] font-bold border transition-colors ${
+                sliderPosition === 0 ? 'bg-charcoal text-white border-charcoal' : 'bg-white border-border-sand text-charcoal hover:bg-warm-offwhite'
+              }`}
+            >
+              100% Left
+            </button>
+            <button
+              onClick={() => setSliderPosition(25)}
+              className={`px-2 py-0.5 rounded text-[11px] font-bold border transition-colors ${
+                sliderPosition === 25 ? 'bg-charcoal text-white border-charcoal' : 'bg-white border-border-sand text-charcoal hover:bg-warm-offwhite'
+              }`}
+            >
+              25%
+            </button>
+            <button
+              onClick={() => setSliderPosition(50)}
+              className={`px-2 py-0.5 rounded text-[11px] font-bold border transition-colors ${
+                sliderPosition === 50 ? 'bg-charcoal text-white border-charcoal' : 'bg-white border-border-sand text-charcoal hover:bg-warm-offwhite'
+              }`}
+            >
+              50% Split
+            </button>
+            <button
+              onClick={() => setSliderPosition(75)}
+              className={`px-2 py-0.5 rounded text-[11px] font-bold border transition-colors ${
+                sliderPosition === 75 ? 'bg-charcoal text-white border-charcoal' : 'bg-white border-border-sand text-charcoal hover:bg-warm-offwhite'
+              }`}
+            >
+              75%
+            </button>
+            <button
+              onClick={() => setSliderPosition(100)}
+              className={`px-2 py-0.5 rounded text-[11px] font-bold border transition-colors ${
+                sliderPosition === 100 ? 'bg-charcoal text-white border-charcoal' : 'bg-white border-border-sand text-charcoal hover:bg-warm-offwhite'
+              }`}
+            >
+              100% Right
+            </button>
+          </div>
+
+          <button
+            onClick={() => setSliderPosition(50)}
+            className="flex items-center gap-1 text-[11px] font-bold text-terracotta hover:text-terracotta/80 transition-colors"
+          >
+            <RotateCcw className="w-3 h-3" />
+            <span>Reset to Center</span>
+          </button>
+        </div>
+
       </div>
 
     </section>

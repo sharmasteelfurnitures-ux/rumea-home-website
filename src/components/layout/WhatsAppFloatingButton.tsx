@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
@@ -15,7 +15,7 @@ export default function WhatsAppFloatingButton() {
   );
 
   return (
-    <aside aria-label="WhatsApp Concierge" className="fixed bottom-6 right-6 z-50 flex items-center group">
+    <aside aria-label="WhatsApp" className="fixed bottom-6 right-6 z-50 flex items-center group">
       {/* Tooltip Label for Desktop */}
       <span className="hidden sm:inline-block mr-2.5 px-3 py-1.5 bg-espresso text-warm-ivory text-xs font-medium rounded-md shadow-card opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
         Chat with Furniture Specialist

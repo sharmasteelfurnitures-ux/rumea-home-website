@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import { MessageCircle, Clock, ShieldCheck, HelpCircle } from 'lucide-react';
@@ -25,7 +25,7 @@ export default function WhatsAppCTA() {
           </div>
 
           <span className="text-xs font-bold uppercase tracking-widest text-muted-olive block mb-2">
-            FURNITURE CONCIERGE
+            WHATSAPP ASSISTANCE
           </span>
           
           <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-espresso tracking-tight max-w-lg mx-auto">

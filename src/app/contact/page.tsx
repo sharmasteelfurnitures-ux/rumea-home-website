@@ -38,7 +38,7 @@ export default function ContactPage() {
         {/* Header Intro */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <span className="text-xs font-bold uppercase tracking-widest text-antique-gold block mb-2">
-            CUSTOMER CARE &amp; CONCIERGE
+            CUSTOMER CARE &amp; WHATSAPP
           </span>
           <h1 className="font-serif text-3xl sm:text-5xl text-espresso tracking-tight">
             How Can We Assist Your Home?
@@ -51,7 +51,7 @@ export default function ContactPage() {
         {/* 2-Column Contact Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-16">
           
-          {/* Left Column: WhatsApp Concierge & Support Details (5 cols) */}
+          {/* Left Column: WhatsApp & Support Details (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
             
             {/* Primary WhatsApp Card */}
@@ -62,7 +62,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-serif font-bold text-lg text-espresso">
-                    WhatsApp Concierge
+                    WhatsApp
                   </h3>
                   <p className="text-xs text-soft-taupe">Fastest response channel (&lt; 15 mins)</p>
                 </div>

@@ -79,7 +79,7 @@ export default function AboutPage() {
     {
       title: '30-Day Doorstep Return Policy',
       content:
-        'If your furniture arrives with transit damage or fails to meet your expectations, notify our WhatsApp concierge within 30 days of delivery. We will arrange a free reverse pickup and prompt replacement or full refund.',
+        'If your furniture arrives with transit damage or fails to meet your expectations, notify our WhatsApp team within 30 days of delivery. We will arrange a free reverse pickup and prompt replacement or full refund.',
     },
   ];
 

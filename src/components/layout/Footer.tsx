@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { MessageCircle, ShieldCheck, Heart, Mail, MapPin, Instagram, Facebook, Youtube, Check } from 'lucide-react';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
@@ -152,10 +152,10 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: WhatsApp Concierge Box (Rich Wood Surface #3D2212) */}
+          {/* Column 4: WhatsApp Box (Rich Wood Surface #3D2212) */}
           <div className="bg-[#3D2212] border border-[#5A351D] rounded-card p-5 space-y-3 shadow-lg">
             <h4 className="font-serif text-sm font-bold uppercase tracking-widest text-amber-200">
-              WhatsApp Support
+              WhatsApp
             </h4>
             <p className="text-xs text-warm-sand/80 leading-relaxed">
               Consult our woodcraft designers for room blueprints, custom timber finishes, or live order tracking.

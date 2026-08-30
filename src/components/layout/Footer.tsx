@@ -8,7 +8,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-espresso text-warm-ivory border-t border-border-sand/20 pt-16 pb-20 md:pb-12">
+    <footer className="bg-[#2E180D] text-warm-ivory border-t border-[#522E19] pt-16 pb-20 md:pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Grid */}
@@ -56,7 +56,7 @@ export default function Footer() {
 
           {/* Column 2: Rooms & Collections */}
           <div>
-            <h4 className="font-serif text-sm font-bold uppercase tracking-widest text-warm-sand mb-4">
+            <h4 className="font-serif text-sm font-bold uppercase tracking-widest text-amber-200/90 mb-4">
               Shop by Space
             </h4>
             <ul className="space-y-2.5 text-xs text-warm-sand/80">
@@ -100,7 +100,7 @@ export default function Footer() {
 
           {/* Column 3: Customer Care, Guarantees & Policies */}
           <div>
-            <h4 className="font-serif text-sm font-bold uppercase tracking-widest text-warm-sand mb-4">
+            <h4 className="font-serif text-sm font-bold uppercase tracking-widest text-amber-200/90 mb-4">
               Care &amp; Policies
             </h4>
             <ul className="space-y-2.5 text-xs text-warm-sand/80">
@@ -145,17 +145,17 @@ export default function Footer() {
                 </Link>
               </li>
               <li className="pt-2">
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-antique-gold/30 border border-antique-gold text-[11px] text-warm-ivory rounded-btn font-bold">
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-antique-gold/20 border border-antique-gold/60 text-[11px] text-amber-200 rounded-btn font-bold">
                   🇮🇳 100% Handcrafted in India
                 </span>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: WhatsApp Concierge Box */}
-          <div className="bg-white/5 border border-border-sand/20 rounded-card p-5 space-y-3">
-            <h4 className="font-serif text-sm font-bold uppercase tracking-widest text-warm-sand">
-              WhatsApp Concierge
+          {/* Column 4: WhatsApp Concierge Box (Rich Wood Surface #3D2212) */}
+          <div className="bg-[#3D2212] border border-[#5A351D] rounded-card p-5 space-y-3 shadow-lg">
+            <h4 className="font-serif text-sm font-bold uppercase tracking-widest text-amber-200">
+              WhatsApp Support
             </h4>
             <p className="text-xs text-warm-sand/80 leading-relaxed">
               Consult our woodcraft designers for room blueprints, custom timber finishes, or live order tracking.
@@ -165,14 +165,14 @@ export default function Footer() {
                 href={buildWhatsAppUrl("Hi Rumea Home team! I would like design assistance for my apartment.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold rounded-btn transition-colors shadow-md"
+                className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold rounded-btn transition-colors shadow-md hover:scale-[1.02] active:scale-95"
               >
                 <MessageCircle className="w-4 h-4 fill-current" />
                 <span>Chat on WhatsApp</span>
               </a>
             </div>
             <div className="text-[11px] text-warm-sand/70 space-y-1 pt-1">
-              <p className="flex items-center gap-1.5 font-medium">
+              <p className="flex items-center gap-1.5 font-medium text-warm-sand">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                 <span>Mon–Sat, 9:00 AM – 9:00 PM IST</span>
               </p>
@@ -190,11 +190,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom Reassurance & Copyright Bar */}
-        <div className="pt-8 border-t border-border-sand/20 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-warm-sand/70">
+        <div className="pt-8 border-t border-[#522E19] flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-warm-sand/70">
           <div className="flex items-center flex-wrap gap-2 text-center md:text-left">
             <p>© {currentYear} Rumea Home. All rights reserved.</p>
             <span className="hidden md:inline">|</span>
-            <span className="text-[11px] text-warm-sand/90">Thoughtful Furniture for Modern Homes™</span>
+            <span className="text-[11px] text-warm-sand/90">Thoughtful Furniture for Modern Homes</span>
           </div>
 
           <div className="flex items-center gap-4 text-[11px]">

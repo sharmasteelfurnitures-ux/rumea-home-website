@@ -73,7 +73,7 @@ export default function Hero() {
     },
   ];
 
-  // Auto slide change every 6 seconds
+  // Auto slide change every 6.5 seconds
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
@@ -94,8 +94,8 @@ export default function Hero() {
   return (
     <div className="relative bg-warm-offwhite">
       
-      {/* 1. Full-Width Immersive Showroom Banner (IKEA / Wooden Street Style) */}
-      <section className="relative w-full min-h-[540px] sm:min-h-[600px] lg:min-h-[660px] flex items-center overflow-hidden bg-charcoal">
+      {/* 1. Full-Width Immersive Showroom Banner with Rich Sheesham Wood Brown (#3D2212) Atmosphere */}
+      <section className="relative w-full min-h-[540px] sm:min-h-[600px] lg:min-h-[660px] flex items-center overflow-hidden bg-[#2C180D]">
         
         {/* Background Image Carousel with Smooth Cross-Fade */}
         <AnimatePresence mode="wait">
@@ -113,11 +113,13 @@ export default function Hero() {
               fill
               priority
               sizes="100vw"
-              className="object-cover object-center brightness-[0.78] contrast-[1.05]"
+              className="object-cover object-center brightness-[0.80] contrast-[1.05]"
             />
-            {/* Cinematic Gradient Overlays for High Text Legibility */}
-            <div className="absolute inset-0 bg-gradient-to-r from-charcoal/95 via-charcoal/70 to-transparent z-10" />
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-transparent to-black/30 z-10" />
+
+            {/* 🪵 Signature Sheesham Wood Brown (#3D2212) Gradient Overlays */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#3D2212]/95 via-[#3D2212]/75 to-[#3D2212]/20 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#25130A]/95 via-[#3D2212]/30 to-transparent z-10" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(215,161,72,0.12),transparent_70%)] z-10" />
           </motion.div>
         </AnimatePresence>
 
@@ -153,7 +155,7 @@ export default function Hero() {
               </AnimatePresence>
 
               {/* Subtitle */}
-              <p className="font-sans text-sm sm:text-base lg:text-lg text-white/90 max-w-xl leading-relaxed drop-shadow-xs">
+              <p className="font-sans text-sm sm:text-base lg:text-lg text-warm-offwhite/90 max-w-xl leading-relaxed drop-shadow-xs">
                 {slide.subtitle}
               </p>
 
@@ -180,7 +182,7 @@ export default function Hero() {
               </div>
 
               {/* 4 Guarantees Row */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-white/15 text-xs text-white/90 font-medium">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-white/15 text-xs text-warm-offwhite/90 font-medium">
                 <div className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                   <span>5-Year Frame Warranty</span>
@@ -201,7 +203,7 @@ export default function Hero() {
 
             </div>
 
-            {/* Right Card (4 Cols): Interactive Shoppable Product Card (Urban Ladder / IKEA style) */}
+            {/* Right Card (4 Cols): Interactive Shoppable Product Card */}
             <div className="hidden lg:flex lg:col-span-4 justify-end">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -232,7 +234,7 @@ export default function Hero() {
                   </div>
 
                   <div>
-                    <h3 className="font-serif font-bold text-sm text-charcoal leading-snug">
+                    <h3 className="font-serif font-bold text-sm text-[#3D2212] leading-snug">
                       {slide.productName}
                     </h3>
                     <div className="flex items-baseline gap-2 mt-1.5">
@@ -244,7 +246,7 @@ export default function Hero() {
 
                   <Link
                     href={`/products/${slide.productSlug}`}
-                    className="w-full py-2.5 bg-charcoal hover:bg-charcoal/90 text-white font-bold text-xs rounded-btn flex items-center justify-center gap-1.5 transition-colors shadow-sm"
+                    className="w-full py-2.5 bg-[#3D2212] hover:bg-[#2A160A] text-white font-bold text-xs rounded-btn flex items-center justify-center gap-1.5 transition-colors shadow-sm"
                   >
                     <span>View Product Details</span>
                     <ArrowRight className="w-3.5 h-3.5 text-amber-300" />
@@ -259,7 +261,7 @@ export default function Hero() {
         {/* Carousel Controls (Arrows & Indicators) */}
         <button
           onClick={() => setCurrentSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1))}
-          className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 p-2.5 sm:p-3 rounded-full bg-black/40 hover:bg-black/70 text-white backdrop-blur-md transition-all duration-200 border border-white/20 shadow-md"
+          className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 p-2.5 sm:p-3 rounded-full bg-[#3D2212]/60 hover:bg-[#3D2212]/90 text-white backdrop-blur-md transition-all duration-200 border border-white/20 shadow-md"
           aria-label="Previous Slide"
         >
           <ChevronLeft className="w-5 h-5" />
@@ -267,14 +269,14 @@ export default function Hero() {
 
         <button
           onClick={() => setCurrentSlide((prev) => (prev + 1) % heroSlides.length)}
-          className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 p-2.5 sm:p-3 rounded-full bg-black/40 hover:bg-black/70 text-white backdrop-blur-md transition-all duration-200 border border-white/20 shadow-md"
+          className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 p-2.5 sm:p-3 rounded-full bg-[#3D2212]/60 hover:bg-[#3D2212]/90 text-white backdrop-blur-md transition-all duration-200 border border-white/20 shadow-md"
           aria-label="Next Slide"
         >
           <ChevronRight className="w-5 h-5" />
         </button>
 
         {/* Slide Indicator Dots */}
-        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2.5 bg-black/30 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20">
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2.5 bg-[#3D2212]/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20">
           {heroSlides.map((s, idx) => (
             <button
               key={s.id}
@@ -299,9 +301,9 @@ export default function Hero() {
                 <Link
                   key={cat.name}
                   href={cat.href}
-                  className="flex items-center gap-2.5 px-4 py-2.5 bg-warm-offwhite hover:bg-warm-alabaster border border-border-sand rounded-card text-xs font-bold text-charcoal whitespace-nowrap transition-all duration-200 hover:border-charcoal/40 shadow-xs flex-shrink-0 group"
+                  className="flex items-center gap-2.5 px-4 py-2.5 bg-warm-offwhite hover:bg-warm-alabaster border border-border-sand rounded-card text-xs font-bold text-[#3D2212] whitespace-nowrap transition-all duration-200 hover:border-[#3D2212]/40 shadow-xs flex-shrink-0 group"
                 >
-                  <div className="w-7 h-7 rounded-btn bg-charcoal text-white flex items-center justify-center group-hover:bg-terracotta transition-colors">
+                  <div className="w-7 h-7 rounded-btn bg-[#3D2212] text-white flex items-center justify-center group-hover:bg-terracotta transition-colors">
                     <Icon className="w-4 h-4" />
                   </div>
                   <span>{cat.name}</span>
@@ -313,7 +315,7 @@ export default function Hero() {
       </div>
 
       {/* 3. Reassurance Trust Strip */}
-      <div className="bg-charcoal text-white py-3.5 px-4 border-b border-border-sand/20">
+      <div className="bg-[#3D2212] text-white py-3.5 px-4 border-b border-[#52321D]">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-around gap-4 text-xs sm:text-sm font-sans font-medium text-warm-offwhite">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-antique-gold flex-shrink-0" />

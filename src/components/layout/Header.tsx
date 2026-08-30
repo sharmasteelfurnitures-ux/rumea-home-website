@@ -9,7 +9,6 @@ import {
   Search, 
   Heart, 
   ChevronDown, 
-  ChevronRight,
   MessageCircle,
   Truck,
   ArrowRight
@@ -25,6 +24,17 @@ export default function Header() {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
+
+  // Mouse position tracking for interactive WhatsApp button color change
+  const [waMousePos, setWaMousePos] = useState({ x: 50, y: 50 });
+  const [isWaHovered, setIsWaHovered] = useState(false);
+
+  const handleWaMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setWaMousePos({ x, y });
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -146,12 +156,12 @@ export default function Header() {
       <header
         className={`sticky top-0 z-40 w-full transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-card border-b border-border-sand py-2.5'
-            : 'bg-warm-ivory border-b border-border-sand py-3.5'
+            ? 'bg-white/98 backdrop-blur-md shadow-card border-b border-border-sand py-2.5'
+            : 'bg-warm-ivory border-b border-border-sand py-3'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between min-h-[48px] md:min-h-[56px] gap-4">
+          <div className="flex items-center justify-between min-h-[48px] md:min-h-[56px] gap-3 xl:gap-6">
             
             {/* Mobile Hamburger */}
             <div className="flex items-center lg:hidden">
@@ -165,12 +175,12 @@ export default function Header() {
             </div>
 
             {/* Brand Logo with generous breathing room */}
-            <div className="flex-shrink-0 flex items-center mr-6 md:mr-10 xl:mr-14">
+            <div className="flex-shrink-0 flex items-center mr-4 md:mr-8 xl:mr-10">
               <BrandLogo variant="dark" size="md" />
             </div>
 
-            {/* Desktop Navigation with Dropdown Menus */}
-            <nav className="hidden lg:flex items-center space-x-5 md:space-x-6 xl:space-x-8">
+            {/* Desktop Navigation with Dropdown Menus (Single-line, non-wrapping) */}
+            <nav className="hidden lg:flex items-center flex-nowrap space-x-4 xl:space-x-6 flex-shrink-0">
               {navItems.map((item) => (
                 <div
                   key={item.name}
@@ -180,10 +190,10 @@ export default function Header() {
                 >
                   <Link
                     href={item.href}
-                    className="flex items-center gap-1 text-xs font-sans font-semibold text-espresso hover:text-antique-gold py-2 transition-colors uppercase tracking-wider"
+                    className="inline-flex items-center gap-1 text-[13px] font-sans font-medium text-espresso hover:text-terracotta py-2 px-1 transition-colors whitespace-nowrap"
                   >
                     <span>{item.name}</span>
-                    <ChevronDown className="w-3 h-3 text-soft-taupe group-hover:rotate-180 transition-transform duration-200" />
+                    <ChevronDown className="w-3.5 h-3.5 text-soft-taupe group-hover:rotate-180 transition-transform duration-200" />
                   </Link>
 
                   {/* Dropdown Card */}
@@ -225,19 +235,19 @@ export default function Header() {
 
               <Link
                 href="/about"
-                className="text-xs font-sans font-semibold text-espresso hover:text-antique-gold py-2 transition-colors uppercase tracking-wider"
+                className="text-[13px] font-sans font-medium text-espresso hover:text-terracotta py-2 px-1 transition-colors whitespace-nowrap"
               >
                 Our Story
               </Link>
             </nav>
 
-            {/* Right Controls: Predictive Search Trigger + Wishlist + Animated WhatsApp Button */}
-            <div className="flex items-center space-x-2.5 sm:space-x-3.5">
+            {/* Right Controls: Search + Wishlist + Interactive Mouse-Tracking WhatsApp Button */}
+            <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
               
               {/* Search Trigger */}
               <button
                 onClick={() => setSearchModalOpen(true)}
-                className="flex items-center gap-2 py-2 px-3 sm:px-4 bg-white border border-border-sand rounded-btn text-xs text-soft-taupe hover:text-espresso hover:border-espresso/40 shadow-xs transition-all duration-200"
+                className="h-10 flex items-center gap-2 px-3 sm:px-4 bg-white border border-border-sand rounded-btn text-xs text-soft-taupe hover:text-espresso hover:border-espresso/40 shadow-xs transition-all duration-200"
                 aria-label="Search furniture collection"
               >
                 <Search className="w-3.5 h-3.5 text-antique-gold" />
@@ -247,28 +257,44 @@ export default function Header() {
               {/* Wishlist Link */}
               <Link
                 href="/products"
-                className="p-2 text-espresso hover:text-antique-gold transition-colors rounded-btn hover:bg-warm-ivory"
+                className="h-10 w-10 flex items-center justify-center text-espresso hover:text-antique-gold transition-colors rounded-btn hover:bg-warm-ivory border border-border-sand/40 hover:border-border-sand shadow-xs"
                 aria-label="View collection"
               >
                 <Heart className="w-4 h-4" />
               </Link>
 
-              {/* Animated WhatsApp Button (Matching Logo Brown Tone #3D2212) */}
+              {/* 🌟 LUXURY INTERACTIVE WHATSAPP BUTTON WITH DYNAMIC MOUSE-DRAG COLOR SHIFT */}
               <a
                 href={buildWhatsAppUrl("Hi Rumea Home! I'd like advice on furniture sizing and options.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsAppClick({ source: 'nav' })}
-                className="relative inline-flex items-center gap-2 px-4 py-2 bg-[#3D2212] hover:bg-[#2A160A] text-white text-xs font-bold rounded-btn shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 group border border-[#52321D]"
+                onMouseEnter={() => setIsWaHovered(true)}
+                onMouseLeave={() => setIsWaHovered(false)}
+                onMouseMove={handleWaMouseMove}
+                style={{
+                  background: isWaHovered
+                    ? `radial-gradient(circle at ${waMousePos.x}% ${waMousePos.y}%, #25D366 0%, #128C7E 45%, #0B4F45 100%)`
+                    : 'linear-gradient(135deg, #128C7E 0%, #075E54 100%)',
+                }}
+                className="h-10 relative inline-flex items-center gap-2 px-4 sm:px-5 text-white text-xs sm:text-sm font-semibold rounded-btn shadow-md hover:shadow-xl hover:scale-[1.03] active:scale-95 transition-all duration-200 overflow-hidden border border-emerald-400/30 group select-none"
               >
-                {/* Subtle Animated Pulsing Green Online Dot */}
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                {/* Dynamic Radial Spotlight Reflection */}
+                <div
+                  className="absolute inset-0 pointer-events-none opacity-40 mix-blend-overlay transition-opacity duration-300"
+                  style={{
+                    background: `radial-gradient(circle at ${waMousePos.x}% ${waMousePos.y}%, rgba(255,255,255,0.8) 0%, transparent 60%)`,
+                  }}
+                />
+
+                {/* Animated Pulsing Green Online Radar Dot */}
+                <span className="relative flex h-2.5 w-2.5 flex-shrink-0">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400 border border-white/50"></span>
                 </span>
 
-                <MessageCircle className="w-3.5 h-3.5 text-warm-sand group-hover:rotate-12 transition-transform duration-300" />
-                <span>WhatsApp</span>
+                <MessageCircle className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300 flex-shrink-0" />
+                <span className="tracking-wide">WhatsApp</span>
               </a>
 
             </div>
@@ -293,80 +319,61 @@ export default function Header() {
                 <BrandLogo variant="dark" size="sm" />
                 <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-1.5 text-soft-taupe hover:text-espresso rounded-btn"
+                  className="p-1 text-espresso hover:text-antique-gold focus:outline-none"
                   aria-label="Close menu"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-6 h-6" />
                 </button>
               </div>
 
-              {/* Mobile Search Button */}
-              <div className="mt-4">
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    setSearchModalOpen(true);
-                  }}
-                  className="w-full flex items-center gap-2 py-2.5 px-3 bg-white border border-border-sand rounded-btn text-xs text-soft-taupe"
-                >
-                  <Search className="w-4 h-4 text-antique-gold" />
-                  <span>Search all furniture...</span>
-                </button>
-              </div>
-
-              {/* Mobile Nav Links */}
-              <nav className="mt-6 flex flex-col space-y-1">
-                <p className="text-[10px] font-bold uppercase tracking-wider text-antique-gold px-3 mb-1">
-                  Shop by Space
-                </p>
+              <div className="mt-6 space-y-4">
                 {navItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-between py-2.5 px-3 rounded-btn text-espresso font-semibold hover:bg-warm-sand/30 transition-colors text-xs"
-                  >
-                    <span>{item.name}</span>
-                    <ChevronRight className="w-4 h-4 text-soft-taupe" />
-                  </Link>
+                  <div key={item.name} className="border-b border-border-sand/40 pb-3">
+                    <Link
+                      href={item.href}
+                      className="flex items-center justify-between text-sm font-semibold text-espresso hover:text-antique-gold py-1"
+                    >
+                      <span>{item.name}</span>
+                      <ArrowRight className="w-4 h-4 text-soft-taupe" />
+                    </Link>
+                    <div className="mt-2 pl-3 space-y-2">
+                      {item.subcategories.map((sub) => (
+                        <Link
+                          key={sub.name}
+                          href={sub.href}
+                          className="block text-xs text-soft-taupe hover:text-espresso"
+                        >
+                          {sub.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 ))}
-
-                <div className="pt-3 mt-3 border-t border-border-sand/60 space-y-1">
-                  <Link
-                    href="/products"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block py-2 px-3 text-xs font-semibold text-espresso hover:text-antique-gold"
-                  >
-                    Complete Catalogue &rarr;
-                  </Link>
-                  <Link
-                    href="/about"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block py-2 px-3 text-xs font-medium text-espresso hover:text-antique-gold"
-                  >
-                    Our Story &amp; Craftsmanship
-                  </Link>
-                  <Link
-                    href="/contact"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block py-2 px-3 text-xs font-medium text-espresso hover:text-antique-gold"
-                  >
-                    Contact &amp; Assistance
-                  </Link>
-                </div>
-              </nav>
+                <Link
+                  href="/about"
+                  className="block text-sm font-semibold text-espresso hover:text-antique-gold py-2"
+                >
+                  Our Story
+                </Link>
+                <Link
+                  href="/contact"
+                  className="block text-sm font-semibold text-espresso hover:text-antique-gold py-2"
+                >
+                  Contact &amp; Showroom
+                </Link>
+              </div>
             </div>
 
             <div className="pt-6 border-t border-border-sand">
               <a
-                href={buildWhatsAppUrl("Hi Rumea Home! I'm browsing on mobile and would like advice.")}
+                href={buildWhatsAppUrl("Hi Rumea Home! I'd like help choosing furniture.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsAppClick({ source: 'nav' })}
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-espresso text-warm-ivory text-xs font-semibold rounded-btn shadow-warm"
+                className="w-full flex items-center justify-center gap-2 py-3 bg-[#128C7E] text-white text-xs font-bold rounded-btn shadow-md hover:bg-[#075E54] transition-colors"
               >
-                <MessageCircle className="w-4 h-4 text-warm-sand" />
-                <span>WhatsApp Furniture Advisor</span>
+                <MessageCircle className="w-4 h-4" />
+                <span>Chat on WhatsApp</span>
               </a>
             </div>
           </div>

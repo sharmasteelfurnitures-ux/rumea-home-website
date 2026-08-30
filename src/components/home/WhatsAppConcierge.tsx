@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle, Clock, ShieldCheck, Sparkles, Ruler } from 'lucide-react';
-import { buildWhatsAppUrl, getWhatsAppDisplayNumber } from '@/lib/whatsapp';
+import { MessageCircle, Clock, ShieldCheck, Ruler } from 'lucide-react';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import { trackWhatsAppClick } from '@/lib/analytics';
 
 export default function WhatsAppConcierge() {
@@ -12,10 +12,10 @@ export default function WhatsAppConcierge() {
   );
 
   return (
-    <section className="relative bg-gradient-to-b from-[#3D2212] via-[#341C0E] to-[#2E180D] text-white py-16 md:py-20 border-t border-[#5A351D] overflow-hidden">
+    <section className="relative bg-gradient-to-b from-[#F7F4EE] via-[#F2ECE1] to-[#EBE3D5] text-[#3D2212] py-16 md:py-20 border-t border-[#E5DCce] border-b border-[#D8CDBC] overflow-hidden">
       
-      {/* Subtle Ambient Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-amber-500/10 rounded-full blur-[100px] pointer-events-none" />
+      {/* Subtle Warm Ambient Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-amber-200/30 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
         
@@ -25,9 +25,9 @@ export default function WhatsAppConcierge() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 text-warm-sand text-[11px] font-bold uppercase tracking-widest rounded-btn mb-4 backdrop-blur-xs border border-white/15"
+          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white/90 text-[#3D2212] text-[11px] font-bold uppercase tracking-widest rounded-btn mb-4 shadow-xs border border-[#DFD5C6]"
         >
-          <Ruler className="w-3.5 h-3.5 text-amber-300" /> FREE WOODCRAFT &amp; ROOM SIZING CONSULTATION
+          <Ruler className="w-3.5 h-3.5 text-terracotta" /> FREE WOODCRAFT &amp; ROOM SIZING CONSULTATION
         </motion.div>
 
         {/* Headline */}
@@ -36,7 +36,7 @@ export default function WhatsAppConcierge() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-serif text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight"
+          className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#3D2212] tracking-tight leading-tight"
         >
           Not Sure What Fits Your Space?
         </motion.h2>
@@ -47,7 +47,7 @@ export default function WhatsAppConcierge() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-warm-sand/90 text-sm sm:text-base lg:text-lg mt-4 max-w-2xl mx-auto leading-relaxed"
+          className="text-[#644D3D] text-sm sm:text-base lg:text-lg mt-4 max-w-2xl mx-auto leading-relaxed"
         >
           Share your room dimensions, floor plan, or photos on WhatsApp. We provide honest sizing advice, custom finish previews, and direct delivery estimates.
         </motion.p>
@@ -70,7 +70,7 @@ export default function WhatsAppConcierge() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackWhatsAppClick({ source: 'homepage' })}
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#25D366] hover:bg-[#20bd5a] text-white font-sans font-bold text-sm sm:text-base rounded-btn shadow-xl hover:shadow-emerald-500/25 transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-sans font-bold text-sm sm:text-base rounded-btn shadow-lg hover:shadow-xl transition-all duration-200"
             >
               <MessageCircle className="w-5 h-5 fill-current" />
               <span>Chat on WhatsApp</span>
@@ -84,18 +84,18 @@ export default function WhatsAppConcierge() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-8 pt-6 border-t border-white/15 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-warm-sand/80 font-medium"
+          className="mt-8 pt-6 border-t border-[#DFD5C6] flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-[#644D3D] font-semibold"
         >
           <div className="flex items-center gap-1.5">
-            <Clock className="w-4 h-4 text-amber-300" />
+            <Clock className="w-4 h-4 text-terracotta" />
             <span>Average reply in &lt; 15 mins</span>
           </div>
-          <span className="hidden sm:inline text-white/30">•</span>
+          <span className="hidden sm:inline text-[#C0B29E]">•</span>
           <div className="flex items-center gap-1.5">
-            <ShieldCheck className="w-4 h-4 text-amber-300" />
+            <ShieldCheck className="w-4 h-4 text-terracotta" />
             <span>Zero Pressure, Honest Advice</span>
           </div>
-          <span className="hidden sm:inline text-white/30">•</span>
+          <span className="hidden sm:inline text-[#C0B29E]">•</span>
           <span>Mon–Sat, 9AM–9PM IST</span>
         </motion.div>
 

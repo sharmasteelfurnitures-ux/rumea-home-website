@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import Link from 'next/link';
-import { MessageCircle, ShieldCheck, Heart, Mail, MapPin, Instagram, Facebook, Youtube, Sparkles } from 'lucide-react';
+import { MessageCircle, ShieldCheck, Heart, Mail, MapPin, Phone, Instagram, Facebook, Youtube, Sparkles } from 'lucide-react';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import BrandLogo from '@/components/ui/BrandLogo';
 
@@ -115,7 +115,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
-                  Free Pan-India Delivery Info (₹15,000+)
+                  Free PAN India Delivery on All Orders
                 </a>
               </li>
               <li>
@@ -140,7 +140,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/contact" className="hover:text-white transition-colors">
-                  Contact &amp; Customer Support
+                  Store Address &amp; Customer Support
                 </Link>
               </li>
               <li>
@@ -156,13 +156,13 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: WhatsApp Consultation Card */}
+          {/* Column 4: WhatsApp Consultation Card & Physical Store Details */}
           <div className="bg-[#221B17] border border-[#3E322A] rounded-card p-5 space-y-3.5 shadow-xl">
             <h4 className="font-serif text-xs font-bold uppercase tracking-[0.18em] text-[#E8DEC8] flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-amber-300" /> WhatsApp
+              <Sparkles className="w-3.5 h-3.5 text-amber-300" /> WhatsApp &amp; Store
             </h4>
             <p className="text-xs text-[#B8AAA0] leading-relaxed">
-              Consult our woodcraft designers for room blueprints, custom timber finishes, or live order tracking.
+              Consult our woodcraft designers for room blueprints, custom timber finishes, or store visits.
             </p>
             <div className="pt-1">
               <a
@@ -175,18 +175,26 @@ export default function Footer() {
                 <span>Chat on WhatsApp</span>
               </a>
             </div>
-            <div className="text-[11px] text-[#A89C92] space-y-1.5 pt-1 border-t border-[#3A2F28]/60">
+            <div className="text-[11px] text-[#A89C92] space-y-2 pt-2 border-t border-[#3A2F28]/60">
               <p className="flex items-center gap-1.5 font-medium text-amber-200/90">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>Mon–Sat, 9:00 AM – 9:00 PM IST</span>
+                <span>Store Timing: 10:00 AM – 9:00 PM</span>
               </p>
               <p className="flex items-center gap-1.5">
-                <Mail className="w-3.5 h-3.5 text-[#B8AAA0]" />
-                <span>hello@rumeahome.com</span>
+                <Phone className="w-3.5 h-3.5 text-amber-300 flex-shrink-0" />
+                <a href="tel:+917291962356" className="text-warm-sand hover:text-white font-semibold">
+                  +91 72919 62356
+                </a>
               </p>
               <p className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#B8AAA0]" />
-                <span>Bengaluru &amp; New Delhi, India</span>
+                <Mail className="w-3.5 h-3.5 text-[#B8AAA0] flex-shrink-0" />
+                <a href="mailto:rumeahome@gmail.com" className="text-warm-sand hover:text-white">
+                  rumeahome@gmail.com
+                </a>
+              </p>
+              <p className="flex items-start gap-1.5 text-[10.5px] leading-tight text-[#9E9084]">
+                <MapPin className="w-3.5 h-3.5 text-amber-300 flex-shrink-0 mt-0.5" />
+                <span>F/F, 80, Masoodpur Dairy Farm, Masoodpur, Vasant Kunj, New Delhi - 110070</span>
               </p>
             </div>
           </div>

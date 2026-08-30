@@ -74,7 +74,7 @@ export default function AboutPage() {
     {
       title: 'Shipping, Delivery & Assembly Policy',
       content:
-        'We provide Free Doorstep Delivery across India on all orders exceeding ₹15,000. All items are packed in heavy-duty 5-ply corrugated cartons with corner foam edge guards. Our logistics partner provides free professional assembly in 50+ metro cities within 24–48 hours of product arrival.',
+        'We provide Free Doorstep Delivery across India on all orders. All items are packed in heavy-duty 5-ply corrugated cartons with corner foam edge guards. Our logistics partner provides free professional assembly in 50+ metro cities within 24–48 hours of product arrival.',
     },
     {
       title: '30-Day Doorstep Return Policy',

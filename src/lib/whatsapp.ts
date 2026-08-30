@@ -1,4 +1,4 @@
-﻿const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919999999999';
+﻿const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '917291962356';
 
 export function buildWhatsAppUrl(
   message: string = "Hi! I found your website and I'm interested in your furniture. Can you help me?"

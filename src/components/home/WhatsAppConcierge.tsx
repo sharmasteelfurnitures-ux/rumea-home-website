@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -96,7 +96,9 @@ export default function WhatsAppConcierge() {
             <span>Zero Pressure, Honest Advice</span>
           </div>
           <span className="hidden sm:inline text-[#C0B29E]">•</span>
-          <span>Mon–Sat, 9AM–9PM IST</span>
+          <span>Store Timing: 10AM–9PM (Mon–Sun)</span>
+          <span className="hidden sm:inline text-[#C0B29E]">•</span>
+          <span>Free PAN India Delivery</span>
         </motion.div>
 
       </div>

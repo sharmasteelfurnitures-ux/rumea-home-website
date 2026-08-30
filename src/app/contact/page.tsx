@@ -1,11 +1,11 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import WhatsAppFloatingButton from '@/components/layout/WhatsAppFloatingButton';
 import { buildWhatsAppUrl, getWhatsAppDisplayNumber } from '@/lib/whatsapp';
 import { trackWhatsAppClick } from '@/lib/analytics';
-import { MessageCircle, Mail, MapPin, Clock, Send, CheckCircle2, ShieldCheck, Phone } from 'lucide-react';
+import { MessageCircle, Mail, MapPin, Clock, Send, CheckCircle2, ShieldCheck, Phone, Truck } from 'lucide-react';
 
 export default function ContactPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -38,23 +38,23 @@ export default function ContactPage() {
         {/* Header Intro */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <span className="text-xs font-bold uppercase tracking-widest text-antique-gold block mb-2">
-            CUSTOMER CARE &amp; WHATSAPP
+            CUSTOMER CARE &amp; STORE LOCATION
           </span>
           <h1 className="font-serif text-3xl sm:text-5xl text-espresso tracking-tight">
-            How Can We Assist Your Home?
+            Visit Our Store &amp; Connect With Us
           </h1>
           <p className="text-soft-taupe text-sm sm:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
-            Our woodcraft designers and support team personally attend to every customer message. Reach us on WhatsApp for real-time room sizing guidance and order tracking.
+            Our woodcraft designers and store team personally attend to every customer enquiry. Visit our Vasant Kunj store or reach us directly on WhatsApp &amp; Phone.
           </p>
         </div>
 
         {/* 2-Column Contact Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-16">
           
-          {/* Left Column: WhatsApp & Support Details (5 cols) */}
+          {/* Left Column: Store Details & WhatsApp (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
             
-            {/* Primary WhatsApp Card */}
+            {/* Primary WhatsApp & Phone Card */}
             <div className="bg-white rounded-card p-6 sm:p-8 border border-border-sand shadow-card space-y-5">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-btn bg-[#25D366] text-white flex items-center justify-center shadow-md">
@@ -62,14 +62,14 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-serif font-bold text-lg text-espresso">
-                    WhatsApp
+                    WhatsApp &amp; Phone Support
                   </h3>
                   <p className="text-xs text-soft-taupe">Fastest response channel (&lt; 15 mins)</p>
                 </div>
               </div>
 
               <p className="text-xs sm:text-sm text-soft-taupe leading-relaxed">
-                Connect with our furniture design team for sizing recommendations, finish swatches, delivery timelines, or order tracking.
+                Connect with our furniture design specialists for custom sizing, wood finish previews, order tracking, and store visit appointments.
               </p>
 
               <div>
@@ -78,28 +78,44 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackWhatsAppClick({ source: 'contact' })}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 px-6 bg-espresso text-warm-ivory font-bold text-xs rounded-btn shadow-warm hover:bg-espresso/90 transition-colors"
+                  className="w-full flex items-center justify-center gap-2 py-3.5 px-6 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold text-xs rounded-btn shadow-md transition-all duration-200"
                 >
-                  <MessageCircle className="w-4 h-4 text-warm-sand" />
+                  <MessageCircle className="w-4 h-4 fill-current" />
                   <span>Start WhatsApp Conversation &rarr;</span>
                 </a>
-                <p className="text-center text-[11px] text-soft-taupe mt-2">
-                  Direct Line: {getWhatsAppDisplayNumber()}
-                </p>
               </div>
 
-              <div className="pt-4 border-t border-border-sand/60 space-y-2.5 text-xs text-soft-taupe font-medium">
+              <div className="pt-4 border-t border-border-sand/60 space-y-3 text-xs text-soft-taupe font-medium">
+                <div className="flex items-start gap-2.5">
+                  <MapPin className="w-4 h-4 text-antique-gold flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-bold text-espresso block mb-0.5">Physical Store Address:</span>
+                    <span>F/F, 80, Masoodpur Dairy Farm, Masoodpur, Vasant Kunj, New Delhi - 110070, India</span>
+                  </div>
+                </div>
+
                 <div className="flex items-center gap-2.5">
                   <Clock className="w-4 h-4 text-antique-gold flex-shrink-0" />
-                  <span>Monday – Saturday: 9:00 AM – 9:00 PM IST</span>
+                  <span>Store Timing: 10:00 AM – 9:00 PM (All Days)</span>
                 </div>
+
+                <div className="flex items-center gap-2.5">
+                  <Phone className="w-4 h-4 text-antique-gold flex-shrink-0" />
+                  <a href="tel:+917291962356" className="text-espresso font-bold hover:underline">
+                    +91 72919 62356
+                  </a>
+                </div>
+
                 <div className="flex items-center gap-2.5">
                   <Mail className="w-4 h-4 text-antique-gold flex-shrink-0" />
-                  <span>hello@rumeahome.com</span>
+                  <a href="mailto:rumeahome@gmail.com" className="text-espresso font-bold hover:underline">
+                    rumeahome@gmail.com
+                  </a>
                 </div>
-                <div className="flex items-center gap-2.5">
-                  <MapPin className="w-4 h-4 text-antique-gold flex-shrink-0" />
-                  <span>Design Studios: Bengaluru &amp; New Delhi, India</span>
+
+                <div className="flex items-center gap-2.5 pt-1">
+                  <Truck className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                  <span className="font-bold text-emerald-700">Free PAN India Delivery on All Orders</span>
                 </div>
               </div>
             </div>
@@ -175,7 +191,7 @@ export default function ContactPage() {
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="e.g. 9876543210"
+                      placeholder="e.g. 7291962356"
                       className="w-full px-3.5 py-2.5 bg-warm-ivory border border-border-sand text-xs text-espresso rounded-btn focus:outline-none focus:ring-1 focus:ring-espresso"
                     />
                   </div>
@@ -190,7 +206,8 @@ export default function ContactPage() {
                       className="w-full px-3.5 py-2.5 bg-warm-ivory border border-border-sand text-xs text-espresso rounded-btn focus:outline-none focus:ring-1 focus:ring-espresso cursor-pointer"
                     >
                       <option value="Furniture Consultation">Furniture Sizing Consultation</option>
-                      <option value="Delivery Timeline">Delivery &amp; Pincode Enquiry</option>
+                      <option value="Store Visit">Vasant Kunj Store Visit</option>
+                      <option value="Delivery Timeline">Free PAN India Delivery Enquiry</option>
                       <option value="Custom Finish">Timber Finish Swatches</option>
                       <option value="Bulk Order">Commercial / Bulk Order</option>
                       <option value="Warranty Claim">5-Year Warranty Support</option>
@@ -227,7 +244,6 @@ export default function ContactPage() {
 
       </div>
 
-      {/* Floating Bottom-Right WhatsApp Trigger */}
       <WhatsAppFloatingButton />
     </div>
   );

@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Truck, RotateCcw, ShieldCheck, Award } from 'lucide-react';
 
 export default function TrustBar() {
@@ -6,7 +6,7 @@ export default function TrustBar() {
     {
       icon: Truck,
       title: 'Free Delivery',
-      subtitle: 'On all orders above ₹15,000 across India',
+      subtitle: 'Free PAN India doorstep delivery on all orders',
     },
     {
       icon: RotateCcw,

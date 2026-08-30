@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -189,7 +189,7 @@ export default function Hero() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                  <span>Free Delivery on ₹15,000+</span>
+                  <span>Free PAN India Delivery</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-emerald-400 flex-shrink-0" />
@@ -324,7 +324,7 @@ export default function Hero() {
           <span className="hidden sm:inline text-white/30">•</span>
           <div className="flex items-center gap-2">
             <Truck className="w-4 h-4 text-antique-gold flex-shrink-0" />
-            <span>Free Pan-India Delivery on ₹15,000+</span>
+            <span>Free PAN India Delivery on All Orders</span>
           </div>
           <span className="hidden sm:inline text-white/30">•</span>
           <div className="flex items-center gap-2">

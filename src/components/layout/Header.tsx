@@ -132,7 +132,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-warm-sand">
             <Truck className="w-3.5 h-3.5 text-antique-gold flex-shrink-0" />
-            <span className="font-medium">Free Pan-India Delivery on orders above ₹15,000</span>
+            <span className="font-medium">Free PAN India Delivery on All Orders</span>
           </div>
 
           <div className="hidden sm:flex items-center gap-4 text-warm-sand text-xs">
@@ -146,7 +146,7 @@ export default function Header() {
               className="text-warm-sand hover:text-white transition-colors underline flex items-center gap-1 font-semibold"
             >
               <MessageCircle className="w-3.5 h-3.5 text-antique-gold" />
-              <span>WhatsApp (9 AM – 9 PM)</span>
+              <span>WhatsApp (10 AM – 9 PM)</span>
             </a>
           </div>
         </div>

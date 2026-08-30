@@ -262,7 +262,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         <div className="p-3 bg-warm-ivory rounded-card border border-border-sand">
           <Truck className="w-4 h-4 text-antique-gold mx-auto mb-1" />
           <p className="text-[11px] font-bold text-espresso">Free Delivery</p>
-          <p className="text-[9px] text-soft-taupe">Above ₹15,000</p>
+          <p className="text-[9px] text-soft-taupe">PAN India</p>
         </div>
         <div className="p-3 bg-warm-ivory rounded-card border border-border-sand">
           <RotateCcw className="w-4 h-4 text-antique-gold mx-auto mb-1" />

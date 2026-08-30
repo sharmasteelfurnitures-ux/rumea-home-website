@@ -136,7 +136,7 @@ export default function Header() {
               className="text-warm-sand hover:text-white transition-colors underline flex items-center gap-1 font-semibold"
             >
               <MessageCircle className="w-3.5 h-3.5 text-antique-gold" />
-              <span>WhatsApp Concierge (9 AM – 9 PM)</span>
+              <span>WhatsApp (9 AM – 9 PM)</span>
             </a>
           </div>
         </div>
@@ -164,13 +164,13 @@ export default function Header() {
               </button>
             </div>
 
-            {/* Brand Logo */}
-            <div className="flex-shrink-0 flex items-center">
+            {/* Brand Logo with generous breathing room */}
+            <div className="flex-shrink-0 flex items-center mr-6 md:mr-10 xl:mr-14">
               <BrandLogo variant="dark" size="md" />
             </div>
 
             {/* Desktop Navigation with Dropdown Menus */}
-            <nav className="hidden lg:flex items-center space-x-6">
+            <nav className="hidden lg:flex items-center space-x-5 md:space-x-6 xl:space-x-8">
               {navItems.map((item) => (
                 <div
                   key={item.name}
@@ -231,7 +231,7 @@ export default function Header() {
               </Link>
             </nav>
 
-            {/* Right Controls: Predictive Search Trigger + Wishlist + WhatsApp Concierge CTA */}
+            {/* Right Controls: Predictive Search Trigger + Wishlist + Animated WhatsApp Button */}
             <div className="flex items-center space-x-2.5 sm:space-x-3.5">
               
               {/* Search Trigger */}
@@ -253,17 +253,22 @@ export default function Header() {
                 <Heart className="w-4 h-4" />
               </Link>
 
-              {/* Primary WhatsApp Concierge Button */}
+              {/* Animated WhatsApp Button (Matching Logo Brown Tone #3D2212) */}
               <a
                 href={buildWhatsAppUrl("Hi Rumea Home! I'd like advice on furniture sizing and options.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsAppClick({ source: 'nav' })}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-espresso text-warm-ivory hover:bg-espresso/90 text-xs font-semibold rounded-btn shadow-warm transition-all duration-200"
+                className="relative inline-flex items-center gap-2 px-4 py-2 bg-[#3D2212] hover:bg-[#2A160A] text-white text-xs font-bold rounded-btn shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 group border border-[#52321D]"
               >
-                <MessageCircle className="w-3.5 h-3.5 text-warm-sand" />
-                <span className="hidden sm:inline">WhatsApp Concierge</span>
-                <span className="sm:hidden">Chat</span>
+                {/* Subtle Animated Pulsing Green Online Dot */}
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+
+                <MessageCircle className="w-3.5 h-3.5 text-warm-sand group-hover:rotate-12 transition-transform duration-300" />
+                <span>WhatsApp</span>
               </a>
 
             </div>

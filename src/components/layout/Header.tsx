@@ -274,10 +274,10 @@ export default function Header() {
                 onMouseMove={handleWaMouseMove}
                 style={{
                   background: isWaHovered
-                    ? `radial-gradient(circle at ${waMousePos.x}% ${waMousePos.y}%, #25D366 0%, #128C7E 45%, #0B4F45 100%)`
-                    : 'linear-gradient(135deg, #128C7E 0%, #075E54 100%)',
+                    ? `radial-gradient(circle at ${waMousePos.x}% ${waMousePos.y}%, #8C967C 0%, #78806A 50%, #59604E 100%)`
+                    : 'linear-gradient(135deg, #78806A 0%, #5E6552 100%)',
                 }}
-                className="h-10 relative inline-flex items-center gap-2 px-4 sm:px-5 text-white text-xs sm:text-sm font-semibold rounded-btn shadow-md hover:shadow-xl hover:scale-[1.03] active:scale-95 transition-all duration-200 overflow-hidden border border-emerald-400/30 group select-none"
+                className="h-10 relative inline-flex items-center gap-2 px-4 sm:px-5 text-white text-xs sm:text-sm font-semibold rounded-btn shadow-md hover:shadow-xl hover:scale-[1.03] active:scale-95 transition-all duration-200 overflow-hidden border border-[#78806A]/40 group select-none"
               >
                 {/* Dynamic Radial Spotlight Reflection */}
                 <div
@@ -287,10 +287,10 @@ export default function Header() {
                   }}
                 />
 
-                {/* Animated Pulsing Green Online Radar Dot */}
+                {/* Animated Pulsing Online Radar Dot */}
                 <span className="relative flex h-2.5 w-2.5 flex-shrink-0">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400 border border-white/50"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#A8B298] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#8C967C] border border-white/60"></span>
                 </span>
 
                 <MessageCircle className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300 flex-shrink-0" />

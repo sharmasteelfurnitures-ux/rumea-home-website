@@ -176,7 +176,7 @@ export default function Hero() {
                   onClick={() => trackWhatsAppClick({ source: 'homepage' })}
                   className="inline-flex items-center justify-center gap-2 px-6 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 font-sans font-semibold text-sm rounded-btn transition-all duration-200 shadow-sm"
                 >
-                  <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                  <MessageCircle className="w-4 h-4 text-[#78806A]" />
                   <span>Chat on WhatsApp</span>
                 </a>
               </div>

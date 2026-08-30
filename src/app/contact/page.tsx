@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import Breadcrumb from '@/components/ui/Breadcrumb';
@@ -57,7 +57,7 @@ export default function ContactPage() {
             {/* Primary WhatsApp & Phone Card */}
             <div className="bg-white rounded-card p-6 sm:p-8 border border-border-sand shadow-card space-y-5">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-btn bg-[#25D366] text-white flex items-center justify-center shadow-md">
+                <div className="w-12 h-12 rounded-btn bg-[#78806A] text-white flex items-center justify-center shadow-md">
                   <MessageCircle className="w-6 h-6 fill-current" />
                 </div>
                 <div>
@@ -78,7 +78,7 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackWhatsAppClick({ source: 'contact' })}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 px-6 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold text-xs rounded-btn shadow-md transition-all duration-200"
+                  className="w-full flex items-center justify-center gap-2 py-3.5 px-6 bg-[#78806A] hover:bg-[#68705B] text-white font-bold text-xs rounded-btn shadow-md transition-all duration-200"
                 >
                   <MessageCircle className="w-4 h-4 fill-current" />
                   <span>Start WhatsApp Conversation &rarr;</span>

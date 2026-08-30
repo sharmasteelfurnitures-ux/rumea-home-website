@@ -235,7 +235,7 @@ export default function AboutPage() {
               href={buildWhatsAppUrl("Hi Rumea Home! I just read your story and would love advice for my home.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#78806A] hover:bg-[#68705B] text-white text-xs font-bold rounded-btn shadow-md transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold rounded-btn shadow-md transition-colors"
             >
               <MessageCircle className="w-4 h-4 fill-current" />
               <span>Chat on WhatsApp</span>

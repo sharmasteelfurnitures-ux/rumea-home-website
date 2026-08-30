@@ -70,7 +70,7 @@ export default function WhatsAppConcierge() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackWhatsAppClick({ source: 'homepage' })}
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#78806A] hover:bg-[#68705B] text-white font-sans font-bold text-sm sm:text-base rounded-btn shadow-lg hover:shadow-xl transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-sans font-bold text-sm sm:text-base rounded-btn shadow-lg hover:shadow-xl transition-all duration-200"
             >
               <MessageCircle className="w-5 h-5 fill-current" />
               <span>Chat on WhatsApp</span>

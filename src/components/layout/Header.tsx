@@ -152,12 +152,11 @@ export default function Header() {
         </div>
       </aside>
 
-      {/* Main Single Sticky Header */}
+      {/* Main Single Sticky Header - 100% Solid Opaque High-Contrast Luxury Bar */}
       <header
-        className={`sticky top-0 z-40 w-full transition-all duration-300 ${
-          isScrolled
-            ? 'bg-white/98 backdrop-blur-md shadow-card border-b border-border-sand py-2.5'
-            : 'bg-warm-ivory border-b border-border-sand py-3'
+        style={{ backgroundColor: isScrolled ? '#FFFFFF' : '#FAF7F2' }}
+        className={`sticky top-0 z-50 w-full transition-all duration-200 border-b border-[#E5DCCE] ${
+          isScrolled ? 'shadow-md py-2.5' : 'shadow-xs py-3.5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -167,7 +166,7 @@ export default function Header() {
             <div className="flex items-center lg:hidden">
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className="p-2 -ml-2 text-espresso hover:text-antique-gold focus:outline-none"
+                className="p-2 -ml-2 text-[#2C2926] hover:text-[#C8553D] focus:outline-none"
                 aria-label="Open navigation menu"
               >
                 <Menu className="w-6 h-6" />
@@ -179,8 +178,8 @@ export default function Header() {
               <BrandLogo variant="dark" size="md" />
             </div>
 
-            {/* Desktop Navigation with Dropdown Menus (Single-line, non-wrapping) */}
-            <nav className="hidden lg:flex items-center flex-nowrap space-x-4 xl:space-x-6 flex-shrink-0">
+            {/* Desktop Navigation with Dropdown Menus (Single-line, non-wrapping, high contrast) */}
+            <nav className="hidden lg:flex items-center flex-nowrap space-x-2 xl:space-x-4 flex-shrink-0">
               {navItems.map((item) => (
                 <div
                   key={item.name}
@@ -190,16 +189,16 @@ export default function Header() {
                 >
                   <Link
                     href={item.href}
-                    className="inline-flex items-center gap-1 text-[13px] font-sans font-medium text-espresso hover:text-terracotta py-2 px-1 transition-colors whitespace-nowrap"
+                    className="inline-flex items-center gap-1.5 text-sm font-sans font-bold text-[#2C2926] hover:text-[#C8553D] hover:bg-neutral-200/60 py-2 px-3 rounded-md transition-all whitespace-nowrap"
                   >
                     <span>{item.name}</span>
-                    <ChevronDown className="w-3.5 h-3.5 text-soft-taupe group-hover:rotate-180 transition-transform duration-200" />
+                    <ChevronDown className="w-3.5 h-3.5 text-neutral-500 group-hover:rotate-180 group-hover:text-[#C8553D] transition-transform duration-200" />
                   </Link>
 
                   {/* Dropdown Card */}
                   {activeDropdown === item.name && (
-                    <div className="absolute top-full left-0 w-80 bg-white rounded-card shadow-card border border-border-sand p-5 animate-in fade-in zoom-in-95 duration-150 z-50">
-                      <p className="text-[10px] uppercase font-bold text-antique-gold tracking-widest mb-3">
+                    <div className="absolute top-full left-0 w-80 bg-[#FAF7F2] rounded-card shadow-xl border border-[#E5DCCE] p-5 animate-in fade-in zoom-in-95 duration-150 z-50">
+                      <p className="text-[10px] uppercase font-bold text-[#8B6914] tracking-widest mb-3">
                         Shop {item.name}
                       </p>
                       <div className="space-y-1">
@@ -207,7 +206,7 @@ export default function Header() {
                           <Link
                             key={sub.name}
                             href={sub.href}
-                            className="block py-1.5 px-2.5 rounded-btn text-xs font-medium text-espresso hover:bg-warm-ivory hover:text-antique-gold transition-colors"
+                            className="block py-2 px-3 rounded-md text-xs font-bold text-[#2C2926] hover:bg-white hover:text-[#C8553D] hover:shadow-xs transition-all"
                           >
                             {sub.name}
                           </Link>
@@ -215,16 +214,16 @@ export default function Header() {
                       </div>
 
                       {item.featured && (
-                        <div className="mt-4 pt-3 border-t border-border-sand/60">
-                          <p className="text-[10px] font-bold uppercase text-soft-taupe tracking-wider">
+                        <div className="mt-4 pt-3 border-t border-[#E5DCCE]">
+                          <p className="text-[10px] font-bold uppercase text-neutral-500 tracking-wider">
                             Popular Choice
                           </p>
                           <Link
                             href={item.featured.href}
-                            className="mt-1.5 block p-2.5 bg-warm-ivory rounded-card border border-border-sand hover:border-espresso/30 transition-colors"
+                            className="mt-1.5 block p-3 bg-white rounded-card border border-[#E5DCCE] hover:border-[#2C2926]/40 transition-colors shadow-xs"
                           >
-                            <p className="font-serif font-bold text-xs text-espresso">{item.featured.title}</p>
-                            <p className="text-[11px] text-soft-taupe truncate">{item.featured.tagline}</p>
+                            <p className="font-serif font-bold text-xs text-[#2C2926]">{item.featured.title}</p>
+                            <p className="text-[11px] text-neutral-500 truncate">{item.featured.tagline}</p>
                           </Link>
                         </div>
                       )}
@@ -235,7 +234,7 @@ export default function Header() {
 
               <Link
                 href="/about"
-                className="text-[13px] font-sans font-medium text-espresso hover:text-terracotta py-2 px-1 transition-colors whitespace-nowrap"
+                className="text-sm font-sans font-bold text-[#2C2926] hover:text-[#C8553D] hover:bg-neutral-200/60 py-2 px-3 rounded-md transition-all whitespace-nowrap"
               >
                 Our Story
               </Link>
@@ -247,17 +246,17 @@ export default function Header() {
               {/* Search Trigger */}
               <button
                 onClick={() => setSearchModalOpen(true)}
-                className="h-10 flex items-center gap-2 px-3 sm:px-4 bg-white border border-border-sand rounded-btn text-xs text-soft-taupe hover:text-espresso hover:border-espresso/40 shadow-xs transition-all duration-200"
+                className="h-10 flex items-center gap-2 px-3.5 sm:px-4 bg-white border border-[#E5DCCE] rounded-btn text-xs font-semibold text-[#2C2926] hover:border-[#2C2926] hover:shadow-xs transition-all duration-200 shadow-2xs"
                 aria-label="Search furniture collection"
               >
-                <Search className="w-3.5 h-3.5 text-antique-gold" />
+                <Search className="w-3.5 h-3.5 text-[#8B6914]" />
                 <span className="hidden sm:inline">Search furniture...</span>
               </button>
 
               {/* Wishlist Link */}
               <Link
                 href="/products"
-                className="h-10 w-10 flex items-center justify-center text-espresso hover:text-antique-gold transition-colors rounded-btn hover:bg-warm-ivory border border-border-sand/40 hover:border-border-sand shadow-xs"
+                className="h-10 w-10 flex items-center justify-center text-[#2C2926] hover:text-[#C8553D] hover:border-[#2C2926] transition-all rounded-btn bg-white border border-[#E5DCCE] shadow-2xs"
                 aria-label="View collection"
               >
                 <Heart className="w-4 h-4" />
@@ -274,10 +273,10 @@ export default function Header() {
                 onMouseMove={handleWaMouseMove}
                 style={{
                   background: isWaHovered
-                    ? `radial-gradient(circle at ${waMousePos.x}% ${waMousePos.y}%, #8C967C 0%, #78806A 50%, #59604E 100%)`
-                    : 'linear-gradient(135deg, #78806A 0%, #5E6552 100%)',
+                    ? `radial-gradient(circle at ${waMousePos.x}% ${waMousePos.y}%, #25D366 0%, #128C7E 45%, #0B4F45 100%)`
+                    : 'linear-gradient(135deg, #128C7E 0%, #075E54 100%)',
                 }}
-                className="h-10 relative inline-flex items-center gap-2 px-4 sm:px-5 text-white text-xs sm:text-sm font-semibold rounded-btn shadow-md hover:shadow-xl hover:scale-[1.03] active:scale-95 transition-all duration-200 overflow-hidden border border-[#78806A]/40 group select-none"
+                className="h-10 relative inline-flex items-center gap-2 px-4 sm:px-5 text-white text-xs sm:text-sm font-semibold rounded-btn shadow-md hover:shadow-xl hover:scale-[1.03] active:scale-95 transition-all duration-200 overflow-hidden border border-emerald-400/30 group select-none"
               >
                 {/* Dynamic Radial Spotlight Reflection */}
                 <div
@@ -287,10 +286,10 @@ export default function Header() {
                   }}
                 />
 
-                {/* Animated Pulsing Online Radar Dot */}
+                {/* Animated Pulsing Green Online Radar Dot */}
                 <span className="relative flex h-2.5 w-2.5 flex-shrink-0">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#A8B298] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#8C967C] border border-white/60"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400 border border-white/50"></span>
                 </span>
 
                 <MessageCircle className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300 flex-shrink-0" />

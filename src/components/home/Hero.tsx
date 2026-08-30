@@ -113,13 +113,13 @@ export default function Hero() {
               fill
               priority
               sizes="100vw"
-              className="object-cover object-center brightness-[0.80] contrast-[1.05]"
+              className="object-cover object-center brightness-[0.90] contrast-[1.02]"
             />
 
-            {/* 🪵 Signature Sheesham Wood Brown (#3D2212) Gradient Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#3D2212]/95 via-[#3D2212]/75 to-[#3D2212]/20 z-10" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#25130A]/95 via-[#3D2212]/30 to-transparent z-10" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(215,161,72,0.12),transparent_70%)] z-10" />
+            {/* 🪵 Soft Faded Logo Brown (#3D2212) Atmosphere Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#3D2212]/75 via-[#3D2212]/45 to-[#3D2212]/10 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#3D2212]/65 via-transparent to-black/10 z-10" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(200,169,122,0.18),transparent_65%)] z-10" />
           </motion.div>
         </AnimatePresence>
 
@@ -176,7 +176,7 @@ export default function Hero() {
                   onClick={() => trackWhatsAppClick({ source: 'homepage' })}
                   className="inline-flex items-center justify-center gap-2 px-6 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 font-sans font-semibold text-sm rounded-btn transition-all duration-200 shadow-sm"
                 >
-                  <MessageCircle className="w-4 h-4 text-[#78806A]" />
+                  <MessageCircle className="w-4 h-4 text-[#25D366]" />
                   <span>Chat on WhatsApp</span>
                 </a>
               </div>

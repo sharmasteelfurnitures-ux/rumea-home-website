@@ -1,6 +1,6 @@
-﻿import React from 'react';
+import React from 'react';
 import Hero from '@/components/home/Hero';
-import CategoryGrid from '@/components/home/CategoryGrid';
+import ShopByCategory from '@/components/home/ShopByCategory';
 import FeaturedProducts from '@/components/home/FeaturedProducts';
 import ShopTheLook from '@/components/home/ShopTheLook';
 import SolidWoodVsMdf from '@/components/home/SolidWoodVsMdf';
@@ -15,8 +15,8 @@ export default function HomePage() {
       {/* 1. Hero Showcase Carousel + Quick Category Bar + Trust Strip */}
       <Hero />
 
-      {/* 2. Shop by Space (6 Rooms with Hover Zoom) */}
-      <CategoryGrid />
+      {/* 2. Shop by Category (10 Categories with Quick Avatar Rail & Interactive Filters) */}
+      <ShopByCategory />
 
       {/* 3. Bestsellers (8 Pieces with Interactive Timber Finish Swatches) */}
       <FeaturedProducts />

@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -24,13 +24,13 @@ export default function FeaturedProducts() {
         >
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-terracotta flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5" /> PROVEN DURABILITY
+              <Sparkles className="w-3.5 h-3.5" /> 100% SOLID SHEESHAM
             </span>
             <h2 className="font-serif text-2xl sm:text-4xl text-charcoal mt-1">
-              Most Loved by Indian Homeowners
+              Our Most Requested Pieces
             </h2>
             <p className="text-mid-gray text-sm sm:text-base mt-1.5 max-w-lg">
-              Our 8 most requested solid Sheesham wood pieces, rated 4.7+ stars across 1,200+ homes.
+              Solid Sheesham living, bedroom, and dining furniture designed for Indian apartment floor plans.
             </p>
           </div>
 

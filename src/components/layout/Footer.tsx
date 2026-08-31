@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { 
   MessageCircle, 
@@ -165,38 +165,28 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs text-[#A89F91]">
               <li>
-                <a
-                  href={buildWhatsAppUrl("Hi! What are your delivery timelines to my city?")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
-                >
+                <Link href="/terms" className="hover:text-white transition-colors">
                   Free PAN India Delivery
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href={buildWhatsAppUrl("Hi! Can you explain the 5-year frame warranty coverage?")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
-                >
-                  5-Year Structural Frame Warranty
-                </a>
+                <Link href="/terms" className="hover:text-white transition-colors">
+                  5-Year Frame Warranty
+                </Link>
               </li>
               <li>
-                <a
-                  href={buildWhatsAppUrl("Hi! What is the 30-day return policy?")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
-                >
+                <Link href="/terms" className="hover:text-white transition-colors">
                   30-Day Doorstep Returns
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy-policy" className="hover:text-white transition-colors">
+                  Privacy Policy &amp; Security
+                </Link>
               </li>
               <li>
                 <Link href="/about" className="hover:text-white transition-colors">
-                  Our Woodcraft Story &amp; Joinery
+                  Our Woodcraft Story
                 </Link>
               </li>
               <li>
@@ -261,9 +251,9 @@ export default function Footer() {
           <div className="flex items-center flex-wrap gap-2 text-center sm:text-left">
             <p>© {currentYear} Rumea Home. Handcrafted Solid Sheesham Hardwood.</p>
             <span className="hidden sm:inline">•</span>
-            <Link href="/about" className="hover:underline hover:text-white">Privacy Policy</Link>
+            <Link href="/privacy-policy" className="hover:underline hover:text-white">Privacy Policy</Link>
             <span className="hidden sm:inline">•</span>
-            <Link href="/about" className="hover:underline hover:text-white">Terms of Service</Link>
+            <Link href="/terms" className="hover:underline hover:text-white">Terms &amp; Warranty</Link>
           </div>
 
           <div className="flex items-center gap-4 text-[#A89F91] text-[11px] font-medium">

@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -10,15 +10,15 @@ export default function CustomerHomesGallery() {
   const customerSpaces = [
     {
       id: 'space-1',
-      title: 'Indiranagar, Bengaluru',
-      roomType: 'Living Room Suite',
-      productName: 'Oslo 3-Seater Sofa',
+      title: 'Living Room Setup',
+      roomType: 'Living Suite',
+      productName: 'Oslo 3-Seater Sofa in Natural Teak',
       slug: 'sofa-oslo-3seater',
       image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=85',
     },
     {
       id: 'space-2',
-      title: 'Bandra West, Mumbai',
+      title: 'Bedroom Inspiration',
       roomType: 'Master Bedroom',
       productName: 'Kyoto Platform Bed',
       slug: 'bed-kyoto-king',
@@ -26,16 +26,16 @@ export default function CustomerHomesGallery() {
     },
     {
       id: 'space-3',
-      title: 'Vasant Vihar, New Delhi',
-      roomType: '6-Seater Dining Space',
-      productName: 'Artisan Dining Set',
+      title: 'Dining Space Setup',
+      roomType: '6-Seater Dining',
+      productName: 'Artisan Solid Dining Set',
       slug: 'dining-table-artisan-6s',
       image: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=800&q=85',
     },
     {
       id: 'space-4',
-      title: 'Jubilee Hills, Hyderabad',
-      roomType: 'Work From Home Study',
+      title: 'Study & WFH Setup',
+      roomType: 'Work From Home',
       productName: 'Oslo Study Desk',
       slug: 'desk-oslo-study',
       image: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=85',
@@ -56,13 +56,13 @@ export default function CustomerHomesGallery() {
         >
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-terracotta flex items-center gap-1.5">
-              <Camera className="w-3.5 h-3.5" /> REAL SPACES IN REAL HOMES
+              <Camera className="w-3.5 h-3.5" /> ROOM INSPIRATION
             </span>
             <h2 className="font-serif text-2xl sm:text-4xl text-charcoal mt-1">
-              Styled in Modern Indian Apartments
+              Styled for Real Indian Homes
             </h2>
             <p className="text-mid-gray text-sm sm:text-base mt-1.5 max-w-xl">
-              100% solid Sheesham wood pieces photographed in real homes across Bengaluru, Mumbai, Delhi, and Hyderabad.
+              Layout ideas and proportions tailored for modern 2BHK and 3BHK Indian apartment spaces.
             </p>
           </div>
 
@@ -91,15 +91,14 @@ export default function CustomerHomesGallery() {
               <div className="relative aspect-[4/3] overflow-hidden bg-warm-alabaster">
                 <Image
                   src={space.image}
-                  alt={`${space.productName} in ${space.title}`}
+                  alt={`${space.productName} - ${space.title}`}
                   fill
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   className="object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
                 />
                 
-                {/* Location Badge */}
-                <div className="absolute top-2.5 left-2.5 px-2 py-0.5 bg-charcoal/85 backdrop-blur-xs text-white text-[10px] font-semibold rounded-btn flex items-center gap-1 shadow-xs">
-                  <MapPin className="w-3 h-3 text-amber-300" />
+                {/* Room Setup Badge */}
+                <div className="absolute top-2.5 left-2.5 px-2.5 py-0.5 bg-charcoal/85 backdrop-blur-xs text-white text-[10px] font-semibold rounded-btn shadow-xs">
                   <span>{space.title}</span>
                 </div>
               </div>

@@ -31,8 +31,8 @@ export default function Hero() {
   const heroSlides = [
     {
       id: 1,
-      tag: 'BESTSELLER LIVING SUITE',
-      discount: 'UP TO 20% OFF',
+      tag: 'LIVING ROOM SUITE',
+      discount: '100% SOLID SHEESHAM',
       headline: 'Furniture that fits the way Indians actually live.',
       subtitle: '100% Solid Kiln-Dried Sheesham. Zero MDF. Handcrafted for modern 2BHK & 3BHK living.',
       primaryCta: 'Explore Living Room',
@@ -45,8 +45,8 @@ export default function Hero() {
     },
     {
       id: 2,
-      tag: 'SOLID TIMBER BEDROOM',
-      discount: 'FREE DELIVERY & ASSEMBLY',
+      tag: 'BEDROOM SUITE',
+      discount: 'MORTISE & TENON JOINERY',
       headline: 'Rock-solid platform beds. Zero squeaks, for generations.',
       subtitle: 'Seasoned hardwood with mortise & tenon interlocking joinery. Built to endure Indian monsoons.',
       primaryCta: 'Explore Bedroom',
@@ -60,7 +60,7 @@ export default function Hero() {
     {
       id: 3,
       tag: 'FAMILY DINING ROOM',
-      discount: 'HONEST WORKSHOP PRICING',
+      discount: 'DIRECT WORKSHOP PRICING',
       headline: 'Where Indian family dinners and stories happen.',
       subtitle: 'Heavy 6-seater solid wood tables with food-safe, non-toxic spill-resistant satin finishes.',
       primaryCta: 'Explore Dining',

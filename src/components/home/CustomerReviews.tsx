@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -28,7 +28,7 @@ export default function CustomerReviews() {
             Real Words From Real Homes
           </h2>
           <p className="text-mid-gray text-sm sm:text-base mt-2">
-            Read authentic experiences from 1,200+ homeowners across Bengaluru, Mumbai, Delhi NCR, and Hyderabad.
+            What homeowners have to say about the wood quality, joint stability, and delivery experience.
           </p>
         </motion.div>
 

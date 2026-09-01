@@ -1,7 +1,8 @@
 import React from 'react';
 import Hero from '@/components/home/Hero';
 import ShopByCategory from '@/components/home/ShopByCategory';
-import FeaturedProducts from '@/components/home/FeaturedProducts';
+import CustomFurnitureBanner from '@/components/home/CustomFurnitureBanner';
+import NewArrivalsAndBestSellers from '@/components/home/NewArrivalsAndBestSellers';
 import ShopTheLook from '@/components/home/ShopTheLook';
 import SolidWoodVsMdf from '@/components/home/SolidWoodVsMdf';
 import CraftStory from '@/components/home/CraftStory';
@@ -15,11 +16,14 @@ export default function HomePage() {
       {/* 1. Hero Showcase Carousel + Quick Category Bar + Trust Strip */}
       <Hero />
 
-      {/* 2. Shop by Category (10 Categories with Quick Avatar Rail & Interactive Filters) */}
+      {/* 2. Shop by Category (12 Categories with 3D Motion Physics) */}
       <ShopByCategory />
 
-      {/* 3. Bestsellers (8 Pieces with Interactive Timber Finish Swatches) */}
-      <FeaturedProducts />
+      {/* 2.5 Bespoke Workshop Ad Banner (Customized Furniture Solutions) */}
+      <CustomFurnitureBanner />
+
+      {/* 3. New Arrivals & Best Sellers (Interactive Tabs & Filters) */}
+      <NewArrivalsAndBestSellers />
 
       {/* 4. Shop The Complete Room Look (Home Centre / Urban Ladder Style Bundles) */}
       <ShopTheLook />

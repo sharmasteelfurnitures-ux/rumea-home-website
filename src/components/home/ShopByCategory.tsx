@@ -185,7 +185,7 @@ export default function ShopByCategory() {
     {
       id: 'wardrobes',
       name: 'Wardrobes',
-      image: 'https://images.unsplash.com/photo-1558997519-83ea9252def8?auto=format&fit=crop&w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80',
       href: '/products?category=wardrobe',
     },
     {

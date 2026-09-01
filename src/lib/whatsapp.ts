@@ -1,4 +1,4 @@
-﻿const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '917291962356';
+export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '917291962356';
 
 export function buildWhatsAppUrl(
   message: string = "Hi! I found your website and I'm interested in your furniture. Can you help me?"
@@ -6,6 +6,8 @@ export function buildWhatsAppUrl(
   const encoded = encodeURIComponent(message);
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
 }
+
+export const getWhatsAppUrl = buildWhatsAppUrl;
 
 export function buildProductWhatsAppUrl(product: {
   name: string;

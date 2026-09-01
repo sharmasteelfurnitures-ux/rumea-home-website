@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import Image from 'next/image';
@@ -54,15 +54,15 @@ export default function FrequentlyBoughtTogether({ product }: FrequentlyBoughtTo
   };
 
   return (
-    <div className="bg-white rounded-card p-6 sm:p-8 border border-border-sand shadow-card my-12">
+    <div className="bg-white rounded-card p-6 sm:p-8 border border-[#D8C9B5] shadow-card my-12">
       <div className="mb-6">
-        <span className="text-xs font-bold uppercase tracking-widest text-antique-gold">
+        <span className="text-xs font-medium uppercase tracking-[0.10em] text-[#48563A]">
           COMPLETE THE ROOM LOOK
         </span>
-        <h3 className="font-serif font-bold text-xl sm:text-2xl text-espresso mt-1">
+        <h3 className="font-serif font-medium text-xl sm:text-2xl text-[#2C2926] mt-1">
           Frequently Paired Together
         </h3>
-        <p className="text-xs text-soft-taupe mt-1">
+        <p className="text-xs text-[#A69B8C] mt-1">
           Coordinating solid Sheesham wood pieces designed to harmonize in finish, proportions, and height.
         </p>
       </div>
@@ -74,19 +74,19 @@ export default function FrequentlyBoughtTogether({ product }: FrequentlyBoughtTo
           {allItems.map((item, idx) => (
             <React.Fragment key={item.id}>
               {idx > 0 && (
-                <div className="w-7 h-7 rounded-full bg-warm-ivory text-antique-gold flex items-center justify-center flex-shrink-0 font-bold border border-border-sand">
+                <div className="w-7 h-7 rounded-full bg-[#F7F4EE] text-[#48563A] flex items-center justify-center flex-shrink-0 font-medium border border-[#D8C9B5]">
                   <Plus className="w-3.5 h-3.5" />
                 </div>
               )}
 
               <div
-                className={`relative w-28 sm:w-36 rounded-card overflow-hidden border transition-all p-2 bg-warm-ivory/50 ${
+                className={`relative w-28 sm:w-36 rounded-card overflow-hidden border transition-all p-2 bg-[#F7F4EE]/50 ${
                   selectedItems[item.id]
-                    ? 'border-espresso shadow-xs ring-1 ring-espresso'
-                    : 'border-border-sand opacity-50'
+                    ? 'border-[#2C2926] shadow-xs ring-1 ring-[#2C2926]'
+                    : 'border-[#D8C9B5] opacity-50'
                 }`}
               >
-                <div className="relative aspect-[4/3] rounded-btn overflow-hidden bg-white mb-2 border border-border-sand">
+                <div className="relative aspect-[4/3] rounded-btn overflow-hidden bg-white mb-2 border border-[#D8C9B5]">
                   <Image
                     src={item.images.primary}
                     alt={item.name}
@@ -94,10 +94,10 @@ export default function FrequentlyBoughtTogether({ product }: FrequentlyBoughtTo
                     className="object-cover"
                   />
                 </div>
-                <p className="font-serif font-semibold text-[11px] text-espresso line-clamp-1">
+                <p className="font-serif font-medium text-[11px] text-[#2C2926] line-clamp-1">
                   {item.name}
                 </p>
-                <p className="text-xs font-bold text-espresso mt-0.5">
+                <p className="text-xs font-semibold text-[#2C2926] mt-0.5">
                   ₹{item.pricing.offer.toLocaleString('en-IN')}
                 </p>
               </div>
@@ -106,19 +106,19 @@ export default function FrequentlyBoughtTogether({ product }: FrequentlyBoughtTo
         </div>
 
         {/* Right: Price Total & Action Buttons */}
-        <div className="lg:col-span-4 bg-warm-ivory p-5 rounded-card border border-border-sand space-y-4">
+        <div className="lg:col-span-4 bg-[#F7F4EE] p-5 rounded-card border border-[#D8C9B5] space-y-4">
           <div>
-            <span className="text-xs text-soft-taupe">Total Price for ({activeItems.length} pieces):</span>
+            <span className="text-xs text-[#A69B8C]">Total Price for ({activeItems.length} pieces):</span>
             <div className="flex items-baseline gap-2 mt-1">
-              <span className="font-serif font-bold text-2xl text-espresso">
+              <span className="font-serif font-semibold text-2xl text-[#2C2926]">
                 ₹{totalPrice.toLocaleString('en-IN')}
               </span>
-              <span className="text-xs text-soft-taupe line-through">
+              <span className="text-xs text-[#A69B8C] line-through">
                 ₹{totalMrp.toLocaleString('en-IN')}
               </span>
             </div>
             {totalSavings > 0 && (
-              <p className="text-xs font-bold text-antique-gold mt-0.5">
+              <p className="text-xs font-medium text-[#48563A] mt-0.5">
                 Save ₹{totalSavings.toLocaleString('en-IN')} with this room bundle
               </p>
             )}
@@ -129,17 +129,17 @@ export default function FrequentlyBoughtTogether({ product }: FrequentlyBoughtTo
             {allItems.map((item) => (
               <label
                 key={item.id}
-                className="flex items-start gap-2 cursor-pointer select-none text-espresso"
+                className="flex items-start gap-2 cursor-pointer select-none text-[#2C2926]"
               >
                 <input
                   type="checkbox"
                   checked={!!selectedItems[item.id]}
                   disabled={item.id === product.id}
                   onChange={() => toggleItem(item.id)}
-                  className="mt-0.5 rounded-btn text-espresso focus:ring-espresso"
+                  className="mt-0.5 rounded-btn text-[#2C2926] focus:ring-[#2C2926]"
                 />
                 <span className="leading-tight">
-                  <strong>{item.id === product.id ? 'This piece: ' : ''}</strong>
+                  <strong className="font-medium">{item.id === product.id ? 'This piece: ' : ''}</strong>
                   {item.name} (₹{item.pricing.offer.toLocaleString('en-IN')})
                 </span>
               </label>
@@ -149,17 +149,17 @@ export default function FrequentlyBoughtTogether({ product }: FrequentlyBoughtTo
           <div className="space-y-2 pt-2">
             <button
               onClick={handleBundleAmazon}
-              className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-espresso text-warm-ivory font-bold text-xs rounded-btn shadow-warm hover:bg-espresso/90 active:scale-95 transition-all"
+              className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-[#2C2926] hover:bg-[#3D3632] text-[#F7F4EE] font-medium text-xs rounded-btn shadow-xs active:scale-95 transition-all"
             >
-              <ShoppingCart className="w-4 h-4 text-warm-sand" />
+              <ShoppingCart className="w-4 h-4 text-[#D8C9B5]" />
               <span>Buy Set on Amazon</span>
             </button>
 
             <button
               onClick={handleBundleWhatsApp}
-              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-white text-espresso border border-border-sand font-semibold text-xs rounded-btn hover:bg-warm-sand/20 transition-colors"
+              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-white text-[#2C2926] border border-[#D8C9B5] hover:border-[#2C2926] font-medium text-xs rounded-btn transition-colors"
             >
-              <MessageCircle className="w-4 h-4 text-antique-gold" />
+              <MessageCircle className="w-4 h-4 text-[#48563A]" />
               <span>Enquire Set on WhatsApp</span>
             </button>
           </div>

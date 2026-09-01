@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import { Product } from '@/types/product';
@@ -20,20 +20,20 @@ export default function StickyMobileBuyBar({ product }: StickyMobileBuyBarProps)
   });
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 backdrop-blur-md border-t border-border-sand px-4 py-2.5 shadow-[0_-4px_16px_rgba(44,41,38,0.08)]">
+    <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 backdrop-blur-md border-t border-[#D8C9B5] px-4 py-2.5 shadow-[0_-4px_16px_rgba(44,41,38,0.08)]">
       <div className="flex items-center justify-between gap-3 max-w-lg mx-auto">
         
         {/* Price & Discount Info */}
         <div className="flex-1 min-w-0">
           <div className="flex items-baseline gap-1.5">
-            <span className="font-serif font-bold text-lg text-espresso tracking-tight">
+            <span className="font-serif font-semibold text-lg text-[#2C2926] tracking-tight">
               ₹{product.pricing.offer.toLocaleString('en-IN')}
             </span>
-            <span className="text-xs text-soft-taupe line-through font-normal">
+            <span className="text-xs text-[#A69B8C] line-through font-normal">
               ₹{product.pricing.mrp.toLocaleString('en-IN')}
             </span>
           </div>
-          <p className="text-[10px] text-antique-gold font-bold truncate">
+          <p className="text-[10px] text-[#48563A] font-medium truncate">
             {product.pricing.discount}% OFF • Free Delivery
           </p>
         </div>
@@ -45,10 +45,10 @@ export default function StickyMobileBuyBar({ product }: StickyMobileBuyBarProps)
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackWhatsAppClick({ source: 'pdp', product_id: product.id, product_name: product.name })}
-            className="p-2.5 bg-warm-ivory text-espresso border border-border-sand rounded-btn hover:bg-warm-sand/20 transition-colors flex items-center justify-center"
+            className="p-2.5 bg-[#F7F4EE] text-[#2C2926] border border-[#D8C9B5] rounded-btn hover:bg-[#D8C9B5]/20 transition-colors flex items-center justify-center"
             aria-label="Enquire on WhatsApp"
           >
-            <MessageCircle className="w-4 h-4 text-antique-gold" />
+            <MessageCircle className="w-4 h-4 text-[#48563A]" />
           </a>
 
           <a
@@ -63,9 +63,9 @@ export default function StickyMobileBuyBar({ product }: StickyMobileBuyBarProps)
                 category: product.category,
               })
             }
-            className="flex items-center gap-1.5 px-4 py-2.5 bg-espresso text-warm-ivory text-xs font-bold rounded-btn shadow-warm hover:bg-espresso/90 active:scale-95 transition-all"
+            className="flex items-center gap-1.5 px-4 py-2.5 bg-[#2C2926] text-[#F7F4EE] text-xs font-medium rounded-btn shadow-warm hover:bg-[#3D3632] active:scale-95 transition-all"
           >
-            <ShoppingCart className="w-3.5 h-3.5 text-warm-sand" />
+            <ShoppingCart className="w-3.5 h-3.5 text-[#D8C9B5]" />
             <span>Buy on Amazon</span>
           </a>
         </div>

@@ -43,7 +43,7 @@ export default function CustomerHomesGallery() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-warm-offwhite border-t border-border-sand overflow-hidden">
+    <section className="py-16 md:py-24 bg-[#F7F4EE] border-t border-[#D8C9B5] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -55,23 +55,23 @@ export default function CustomerHomesGallery() {
           className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-4"
         >
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-terracotta flex items-center gap-1.5">
-              <Camera className="w-3.5 h-3.5" /> ROOM INSPIRATION
+            <span className="text-xs font-medium uppercase tracking-[0.10em] text-[#48563A] flex items-center gap-1.5">
+              <Camera className="w-3.5 h-3.5 text-[#48563A]" /> ROOM INSPIRATION
             </span>
-            <h2 className="font-serif text-2xl sm:text-4xl text-charcoal mt-1">
+            <h2 className="font-serif text-2xl sm:text-4xl text-[#2C2926] font-medium mt-1">
               Styled for Real Indian Homes
             </h2>
-            <p className="text-mid-gray text-sm sm:text-base mt-1.5 max-w-xl">
+            <p className="text-[#A69B8C] text-sm sm:text-base mt-1.5 max-w-xl">
               Layout ideas and proportions tailored for modern 2BHK and 3BHK Indian apartment spaces.
             </p>
           </div>
 
           <Link
             href="/products"
-            className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-charcoal hover:text-terracotta transition-colors self-start md:self-auto group"
+            className="inline-flex items-center gap-1 text-xs sm:text-sm font-medium text-[#2C2926] hover:text-[#48563A] transition-colors self-start md:self-auto group"
           >
             <span>Explore All 20+ Designs</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#48563A] group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>
 
@@ -85,10 +85,10 @@ export default function CustomerHomesGallery() {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -5 }}
-              className="group relative flex flex-col bg-white rounded-card overflow-hidden border border-border-sand shadow-card card-hover"
+              className="group relative flex flex-col bg-white rounded-card overflow-hidden border border-[#D8C9B5] shadow-card card-hover"
             >
               {/* 4/3 Aspect Ratio Image Viewport */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-warm-alabaster">
+              <div className="relative aspect-[4/3] overflow-hidden bg-[#F7F4EE]">
                 <Image
                   src={space.image}
                   alt={`${space.productName} - ${space.title}`}
@@ -98,7 +98,7 @@ export default function CustomerHomesGallery() {
                 />
                 
                 {/* Room Setup Badge */}
-                <div className="absolute top-2.5 left-2.5 px-2.5 py-0.5 bg-charcoal/85 backdrop-blur-xs text-white text-[10px] font-semibold rounded-btn shadow-xs">
+                <div className="absolute top-2.5 left-2.5 px-2.5 py-0.5 bg-[#2C2926]/75 backdrop-blur-xs text-[#F7F4EE] text-[10px] font-medium rounded-btn shadow-xs">
                   <span>{space.title}</span>
                 </div>
               </div>
@@ -106,21 +106,21 @@ export default function CustomerHomesGallery() {
               {/* Card Footer with Direct Product Link */}
               <div className="p-3.5 flex flex-col justify-between flex-1 bg-white">
                 <div>
-                  <span className="text-[10px] uppercase font-bold text-mid-gray tracking-wider block">
+                  <span className="text-[10px] uppercase font-medium text-[#D8C9B5] tracking-wider block">
                     {space.roomType}
                   </span>
-                  <h3 className="font-serif font-semibold text-xs sm:text-sm text-charcoal mt-0.5 truncate">
+                  <h3 className="font-serif font-medium text-xs sm:text-sm text-[#2C2926] mt-0.5 truncate">
                     {space.productName}
                   </h3>
                 </div>
 
-                <div className="mt-3 pt-2.5 border-t border-border-sand/60 flex items-center justify-between">
+                <div className="mt-3 pt-2.5 border-t border-[#D8C9B5]/60 flex items-center justify-between">
                   <Link
                     href={`/products/${space.slug}`}
-                    className="text-[11px] font-bold text-terracotta hover:text-charcoal flex items-center gap-1 transition-colors group/link"
+                    className="text-[11px] font-medium text-[#48563A] hover:text-[#2C2926] flex items-center gap-1 transition-colors group/link"
                   >
                     <span>Shop Look</span>
-                    <ArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-3 h-3 text-[#48563A] group-hover/link:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </div>

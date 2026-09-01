@@ -81,80 +81,80 @@ export default function ProductInfo({ product }: ProductInfoProps) {
     <div className="space-y-6">
       
       {/* Category Tag & Material USP Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-border-sand/60">
-        <span className="text-xs uppercase tracking-widest font-bold text-terracotta">
+      <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-[#D8C9B5]/60">
+        <span className="text-xs uppercase tracking-[0.10em] font-medium text-[#48563A]">
           {product.category.replace('-', ' ')} • {product.room.join(' & ')}
         </span>
-        <span className="text-[11px] font-bold text-charcoal bg-warm-alabaster px-2.5 py-1 rounded-btn border border-border-sand">
+        <span className="text-[11px] font-medium text-[#2C2926] bg-[#F7F4EE] px-2.5 py-1 rounded-btn border border-[#D8C9B5]">
           100% Solid Kiln-Dried Sheesham
         </span>
       </div>
 
       {/* Product Name (H1 in Serif) */}
       <div>
-        <h1 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-espresso tracking-tight leading-tight">
+        <h1 className="font-serif font-medium text-2xl sm:text-3xl lg:text-4xl text-[#2C2926] tracking-tight leading-tight">
           {product.name}
         </h1>
         {product.tagline && (
-          <p className="text-soft-taupe text-sm sm:text-base mt-1.5 leading-relaxed">
+          <p className="text-[#A69B8C] text-sm sm:text-base mt-1.5 leading-relaxed">
             {product.tagline}
           </p>
         )}
       </div>
 
       {/* Pricing Block with MRP, Sale Price & % Savings */}
-      <div className="p-4 sm:p-5 bg-white rounded-card border border-border-sand shadow-card space-y-2.5">
+      <div className="p-4 sm:p-5 bg-white rounded-card border border-[#D8C9B5] shadow-card space-y-2.5">
         <div className="flex items-baseline gap-3">
-          <span className="font-serif font-bold text-3xl sm:text-4xl text-espresso tracking-tight">
+          <span className="font-serif font-semibold text-3xl sm:text-4xl text-[#2C2926] tracking-tight">
             ₹{product.pricing.offer.toLocaleString('en-IN')}
           </span>
-          <span className="text-sm text-soft-taupe line-through font-normal">
+          <span className="text-sm text-[#A69B8C] line-through font-normal">
             ₹{product.pricing.mrp.toLocaleString('en-IN')}
           </span>
-          <span className="text-xs font-bold text-antique-gold bg-warm-sand/30 px-2 py-0.5 rounded-btn">
+          <span className="text-xs font-medium text-[#48563A] bg-[#48563A]/12 px-2 py-0.5 rounded-btn">
             {product.pricing.discount}% OFF
           </span>
         </div>
 
-        <div className="flex items-center justify-between text-xs text-soft-taupe">
-          <span className="text-antique-gold font-bold">
+        <div className="flex items-center justify-between text-xs text-[#A69B8C]">
+          <span className="text-[#48563A] font-medium">
             You Save: ₹{savings.toLocaleString('en-IN')}
           </span>
           <span>Inclusive of all GST taxes</span>
         </div>
 
         {/* No-Cost EMI Section */}
-        <div className="pt-2.5 border-t border-border-sand/60 flex items-center justify-between text-xs">
-          <div className="flex items-center gap-1.5 text-espresso font-medium">
-            <CreditCard className="w-3.5 h-3.5 text-antique-gold" />
-            <span>From <strong>₹{emiPerMonth.toLocaleString('en-IN')}/month</strong> with No Cost EMI</span>
+        <div className="pt-2.5 border-t border-[#D8C9B5]/60 flex items-center justify-between text-xs">
+          <div className="flex items-center gap-1.5 text-[#2C2926] font-normal">
+            <CreditCard className="w-3.5 h-3.5 text-[#48563A]" />
+            <span>From <strong className="font-semibold">₹{emiPerMonth.toLocaleString('en-IN')}/month</strong> with No Cost EMI</span>
           </div>
           <button
             onClick={() => setShowEMIInfo(!showEMIInfo)}
-            className="text-antique-gold hover:text-espresso font-bold underline text-[11px]"
+            className="text-[#48563A] hover:text-[#2C2926] font-medium underline text-[11px]"
           >
             {showEMIInfo ? 'Hide EMI' : 'View Plans'}
           </button>
         </div>
 
         {showEMIInfo && (
-          <div className="mt-2 p-3 bg-warm-ivory rounded-btn text-xs space-y-1.5 text-espresso animate-in fade-in duration-150 border border-border-sand">
-            <p className="font-bold text-[11px] uppercase text-antique-gold">Zero Down Payment EMI Plans:</p>
+          <div className="mt-2 p-3 bg-[#F7F4EE] rounded-btn text-xs space-y-1.5 text-[#2C2926] animate-in fade-in duration-150 border border-[#D8C9B5]">
+            <p className="font-medium text-[11px] uppercase text-[#48563A]">Zero Down Payment EMI Plans:</p>
             <div className="grid grid-cols-3 gap-2 text-center text-[11px]">
-              <div className="p-2 bg-white rounded-btn border border-border-sand">
-                <span className="block font-bold">3 Months</span>
-                <span>₹{Math.round(product.pricing.offer / 3).toLocaleString('en-IN')}/mo</span>
+              <div className="p-2 bg-white rounded-btn border border-[#D8C9B5]">
+                <span className="block font-medium text-[#2C2926]">3 Months</span>
+                <span className="text-[#A69B8C]">₹{Math.round(product.pricing.offer / 3).toLocaleString('en-IN')}/mo</span>
               </div>
-              <div className="p-2 bg-white rounded-btn border border-border-sand">
-                <span className="block font-bold">6 Months</span>
-                <span>₹{emiPerMonth.toLocaleString('en-IN')}/mo</span>
+              <div className="p-2 bg-white rounded-btn border border-[#D8C9B5]">
+                <span className="block font-medium text-[#2C2926]">6 Months</span>
+                <span className="text-[#A69B8C]">₹{emiPerMonth.toLocaleString('en-IN')}/mo</span>
               </div>
-              <div className="p-2 bg-white rounded-btn border border-border-sand">
-                <span className="block font-bold">9 Months</span>
-                <span>₹{Math.round(product.pricing.offer / 9).toLocaleString('en-IN')}/mo</span>
+              <div className="p-2 bg-white rounded-btn border border-[#D8C9B5]">
+                <span className="block font-medium text-[#2C2926]">9 Months</span>
+                <span className="text-[#A69B8C]">₹{Math.round(product.pricing.offer / 9).toLocaleString('en-IN')}/mo</span>
               </div>
             </div>
-            <p className="text-[10px] text-soft-taupe mt-1">
+            <p className="text-[10px] text-[#A69B8C] mt-1">
               *Available on credit cards, debit cards, and Amazon Pay Later at checkout.
             </p>
           </div>
@@ -164,10 +164,10 @@ export default function ProductInfo({ product }: ProductInfoProps) {
       {/* Timber Finish Swatches */}
       <div className="space-y-2">
         <div className="flex items-center justify-between text-xs">
-          <span className="font-bold text-espresso">
-            Timber Finish: <strong className="text-antique-gold">{selectedFinish}</strong>
+          <span className="font-normal text-[#A69B8C]">
+            Timber Finish: <strong className="text-[#2C2926] font-medium">{selectedFinish}</strong>
           </span>
-          <span className="text-soft-taupe text-[11px]">100% Kiln-Dried Sheesham</span>
+          <span className="text-[#A69B8C] text-[11px]">100% Kiln-Dried Sheesham</span>
         </div>
 
         <div className="flex flex-wrap gap-2.5">
@@ -180,8 +180,8 @@ export default function ProductInfo({ product }: ProductInfoProps) {
                 onClick={() => setSelectedFinish(f)}
                 className={`flex items-center gap-2 px-3.5 py-2 rounded-btn text-xs border transition-all ${
                   isSel
-                    ? 'border-espresso bg-white font-bold text-espresso shadow-xs ring-1 ring-espresso'
-                    : 'border-border-sand bg-warm-ivory/60 text-soft-taupe hover:border-espresso/40'
+                    ? 'border-[#2C2926] bg-white font-medium text-[#2C2926] shadow-xs ring-1 ring-[#2C2926]'
+                    : 'border-[#D8C9B5] bg-[#F7F4EE]/60 text-[#A69B8C] hover:border-[#2C2926]/40 hover:text-[#2C2926]'
                 }`}
               >
                 <span
@@ -196,8 +196,8 @@ export default function ProductInfo({ product }: ProductInfoProps) {
       </div>
 
       {/* Pincode Delivery Estimator */}
-      <div className="bg-white rounded-card p-4 border border-border-sand shadow-card">
-        <span className="text-xs font-bold uppercase tracking-wider text-espresso block mb-2">
+      <div className="bg-white rounded-card p-4 border border-[#D8C9B5] shadow-card">
+        <span className="text-xs font-medium uppercase tracking-[0.05em] text-[#2C2926] block mb-2">
           Check Delivery Timeline &amp; Free Assembly
         </span>
         <form onSubmit={handlePincodeCheck} className="flex gap-2">
@@ -207,19 +207,19 @@ export default function ProductInfo({ product }: ProductInfoProps) {
             value={pincode}
             onChange={(e) => setPincode(e.target.value)}
             placeholder="Enter 6-digit Pincode (e.g. 560038)"
-            className="flex-1 px-3 py-2 bg-warm-ivory border border-border-sand text-xs text-espresso rounded-btn focus:outline-none focus:ring-1 focus:ring-espresso"
+            className="flex-1 px-3 py-2 bg-[#F7F4EE] border border-[#D8C9B5] text-xs text-[#2C2926] rounded-btn focus:outline-none focus:ring-1 focus:ring-[#2C2926]"
           />
           <button
             type="submit"
             disabled={isCheckingPincode}
-            className="px-5 py-2 bg-espresso text-warm-ivory font-bold text-xs rounded-btn hover:bg-espresso/90 transition-colors shadow-xs"
+            className="px-5 py-2 bg-[#2C2926] text-[#F7F4EE] font-medium text-xs rounded-btn hover:bg-[#3D3632] transition-colors shadow-xs"
           >
             {isCheckingPincode ? 'Checking...' : 'Check'}
           </button>
         </form>
 
         {deliveryResult && (
-          <p className="mt-2.5 text-xs font-semibold text-antique-gold animate-in fade-in duration-150">
+          <p className="mt-2.5 text-xs font-medium text-[#48563A] animate-in fade-in duration-150">
             {deliveryResult}
           </p>
         )}
@@ -239,9 +239,9 @@ export default function ProductInfo({ product }: ProductInfoProps) {
               category: product.category,
             })
           }
-          className="w-full flex items-center justify-center gap-2.5 py-4 px-6 bg-espresso text-warm-ivory font-sans font-bold text-sm sm:text-base rounded-btn shadow-warm hover:bg-espresso/90 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200"
+          className="w-full flex items-center justify-center gap-2.5 py-4 px-6 bg-[#2C2926] hover:bg-[#3D3632] text-[#F7F4EE] font-sans font-medium text-sm sm:text-base rounded-btn shadow-warm hover:scale-[1.01] active:scale-[0.99] transition-all duration-200"
         >
-          <ShoppingCart className="w-5 h-5 text-warm-sand" />
+          <ShoppingCart className="w-5 h-5 text-[#D8C9B5]" />
           <span>Add to Cart / Buy Now on Amazon</span>
         </a>
 
@@ -250,34 +250,34 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => trackWhatsAppClick({ source: 'pdp', product_id: product.id, product_name: product.name })}
-          className="w-full flex items-center justify-center gap-2.5 py-3.5 px-6 bg-white text-espresso border border-border-sand hover:border-espresso/40 font-sans font-semibold text-sm rounded-btn hover:bg-warm-sand/20 transition-all duration-200"
+          className="w-full flex items-center justify-center gap-2.5 py-3.5 px-6 bg-transparent text-[#2C2926] border-[1.5px] border-[#2C2926] hover:bg-[#2C2926] hover:text-[#F7F4EE] font-sans font-medium text-sm rounded-btn transition-all duration-200 group"
         >
-          <MessageCircle className="w-4 h-4 text-antique-gold" />
+          <MessageCircle className="w-4 h-4 text-[#48563A] group-hover:text-[#F7F4EE]" />
           <span>Chat on WhatsApp (Custom Sizing &amp; Queries)</span>
         </a>
       </div>
 
       {/* Trust Icons Row */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4 border-t border-border-sand text-center">
-        <div className="p-3 bg-warm-ivory rounded-card border border-border-sand">
-          <Truck className="w-4 h-4 text-antique-gold mx-auto mb-1" />
-          <p className="text-[11px] font-bold text-espresso">Free Delivery</p>
-          <p className="text-[9px] text-soft-taupe">PAN India</p>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4 border-t border-[#D8C9B5] text-center">
+        <div className="p-3 bg-[#F7F4EE] rounded-card border border-[#D8C9B5]">
+          <Truck className="w-4 h-4 text-[#48563A] mx-auto mb-1" />
+          <p className="text-[11px] font-medium text-[#2C2926]">Free Delivery</p>
+          <p className="text-[9px] text-[#A69B8C]">PAN India</p>
         </div>
-        <div className="p-3 bg-warm-ivory rounded-card border border-border-sand">
-          <RotateCcw className="w-4 h-4 text-antique-gold mx-auto mb-1" />
-          <p className="text-[11px] font-bold text-espresso">30-Day Returns</p>
-          <p className="text-[9px] text-soft-taupe">Hassle-Free</p>
+        <div className="p-3 bg-[#F7F4EE] rounded-card border border-[#D8C9B5]">
+          <RotateCcw className="w-4 h-4 text-[#48563A] mx-auto mb-1" />
+          <p className="text-[11px] font-medium text-[#2C2926]">30-Day Returns</p>
+          <p className="text-[9px] text-[#A69B8C]">Hassle-Free</p>
         </div>
-        <div className="p-3 bg-warm-ivory rounded-card border border-border-sand">
-          <ShieldCheck className="w-4 h-4 text-antique-gold mx-auto mb-1" />
-          <p className="text-[11px] font-bold text-espresso">5-Yr Warranty</p>
-          <p className="text-[9px] text-soft-taupe">Structural Frame</p>
+        <div className="p-3 bg-[#F7F4EE] rounded-card border border-[#D8C9B5]">
+          <ShieldCheck className="w-4 h-4 text-[#48563A] mx-auto mb-1" />
+          <p className="text-[11px] font-medium text-[#2C2926]">5-Yr Warranty</p>
+          <p className="text-[9px] text-[#A69B8C]">Structural Frame</p>
         </div>
-        <div className="p-3 bg-warm-ivory rounded-card border border-border-sand">
-          <Lock className="w-4 h-4 text-antique-gold mx-auto mb-1" />
-          <p className="text-[11px] font-bold text-espresso">Secure Payment</p>
-          <p className="text-[9px] text-soft-taupe">Amazon Guaranteed</p>
+        <div className="p-3 bg-[#F7F4EE] rounded-card border border-[#D8C9B5]">
+          <Lock className="w-4 h-4 text-[#48563A] mx-auto mb-1" />
+          <p className="text-[11px] font-medium text-[#2C2926]">Secure Payment</p>
+          <p className="text-[9px] text-[#A69B8C]">Amazon Guaranteed</p>
         </div>
       </div>
 

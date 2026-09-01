@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import Image from 'next/image';
@@ -43,33 +43,33 @@ export default function ShopTheLook() {
   const bundlePrice = totalIndividualPrice - bundle.bundleDiscount;
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-white border-t border-border-sand">
+    <section className="py-16 sm:py-20 lg:py-24 bg-white border-t border-[#D8C9B5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-warm-alabaster text-charcoal border border-border-sand text-[11px] font-bold uppercase tracking-widest rounded-btn mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-terracotta" /> COORDINATED ROOM SETS
+            <span className="text-xs font-medium uppercase tracking-[0.10em] text-[#48563A] flex items-center gap-1.5 mb-2">
+              <Sparkles className="w-3.5 h-3.5 text-[#48563A]" /> COORDINATED ROOM SETS
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-charcoal tracking-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl text-[#2C2926] font-medium tracking-tight">
               Shop The Complete Room Look
             </h2>
-            <p className="text-mid-gray text-sm sm:text-base mt-2 max-w-xl">
+            <p className="text-[#A69B8C] text-sm sm:text-base mt-2 max-w-xl">
               Designer-coordinated solid Sheesham suites designed to fit harmoniously in modern Indian layouts with instant bundle savings.
             </p>
           </div>
 
           {/* Room Tabs */}
-          <div className="flex items-center gap-2 bg-warm-alabaster p-1 rounded-btn border border-border-sand">
+          <div className="flex items-center gap-2">
             {roomBundles.map((b, idx) => (
               <button
                 key={b.id}
                 onClick={() => setActiveTab(idx)}
-                className={`px-4 py-2 text-xs font-bold rounded-btn transition-all duration-200 ${
+                className={`px-4 py-2 text-xs font-medium rounded-btn transition-all duration-200 ${
                   activeTab === idx
-                    ? 'bg-white text-charcoal shadow-xs'
-                    : 'text-mid-gray hover:text-charcoal'
+                    ? 'bg-[#2C2926] text-[#F7F4EE]'
+                    : 'border border-[#D8C9B5] bg-transparent text-[#A69B8C] hover:text-[#2C2926]'
                 }`}
               >
                 {b.title.split(' ')[1]} Set
@@ -79,10 +79,10 @@ export default function ShopTheLook() {
         </div>
 
         {/* Room Showcase Card */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-warm-offwhite rounded-card border border-border-sand p-6 sm:p-8 shadow-card">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#F7F4EE] rounded-card border border-[#D8C9B5] p-6 sm:p-8 shadow-card">
           
           {/* Left: Lifestyle Photo (7 cols) */}
-          <div className="lg:col-span-7 relative aspect-[16/10] rounded-btn overflow-hidden border border-border-sand shadow-inner bg-warm-alabaster">
+          <div className="lg:col-span-7 relative aspect-[16/10] rounded-btn overflow-hidden border border-[#D8C9B5] shadow-inner bg-[#F7F4EE]">
             <Image
               src={bundle.image}
               alt={bundle.title}
@@ -90,69 +90,69 @@ export default function ShopTheLook() {
               sizes="(max-width: 1024px) 100vw, 60vw"
               className="object-cover object-center"
             />
-            <div className="absolute top-3 left-3 bg-charcoal/90 text-white text-[11px] font-bold px-3 py-1 rounded-btn backdrop-blur-xs flex items-center gap-1.5 shadow-sm">
-              <Tag className="w-3.5 h-3.5 text-amber-300" /> Save ₹{bundle.bundleDiscount.toLocaleString('en-IN')} on Bundle
+            <div className="absolute top-3 left-3 bg-[#48563A] text-white text-[11px] font-medium px-3 py-1 rounded-[4px] shadow-xs flex items-center gap-1.5">
+              <Tag className="w-3.5 h-3.5 text-white" /> Save ₹{bundle.bundleDiscount.toLocaleString('en-IN')} on Bundle
             </div>
           </div>
 
           {/* Right: Bundle Details & Included Pieces (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
             <div>
-              <h3 className="font-serif font-bold text-2xl text-charcoal leading-snug">
+              <h3 className="font-serif font-medium text-2xl text-[#2C2926] leading-snug">
                 {bundle.title}
               </h3>
-              <p className="text-mid-gray text-xs sm:text-sm mt-1.5 leading-relaxed">
+              <p className="text-[#A69B8C] text-xs sm:text-sm mt-1.5 leading-relaxed">
                 {bundle.subtitle}
               </p>
             </div>
 
             {/* Included Pieces List */}
             <div className="space-y-3 pt-2">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-charcoal block">
+              <span className="text-[11px] font-medium uppercase tracking-[0.05em] text-[#2C2926] block">
                 Included in This 3-Piece Suite:
               </span>
               {bundle.pieces.map((piece, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center justify-between p-3 bg-white rounded-btn border border-border-sand text-xs shadow-2xs"
+                  className="flex items-center justify-between p-3 bg-white rounded-btn border border-[#D8C9B5] text-xs shadow-2xs"
                 >
                   <div className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-terracotta flex-shrink-0" />
-                    <span className="font-semibold text-charcoal">{piece.name}</span>
+                    <Check className="w-4 h-4 text-[#48563A] flex-shrink-0" />
+                    <span className="font-medium text-[#2C2926]">{piece.name}</span>
                   </div>
-                  <span className="text-mid-gray font-serif">₹{piece.price.toLocaleString('en-IN')}</span>
+                  <span className="text-[#A69B8C] font-serif">₹{piece.price.toLocaleString('en-IN')}</span>
                 </div>
               ))}
             </div>
 
             {/* Pricing Summary */}
-            <div className="pt-4 border-t border-border-sand/70 space-y-2">
+            <div className="pt-4 border-t border-[#D8C9B5]/70 space-y-2">
               <div className="flex items-baseline justify-between">
                 <div>
-                  <span className="text-xs text-mid-gray block">Coordinated Suite Price:</span>
+                  <span className="text-xs text-[#A69B8C] block">Coordinated Suite Price:</span>
                   <div className="flex items-baseline gap-2">
-                    <span className="font-serif font-bold text-2xl text-charcoal">
+                    <span className="font-serif font-semibold text-2xl text-[#2C2926]">
                       ₹{bundlePrice.toLocaleString('en-IN')}
                     </span>
-                    <span className="text-sm text-mid-gray line-through">
+                    <span className="text-sm text-[#A69B8C] line-through">
                       ₹{totalIndividualPrice.toLocaleString('en-IN')}
                     </span>
                   </div>
                 </div>
-                <span className="text-xs font-bold text-terracotta bg-terracotta/10 px-2.5 py-1 rounded-btn">
+                <span className="text-xs font-medium text-[#48563A] bg-[#48563A]/10 px-2.5 py-1 rounded-btn">
                   Save ₹{bundle.bundleDiscount.toLocaleString('en-IN')}
                 </span>
               </div>
 
-              <div className="pt-2 flex flex-col sm:flex-row gap-3">
-                <Link
-                  href={bundle.roomHref}
-                  className="flex-1 py-3 px-6 bg-terracotta hover:bg-[#b54a34] text-white font-bold text-xs rounded-btn flex items-center justify-center gap-2 transition-colors shadow-sm"
-                >
-                  <ShoppingBag className="w-4 h-4" />
-                  <span>Explore Complete Suite</span>
-                </Link>
-              </div>
+              {/* Primary CTA */}
+              <Link
+                href={bundle.roomHref}
+                className="w-full mt-4 py-3.5 bg-[#2C2926] hover:bg-[#3D3632] text-[#F7F4EE] text-xs sm:text-sm font-medium rounded-btn flex items-center justify-center gap-2 shadow-xs transition-colors group"
+              >
+                <ShoppingBag className="w-4 h-4 text-[#F7F4EE]" />
+                <span>Explore Complete Suite</span>
+                <ArrowRight className="w-4 h-4 text-[#F7F4EE] group-hover:translate-x-1 transition-transform" />
+              </Link>
             </div>
 
           </div>

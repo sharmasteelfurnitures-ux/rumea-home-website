@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import { Product } from '@/types/product';
@@ -178,17 +178,17 @@ export default function ProductSpecs({ product }: ProductSpecsProps) {
   ];
 
   return (
-    <div className="bg-white rounded-card border border-border-sand shadow-card overflow-hidden my-10">
-      <div className="p-5 sm:p-6 border-b border-border-sand bg-warm-ivory/50">
-        <span className="text-xs font-bold uppercase tracking-widest text-antique-gold">
+    <div className="bg-white rounded-card border border-[#D8C9B5] shadow-card overflow-hidden my-10">
+      <div className="p-5 sm:p-6 border-b border-[#D8C9B5] bg-[#F7F4EE]/50">
+        <span className="text-xs font-medium uppercase tracking-[0.10em] text-[#48563A]">
           TECHNICAL SPECIFICATIONS
         </span>
-        <h3 className="font-serif font-bold text-xl sm:text-2xl text-espresso mt-1">
+        <h3 className="font-serif font-medium text-xl sm:text-2xl text-[#2C2926] mt-1">
           Product Details &amp; Engineering
         </h3>
       </div>
 
-      <div className="divide-y divide-border-sand">
+      <div className="divide-y divide-[#D8C9B5]">
         {sections.map((sec) => {
           const Icon = sec.icon;
           const isOpen = !!openSections[sec.id];
@@ -196,16 +196,16 @@ export default function ProductSpecs({ product }: ProductSpecsProps) {
             <div key={sec.id} className="transition-colors">
               <button
                 onClick={() => toggleSection(sec.id)}
-                className="w-full flex items-center justify-between p-5 text-left font-serif font-semibold text-sm sm:text-base text-espresso hover:bg-warm-ivory/40 transition-colors"
+                className="w-full flex items-center justify-between p-5 text-left font-serif font-medium text-sm sm:text-base text-[#2C2926] hover:bg-[#F7F4EE]/40 transition-colors"
                 aria-expanded={isOpen}
               >
                 <div className="flex items-center gap-3">
-                  <Icon className="w-4 h-4 text-antique-gold flex-shrink-0" />
+                  <Icon className="w-4 h-4 text-[#48563A] flex-shrink-0" />
                   <span>{sec.title}</span>
                 </div>
                 <ChevronDown
-                  className={`w-4 h-4 text-soft-taupe transition-transform duration-200 ${
-                    isOpen ? 'rotate-180 text-espresso' : ''
+                  className={`w-4 h-4 text-[#A69B8C] transition-transform duration-200 ${
+                    isOpen ? 'rotate-180 text-[#2C2926]' : ''
                   }`}
                 />
               </button>

@@ -1,19 +1,26 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --charcoal: #1B1F24;
-  --espresso: #1B1F24;
-  --warm-offwhite: #FAFAF8;
-  --warm-alabaster: #F3F0E9;
-  --terracotta: #C8553D;
-  --antique-gold: #8B6914;
-  --warm-sand: #E5E0D5;
-  --mid-gray: #6B7280;
-  --border-sand: #E5E0D5;
+  --color-espresso: #2C2926;
+  --color-sand: #D8C9B5;
+  --color-ivory: #F7F4EE;
+  --color-olive: #48563A;
+  --color-taupe: #A69B8C;
+
+  --charcoal: #2C2926;
+  --espresso: #2C2926;
+  --warm-offwhite: #F7F4EE;
+  --warm-alabaster: #F7F4EE;
+  --terracotta: #48563A;
+  --antique-gold: #48563A;
+  --warm-sand: #D8C9B5;
+  --mid-gray: #A69B8C;
+  --soft-taupe: #A69B8C;
+  --border-sand: #D8C9B5;
 
   --font-serif: Georgia, 'Cormorant Garamond', 'Times New Roman', serif;
   --font-body: 'Inter', 'Manrope', system-ui, -apple-system, sans-serif;
@@ -21,8 +28,8 @@
   --radius-card: 8px;
   --radius-btn: 6px;
 
-  --shadow-card: 0 2px 8px rgba(27, 31, 36, 0.05);
-  --shadow-hover: 0 8px 24px rgba(27, 31, 36, 0.08);
+  --shadow-card: 0 2px 8px rgba(44, 41, 38, 0.05);
+  --shadow-hover: 0 8px 24px rgba(44, 41, 38, 0.08);
 }
 
 * {
@@ -38,8 +45,8 @@ html {
 }
 
 body {
-  background-color: #FAFAF8;
-  color: #1B1F24;
+  background-color: #F7F4EE;
+  color: #2C2926;
   font-family: var(--font-body);
   line-height: 1.6;
   min-height: 100vh;
@@ -47,7 +54,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
-  color: #1B1F24;
+  color: #2C2926;
 }
 
 /* Silky smooth card hover interaction */

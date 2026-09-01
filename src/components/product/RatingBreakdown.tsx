@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import { Star, CheckCircle2, ThumbsUp, MessageSquare } from 'lucide-react';
@@ -64,39 +64,39 @@ export default function RatingBreakdown({ rating, reviewCount }: RatingBreakdown
   ];
 
   return (
-    <div id="customer-reviews" className="bg-white rounded-card p-6 sm:p-8 border border-border-sand shadow-card my-12">
+    <div id="customer-reviews" className="bg-white rounded-card p-6 sm:p-8 border border-[#D8C9B5] shadow-card my-12">
       <div className="mb-8">
-        <span className="text-xs font-bold uppercase tracking-widest text-antique-gold flex items-center gap-1.5">
-          <MessageSquare className="w-3.5 h-3.5" /> CUSTOMER EXPERIENCES
+        <span className="text-xs font-medium uppercase tracking-[0.10em] text-[#48563A] flex items-center gap-1.5">
+          <MessageSquare className="w-3.5 h-3.5 text-[#48563A]" /> CUSTOMER EXPERIENCES
         </span>
-        <h3 className="font-serif font-bold text-xl sm:text-2xl text-espresso mt-1">
+        <h3 className="font-serif font-medium text-xl sm:text-2xl text-[#2C2926] mt-1">
           Customer Ratings &amp; Verified Reviews
         </h3>
       </div>
 
       {/* 5-Star Distribution Bar Chart */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pb-8 border-b border-border-sand">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pb-8 border-b border-[#D8C9B5]">
         
         {/* Left Overall Score */}
-        <div className="md:col-span-4 text-center md:text-left md:border-r border-border-sand md:pr-6">
+        <div className="md:col-span-4 text-center md:text-left md:border-r border-[#D8C9B5] md:pr-6">
           <div className="flex items-baseline justify-center md:justify-start gap-2">
-            <span className="font-serif font-bold text-5xl text-espresso">
+            <span className="font-serif font-semibold text-5xl text-[#2C2926]">
               {rating.toFixed(1)}
             </span>
-            <span className="text-soft-taupe text-sm">out of 5</span>
+            <span className="text-[#A69B8C] text-sm">out of 5</span>
           </div>
 
-          <div className="flex items-center justify-center md:justify-start gap-1 text-amber-500 my-2">
+          <div className="flex items-center justify-center md:justify-start gap-1 text-[#D8C9B5] my-2">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="w-5 h-5 fill-current" />
             ))}
           </div>
 
-          <p className="text-xs text-soft-taupe font-medium">
+          <p className="text-xs text-[#A69B8C] font-normal">
             Based on {reviewCount} verified homeowner ratings
           </p>
 
-          <div className="mt-4 p-2.5 bg-warm-ivory rounded-btn flex items-center justify-center md:justify-start gap-1.5 text-xs text-antique-gold font-bold border border-border-sand">
+          <div className="mt-4 p-2.5 bg-[#F7F4EE] rounded-btn flex items-center justify-center md:justify-start gap-1.5 text-xs text-[#48563A] font-medium border border-[#D8C9B5]">
             <CheckCircle2 className="w-4 h-4" />
             <span>100% Verified Buyer Feedback</span>
           </div>
@@ -106,16 +106,16 @@ export default function RatingBreakdown({ rating, reviewCount }: RatingBreakdown
         <div className="md:col-span-8 space-y-2.5">
           {distribution.map((d) => (
             <div key={d.stars} className="flex items-center gap-3 text-xs">
-              <span className="w-12 text-soft-taupe font-semibold text-right">
+              <span className="w-12 text-[#A69B8C] font-medium text-right">
                 {d.stars} star
               </span>
-              <div className="flex-1 h-3 bg-ivory-dark rounded-btn overflow-hidden">
+              <div className="flex-1 h-3 bg-[#F7F4EE] border border-[#D8C9B5]/40 rounded-btn overflow-hidden">
                 <div
-                  className="h-full bg-antique-gold rounded-btn transition-all duration-500"
+                  className="h-full bg-[#48563A] rounded-btn transition-all duration-500"
                   style={{ width: `${d.pct}%` }}
                 />
               </div>
-              <span className="w-10 text-espresso font-bold text-right">
+              <span className="w-10 text-[#2C2926] font-medium text-right">
                 {d.pct}%
               </span>
             </div>
@@ -126,46 +126,46 @@ export default function RatingBreakdown({ rating, reviewCount }: RatingBreakdown
 
       {/* Individual Customer Reviews List with Helpfulness Voting */}
       <div className="mt-8 space-y-6">
-        <h4 className="font-serif font-semibold text-base text-espresso">
+        <h4 className="font-serif font-medium text-base text-[#2C2926]">
           Top Verified Reviews from India
         </h4>
 
-        <div className="space-y-4 divide-y divide-border-sand">
+        <div className="space-y-4 divide-y divide-[#D8C9B5]">
           {sampleReviews.map((rev) => (
             <div key={rev.id} className="pt-4 first:pt-0 space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="font-bold text-xs sm:text-sm text-espresso">{rev.author}</span>
-                  <span className="text-xs text-soft-taupe">({rev.city})</span>
-                  <span className="inline-flex items-center gap-0.5 text-[10px] text-antique-gold font-bold bg-warm-sand/30 px-2 py-0.5 rounded-btn">
+                  <span className="font-medium text-xs sm:text-sm text-[#2C2926]">{rev.author}</span>
+                  <span className="text-xs text-[#A69B8C]">({rev.city})</span>
+                  <span className="inline-flex items-center gap-0.5 text-[10px] text-[#48563A] font-medium bg-[#48563A]/12 px-2 py-0.5 rounded-btn">
                     <CheckCircle2 className="w-3 h-3" /> Verified Purchase
                   </span>
                 </div>
-                <span className="text-[11px] text-soft-taupe">{rev.date}</span>
+                <span className="text-[11px] text-[#A69B8C]">{rev.date}</span>
               </div>
 
-              <div className="flex text-amber-500">
+              <div className="flex text-[#D8C9B5]">
                 {[...Array(rev.rating)].map((_, i) => (
                   <Star key={i} className="w-3.5 h-3.5 fill-current" />
                 ))}
               </div>
 
-              <p className="font-serif font-semibold text-xs sm:text-sm text-espresso">
+              <p className="font-serif font-medium text-xs sm:text-sm text-[#2C2926]">
                 {rev.title}
               </p>
 
-              <p className="text-xs text-soft-taupe leading-relaxed">
+              <p className="text-xs text-[#A69B8C] leading-relaxed">
                 {rev.comment}
               </p>
 
-              <div className="pt-1 flex items-center gap-3 text-xs text-soft-taupe">
+              <div className="pt-1 flex items-center gap-3 text-xs text-[#A69B8C]">
                 <button
                   onClick={() => handleHelpful(rev.id)}
                   disabled={voted[rev.id]}
                   className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-btn border text-xs transition-colors ${
                     voted[rev.id]
-                      ? 'bg-warm-ivory text-antique-gold font-bold border-antique-gold'
-                      : 'border-border-sand hover:bg-warm-ivory text-espresso'
+                      ? 'bg-[#F7F4EE] text-[#48563A] font-medium border-[#48563A]'
+                      : 'border-[#D8C9B5] hover:bg-[#F7F4EE] text-[#2C2926]'
                   }`}
                 >
                   <ThumbsUp className="w-3 h-3" />

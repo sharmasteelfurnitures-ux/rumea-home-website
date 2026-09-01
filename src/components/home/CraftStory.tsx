@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -33,7 +33,7 @@ export default function CraftStory() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-warm-alabaster border-y border-border-sand overflow-hidden">
+    <section className="py-16 md:py-24 bg-[#F7F4EE] border-y border-[#D8C9B5] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -44,13 +44,13 @@ export default function CraftStory() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-2xl mx-auto mb-12 sm:mb-16"
         >
-          <span className="text-xs font-bold uppercase tracking-widest text-terracotta flex items-center justify-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5" /> HONEST WOODCRAFT
+          <span className="text-xs font-medium uppercase tracking-[0.10em] text-[#48563A] flex items-center justify-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5 text-[#48563A]" /> HONEST WOODCRAFT
           </span>
-          <h2 className="font-serif text-2xl sm:text-4xl text-charcoal mt-1 leading-tight">
+          <h2 className="font-serif text-2xl sm:text-4xl text-[#2C2926] font-medium mt-1 leading-tight">
             How True Solid Furniture Is Built
           </h2>
-          <p className="text-mid-gray text-sm sm:text-base mt-2">
+          <p className="text-[#A69B8C] text-sm sm:text-base mt-2">
             No MDF fillers. No synthetic veneers. Built above local carpenter shortcuts and priced below showroom markups.
           </p>
         </motion.div>
@@ -67,34 +67,34 @@ export default function CraftStory() {
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.6, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -5 }}
-                className="bg-white rounded-card p-6 sm:p-8 border border-border-sand flex flex-col justify-between hover:border-charcoal/30 shadow-card card-hover group"
+                className="bg-white rounded-card p-6 sm:p-8 border border-[#D8C9B5] flex flex-col justify-between hover:border-[#2C2926]/30 shadow-card card-hover group"
               >
                 <div>
                   <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileHover={{ scale: 1.05 }}
                     transition={{ type: 'spring', stiffness: 300 }}
-                    className="w-12 h-12 rounded-btn bg-charcoal text-white flex items-center justify-center mb-5 shadow-sm"
+                    className="w-12 h-12 rounded-btn bg-[#2C2926] text-[#F7F4EE] flex items-center justify-center mb-5 shadow-xs"
                   >
-                    <Icon className="w-6 h-6 text-warm-sand" />
+                    <Icon className="w-6 h-6 text-[#D8C9B5]" />
                   </motion.div>
 
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-antique-gold block">
+                  <span className="text-[11px] font-medium uppercase tracking-wider text-[#48563A] bg-[#D8C9B5]/30 px-2 py-0.5 rounded-[4px] inline-block mb-1">
                     {pillar.subtitle}
                   </span>
 
-                  <h3 className="font-serif font-bold text-lg sm:text-xl text-charcoal mt-1 mb-3">
+                  <h3 className="font-serif font-medium text-lg sm:text-xl text-[#2C2926] mt-1 mb-3">
                     {pillar.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-mid-gray leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm text-[#2C2926]/80 leading-relaxed mb-6">
                     {pillar.description}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-border-sand/70 space-y-2 text-xs font-medium text-charcoal">
+                <div className="pt-4 border-t border-[#D8C9B5]/70 space-y-2 text-xs font-medium text-[#2C2926]">
                   {pillar.highlights.map((h, i) => (
                     <div key={i} className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-[#48563A] flex-shrink-0" />
                       <span>{h}</span>
                     </div>
                   ))}

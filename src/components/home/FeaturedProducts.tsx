@@ -23,23 +23,23 @@ export default function FeaturedProducts() {
           className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-12 gap-4"
         >
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-terracotta flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5" /> 100% SOLID SHEESHAM
+            <span className="text-xs font-medium uppercase tracking-[0.10em] text-[#48563A] flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-[#48563A]" /> 100% SOLID SHEESHAM
             </span>
-            <h2 className="font-serif text-2xl sm:text-4xl text-charcoal mt-1">
+            <h2 className="font-serif text-2xl sm:text-4xl text-[#2C2926] font-medium mt-1">
               Our Most Requested Pieces
             </h2>
-            <p className="text-mid-gray text-sm sm:text-base mt-1.5 max-w-lg">
+            <p className="text-[#A69B8C] text-sm sm:text-base mt-1.5 max-w-lg">
               Solid Sheesham living, bedroom, and dining furniture designed for Indian apartment floor plans.
             </p>
           </div>
 
           <Link
             href="/products"
-            className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-charcoal hover:text-terracotta transition-colors self-start sm:self-auto group"
+            className="inline-flex items-center gap-1 text-xs sm:text-sm font-medium text-[#2C2926] hover:text-[#48563A] transition-colors self-start sm:self-auto group"
           >
             <span>Explore All 20+ Pieces</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#48563A] group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>
 
@@ -58,7 +58,7 @@ export default function FeaturedProducts() {
           ))}
         </div>
 
-        {/* Secondary Bottom CTA with Hover Pulse */}
+        {/* Secondary Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -66,13 +66,13 @@ export default function FeaturedProducts() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-12 text-center"
         >
-          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="inline-block">
+          <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.98 }} className="inline-block">
             <Link
               href="/products"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-warm-offwhite border border-border-sand hover:border-charcoal text-charcoal font-sans font-bold text-xs sm:text-sm rounded-btn shadow-subtle hover:bg-white transition-all duration-200 group"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#F7F4EE] border border-[#D8C9B5] hover:border-[#2C2926] text-[#2C2926] font-sans font-medium text-xs sm:text-sm rounded-btn hover:bg-white transition-all duration-200 group"
             >
               <span>Explore All 20+ Handcrafted Pieces</span>
-              <ArrowRight className="w-4 h-4 text-terracotta group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 text-[#48563A] group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
         </motion.div>

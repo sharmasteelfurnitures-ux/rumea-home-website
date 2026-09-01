@@ -132,11 +132,11 @@ export default function Hero() {
               
               {/* Badge & Promo Pill */}
               <div className="flex flex-wrap items-center gap-2.5">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-terracotta text-white text-[11px] font-bold uppercase tracking-wider rounded-btn shadow-md">
-                  <Tag className="w-3.5 h-3.5" /> {slide.discount}
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#2C2926] text-[#D8C9B5] text-[11px] font-medium uppercase tracking-wider rounded-btn border border-[#D8C9B5]/30">
+                  <Tag className="w-3.5 h-3.5 text-[#D8C9B5]" /> {slide.discount}
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/15 backdrop-blur-md text-white text-[11px] font-bold uppercase tracking-wider rounded-btn border border-white/20">
-                  <Sparkles className="w-3.5 h-3.5 text-amber-300" /> {slide.tag}
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#2C2926]/75 backdrop-blur-md text-[#F7F4EE] text-[11px] font-medium uppercase tracking-wider rounded-btn border border-white/10">
+                  <Sparkles className="w-3.5 h-3.5 text-[#A69B8C]" /> {slide.tag}
                 </span>
               </div>
 
@@ -155,7 +155,7 @@ export default function Hero() {
               </AnimatePresence>
 
               {/* Subtitle */}
-              <p className="font-sans text-sm sm:text-base lg:text-lg text-warm-offwhite/90 max-w-xl leading-relaxed drop-shadow-xs">
+              <p className="font-sans text-sm sm:text-base lg:text-lg text-[#F7F4EE]/90 max-w-xl leading-relaxed drop-shadow-xs">
                 {slide.subtitle}
               </p>
 
@@ -163,10 +163,10 @@ export default function Hero() {
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
                 <Link
                   href={slide.primaryHref}
-                  className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-terracotta hover:bg-[#b54a34] text-white font-sans font-bold text-sm sm:text-base rounded-btn shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 group"
+                  className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#2C2926] hover:bg-[#3D3632] text-[#F7F4EE] font-sans font-medium text-sm sm:text-base rounded-btn shadow-md hover:scale-[1.01] active:scale-[0.98] transition-all duration-200 group"
                 >
                   <span>{slide.primaryCta}</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-[#F7F4EE] group-hover:translate-x-1.5 transition-transform" />
                 </Link>
 
                 <a
@@ -174,29 +174,29 @@ export default function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackWhatsAppClick({ source: 'homepage' })}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 font-sans font-semibold text-sm rounded-btn transition-all duration-200 shadow-sm"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent hover:bg-[#F7F4EE]/15 text-[#F7F4EE] border-[1.5px] border-[#F7F4EE] font-sans font-medium text-sm rounded-btn transition-all duration-200"
                 >
-                  <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                  <MessageCircle className="w-4 h-4 text-[#F7F4EE]" />
                   <span>Chat on WhatsApp</span>
                 </a>
               </div>
 
               {/* 4 Guarantees Row */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-white/15 text-xs text-warm-offwhite/90 font-medium">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-white/15 text-xs text-[#F7F4EE]/90 font-medium">
                 <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
                   <span>5-Year Frame Warranty</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
                   <span>Free PAN India Delivery</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
                   <span>30-Day Doorstep Returns</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
                   <span>Zero MDF / Veneer</span>
                 </div>
               </div>
@@ -212,18 +212,18 @@ export default function Hero() {
                   animate={{ opacity: 1, x: 0, scale: 1 }}
                   exit={{ opacity: 0, x: -20, scale: 0.96 }}
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  className="w-full max-w-sm bg-white/95 backdrop-blur-md rounded-card p-5 border border-white/40 shadow-2xl space-y-3.5"
+                  className="w-full max-w-sm bg-white rounded-xl p-5 border border-[#D8C9B5] shadow-2xl space-y-3.5"
                 >
-                  <div className="flex items-center justify-between text-[11px] font-bold">
-                    <span className="text-terracotta uppercase tracking-wider flex items-center gap-1">
-                      <Sparkles className="w-3 h-3" /> Featured Piece
+                  <div className="flex items-center justify-between text-[11px] font-medium">
+                    <span className="text-[#48563A] uppercase tracking-wider flex items-center gap-1 font-semibold">
+                      <Sparkles className="w-3 h-3 text-[#48563A]" /> Featured Piece
                     </span>
-                    <span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded-btn text-[10px]">
+                    <span className="px-2 py-0.5 bg-[#48563A]/12 text-[#48563A] border border-[#48563A] rounded-btn text-[10px] font-medium">
                       In Stock
                     </span>
                   </div>
 
-                  <div className="relative aspect-[4/3] rounded-btn overflow-hidden bg-warm-alabaster border border-border-sand">
+                  <div className="relative aspect-[4/3] rounded-btn overflow-hidden bg-[#F7F4EE] border border-[#D8C9B5]">
                     <Image
                       src={slide.image}
                       alt={slide.productName}
@@ -234,22 +234,22 @@ export default function Hero() {
                   </div>
 
                   <div>
-                    <h3 className="font-serif font-bold text-sm text-[#3D2212] leading-snug">
+                    <h3 className="font-serif font-medium text-sm text-[#2C2926] leading-snug">
                       {slide.productName}
                     </h3>
                     <div className="flex items-baseline gap-2 mt-1.5">
-                      <span className="font-serif font-bold text-lg text-charcoal">{slide.productPrice}</span>
-                      <span className="text-xs text-mid-gray line-through">{slide.productMrp}</span>
-                      <span className="text-[11px] font-bold text-terracotta">Direct Workshop Price</span>
+                      <span className="font-serif font-semibold text-lg text-[#2C2926]">{slide.productPrice}</span>
+                      <span className="text-xs text-[#A69B8C] line-through">{slide.productMrp}</span>
+                      <span className="text-[11px] font-medium text-[#48563A]">Direct Workshop Price</span>
                     </div>
                   </div>
 
                   <Link
                     href={`/products/${slide.productSlug}`}
-                    className="w-full py-2.5 bg-[#3D2212] hover:bg-[#2A160A] text-white font-bold text-xs rounded-btn flex items-center justify-center gap-1.5 transition-colors shadow-sm"
+                    className="w-full py-2.5 bg-[#2C2926] hover:bg-[#3D3632] text-[#F7F4EE] font-medium text-xs rounded-btn flex items-center justify-center gap-1.5 transition-colors shadow-xs"
                   >
                     <span>View Product Details</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-amber-300" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#F7F4EE]" />
                   </Link>
                 </motion.div>
               </AnimatePresence>
@@ -258,10 +258,10 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Carousel Controls (Arrows & Indicators) */}
+        {/* Carousel Controls */}
         <button
           onClick={() => setCurrentSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1))}
-          className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 p-2.5 sm:p-3 rounded-full bg-[#3D2212]/60 hover:bg-[#3D2212]/90 text-white backdrop-blur-md transition-all duration-200 border border-white/20 shadow-md"
+          className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 p-2.5 sm:p-3 rounded-full bg-[#2C2926]/70 hover:bg-[#2C2926] text-white backdrop-blur-md transition-all duration-200 border border-white/20 shadow-md"
           aria-label="Previous Slide"
         >
           <ChevronLeft className="w-5 h-5" />
@@ -269,20 +269,20 @@ export default function Hero() {
 
         <button
           onClick={() => setCurrentSlide((prev) => (prev + 1) % heroSlides.length)}
-          className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 p-2.5 sm:p-3 rounded-full bg-[#3D2212]/60 hover:bg-[#3D2212]/90 text-white backdrop-blur-md transition-all duration-200 border border-white/20 shadow-md"
+          className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 p-2.5 sm:p-3 rounded-full bg-[#2C2926]/70 hover:bg-[#2C2926] text-white backdrop-blur-md transition-all duration-200 border border-white/20 shadow-md"
           aria-label="Next Slide"
         >
           <ChevronRight className="w-5 h-5" />
         </button>
 
         {/* Slide Indicator Dots */}
-        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2.5 bg-[#3D2212]/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20">
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2.5 bg-[#2C2926]/70 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20">
           {heroSlides.map((s, idx) => (
             <button
               key={s.id}
               onClick={() => setCurrentSlide(idx)}
               className={`h-2 rounded-full transition-all duration-300 ${
-                currentSlide === idx ? 'w-7 bg-terracotta' : 'w-2 bg-white/50 hover:bg-white'
+                currentSlide === idx ? 'w-7 bg-[#D8C9B5]' : 'w-2 bg-white/50 hover:bg-white'
               }`}
               aria-label={`Go to slide ${idx + 1}`}
             />
@@ -291,8 +291,8 @@ export default function Hero() {
 
       </section>
 
-      {/* 2. Quick Category Discovery Bar (Wooden Street / Pepperfry Style) */}
-      <div className="bg-white border-b border-border-sand py-4 shadow-subtle">
+      {/* 2. Quick Category Discovery Bar */}
+      <div className="bg-white border-b border-[#D8C9B5] py-4 shadow-subtle">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-3 overflow-x-auto no-scrollbar py-1">
             {quickCategories.map((cat) => {
@@ -301,9 +301,9 @@ export default function Hero() {
                 <Link
                   key={cat.name}
                   href={cat.href}
-                  className="flex items-center gap-2.5 px-4 py-2.5 bg-warm-offwhite hover:bg-warm-alabaster border border-border-sand rounded-card text-xs font-bold text-[#3D2212] whitespace-nowrap transition-all duration-200 hover:border-[#3D2212]/40 shadow-xs flex-shrink-0 group"
+                  className="flex items-center gap-2.5 px-4 py-2.5 bg-[#F7F4EE] hover:bg-white border border-[#D8C9B5] rounded-card text-xs font-medium text-[#2C2926] whitespace-nowrap transition-all duration-200 hover:border-[#2C2926] shadow-xs flex-shrink-0 group"
                 >
-                  <div className="w-7 h-7 rounded-btn bg-[#3D2212] text-white flex items-center justify-center group-hover:bg-terracotta transition-colors">
+                  <div className="w-7 h-7 rounded-btn bg-[#2C2926] text-[#F7F4EE] flex items-center justify-center group-hover:bg-[#48563A] transition-colors">
                     <Icon className="w-4 h-4" />
                   </div>
                   <span>{cat.name}</span>
@@ -315,25 +315,25 @@ export default function Hero() {
       </div>
 
       {/* 3. Reassurance Trust Strip */}
-      <div className="bg-[#3D2212] text-white py-3.5 px-4 border-b border-[#52321D]">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-around gap-4 text-xs sm:text-sm font-sans font-medium text-warm-offwhite">
+      <div className="bg-[#2C2926] text-[#F7F4EE] py-3.5 px-4 border-b border-[#2C2926]">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-around gap-4 text-xs sm:text-sm font-sans font-medium text-[#F7F4EE]">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-antique-gold flex-shrink-0" />
+            <ShieldCheck className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
             <span>5-Year Structural Frame Warranty</span>
           </div>
-          <span className="hidden sm:inline text-white/30">•</span>
+          <span className="hidden sm:inline text-[#A69B8C]">•</span>
           <div className="flex items-center gap-2">
-            <Truck className="w-4 h-4 text-antique-gold flex-shrink-0" />
+            <Truck className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
             <span>Free PAN India Delivery on All Orders</span>
           </div>
-          <span className="hidden sm:inline text-white/30">•</span>
+          <span className="hidden sm:inline text-[#A69B8C]">•</span>
           <div className="flex items-center gap-2">
-            <RotateCcw className="w-4 h-4 text-antique-gold flex-shrink-0" />
+            <RotateCcw className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
             <span>30-Day Doorstep Returns</span>
           </div>
-          <span className="hidden sm:inline text-white/30">•</span>
+          <span className="hidden sm:inline text-[#A69B8C]">•</span>
           <div className="flex items-center gap-2">
-            <Award className="w-4 h-4 text-antique-gold flex-shrink-0" />
+            <Award className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
             <span>Made in India Artisanship</span>
           </div>
         </div>

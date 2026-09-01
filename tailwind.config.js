@@ -1,4 +1,4 @@
-﻿/** @type {import('tailwindcss').Config} */
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -8,20 +8,25 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        charcoal: '#1B1F24',
-        espresso: '#1B1F24',
-        'warm-ivory': '#FAFAF8',
-        'warm-offwhite': '#FAFAF8',
-        'warm-alabaster': '#F3F0E9',
-        'ivory-dark': '#F3F0E9',
-        terracotta: '#C8553D',
-        'antique-gold': '#8B6914',
-        'gold-accent': '#8B6914',
-        'warm-sand': '#E5E0D5',
-        'mid-gray': '#6B7280',
-        'soft-taupe': '#6B7280',
-        'muted-olive': '#6B7045',
-        'border-sand': '#E5E0D5',
+        espresso: '#2C2926',
+        charcoal: '#2C2926',
+        'espresso-light': '#3D3632',
+        sand: '#D8C9B5',
+        'warm-sand': '#D8C9B5',
+        'border-sand': '#D8C9B5',
+        ivory: '#F7F4EE',
+        'warm-ivory': '#F7F4EE',
+        'warm-offwhite': '#F7F4EE',
+        'warm-alabaster': '#F7F4EE',
+        'ivory-dark': '#EDE8DF',
+        olive: '#48563A',
+        'muted-olive': '#48563A',
+        taupe: '#A69B8C',
+        'soft-taupe': '#A69B8C',
+        'mid-gray': '#A69B8C',
+        terracotta: '#48563A',
+        'antique-gold': '#48563A',
+        'gold-accent': '#D8C9B5',
       },
       fontFamily: {
         serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],

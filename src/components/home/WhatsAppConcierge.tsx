@@ -12,11 +12,8 @@ export default function WhatsAppConcierge() {
   );
 
   return (
-    <section className="relative bg-gradient-to-b from-[#F7F4EE] via-[#F2ECE1] to-[#EBE3D5] text-[#3D2212] py-16 md:py-20 border-t border-[#E5DCce] border-b border-[#D8CDBC] overflow-hidden">
+    <section className="relative bg-[#2C2926] text-[#F7F4EE] py-16 md:py-20 border-t border-[#2C2926] overflow-hidden">
       
-      {/* Subtle Warm Ambient Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-amber-200/30 rounded-full blur-[100px] pointer-events-none" />
-
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
         
         {/* Eyebrow */}
@@ -25,9 +22,9 @@ export default function WhatsAppConcierge() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white/90 text-[#3D2212] text-[11px] font-bold uppercase tracking-widest rounded-btn mb-4 shadow-xs border border-[#DFD5C6]"
+          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#F7F4EE]/10 text-[#D8C9B5] text-[11px] font-medium uppercase tracking-[0.10em] rounded-btn mb-4 border border-[#D8C9B5]/20"
         >
-          <Ruler className="w-3.5 h-3.5 text-terracotta" /> FREE WOODCRAFT &amp; ROOM SIZING CONSULTATION
+          <Ruler className="w-3.5 h-3.5 text-[#D8C9B5]" /> FREE WOODCRAFT &amp; ROOM SIZING CONSULTATION
         </motion.div>
 
         {/* Headline */}
@@ -36,7 +33,7 @@ export default function WhatsAppConcierge() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#3D2212] tracking-tight leading-tight"
+          className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#F7F4EE] tracking-tight leading-tight font-medium"
         >
           Not Sure What Fits Your Space?
         </motion.h2>
@@ -47,12 +44,12 @@ export default function WhatsAppConcierge() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[#644D3D] text-sm sm:text-base lg:text-lg mt-4 max-w-2xl mx-auto leading-relaxed"
+          className="text-[#D8C9B5] text-sm sm:text-base lg:text-lg mt-4 max-w-2xl mx-auto leading-relaxed"
         >
           Share your room dimensions, floor plan, or photos on WhatsApp. We provide honest sizing advice, custom finish previews, and direct delivery estimates.
         </motion.p>
 
-        {/* CTA Button with Interactive Hover & Tap */}
+        {/* CTA Button */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -61,18 +58,18 @@ export default function WhatsAppConcierge() {
           className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <motion.div
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 20 }}
           >
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackWhatsAppClick({ source: 'homepage' })}
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-sans font-bold text-sm sm:text-base rounded-btn shadow-lg hover:shadow-xl transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#F7F4EE] hover:bg-[#D8C9B5] text-[#2C2926] font-sans font-medium text-sm sm:text-base rounded-btn shadow-md transition-all duration-200"
             >
-              <MessageCircle className="w-5 h-5 fill-current" />
+              <MessageCircle className="w-5 h-5 text-[#2C2926]" />
               <span>Chat on WhatsApp</span>
             </a>
           </motion.div>
@@ -84,20 +81,20 @@ export default function WhatsAppConcierge() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-8 pt-6 border-t border-[#DFD5C6] flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-[#644D3D] font-semibold"
+          className="mt-8 pt-6 border-t border-[#D8C9B5]/20 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-[#D8C9B5] font-medium"
         >
           <div className="flex items-center gap-1.5">
-            <Clock className="w-4 h-4 text-terracotta" />
+            <Clock className="w-4 h-4 text-[#D8C9B5]" />
             <span>Average reply in &lt; 15 mins</span>
           </div>
-          <span className="hidden sm:inline text-[#C0B29E]">•</span>
+          <span className="hidden sm:inline text-[#A69B8C]">•</span>
           <div className="flex items-center gap-1.5">
-            <ShieldCheck className="w-4 h-4 text-terracotta" />
+            <ShieldCheck className="w-4 h-4 text-[#D8C9B5]" />
             <span>Zero Pressure, Honest Advice</span>
           </div>
-          <span className="hidden sm:inline text-[#C0B29E]">•</span>
+          <span className="hidden sm:inline text-[#A69B8C]">•</span>
           <span>Store Timing: 10AM–9PM (Mon–Sun)</span>
-          <span className="hidden sm:inline text-[#C0B29E]">•</span>
+          <span className="hidden sm:inline text-[#A69B8C]">•</span>
           <span>Free PAN India Delivery</span>
         </motion.div>
 

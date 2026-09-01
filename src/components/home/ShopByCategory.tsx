@@ -76,7 +76,7 @@ function InteractiveCategoryCard({ cat, idx }: { cat: CategoryItem; idx: number 
               scale: isHovered ? 1.02 : 1,
             }}
             transition={{ type: 'spring', stiffness: 350, damping: 22 }}
-            className="relative w-full h-full rounded-2xl overflow-hidden bg-[#F2ECE1] border border-[#E5DCCE] shadow-xs group-hover:border-[#3D2212]/35 group-hover:shadow-xl transition-all duration-300"
+            className="relative w-full h-full rounded-2xl overflow-hidden bg-[#F7F4EE] border border-[#D8C9B5] shadow-xs group-hover:border-[#2C2926]/40 group-hover:shadow-xl transition-all duration-300"
           >
             {/* Product Image with smooth spring scaling */}
             <motion.div
@@ -98,7 +98,7 @@ function InteractiveCategoryCard({ cat, idx }: { cat: CategoryItem; idx: number 
               <motion.div
                 className="absolute inset-0 pointer-events-none z-10 opacity-75 transition-opacity duration-300"
                 style={{
-                  background: `radial-gradient(circle at ${spotlightX.get()}% ${spotlightY.get()}%, rgba(255, 255, 255, 0.45) 0%, rgba(200, 169, 122, 0.2) 40%, transparent 70%)`,
+                  background: `radial-gradient(circle at ${spotlightX.get()}% ${spotlightY.get()}%, rgba(255, 255, 255, 0.45) 0%, rgba(216, 201, 181, 0.25) 40%, transparent 70%)`,
                 }}
               />
             )}
@@ -107,8 +107,8 @@ function InteractiveCategoryCard({ cat, idx }: { cat: CategoryItem; idx: number 
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
 
             {/* Floating Corner Indicator on Hover */}
-            <div className="absolute bottom-2.5 right-2.5 w-6 h-6 rounded-full bg-white/90 backdrop-blur-xs text-[#1F1A16] flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 transition-all duration-200 shadow-xs z-20">
-              <ArrowRight className="w-3.5 h-3.5" />
+            <div className="absolute bottom-2.5 right-2.5 w-6 h-6 rounded-full bg-white/90 backdrop-blur-xs text-[#2C2926] flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 transition-all duration-200 shadow-xs z-20">
+              <ArrowRight className="w-3.5 h-3.5 text-[#48563A]" />
             </div>
           </motion.div>
         </div>
@@ -117,14 +117,14 @@ function InteractiveCategoryCard({ cat, idx }: { cat: CategoryItem; idx: number 
         <div className="pt-2.5 pb-1 flex flex-col items-center">
           <motion.h3 
             animate={{ y: isHovered ? -1 : 0 }}
-            className="font-serif sm:font-sans font-bold text-xs sm:text-sm text-[#1F1A16] group-hover:text-[#C8553D] transition-colors leading-tight"
+            className="font-serif sm:font-sans font-medium text-xs sm:text-sm text-[#2C2926] group-hover:text-[#48563A] transition-colors leading-tight"
           >
             {cat.name}
           </motion.h3>
           <motion.span
             animate={{ width: isHovered ? 28 : 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="h-0.5 bg-[#C8553D] rounded-full mt-1"
+            className="h-0.5 bg-[#48563A] rounded-full mt-1"
           />
         </div>
       </Link>
@@ -209,21 +209,21 @@ export default function ShopByCategory() {
   ];
 
   return (
-    <section className="py-12 sm:py-16 bg-[#FAF7F2] border-t border-[#E5DCCE] overflow-hidden">
+    <section className="py-12 sm:py-16 bg-[#F7F4EE] border-t border-[#D8C9B5] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Clean, Minimal Section Header */}
         <div className="flex items-center justify-between mb-8 sm:mb-10">
-          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#1F1A16] font-bold tracking-tight">
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#2C2926] font-medium tracking-tight">
             Shop by category
           </h2>
 
           <Link
             href="/products"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#1F1A16] hover:text-[#C8553D] transition-colors group"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-[#2C2926] hover:text-[#48563A] transition-colors group"
           >
             <span>View All</span>
-            <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-3.5 h-3.5 text-[#48563A] transform group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 

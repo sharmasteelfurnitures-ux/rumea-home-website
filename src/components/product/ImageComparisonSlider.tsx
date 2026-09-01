@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import Image from 'next/image';
@@ -121,7 +121,7 @@ export default function ImageComparisonSlider() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
         <div>
           <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-warm-alabaster text-charcoal border border-border-sand text-[11px] font-bold uppercase tracking-widest rounded-btn mb-2">
-            <Sparkles className="w-3.5 h-3.5 text-terracotta" /> INTERACTIVE BEFORE &amp; AFTER VIEWER
+            <Sparkles className="w-3.5 h-3.5 text-[#48563A]" /> INTERACTIVE BEFORE &amp; AFTER VIEWER
           </span>
           <h2 className="font-serif text-2xl sm:text-3xl text-charcoal">
             Compare Sofa Finishes &amp; Craft Details
@@ -148,7 +148,7 @@ export default function ImageComparisonSlider() {
                     : 'text-mid-gray hover:text-charcoal'
                 }`}
               >
-                <Icon className="w-3.5 h-3.5 text-terracotta" />
+                <Icon className="w-3.5 h-3.5 text-[#48563A]" />
                 <span>{mode.title.split(' ')[0]}</span>
               </button>
             );
@@ -227,7 +227,7 @@ export default function ImageComparisonSlider() {
           </button>
 
           <div className="flex items-center gap-1.5 px-3 py-1 bg-white rounded-full border border-border-sand text-[11px] font-mono shadow-xs text-charcoal">
-            <Sliders className="w-3 h-3 text-terracotta" />
+            <Sliders className="w-3 h-3 text-[#48563A]" />
             <span>{sliderPosition}% {sliderPosition < 50 ? activeMode.leftLabel : sliderPosition > 50 ? activeMode.rightLabel : 'Balanced Split'}</span>
           </div>
 
@@ -260,7 +260,7 @@ export default function ImageComparisonSlider() {
           >
             {/* Active Left Fill Track */}
             <div
-              className="absolute top-0 bottom-0 left-0 bg-terracotta rounded-full transition-all duration-75"
+              className="absolute top-0 bottom-0 left-0 bg-[#48563A] rounded-full transition-all duration-75"
               style={{ width: `${sliderPosition}%` }}
             />
 
@@ -287,7 +287,7 @@ export default function ImageComparisonSlider() {
               transform: 'translateX(-50%)',
             }}
           >
-            <div className="w-6 h-6 rounded-full bg-white border-3 border-terracotta shadow-md flex items-center justify-center scale-100 hover:scale-125 transition-transform">
+            <div className="w-6 h-6 rounded-full bg-white border-3 border-[#48563A] shadow-md flex items-center justify-center scale-100 hover:scale-125 transition-transform">
               <div className="w-2 h-2 rounded-full bg-charcoal" />
             </div>
           </div>
@@ -350,7 +350,7 @@ export default function ImageComparisonSlider() {
 
           <button
             onClick={() => setSliderPosition(50)}
-            className="flex items-center gap-1 text-[11px] font-bold text-terracotta hover:text-terracotta/80 transition-colors"
+            className="flex items-center gap-1 text-[11px] font-bold text-[#48563A] hover:text-[#48563A]/80 transition-colors"
           >
             <RotateCcw className="w-3 h-3" />
             <span>Reset to Center</span>

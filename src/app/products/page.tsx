@@ -284,10 +284,10 @@ function ProductsPageContent() {
                   Chat with our furniture specialist on WhatsApp for room planning.
                 </p>
                 <a
-                  href="https://wa.me/919876543210?text=Hi%20Rumea%20Home!%20I'd%20like%20help%20choosing%20furniture."
+                  href="https://wa.me/917291962356?text=Hi%20Rumea%20Home!%20I'd%20like%20help%20choosing%20furniture."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-[11px] font-bold text-terracotta hover:underline"
+                  className="inline-flex items-center gap-1 text-[11px] font-medium text-[#48563A] hover:underline"
                 >
                   <span>Chat on WhatsApp &rarr;</span>
                 </a>

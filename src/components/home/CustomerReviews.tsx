@@ -10,7 +10,7 @@ export default function CustomerReviews() {
   const reviews = getTestimonials();
 
   return (
-    <section className="py-16 md:py-24 bg-white border-t border-border-sand overflow-hidden">
+    <section className="py-16 md:py-24 bg-[#F7F4EE] border-t border-[#D8C9B5] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -21,18 +21,18 @@ export default function CustomerReviews() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-2xl mx-auto mb-12 sm:mb-16"
         >
-          <span className="text-xs font-bold uppercase tracking-widest text-terracotta flex items-center justify-center gap-1.5">
-            <MessageSquare className="w-3.5 h-3.5" /> VERIFIED EXPERIENCES
+          <span className="text-xs font-medium uppercase tracking-[0.10em] text-[#48563A] flex items-center justify-center gap-1.5">
+            <MessageSquare className="w-3.5 h-3.5 text-[#48563A]" /> VERIFIED EXPERIENCES
           </span>
-          <h2 className="font-serif text-2xl sm:text-4xl text-charcoal mt-1">
+          <h2 className="font-serif text-2xl sm:text-4xl text-[#2C2926] font-medium mt-1">
             Real Words From Real Homes
           </h2>
-          <p className="text-mid-gray text-sm sm:text-base mt-2">
+          <p className="text-[#A69B8C] text-sm sm:text-base mt-2">
             What homeowners have to say about the wood quality, joint stability, and delivery experience.
           </p>
         </motion.div>
 
-        {/* 3-Column Reviews Grid (Desktop) / Swipeable Rail (Mobile) */}
+        {/* 3-Column Reviews Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {reviews.map((review, idx) => (
             <motion.div
@@ -42,43 +42,43 @@ export default function CustomerReviews() {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -5 }}
-              className="bg-warm-offwhite rounded-card p-6 sm:p-7 border border-border-sand shadow-card flex flex-col justify-between card-hover"
+              className="bg-white rounded-card p-6 sm:p-7 border border-[#D8C9B5] shadow-card flex flex-col justify-between card-hover"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="flex text-amber-500">
+                  <div className="flex text-[#D8C9B5]">
                     {[...Array(review.rating)].map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-current" />
                     ))}
                   </div>
-                  <Quote className="w-5 h-5 text-warm-sand" />
+                  <Quote className="w-5 h-5 text-[#D8C9B5]" />
                 </div>
 
-                <p className="font-serif italic text-sm sm:text-base text-charcoal leading-relaxed mb-6">
+                <p className="font-serif italic text-sm sm:text-base text-[#2C2926] leading-relaxed mb-6">
                   &ldquo;{review.reviewText}&rdquo;
                 </p>
               </div>
 
               <div>
-                <div className="pt-4 border-t border-border-sand/60">
-                  <p className="font-sans font-bold text-sm text-charcoal">
+                <div className="pt-4 border-t border-[#D8C9B5]/60">
+                  <p className="font-sans font-medium text-sm text-[#2C2926]">
                     {review.name}
                   </p>
-                  <p className="text-xs text-mid-gray flex items-center gap-1.5 mt-0.5 font-medium">
+                  <p className="text-xs text-[#A69B8C] flex items-center gap-1.5 mt-0.5 font-normal">
                     <span>{review.city}</span>
                     <span>•</span>
-                    <span className="text-emerald-700 flex items-center gap-0.5 font-bold">
+                    <span className="text-[#48563A] flex items-center gap-0.5 font-medium">
                       <CheckCircle2 className="w-3.5 h-3.5" /> Verified Buyer
                     </span>
                   </p>
                 </div>
 
                 {review.productName && (
-                  <div className="mt-4 pt-3 border-t border-border-sand/40 flex items-center justify-between text-xs">
-                    <span className="text-mid-gray font-medium">Verified for:</span>
+                  <div className="mt-4 pt-3 border-t border-[#D8C9B5]/40 flex items-center justify-between text-xs">
+                    <span className="text-[#A69B8C] font-normal">Verified for:</span>
                     <Link
                       href={`/products/${review.productSlug}`}
-                      className="font-bold text-terracotta hover:text-charcoal transition-colors truncate max-w-[170px]"
+                      className="font-medium text-[#48563A] hover:text-[#2C2926] transition-colors truncate max-w-[170px]"
                     >
                       {review.productName} &rarr;
                     </Link>

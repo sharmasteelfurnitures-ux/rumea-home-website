@@ -393,7 +393,7 @@
       }
     },
     "seo": {
-      "badge": "Top Rated",
+      "badge": "Popular",
       "rating": 4.9,
       "reviewCount": 63,
       "isFeatured": true,
@@ -495,11 +495,11 @@
       }
     },
     "seo": {
-      "badge": "Premium Choice",
+      "badge": "New Arrival",
       "rating": 4.8,
       "reviewCount": 78,
       "isFeatured": false,
-      "isNewArrival": false
+      "isNewArrival": true
     }
   },
   {
@@ -524,20 +524,20 @@
       }
     },
     "images": {
-      "primary": "https://images.unsplash.com/photo-1540518614846-7ede433c4ef2?auto=format&fit=crop&w=1000&q=80",
+      "primary": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80",
       "gallery": [
-        "https://images.unsplash.com/photo-1540518614846-7ede433c4ef2?auto=format&fit=crop&w=1000&q=80",
-        "https://images.unsplash.com/photo-1540518614846-7ede433c4ef2?auto=format&fit=crop&w=1000&q=80",
-        "https://images.unsplash.com/photo-1540518614846-7ede433c4ef2?auto=format&fit=crop&w=1000&q=80",
-        "https://images.unsplash.com/photo-1540518614846-7ede433c4ef2?auto=format&fit=crop&w=1000&q=80"
+        "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80",
+        "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80",
+        "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80",
+        "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80"
       ],
       "lifestyle": [
-        "https://images.unsplash.com/photo-1540518614846-7ede433c4ef2?auto=format&fit=crop&w=1000&q=80"
+        "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80"
       ],
       "detail": [
-        "https://images.unsplash.com/photo-1540518614846-7ede433c4ef2?auto=format&fit=crop&w=1000&q=80"
+        "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80"
       ],
-      "dimensions": "https://images.unsplash.com/photo-1540518614846-7ede433c4ef2?auto=format&fit=crop&w=1000&q=80"
+      "dimensions": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80"
     },
     "dimensions": {
       "width": {
@@ -1274,7 +1274,7 @@
       }
     },
     "seo": {
-      "badge": "WFH Favorite",
+      "badge": "Popular",
       "rating": 4.9,
       "reviewCount": 129,
       "isFeatured": true,
@@ -1857,11 +1857,11 @@
       }
     },
     "seo": {
-      "badge": "Balcony Hit",
+      "badge": "New Arrival",
       "rating": 4.9,
       "reviewCount": 118,
       "isFeatured": true,
-      "isNewArrival": false
+      "isNewArrival": true
     }
   },
   {

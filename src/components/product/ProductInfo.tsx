@@ -23,9 +23,6 @@ interface ProductInfoProps {
 }
 
 export default function ProductInfo({ product }: ProductInfoProps) {
-  const [selectedFinish, setSelectedFinish] = useState<string>(
-    product.materials.selectedFinish || product.materials.finish[0] || 'Natural Teak'
-  );
   const [pincode, setPincode] = useState<string>('');
   const [deliveryResult, setDeliveryResult] = useState<string | null>(null);
   const [isCheckingPincode, setIsCheckingPincode] = useState(false);
@@ -34,18 +31,9 @@ export default function ProductInfo({ product }: ProductInfoProps) {
   const savings = product.pricing.mrp - product.pricing.offer;
   const emiPerMonth = Math.round(product.pricing.offer / 6);
 
-  const finishColorMap: Record<string, string> = {
-    'Natural Teak': '#C19A6B',
-    'Walnut': '#5C4033',
-    'Honey Oak': '#D2A054',
-    'Warm Teak': '#B87333',
-    'Mahogany': '#4C1F1F',
-    'Natural Ash': '#E0D2C1',
-  };
-
   const amazonUrl = buildAmazonUrl(product.conversion.amazonAsin, product.name);
   const productWhatsAppUrl = buildProductWhatsAppUrl({
-    name: `${product.name} (${selectedFinish} Finish)`,
+    name: product.name,
     price: product.pricing.offer,
     slug: product.slug,
   });
@@ -159,40 +147,6 @@ export default function ProductInfo({ product }: ProductInfoProps) {
             </p>
           </div>
         )}
-      </div>
-
-      {/* Timber Finish Swatches */}
-      <div className="space-y-2">
-        <div className="flex items-center justify-between text-xs">
-          <span className="font-normal text-[#A69B8C]">
-            Timber Finish: <strong className="text-[#2C2926] font-medium">{selectedFinish}</strong>
-          </span>
-          <span className="text-[#A69B8C] text-[11px]">100% Kiln-Dried Sheesham</span>
-        </div>
-
-        <div className="flex flex-wrap gap-2.5">
-          {product.materials.finish.map((f) => {
-            const isSel = selectedFinish === f;
-            const hex = finishColorMap[f] || '#C19A6B';
-            return (
-              <button
-                key={f}
-                onClick={() => setSelectedFinish(f)}
-                className={`flex items-center gap-2 px-3.5 py-2 rounded-btn text-xs border transition-all ${
-                  isSel
-                    ? 'border-[#2C2926] bg-white font-medium text-[#2C2926] shadow-xs ring-1 ring-[#2C2926]'
-                    : 'border-[#D8C9B5] bg-[#F7F4EE]/60 text-[#A69B8C] hover:border-[#2C2926]/40 hover:text-[#2C2926]'
-                }`}
-              >
-                <span
-                  className="w-3.5 h-3.5 rounded-full border border-black/20"
-                  style={{ backgroundColor: hex }}
-                />
-                <span>{f}</span>
-              </button>
-            );
-          })}
-        </div>
       </div>
 
       {/* Pincode Delivery Estimator */}

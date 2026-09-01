@@ -15,27 +15,14 @@ interface QuickViewModalProps {
 }
 
 export default function QuickViewModal({ product, onClose }: QuickViewModalProps) {
-  const [selectedFinish, setSelectedFinish] = useState<string>(
-    product?.materials.selectedFinish || product?.materials.finish[0] || 'Natural Teak'
-  );
-
   if (!product) return null;
 
   const amazonUrl = buildAmazonUrl(product.conversion.amazonAsin, product.name);
   const whatsappUrl = buildProductWhatsAppUrl({
-    name: `${product.name} (${selectedFinish})`,
+    name: product.name,
     price: product.pricing.offer,
     slug: product.slug,
   });
-
-  const finishColorMap: Record<string, string> = {
-    'Natural Teak': '#C19A6B',
-    'Walnut': '#5C4033',
-    'Honey Oak': '#D2A054',
-    'Warm Teak': '#B87333',
-    'Mahogany': '#4C1F1F',
-    'Natural Ash': '#E0D2C1',
-  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-espresso/70 backdrop-blur-xs animate-in fade-in duration-200">
@@ -107,36 +94,6 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
               <p className="text-xs text-soft-taupe mt-2 leading-relaxed line-clamp-2">
                 {product.tagline || 'Crafted with master mortise & tenon joinery and durable kiln-dried hardwood.'}
               </p>
-
-              {/* Timber Finish Pills */}
-              <div className="mt-4 pt-3 border-t border-border-sand">
-                <span className="text-[11px] font-semibold text-espresso block mb-1.5">
-                  Select Finish: <strong>{selectedFinish}</strong>
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {product.materials.finish.map((f) => {
-                    const isSel = selectedFinish === f;
-                    const hex = finishColorMap[f] || '#C19A6B';
-                    return (
-                      <button
-                        key={f}
-                        onClick={() => setSelectedFinish(f)}
-                        className={`flex items-center gap-1.5 px-2.5 py-1 rounded-btn text-xs border transition-all ${
-                          isSel
-                            ? 'border-espresso bg-white font-semibold text-espresso shadow-xs'
-                            : 'border-border-sand text-soft-taupe hover:border-espresso/50'
-                        }`}
-                      >
-                        <span
-                          className="w-3 h-3 rounded-full border border-black/20"
-                          style={{ backgroundColor: hex }}
-                        />
-                        <span>{f}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
             </div>
 
             {/* CTAs */}

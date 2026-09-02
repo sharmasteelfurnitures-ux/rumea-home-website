@@ -5,9 +5,6 @@ import CustomFurnitureBanner from '@/components/home/CustomFurnitureBanner';
 import NewArrivalsAndBestSellers from '@/components/home/NewArrivalsAndBestSellers';
 import ShopTheLook from '@/components/home/ShopTheLook';
 import Product360Viewer from '@/components/product/Product360Viewer';
-import SolidWoodVsMdf from '@/components/home/SolidWoodVsMdf';
-import CraftStory from '@/components/home/CraftStory';
-import CustomerHomesGallery from '@/components/home/CustomerHomesGallery';
 import WhatsAppConcierge from '@/components/home/WhatsAppConcierge';
 import WhatsAppFloatingButton from '@/components/layout/WhatsAppFloatingButton';
 
@@ -32,19 +29,10 @@ export default function HomePage() {
       {/* 4.5 Interactive 360° Studio Spin & Inspect Viewer */}
       <Product360Viewer />
 
-      {/* 5. Solid Sheesham vs Cheap MDF Matrix (Urbanwood / Wooden Street Education) */}
-      <SolidWoodVsMdf />
-
-      {/* 6. Craft Story (Kiln-Dried Hardwood, Mortise & Tenon, Non-Toxic Finish) */}
-      <CraftStory />
-
-      {/* 7. Real Homes Across India (4-City Metro Lookbook) */}
-      <CustomerHomesGallery />
-
-      {/* 8. WhatsApp Concierge Room Sizing Consultation */}
+      {/* 5. WhatsApp Concierge Room Sizing Consultation */}
       <WhatsAppConcierge />
 
-      {/* 9. Floating Bottom-Right WhatsApp Trigger */}
+      {/* 6. Floating Bottom-Right WhatsApp Trigger */}
       <WhatsAppFloatingButton />
     </>
   );

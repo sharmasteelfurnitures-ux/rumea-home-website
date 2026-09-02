@@ -1,4 +1,4 @@
-﻿declare global {
+declare global {
   interface Window {
     gtag?: (
       command: string,
@@ -36,7 +36,7 @@ export function trackAmazonClick(product: {
 }
 
 export function trackWhatsAppClick(data: {
-  source: 'pdp' | 'floating' | 'homepage' | 'contact' | 'nav' | 'footer';
+  source: 'pdp' | 'floating' | 'homepage' | 'contact' | 'nav' | 'footer' | 'customization';
   product_id?: string;
   product_name?: string;
 }) {

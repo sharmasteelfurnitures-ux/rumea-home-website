@@ -240,6 +240,24 @@ export default function Header() {
               })}
 
               <Link
+                href="/customization"
+                className={`text-sm font-sans font-medium py-2 px-3 rounded-btn transition-colors whitespace-nowrap ${
+                  pathname === '/customization' ? 'text-[#48563A] border-b border-[#48563A]' : 'text-[#2C2926] hover:text-[#48563A]'
+                }`}
+              >
+                Customization
+              </Link>
+
+              <Link
+                href="/blog"
+                className={`text-sm font-sans font-medium py-2 px-3 rounded-btn transition-colors whitespace-nowrap ${
+                  pathname.startsWith('/blog') ? 'text-[#48563A] border-b border-[#48563A]' : 'text-[#2C2926] hover:text-[#48563A]'
+                }`}
+              >
+                Blog
+              </Link>
+
+              <Link
                 href="/about"
                 className={`text-sm font-sans font-medium py-2 px-3 rounded-btn transition-colors whitespace-nowrap ${
                   pathname === '/about' ? 'text-[#48563A] border-b border-[#48563A]' : 'text-[#2C2926] hover:text-[#48563A]'
@@ -336,6 +354,18 @@ export default function Header() {
                   </div>
                 ))}
                 <Link
+                  href="/customization"
+                  className="block text-sm font-medium text-[#2C2926] hover:text-[#48563A] py-2"
+                >
+                  Customization
+                </Link>
+                <Link
+                  href="/blog"
+                  className="block text-sm font-medium text-[#2C2926] hover:text-[#48563A] py-2"
+                >
+                  Blog &amp; Design Journal
+                </Link>
+                <Link
                   href="/about"
                   className="block text-sm font-medium text-[#2C2926] hover:text-[#48563A] py-2"
                 >
@@ -345,7 +375,7 @@ export default function Header() {
                   href="/contact"
                   className="block text-sm font-medium text-[#2C2926] hover:text-[#48563A] py-2"
                 >
-                  Contact &amp; Showroom
+                  Contact &amp; Experience Store
                 </Link>
               </div>
             </div>

@@ -7,7 +7,7 @@ import ProductCard from '@/components/product/ProductCard';
 import { products } from '@/lib/products';
 import { ArrowRight, Sparkles, Flame, Grid, Compass } from 'lucide-react';
 
-type TabType = 'bestsellers' | 'new-arrivals' | 'all';
+type TabType = 'bestsellers' | 'new-arrivals' | 'popular' | 'all';
 type RoomFilter = 'all' | 'living-room' | 'bedroom' | 'dining-room' | 'study';
 
 export default function NewArrivalsAndBestSellers() {
@@ -18,20 +18,13 @@ export default function NewArrivalsAndBestSellers() {
   const filteredProducts = useMemo(() => {
     let list = [...products];
 
-    // Tab Filter
+    // Strict Tab Filter: Each tab ONLY shows products with the exact corresponding badge
     if (activeTab === 'bestsellers') {
-      list = list.filter(
-        (p) =>
-          p.seo.badge?.toLowerCase().includes('best') ||
-          p.seo.badge?.toLowerCase().includes('popular') ||
-          p.seo.badge?.toLowerCase().includes('top') ||
-          p.seo.isFeatured
-      );
+      list = list.filter((p) => p.seo.badge === 'Best Seller');
     } else if (activeTab === 'new-arrivals') {
-      list = list.filter((p) => p.seo.isNewArrival || p.seo.badge?.toLowerCase().includes('new'));
-      if (list.length < 4) {
-        list = [...products].reverse().slice(0, 8);
-      }
+      list = list.filter((p) => p.seo.badge === 'New Arrival');
+    } else if (activeTab === 'popular') {
+      list = list.filter((p) => p.seo.badge === 'Popular');
     }
 
     // Room Filter
@@ -45,7 +38,8 @@ export default function NewArrivalsAndBestSellers() {
   const tabs: { id: TabType; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
     { id: 'bestsellers', label: 'Best Sellers', icon: Flame },
     { id: 'new-arrivals', label: 'New Arrivals', icon: Sparkles },
-    { id: 'all', label: 'All Curated', icon: Grid },
+    { id: 'popular', label: 'Popular', icon: Compass },
+    { id: 'all', label: 'All Pieces', icon: Grid },
   ];
 
   const roomFilters: { id: RoomFilter; label: string }[] = [

@@ -197,7 +197,7 @@
       "badge": "Popular",
       "rating": 4.7,
       "reviewCount": 89,
-      "isFeatured": true,
+      "isFeatured": false,
       "isNewArrival": false
     }
   },
@@ -293,7 +293,7 @@
       "badge": "New Arrival",
       "rating": 4.9,
       "reviewCount": 47,
-      "isFeatured": true,
+      "isFeatured": false,
       "isNewArrival": true
     }
   },
@@ -396,7 +396,7 @@
       "badge": "Popular",
       "rating": 4.9,
       "reviewCount": 63,
-      "isFeatured": true,
+      "isFeatured": false,
       "isNewArrival": false
     }
   },
@@ -787,7 +787,8 @@
       "rating": 4.7,
       "reviewCount": 54,
       "isFeatured": false,
-      "isNewArrival": false
+      "isNewArrival": true,
+      "badge": "New Arrival"
     }
   },
   {
@@ -882,8 +883,9 @@
     "seo": {
       "rating": 4.8,
       "reviewCount": 41,
-      "isFeatured": false,
-      "isNewArrival": false
+      "isFeatured": true,
+      "isNewArrival": false,
+      "badge": "Best Seller"
     }
   },
   {
@@ -1181,7 +1183,8 @@
       "rating": 4.8,
       "reviewCount": 67,
       "isFeatured": false,
-      "isNewArrival": false
+      "isNewArrival": false,
+      "badge": "Popular"
     }
   },
   {
@@ -1274,7 +1277,7 @@
       }
     },
     "seo": {
-      "badge": "Popular",
+      "badge": "Best Seller",
       "rating": 4.9,
       "reviewCount": 129,
       "isFeatured": true,
@@ -1374,7 +1377,8 @@
       "rating": 4.8,
       "reviewCount": 73,
       "isFeatured": false,
-      "isNewArrival": false
+      "isNewArrival": true,
+      "badge": "New Arrival"
     }
   },
   {
@@ -1571,7 +1575,7 @@
       "badge": "Popular",
       "rating": 4.8,
       "reviewCount": 95,
-      "isFeatured": true,
+      "isFeatured": false,
       "isNewArrival": false
     }
   },
@@ -1669,8 +1673,9 @@
     "seo": {
       "rating": 4.9,
       "reviewCount": 58,
-      "isFeatured": false,
-      "isNewArrival": false
+      "isFeatured": true,
+      "isNewArrival": false,
+      "badge": "Best Seller"
     }
   },
   {
@@ -1860,7 +1865,7 @@
       "badge": "New Arrival",
       "rating": 4.9,
       "reviewCount": 118,
-      "isFeatured": true,
+      "isFeatured": false,
       "isNewArrival": true
     }
   },
@@ -1956,7 +1961,8 @@
       "rating": 4.7,
       "reviewCount": 35,
       "isFeatured": false,
-      "isNewArrival": true
+      "isNewArrival": false,
+      "badge": "Popular"
     }
   }
 ]

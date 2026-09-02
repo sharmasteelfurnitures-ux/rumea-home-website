@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Script from 'next/script';
 import { Move3d, Play, Pause, Sparkles, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
@@ -86,11 +86,16 @@ export default function Product360Viewer() {
   const [selectedModelIdx, setSelectedModelIdx] = useState(0);
   const [isAutoRotating, setIsAutoRotating] = useState(true);
 
+  // Client-side dynamic import of @google/model-viewer to guarantee immediate registration in production
+  useEffect(() => {
+    import('@google/model-viewer').catch(console.error);
+  }, []);
+
   const currentModel = models[selectedModelIdx];
 
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-white border-t border-[#D8C9B5]">
-      {/* Load Google Model-Viewer Web Component */}
+      {/* Load Google Model-Viewer Web Component as fallback */}
       <Script
         src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"
         type="module"
@@ -161,6 +166,8 @@ export default function Product360Viewer() {
               shadow-intensity="1.2"
               shadow-softness="0.9"
               exposure="1.05"
+              loading="eager"
+              reveal="auto"
               interaction-prompt="auto"
               ar
               ar-modes="webxr scene-viewer quick-look"

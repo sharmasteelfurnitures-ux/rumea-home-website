@@ -96,7 +96,7 @@ export default function Header() {
       },
     },
     {
-      name: 'Study & Work',
+      name: 'Study',
       href: '/rooms/study',
       subcategories: [
         { name: 'Ergonomic Wooden Desks', href: '/products?room=study' },
@@ -159,8 +159,8 @@ export default function Header() {
           isScrolled ? 'shadow-xs py-2.5' : 'py-3.5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between min-h-[48px] md:min-h-[56px] gap-3 xl:gap-6">
+        <div className="w-full max-w-[1480px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between min-h-[48px] md:min-h-[56px] gap-2 lg:gap-4">
             
             {/* Mobile Hamburger */}
             <div className="flex items-center lg:hidden">
@@ -174,12 +174,12 @@ export default function Header() {
             </div>
 
             {/* Brand Logo */}
-            <div className="flex-shrink-0 flex items-center mr-4 md:mr-8 xl:mr-10">
+            <div className="flex-shrink-0 flex items-center mr-2 xl:mr-5">
               <BrandLogo variant="dark" size="md" />
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center flex-nowrap space-x-2 xl:space-x-4 flex-shrink-0">
+            <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 flex-shrink">
               {navItems.map((item) => {
                 const isActive = pathname.startsWith(item.href);
                 return (
@@ -191,14 +191,14 @@ export default function Header() {
                   >
                     <Link
                       href={item.href}
-                      className={`inline-flex items-center gap-1.5 text-sm font-sans font-medium py-2 px-3 rounded-btn transition-colors whitespace-nowrap ${
+                      className={`inline-flex items-center gap-1 text-xs xl:text-sm font-sans font-medium py-1.5 px-2 xl:px-2.5 rounded-btn transition-colors whitespace-nowrap ${
                         isActive
                           ? 'text-[#48563A] border-b border-[#48563A]'
                           : 'text-[#2C2926] hover:text-[#48563A]'
                       }`}
                     >
                       <span>{item.name}</span>
-                      <ChevronDown className="w-3.5 h-3.5 text-[#A69B8C] group-hover:rotate-180 group-hover:text-[#48563A] transition-transform duration-200" />
+                      <ChevronDown className="w-3 h-3 text-[#A69B8C] group-hover:rotate-180 group-hover:text-[#48563A] transition-transform duration-200" />
                     </Link>
 
                     {/* Dropdown Card */}
@@ -241,7 +241,7 @@ export default function Header() {
 
               <Link
                 href="/customization"
-                className={`text-sm font-sans font-medium py-2 px-3 rounded-btn transition-colors whitespace-nowrap ${
+                className={`text-xs xl:text-sm font-sans font-medium py-1.5 px-2 xl:px-2.5 rounded-btn transition-colors whitespace-nowrap ${
                   pathname === '/customization' ? 'text-[#48563A] border-b border-[#48563A]' : 'text-[#2C2926] hover:text-[#48563A]'
                 }`}
               >
@@ -250,7 +250,7 @@ export default function Header() {
 
               <Link
                 href="/blog"
-                className={`text-sm font-sans font-medium py-2 px-3 rounded-btn transition-colors whitespace-nowrap ${
+                className={`text-xs xl:text-sm font-sans font-medium py-1.5 px-2 xl:px-2.5 rounded-btn transition-colors whitespace-nowrap ${
                   pathname.startsWith('/blog') ? 'text-[#48563A] border-b border-[#48563A]' : 'text-[#2C2926] hover:text-[#48563A]'
                 }`}
               >
@@ -259,7 +259,7 @@ export default function Header() {
 
               <Link
                 href="/about"
-                className={`text-sm font-sans font-medium py-2 px-3 rounded-btn transition-colors whitespace-nowrap ${
+                className={`text-xs xl:text-sm font-sans font-medium py-1.5 px-2 xl:px-2.5 rounded-btn transition-colors whitespace-nowrap ${
                   pathname === '/about' ? 'text-[#48563A] border-b border-[#48563A]' : 'text-[#2C2926] hover:text-[#48563A]'
                 }`}
               >
@@ -268,36 +268,37 @@ export default function Header() {
             </nav>
 
             {/* Right Controls: Search + Wishlist + WhatsApp Button */}
-            <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
+            <div className="flex items-center gap-1.5 xl:gap-2 flex-shrink-0 ml-auto">
               
               {/* Search Trigger */}
               <button
                 onClick={() => setSearchModalOpen(true)}
-                className="h-10 flex items-center gap-2 px-3.5 sm:px-4 bg-[#F7F4EE] border border-[#D8C9B5] rounded-btn text-xs font-medium text-[#2C2926] hover:border-[#48563A] focus:border-[#48563A] focus:outline-none transition-all duration-200"
+                className="h-9 px-2.5 xl:px-3.5 bg-[#F7F4EE] border border-[#D8C9B5] rounded-btn text-xs font-medium text-[#2C2926] hover:border-[#48563A] focus:border-[#48563A] focus:outline-none transition-colors flex items-center gap-2"
                 aria-label="Search furniture collection"
               >
                 <Search className="w-3.5 h-3.5 text-[#2C2926]" />
-                <span className="hidden sm:inline text-[#A69B8C]">Search furniture...</span>
+                <span className="hidden xl:inline text-[#A69B8C]">Search...</span>
               </button>
 
               {/* Wishlist Link */}
               <Link
                 href="/products"
-                className="h-10 w-10 flex items-center justify-center text-[#2C2926] hover:text-[#48563A] hover:border-[#2C2926] transition-all rounded-btn bg-[#F7F4EE] border border-[#D8C9B5]"
+                className="h-9 w-9 flex items-center justify-center text-[#2C2926] hover:text-[#48563A] hover:border-[#2C2926] transition-colors rounded-btn bg-[#F7F4EE] border border-[#D8C9B5]"
                 aria-label="View collection"
               >
                 <Heart className="w-4 h-4 text-[#2C2926]" />
               </Link>
 
-              {/* TYPE 2 / NAV WhatsApp CTA Button */}
+              {/* High-Visibility WhatsApp CTA Button */}
               <a
                 href={buildWhatsAppUrl("Hi Rumea Home! I'd like advice on furniture sizing and options.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsAppClick({ source: 'nav' })}
-                className="h-10 relative inline-flex items-center gap-2 px-4 sm:px-5 bg-transparent border border-[#2C2926] text-[#2C2926] hover:bg-[#2C2926] hover:text-[#F7F4EE] text-xs sm:text-sm font-medium rounded-btn transition-all duration-200 select-none group"
+                className="h-9 px-3 xl:px-4 bg-[#25D366] hover:bg-[#1EBE5D] text-white text-xs font-semibold rounded-btn transition-colors flex items-center gap-1.5 shadow-xs flex-shrink-0 cursor-pointer"
+                title="Chat directly with us on WhatsApp"
               >
-                <MessageCircle className="w-4 h-4 text-[#48563A] group-hover:text-[#F7F4EE] transition-colors" />
+                <MessageCircle className="w-4 h-4 fill-white text-white" />
                 <span className="tracking-wide">WhatsApp</span>
               </a>
 

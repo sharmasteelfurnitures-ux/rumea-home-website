@@ -6,7 +6,6 @@ import NewArrivalsAndBestSellers from '@/components/home/NewArrivalsAndBestSelle
 import ShopTheLook from '@/components/home/ShopTheLook';
 import Product360Viewer from '@/components/product/Product360Viewer';
 import WhatsAppConcierge from '@/components/home/WhatsAppConcierge';
-import WhatsAppFloatingButton from '@/components/layout/WhatsAppFloatingButton';
 
 export default function HomePage() {
   return (
@@ -31,9 +30,6 @@ export default function HomePage() {
 
       {/* 5. WhatsApp Concierge Room Sizing Consultation */}
       <WhatsAppConcierge />
-
-      {/* 6. Floating Bottom-Right WhatsApp Trigger */}
-      <WhatsAppFloatingButton />
     </>
   );
 }

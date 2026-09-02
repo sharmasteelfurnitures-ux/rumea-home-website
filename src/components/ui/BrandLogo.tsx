@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -32,8 +32,8 @@ export default function BrandLogo({
   const logoSrc = variant === 'light' ? LOGO_WHITE_DATA_URI : LOGO_DARK_DATA_URI;
 
   const logoContent = (
-    <div className={`inline-flex flex-col ${showTagline ? 'items-center text-center' : 'items-start'} ${className}`}>
-      <div className="relative flex items-center">
+    <div className={`inline-flex flex-col justify-center ${showTagline ? 'items-center text-center' : 'items-start'} ${className}`}>
+      <div className="relative flex items-center justify-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={logoSrc}
@@ -57,7 +57,7 @@ export default function BrandLogo({
 
   if (asLink) {
     return (
-      <Link href="/" className="group focus:outline-none inline-block flex-shrink-0">
+      <Link href="/" className="group focus:outline-none flex items-center self-center flex-shrink-0">
         {logoContent}
       </Link>
     );

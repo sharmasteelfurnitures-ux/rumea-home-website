@@ -159,27 +159,27 @@ export default function Header() {
           isScrolled ? 'shadow-xs py-2.5' : 'py-3.5'
         }`}
       >
-        <div className="w-full max-w-[1480px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between min-h-[48px] md:min-h-[56px] gap-2 lg:gap-4">
+        <div className="w-full max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between min-h-[54px] md:min-h-[64px]">
             
             {/* Mobile Hamburger */}
             <div className="flex items-center lg:hidden">
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className="p-2 -ml-2 text-[#2C2926] hover:text-[#48563A] focus:outline-none"
+                className="p-2 -ml-2 text-[#2C2926] hover:text-[#48563A] focus:outline-none cursor-pointer"
                 aria-label="Open navigation menu"
               >
                 <Menu className="w-6 h-6" />
               </button>
             </div>
 
-            {/* Brand Logo */}
-            <div className="flex-shrink-0 flex items-center mr-2 xl:mr-5">
+            {/* Left: Brand Logo (Vertically Centered in Bar) */}
+            <div className="flex-shrink-0 flex items-center">
               <BrandLogo variant="dark" size="md" />
             </div>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 flex-shrink">
+            {/* Center: Luxury Brand Navigation (Centered in Viewport) */}
+            <nav className="hidden lg:flex items-center justify-center flex-1 mx-3 xl:mx-6 gap-1 xl:gap-2.5 2xl:gap-4">
               {navItems.map((item) => {
                 const isActive = pathname.startsWith(item.href);
                 return (
@@ -191,10 +191,10 @@ export default function Header() {
                   >
                     <Link
                       href={item.href}
-                      className={`inline-flex items-center gap-1 text-xs xl:text-sm font-sans font-medium py-1.5 px-2 xl:px-2.5 rounded-btn transition-colors whitespace-nowrap ${
+                      className={`inline-flex items-center gap-1 text-[13px] xl:text-sm font-sans font-medium py-2 px-2.5 xl:px-3 rounded-full transition-all duration-200 whitespace-nowrap ${
                         isActive
-                          ? 'text-[#48563A] border-b border-[#48563A]'
-                          : 'text-[#2C2926] hover:text-[#48563A]'
+                          ? 'text-[#48563A] font-semibold bg-[#48563A]/8'
+                          : 'text-[#2C2926] hover:text-[#48563A] hover:bg-[#2C2926]/4'
                       }`}
                     >
                       <span>{item.name}</span>
@@ -203,7 +203,7 @@ export default function Header() {
 
                     {/* Dropdown Card */}
                     {activeDropdown === item.name && (
-                      <div className="absolute top-full left-0 w-80 bg-[#F7F4EE] rounded-card shadow-xl border border-[#D8C9B5] p-5 animate-in fade-in zoom-in-95 duration-150 z-50">
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 w-80 bg-[#F7F4EE] rounded-2xl shadow-2xl border border-[#D8C9B5] p-5 animate-in fade-in zoom-in-95 duration-150 z-50 mt-1">
                         <p className="text-[10px] uppercase font-bold text-[#48563A] tracking-widest mb-3">
                           Shop {item.name}
                         </p>
@@ -212,7 +212,7 @@ export default function Header() {
                             <Link
                               key={sub.name}
                               href={sub.href}
-                              className="block py-2 px-3 rounded-btn text-xs font-medium text-[#2C2926] hover:bg-white hover:text-[#48563A] hover:shadow-2xs transition-all"
+                              className="block py-2 px-3 rounded-xl text-xs font-medium text-[#2C2926] hover:bg-white hover:text-[#48563A] hover:shadow-2xs transition-all"
                             >
                               {sub.name}
                             </Link>
@@ -226,7 +226,7 @@ export default function Header() {
                             </p>
                             <Link
                               href={item.featured.href}
-                              className="mt-1.5 block p-3 bg-white rounded-card border border-[#D8C9B5] hover:border-[#2C2926]/40 transition-colors shadow-2xs"
+                              className="mt-1.5 block p-3 bg-white rounded-xl border border-[#D8C9B5] hover:border-[#2C2926]/40 transition-colors shadow-2xs"
                             >
                               <p className="font-serif font-bold text-xs text-[#2C2926]">{item.featured.title}</p>
                               <p className="text-[11px] text-[#A69B8C] truncate">{item.featured.tagline}</p>
@@ -241,8 +241,10 @@ export default function Header() {
 
               <Link
                 href="/customization"
-                className={`text-xs xl:text-sm font-sans font-medium py-1.5 px-2 xl:px-2.5 rounded-btn transition-colors whitespace-nowrap ${
-                  pathname === '/customization' ? 'text-[#48563A] border-b border-[#48563A]' : 'text-[#2C2926] hover:text-[#48563A]'
+                className={`text-[13px] xl:text-sm font-sans font-medium py-2 px-2.5 xl:px-3 rounded-full transition-all duration-200 whitespace-nowrap ${
+                  pathname === '/customization'
+                    ? 'text-[#48563A] font-semibold bg-[#48563A]/8'
+                    : 'text-[#2C2926] hover:text-[#48563A] hover:bg-[#2C2926]/4'
                 }`}
               >
                 Customization
@@ -250,8 +252,10 @@ export default function Header() {
 
               <Link
                 href="/blog"
-                className={`text-xs xl:text-sm font-sans font-medium py-1.5 px-2 xl:px-2.5 rounded-btn transition-colors whitespace-nowrap ${
-                  pathname.startsWith('/blog') ? 'text-[#48563A] border-b border-[#48563A]' : 'text-[#2C2926] hover:text-[#48563A]'
+                className={`text-[13px] xl:text-sm font-sans font-medium py-2 px-2.5 xl:px-3 rounded-full transition-all duration-200 whitespace-nowrap ${
+                  pathname.startsWith('/blog')
+                    ? 'text-[#48563A] font-semibold bg-[#48563A]/8'
+                    : 'text-[#2C2926] hover:text-[#48563A] hover:bg-[#2C2926]/4'
                 }`}
               >
                 Blog
@@ -259,46 +263,57 @@ export default function Header() {
 
               <Link
                 href="/about"
-                className={`text-xs xl:text-sm font-sans font-medium py-1.5 px-2 xl:px-2.5 rounded-btn transition-colors whitespace-nowrap ${
-                  pathname === '/about' ? 'text-[#48563A] border-b border-[#48563A]' : 'text-[#2C2926] hover:text-[#48563A]'
+                className={`text-[13px] xl:text-sm font-sans font-medium py-2 px-2.5 xl:px-3 rounded-full transition-all duration-200 whitespace-nowrap ${
+                  pathname === '/about'
+                    ? 'text-[#48563A] font-semibold bg-[#48563A]/8'
+                    : 'text-[#2C2926] hover:text-[#48563A] hover:bg-[#2C2926]/4'
                 }`}
               >
                 Our Story
               </Link>
             </nav>
 
-            {/* Right Controls: Search + Wishlist + WhatsApp Button */}
-            <div className="flex items-center gap-1.5 xl:gap-2 flex-shrink-0 ml-auto">
+            {/* Right: Search + Wishlist + Animated Olive Green WhatsApp CTA */}
+            <div className="flex items-center gap-2 flex-shrink-0">
               
               {/* Search Trigger */}
               <button
                 onClick={() => setSearchModalOpen(true)}
-                className="h-9 px-2.5 xl:px-3.5 bg-[#F7F4EE] border border-[#D8C9B5] rounded-btn text-xs font-medium text-[#2C2926] hover:border-[#48563A] focus:border-[#48563A] focus:outline-none transition-colors flex items-center gap-2"
+                className="h-10 px-3 xl:px-3.5 bg-white/80 hover:bg-white border border-[#D8C9B5] rounded-full text-xs font-medium text-[#2C2926] hover:border-[#48563A] focus:border-[#48563A] focus:outline-none transition-all duration-200 flex items-center gap-2 shadow-2xs group cursor-pointer"
                 aria-label="Search furniture collection"
               >
-                <Search className="w-3.5 h-3.5 text-[#2C2926]" />
-                <span className="hidden xl:inline text-[#A69B8C]">Search...</span>
+                <Search className="w-3.5 h-3.5 text-[#2C2926] group-hover:text-[#48563A] transition-colors" />
+                <span className="hidden xl:inline text-[#A69B8C] group-hover:text-[#2C2926] transition-colors">Search...</span>
               </button>
 
               {/* Wishlist Link */}
               <Link
                 href="/products"
-                className="h-9 w-9 flex items-center justify-center text-[#2C2926] hover:text-[#48563A] hover:border-[#2C2926] transition-colors rounded-btn bg-[#F7F4EE] border border-[#D8C9B5]"
+                className="h-10 w-10 flex items-center justify-center text-[#2C2926] hover:text-[#48563A] hover:border-[#48563A] transition-all duration-200 rounded-full bg-white/80 hover:bg-white border border-[#D8C9B5] shadow-2xs"
                 aria-label="View collection"
               >
-                <Heart className="w-4 h-4 text-[#2C2926]" />
+                <Heart className="w-4 h-4" />
               </Link>
 
-              {/* High-Visibility WhatsApp CTA Button */}
+              {/* Luxury Olive Green WhatsApp CTA with Fluid Shimmer & Live Motion */}
               <a
                 href={buildWhatsAppUrl("Hi Rumea Home! I'd like advice on furniture sizing and options.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsAppClick({ source: 'nav' })}
-                className="h-9 px-3 xl:px-4 bg-[#25D366] hover:bg-[#1EBE5D] text-white text-xs font-semibold rounded-btn transition-colors flex items-center gap-1.5 shadow-xs flex-shrink-0 cursor-pointer"
-                title="Chat directly with us on WhatsApp"
+                className="relative group h-10 px-4 sm:px-5 bg-[#48563A] hover:bg-[#3B4730] text-[#F7F4EE] text-xs font-semibold rounded-full transition-all duration-300 flex items-center gap-2 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 overflow-hidden flex-shrink-0 cursor-pointer border border-[#3B4730]"
+                title="Chat with our woodcraft designers on WhatsApp"
               >
-                <MessageCircle className="w-4 h-4 fill-white text-white" />
+                {/* Shimmer Light Sweep Motion */}
+                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none" />
+
+                {/* Animated Pulsing Status Dot */}
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D8C9B5] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#D8C9B5]" />
+                </span>
+
+                <MessageCircle className="w-4 h-4 text-[#D8C9B5] transition-transform duration-200 group-hover:scale-110" />
                 <span className="tracking-wide">WhatsApp</span>
               </a>
 

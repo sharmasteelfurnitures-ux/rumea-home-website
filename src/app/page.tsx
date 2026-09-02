@@ -5,6 +5,7 @@ import CustomFurnitureBanner from '@/components/home/CustomFurnitureBanner';
 import NewArrivalsAndBestSellers from '@/components/home/NewArrivalsAndBestSellers';
 import ShopTheLook from '@/components/home/ShopTheLook';
 import Product360Viewer from '@/components/product/Product360Viewer';
+import PromoAdBanners from '@/components/home/PromoAdBanners';
 import WhatsAppConcierge from '@/components/home/WhatsAppConcierge';
 
 export default function HomePage() {
@@ -28,7 +29,10 @@ export default function HomePage() {
       {/* 4.5 Interactive 360° Studio Spin & Inspect Viewer */}
       <Product360Viewer />
 
-      {/* 5. WhatsApp Concierge Room Sizing Consultation */}
+      {/* 4.8 Featured Ad Posters: Metal Shoe Rack, Sofa 3 Seater, Bar Chairs */}
+      <PromoAdBanners />
+
+      {/* 5. WhatsApp Room Sizing Consultation */}
       <WhatsAppConcierge />
     </>
   );

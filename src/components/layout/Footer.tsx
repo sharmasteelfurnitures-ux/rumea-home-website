@@ -200,7 +200,7 @@ export default function Footer() {
           {/* Column 4: Physical Store & WhatsApp Assistance (4 Cols) */}
           <div className="lg:col-span-4 space-y-4 bg-white/5 border border-[#D8C9B5]/15 rounded-card p-5 sm:p-6 shadow-2xs">
             <h4 className="font-serif text-sm font-medium uppercase tracking-[0.05em] text-[#D8C9B5]">
-              Experience Store &amp; Concierge
+              Experience Store &amp; WhatsApp Support
             </h4>
             
             <div className="space-y-2.5 text-xs text-[#A69B8C]">

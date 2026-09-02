@@ -395,7 +395,7 @@ export default function ShopTheLook() {
                 className="w-full py-3 bg-[#D8C9B5] hover:bg-[#C9B9A3] text-[#2C2926] text-xs font-semibold rounded-btn flex items-center justify-center gap-2 transition-colors shadow-sm"
               >
                 <ShoppingBag className="w-3.5 h-3.5 text-[#2C2926]" />
-                <span>Inquire Room Set via Concierge</span>
+                <span>Inquire Room Set on WhatsApp</span>
               </Link>
             </div>
 

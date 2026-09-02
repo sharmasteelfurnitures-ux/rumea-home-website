@@ -27,6 +27,10 @@ declare global {
         'camera-orbit'?: string;
         'min-camera-orbit'?: string;
         'max-camera-orbit'?: string;
+        'field-of-view'?: string;
+        'tone-mapping'?: string;
+        'environment-image'?: string;
+        'interpolation-decay'?: string | number;
         'interaction-prompt'?: 'auto' | 'when-focused' | 'none';
         style?: React.CSSProperties;
       };
@@ -155,7 +159,7 @@ export default function Product360Viewer() {
           {/* Main 3D Canvas Area */}
           <div className="relative aspect-[4/3] sm:aspect-[16/10] w-full flex items-center justify-center">
             
-            {/* Real 3D Model Viewer */}
+            {/* Real 3D Model Viewer — Ultra-HD PBR Neutral Tone Mapping */}
             <model-viewer
               key={currentModel.id}
               src={currentModel.modelSrc}
@@ -163,9 +167,14 @@ export default function Product360Viewer() {
               camera-controls
               auto-rotate={isAutoRotating}
               rotation-per-second="24deg"
-              shadow-intensity="1.2"
-              shadow-softness="0.9"
-              exposure="1.05"
+              tone-mapping="neutral"
+              environment-image="neutral"
+              shadow-intensity="1.6"
+              shadow-softness="0.25"
+              exposure="1.08"
+              field-of-view="28deg"
+              camera-orbit="45deg 75deg 105%"
+              interpolation-decay="160"
               loading="eager"
               reveal="auto"
               interaction-prompt="auto"

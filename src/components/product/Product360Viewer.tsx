@@ -98,7 +98,7 @@ export default function Product360Viewer() {
   const currentModel = models[selectedModelIdx];
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-white border-t border-[#D8C9B5]">
+    <section className="py-10 sm:py-14 bg-white border-t border-[#D8C9B5]">
       {/* Load Google Model-Viewer Web Component as fallback */}
       <Script
         src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"
@@ -106,21 +106,21 @@ export default function Product360Viewer() {
         strategy="afterInteractive"
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
           <div>
-            <div className="inline-flex items-center gap-2 mb-2">
-              <span className="w-6 h-[2px] bg-[#48563A]" />
+            <div className="inline-flex items-center gap-2 mb-1.5">
+              <span className="w-5 h-[2px] bg-[#48563A]" />
               <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.15em] text-[#48563A] flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-[#48563A]" /> 360° CRAFTSMANSHIP STUDIO
               </span>
             </div>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#2C2926] font-normal tracking-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#2C2926] font-normal tracking-tight">
               Experience Every Angle in 360°
             </h2>
-            <p className="text-[#A69B8C] text-xs sm:text-sm mt-1.5 max-w-xl">
+            <p className="text-[#A69B8C] text-xs sm:text-sm mt-1 max-w-xl">
               Take an intimate look at our kiln-dried solid timber framing, tailoring, and hand-finished details. Drag in any direction to explore the piece all around, or zoom in to appreciate the grain.
             </p>
           </div>
@@ -145,7 +145,7 @@ export default function Product360Viewer() {
 
             <button
               onClick={() => setIsAutoRotating(!isAutoRotating)}
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#F7F4EE] border border-[#D8C9B5] text-[#2C2926] hover:bg-[#2C2926] hover:text-[#F7F4EE] text-xs font-medium transition-colors shadow-2xs cursor-pointer"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#F7F4EE] border border-[#D8C9B5] text-[#2C2926] hover:bg-[#2C2926] hover:text-[#F7F4EE] text-xs font-medium transition-colors shadow-2xs cursor-pointer"
             >
               {isAutoRotating ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 text-[#48563A]" />}
               <span>{isAutoRotating ? 'Pause Spin' : 'Auto 360°'}</span>
@@ -154,10 +154,10 @@ export default function Product360Viewer() {
         </div>
 
         {/* 3D WebGL Viewport Studio Card */}
-        <div className="relative rounded-2xl sm:rounded-3xl border border-[#D8C9B5] bg-gradient-to-b from-[#F7F4EE] via-[#F3ECE0] to-[#E9DFD1] overflow-hidden shadow-2xl">
+        <div className="relative rounded-2xl sm:rounded-3xl border border-[#D8C9B5] bg-gradient-to-b from-[#F7F4EE] via-[#F3ECE0] to-[#E9DFD1] overflow-hidden shadow-xl">
           
-          {/* Main 3D Canvas Area */}
-          <div className="relative aspect-[4/3] sm:aspect-[16/10] w-full flex items-center justify-center">
+          {/* Main 3D Canvas Area (Controlled Proportional Height) */}
+          <div className="relative w-full h-[360px] sm:h-[440px] md:h-[480px] flex items-center justify-center">
             
             {/* Real 3D Model Viewer — Ultra-HD PBR Neutral Tone Mapping */}
             <model-viewer
@@ -173,7 +173,7 @@ export default function Product360Viewer() {
               shadow-softness="0.25"
               exposure="1.08"
               field-of-view="28deg"
-              camera-orbit="45deg 75deg 105%"
+              camera-orbit="45deg 75deg 115%"
               interpolation-decay="160"
               loading="eager"
               reveal="auto"

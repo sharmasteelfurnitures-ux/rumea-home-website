@@ -7,7 +7,7 @@ import ProductCard from '@/components/product/ProductCard';
 import { products } from '@/lib/products';
 import { ArrowRight, Sparkles, Flame, Grid, Compass } from 'lucide-react';
 
-type TabType = 'bestsellers' | 'new-arrivals' | 'popular' | 'all';
+type TabType = 'bestsellers' | 'new-arrivals' | 'all';
 type RoomFilter = 'all' | 'living-room' | 'bedroom' | 'dining-room' | 'study';
 
 export default function NewArrivalsAndBestSellers() {
@@ -18,13 +18,11 @@ export default function NewArrivalsAndBestSellers() {
   const filteredProducts = useMemo(() => {
     let list = [...products];
 
-    // Strict Tab Filter: Each tab ONLY shows products with the exact corresponding badge
+    // Strict Tab Filter
     if (activeTab === 'bestsellers') {
       list = list.filter((p) => p.seo.badge === 'Best Seller');
     } else if (activeTab === 'new-arrivals') {
       list = list.filter((p) => p.seo.badge === 'New Arrival');
-    } else if (activeTab === 'popular') {
-      list = list.filter((p) => p.seo.badge === 'Popular');
     }
 
     // Room Filter
@@ -38,7 +36,6 @@ export default function NewArrivalsAndBestSellers() {
   const tabs: { id: TabType; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
     { id: 'bestsellers', label: 'Best Sellers', icon: Flame },
     { id: 'new-arrivals', label: 'New Arrivals', icon: Sparkles },
-    { id: 'popular', label: 'Popular', icon: Compass },
     { id: 'all', label: 'All Pieces', icon: Grid },
   ];
 

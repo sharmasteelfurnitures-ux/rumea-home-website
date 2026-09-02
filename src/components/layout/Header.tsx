@@ -11,7 +11,9 @@ import {
   ChevronDown, 
   MessageCircle,
   Truck,
-  ArrowRight
+  ArrowRight,
+  Phone,
+  Clock
 } from 'lucide-react';
 import BrandLogo from '@/components/ui/BrandLogo';
 import SearchModal from '@/components/layout/SearchModal';
@@ -127,28 +129,68 @@ export default function Header() {
 
   return (
     <>
-      {/* Top Announcement Reassurance Bar */}
-      <aside aria-label="Announcement" className="bg-[#2C2926] text-[#F7F4EE] text-[11px] sm:text-xs py-2 px-4 border-b border-[#D8C9B5]/20">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-[#D8C9B5]">
+      {/* Top Announcement Reassurance Bar (Brand Logo Brown - Deepened Frosted Glass) */}
+      <aside
+        aria-label="Announcement"
+        style={{ backgroundColor: 'rgba(61, 34, 18, 0.92)' }}
+        className="w-full backdrop-blur-md text-[#F7F4EE] text-[11px] sm:text-xs py-2.5 px-4 border-b border-[#D8C9B5]/30 shadow-sm relative z-40"
+      >
+        <div className="w-full max-w-[1520px] mx-auto flex items-center justify-between gap-4">
+          
+          {/* Left: PAN India Delivery */}
+          <div className="flex items-center gap-2 text-[#F7F4EE]">
             <Truck className="w-3.5 h-3.5 text-[#D8C9B5] flex-shrink-0" />
-            <span className="font-medium">Free PAN India Delivery on All Orders</span>
+            <span className="font-medium tracking-wide">Free PAN India Delivery on All Orders</span>
           </div>
 
-          <div className="hidden sm:flex items-center gap-4 text-[#D8C9B5] text-xs">
-            <span>5-Year Frame Warranty</span>
-            <span className="text-[#A69B8C]">•</span>
+          {/* Right: Support (10 AM – 9 PM) [Clickable WhatsApp] • Phone Number */}
+          <div className="hidden sm:flex items-center gap-4 text-[#F7F4EE] text-xs">
             <a
               href={buildWhatsAppUrl("Hi Rumea Home! I'd like help choosing furniture.")}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackWhatsAppClick({ source: 'nav' })}
-              className="text-[#D8C9B5] hover:text-[#F7F4EE] transition-colors underline flex items-center gap-1 font-semibold"
+              className="text-[#F7F4EE] hover:text-[#D8C9B5] transition-colors flex items-center gap-1.5 font-medium cursor-pointer"
+              title="Chat with Rumea Support on WhatsApp"
             >
-              <MessageCircle className="w-3.5 h-3.5 text-[#48563A]" />
-              <span>WhatsApp (10 AM – 9 PM)</span>
+              <MessageCircle className="w-3.5 h-3.5 text-[#D8C9B5]" />
+              <span>Support (10 AM – 9 PM)</span>
+            </a>
+
+            <span className="text-[#D8C9B5]/40">•</span>
+
+            <a
+              href="tel:+917291962356"
+              className="text-[#F7F4EE] hover:text-[#D8C9B5] transition-colors flex items-center gap-1.5 font-semibold tracking-wide cursor-pointer"
+              title="Call Rumea Home Support"
+            >
+              <Phone className="w-3.5 h-3.5 text-[#D8C9B5]" />
+              <span>+91 72919 62356</span>
             </a>
           </div>
+
+          {/* Mobile Right: Direct Support & Call Links */}
+          <div className="flex sm:hidden items-center gap-3 text-xs">
+            <a
+              href={buildWhatsAppUrl("Hi Rumea Home! I'd like help choosing furniture.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick({ source: 'nav' })}
+              className="text-[#F7F4EE] hover:text-[#D8C9B5] flex items-center gap-1 font-semibold"
+            >
+              <MessageCircle className="w-3.5 h-3.5 text-[#D8C9B5]" />
+              <span>Support</span>
+            </a>
+            <span className="text-[#D8C9B5]/40">•</span>
+            <a
+              href="tel:+917291962356"
+              className="text-[#F7F4EE] hover:text-[#D8C9B5] flex items-center gap-1 font-semibold"
+            >
+              <Phone className="w-3.5 h-3.5 text-[#D8C9B5]" />
+              <span>Call</span>
+            </a>
+          </div>
+
         </div>
       </aside>
 

@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { MessageCircle, Clock, ShieldCheck, Ruler } from 'lucide-react';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import { trackWhatsAppClick } from '@/lib/analytics';

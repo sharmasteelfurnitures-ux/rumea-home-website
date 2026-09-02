@@ -191,7 +191,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/contact" className="hover:text-[#D8C9B5] hover:underline transition-colors">
-                  Store Address &amp; Support
+                  Experience Store &amp; Support
                 </Link>
               </li>
             </ul>
@@ -200,7 +200,7 @@ export default function Footer() {
           {/* Column 4: Physical Store & WhatsApp Assistance (4 Cols) */}
           <div className="lg:col-span-4 space-y-4 bg-white/5 border border-[#D8C9B5]/15 rounded-card p-5 sm:p-6 shadow-2xs">
             <h4 className="font-serif text-sm font-medium uppercase tracking-[0.05em] text-[#D8C9B5]">
-              Visit Store &amp; Customer Care
+              Experience Store &amp; Concierge
             </h4>
             
             <div className="space-y-2.5 text-xs text-[#A69B8C]">
@@ -213,7 +213,7 @@ export default function Footer() {
               
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
-                <span>Store Timing: 10:00 AM – 9:00 PM (All 7 Days)</span>
+                <span>Experience Store Hours: 10:00 AM – 9:00 PM (All 7 Days)</span>
               </div>
 
               <div className="flex items-center gap-2">

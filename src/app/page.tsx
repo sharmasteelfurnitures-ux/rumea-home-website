@@ -4,6 +4,7 @@ import ShopByCategory from '@/components/home/ShopByCategory';
 import CustomFurnitureBanner from '@/components/home/CustomFurnitureBanner';
 import NewArrivalsAndBestSellers from '@/components/home/NewArrivalsAndBestSellers';
 import ShopTheLook from '@/components/home/ShopTheLook';
+import Product360Viewer from '@/components/product/Product360Viewer';
 import SolidWoodVsMdf from '@/components/home/SolidWoodVsMdf';
 import CraftStory from '@/components/home/CraftStory';
 import CustomerHomesGallery from '@/components/home/CustomerHomesGallery';
@@ -25,8 +26,11 @@ export default function HomePage() {
       {/* 3. New Arrivals & Best Sellers (Interactive Tabs & Filters) */}
       <NewArrivalsAndBestSellers />
 
-      {/* 4. Shop The Complete Room Look (Home Centre / Urban Ladder Style Bundles) */}
+      {/* 4. Shop The Complete Room Look (IKEA Style Hotspot Pins) */}
       <ShopTheLook />
+
+      {/* 4.5 Interactive 360° Studio Spin & Inspect Viewer */}
+      <Product360Viewer />
 
       {/* 5. Solid Sheesham vs Cheap MDF Matrix (Urbanwood / Wooden Street Education) */}
       <SolidWoodVsMdf />

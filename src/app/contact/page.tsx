@@ -38,13 +38,13 @@ export default function ContactPage() {
         {/* Header Intro */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <span className="text-xs font-bold uppercase tracking-widest text-antique-gold block mb-2">
-            CUSTOMER CARE &amp; STORE LOCATION
+            CUSTOMER CARE &amp; EXPERIENCE STORE
           </span>
           <h1 className="font-serif text-3xl sm:text-5xl text-espresso tracking-tight">
-            Visit Our Store &amp; Connect With Us
+            Visit Our Experience Store &amp; Connect With Us
           </h1>
           <p className="text-soft-taupe text-sm sm:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
-            Our woodcraft designers and store team personally attend to every customer enquiry. Visit our Vasant Kunj store or reach us directly on WhatsApp &amp; Phone.
+            Our woodcraft designers and store team personally attend to every customer enquiry. Visit our Vasant Kunj Experience Store or reach us directly on WhatsApp &amp; Phone.
           </p>
         </div>
 
@@ -69,7 +69,7 @@ export default function ContactPage() {
               </div>
 
               <p className="text-xs sm:text-sm text-soft-taupe leading-relaxed">
-                Connect with our furniture design specialists for custom sizing, wood finish previews, order tracking, and store visit appointments.
+                Connect with our furniture design specialists for custom sizing, wood finish previews, order tracking, and Experience Store visit appointments.
               </p>
 
               <div>
@@ -89,14 +89,14 @@ export default function ContactPage() {
                 <div className="flex items-start gap-2.5">
                   <MapPin className="w-4 h-4 text-antique-gold flex-shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-espresso block mb-0.5">Physical Store Address:</span>
+                    <span className="font-bold text-espresso block mb-0.5">Experience Store Address:</span>
                     <span>F/F, 80, Masoodpur Dairy Farm, Masoodpur, Vasant Kunj, New Delhi - 110070, India</span>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2.5">
                   <Clock className="w-4 h-4 text-antique-gold flex-shrink-0" />
-                  <span>Store Timing: 10:00 AM – 9:00 PM (All Days)</span>
+                  <span>Experience Store Hours: 10:00 AM – 9:00 PM (All Days)</span>
                 </div>
 
                 <div className="flex items-center gap-2.5">
@@ -206,7 +206,7 @@ export default function ContactPage() {
                       className="w-full px-3.5 py-2.5 bg-warm-ivory border border-border-sand text-xs text-espresso rounded-btn focus:outline-none focus:ring-1 focus:ring-espresso cursor-pointer"
                     >
                       <option value="Furniture Consultation">Furniture Sizing Consultation</option>
-                      <option value="Store Visit">Vasant Kunj Store Visit</option>
+                      <option value="Experience Store Visit">Vasant Kunj Experience Store Visit</option>
                       <option value="Delivery Timeline">Free PAN India Delivery Enquiry</option>
                       <option value="Custom Finish">Timber Finish Swatches</option>
                       <option value="Bulk Order">Commercial / Bulk Order</option>

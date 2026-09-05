@@ -124,7 +124,7 @@ export default function Hero() {
     { name: 'Living Room', icon: Sofa, href: '/rooms/living-room' },
     { name: 'Beds & Bedroom', icon: Bed, href: '/rooms/bedroom' },
     { name: 'Dining Sets', icon: UtensilsCrossed, href: '/rooms/dining-room' },
-    { name: 'Study & Work', icon: Laptop, href: '/rooms/study-room' },
+    { name: 'Study & Work', icon: Laptop, href: '/rooms/study' },
     { name: 'Storage Units', icon: Package, href: '/products?category=storage' },
   ];
 

@@ -2,31 +2,55 @@
 
 import React, { useState, useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { products, roomCategories } from '@/lib/products';
+import { products } from '@/lib/products';
 import ProductCard from '@/components/product/ProductCard';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import WhatsAppFloatingButton from '@/components/layout/WhatsAppFloatingButton';
 import { 
-  Filter, 
-  X, 
-  RotateCcw, 
   SlidersHorizontal, 
   Grid2X2, 
   Grid3X3, 
+  Sparkles,
+  Compass,
+  X,
   Check
 } from 'lucide-react';
 
+type CategoryFilter = 'all' | 'sofa' | 'bed' | 'dining' | 'coffee-table' | 'tv-unit' | 'study' | 'storage';
+
+const categoryTabs: { id: CategoryFilter; label: string }[] = [
+  { id: 'all', label: 'All Pieces' },
+  { id: 'sofa', label: 'Sofas' },
+  { id: 'bed', label: 'Beds' },
+  { id: 'dining', label: 'Dining Sets' },
+  { id: 'coffee-table', label: 'Coffee Tables' },
+  { id: 'tv-unit', label: 'TV Units' },
+  { id: 'study', label: 'Study Desks' },
+  { id: 'storage', label: 'Storage & Wardrobes' },
+];
+
 function ProductsPageContent() {
   const searchParams = useSearchParams();
-  const initialCategory = searchParams.get('category');
-  const initialRoom = searchParams.get('room');
+  const paramCategory = searchParams.get('category');
+  const paramRoom = searchParams.get('room');
   const searchQuery = searchParams.get('search');
 
-  // Filter States
-  const [selectedRooms, setSelectedRooms] = useState<string[]>(
-    initialRoom ? [initialRoom] : []
-  );
-  const [selectedStyles, setSelectedStyles] = useState<string[]>([]);
+  // Active Category Tab
+  const [activeCategoryTab, setActiveCategoryTab] = useState<CategoryFilter>(() => {
+    if (paramCategory) {
+      if (paramCategory === 'sofa' || paramCategory === 'sofas') return 'sofa';
+      if (paramCategory === 'bed' || paramCategory === 'beds') return 'bed';
+      if (paramCategory.includes('dining')) return 'dining';
+      if (paramCategory.includes('coffee')) return 'coffee-table';
+      if (paramCategory.includes('tv')) return 'tv-unit';
+      if (paramCategory === 'desk' || paramCategory.includes('study')) return 'study';
+      if (paramCategory.includes('storage') || paramCategory.includes('wardrobe') || paramCategory.includes('shoe')) return 'storage';
+    }
+    return 'all';
+  });
+
+  // Additional Filter States
+  const [selectedRooms, setSelectedRooms] = useState<string[]>(paramRoom ? [paramRoom] : []);
   const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
   const [maxPrice, setMaxPrice] = useState<number>(80000);
   const [sortBy, setSortBy] = useState<string>('popular');
@@ -39,42 +63,42 @@ function ProductsPageContent() {
     { id: 'bedroom', label: 'Bedroom' },
     { id: 'dining-room', label: 'Dining Room' },
     { id: 'study', label: 'Study & Work' },
-    { id: 'storage', label: 'Storage' },
-    { id: 'outdoor', label: 'Outdoor' },
-  ];
-
-  const styleOptions = [
-    { id: 'scandinavian-modern', label: 'Scandinavian Modern' },
-    { id: 'modern-minimalist', label: 'Modern Minimalist' },
-    { id: 'warm-traditional', label: 'Warm Traditional' },
   ];
 
   const finishOptions = [
     { id: 'Natural Teak', label: 'Natural Teak' },
-    { id: 'Walnut', label: 'Walnut' },
-    { id: 'Mahogany', label: 'Mahogany' },
+    { id: 'Walnut', label: 'Rich Walnut' },
+    { id: 'Mahogany', label: 'Warm Mahogany' },
   ];
 
   // Filtering Logic
   const filteredProducts = useMemo(() => {
     return products.filter((p) => {
+      // Finish/Material match
+      if (selectedMaterials.length > 0) {
+        const matchesFinish = p.materials.finish.some((f) => selectedMaterials.includes(f));
+        if (!matchesFinish) return false;
+      }
+      // Category Tab Filter
+      if (activeCategoryTab !== 'all') {
+        if (activeCategoryTab === 'sofa' && p.category !== 'sofa') return false;
+        if (activeCategoryTab === 'bed' && p.category !== 'bed') return false;
+        if (activeCategoryTab === 'dining' && p.category !== 'dining-table') return false;
+        if (activeCategoryTab === 'coffee-table' && p.category !== 'coffee-table') return false;
+        if (activeCategoryTab === 'tv-unit' && p.category !== 'tv-unit') return false;
+        if (activeCategoryTab === 'study' && p.category !== 'desk') return false;
+        if (
+          activeCategoryTab === 'storage' &&
+          !['storage-cabinet', 'wardrobe', 'shoe-rack', 'bookshelf', 'nightstand'].includes(p.category)
+        ) {
+          return false;
+        }
+      }
+
       // Room match
       if (selectedRooms.length > 0) {
         const hasRoom = p.room.some((r) => selectedRooms.includes(r));
         if (!hasRoom) return false;
-      }
-
-      // Style match
-      if (selectedStyles.length > 0 && !selectedStyles.includes(p.collection)) {
-        return false;
-      }
-
-      // Wood Finish match
-      if (selectedMaterials.length > 0) {
-        const matchFinish = selectedMaterials.some((finish) =>
-          p.materials.finish.some((f) => f.toLowerCase().includes(finish.toLowerCase()))
-        );
-        if (!matchFinish) return false;
       }
 
       // Price match
@@ -94,7 +118,7 @@ function ProductsPageContent() {
 
       return true;
     });
-  }, [selectedRooms, selectedStyles, selectedMaterials, maxPrice, searchQuery]);
+  }, [activeCategoryTab, selectedRooms, maxPrice, searchQuery]);
 
   // Sorting Logic
   const sortedProducts = useMemo(() => {
@@ -106,322 +130,178 @@ function ProductsPageContent() {
   }, [filteredProducts, sortBy]);
 
   const clearAllFilters = () => {
+    setActiveCategoryTab('all');
     setSelectedRooms([]);
-    setSelectedStyles([]);
-    setSelectedMaterials([]);
     setMaxPrice(80000);
   };
 
   const hasActiveFilters =
+    activeCategoryTab !== 'all' ||
     selectedRooms.length > 0 ||
-    selectedStyles.length > 0 ||
-    selectedMaterials.length > 0 ||
     maxPrice < 80000;
 
   return (
-    <div className="bg-warm-ivory min-h-screen py-6 sm:py-10">
+    <div className="bg-[#F7F4EE] min-h-screen py-6 sm:py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}
         <Breadcrumb
           items={[
             { label: 'Catalogue', href: '/products' },
-            ...(selectedRooms.length === 1
-              ? [{ label: roomOptions.find((r) => r.id === selectedRooms[0])?.label || 'Room' }]
+            ...(activeCategoryTab !== 'all'
+              ? [{ label: categoryTabs.find((t) => t.id === activeCategoryTab)?.label || 'Category' }]
               : []),
           ]}
           className="mb-6"
         />
 
         {/* Page Header Banner */}
-        <div className="mb-8 pb-6 border-b border-border-sand flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="mb-6 pb-6 border-b border-[#D8C9B5] flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-antique-gold">
-              SOLID SHEESHAM COLLECTION
+            <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#48563A] flex items-center gap-1.5 mb-1.5">
+              <Sparkles className="w-3.5 h-3.5" /> 100% SOLID SHEESHAM TIMBER
             </span>
-            <h1 className="font-serif text-3xl sm:text-4xl text-espresso mt-1">
+            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#2C2926] font-medium tracking-tight">
               Handcrafted Furniture Catalogue
             </h1>
-            <p className="text-soft-taupe text-sm mt-1 max-w-xl">
-              100% kiln-dried solid hardwood pieces engineered for modern Indian apartments.
+            <p className="text-[#A69B8C] text-xs sm:text-sm mt-1.5 max-w-xl">
+              Kiln-dried solid hardwood furniture with mortise &amp; tenon joinery for modern Indian homes.
             </p>
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="text-xs text-soft-taupe font-semibold bg-white px-3 py-1.5 rounded-btn border border-border-sand shadow-xs">
-              Showing {sortedProducts.length} of {products.length} Pieces
+            <span className="text-xs sm:text-sm text-[#2C2926] font-semibold bg-white px-4 py-2 rounded-btn border border-[#D8C9B5] shadow-xs">
+              Showing {sortedProducts.length} {sortedProducts.length === 1 ? 'product' : 'products'}
             </span>
           </div>
         </div>
 
-        {/* Main 12-Column Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Horizontal Category Filter Tabs Bar */}
+        <div className="mb-8 overflow-x-auto no-scrollbar pb-2">
+          <div className="flex items-center gap-2 min-w-max">
+            {categoryTabs.map((tab) => {
+              const isActive = activeCategoryTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveCategoryTab(tab.id)}
+                  className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
+                    isActive
+                      ? 'bg-[#2C2926] text-[#F7F4EE] shadow-xs'
+                      : 'bg-white text-[#2C2926] hover:bg-white/80 border border-[#D8C9B5]'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Sticky Control Bar: Sort + Room Filter Pills + Grid Toggle */}
+        <div className="mb-6 bg-white rounded-card p-3 sm:p-4 border border-[#D8C9B5] shadow-xs flex flex-wrap items-center justify-between gap-3">
           
-          {/* Left Sidebar Filter Panel (Desktop: 3 cols) */}
-          <aside className="hidden lg:block lg:col-span-3 bg-white rounded-card p-6 border border-border-sand shadow-card space-y-6 sticky top-28">
-            <div className="flex items-center justify-between pb-3 border-b border-border-sand">
-              <span className="font-serif font-bold text-base text-espresso flex items-center gap-2">
-                <SlidersHorizontal className="w-4 h-4 text-antique-gold" /> Filter By
-              </span>
-              {hasActiveFilters && (
+          {/* Quick Room Filter Pills */}
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+            <span className="text-[11px] uppercase font-semibold text-[#A69B8C] mr-1 hidden sm:inline">
+              Room:
+            </span>
+            <button
+              onClick={() => setSelectedRooms([])}
+              className={`px-3 py-1.5 text-xs font-medium rounded-btn transition-all ${
+                selectedRooms.length === 0
+                  ? 'bg-[#48563A] text-white shadow-2xs'
+                  : 'bg-[#F7F4EE] text-[#2C2926] hover:bg-white border border-[#D8C9B5]'
+              }`}
+            >
+              All Rooms
+            </button>
+            {roomOptions.map((r) => {
+              const isSelected = selectedRooms.includes(r.id);
+              return (
                 <button
-                  onClick={clearAllFilters}
-                  className="text-xs text-antique-gold hover:underline font-semibold"
+                  key={r.id}
+                  onClick={() => {
+                    if (isSelected) setSelectedRooms([]);
+                    else setSelectedRooms([r.id]);
+                  }}
+                  className={`px-3 py-1.5 text-xs font-medium rounded-btn whitespace-nowrap transition-all ${
+                    isSelected
+                      ? 'bg-[#48563A] text-white shadow-2xs'
+                      : 'bg-[#F7F4EE] text-[#2C2926] hover:bg-white border border-[#D8C9B5]'
+                  }`}
                 >
-                  Reset All
+                  {r.label}
                 </button>
-              )}
+              );
+            })}
+          </div>
+
+          <div className="flex items-center gap-3 ml-auto">
+            {/* Sort By Dropdown */}
+            <div className="flex items-center gap-2 text-xs">
+              <span className="text-[#A69B8C] hidden sm:inline">Sort By:</span>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="bg-[#F7F4EE] border border-[#D8C9B5] text-[#2C2926] font-medium text-xs rounded-btn py-1.5 px-3 focus:outline-none focus:ring-1 focus:ring-[#2C2926] cursor-pointer"
+              >
+                <option value="popular">Popularity</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="newest">Newest</option>
+              </select>
             </div>
 
-            {/* Price Range Slider */}
-            <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-espresso block mb-2">
-                Max Price: <strong>₹{maxPrice.toLocaleString('en-IN')}</strong>
-              </label>
-              <input
-                type="range"
-                min="0"
-                max="80000"
-                step="2000"
-                value={maxPrice}
-                onChange={(e) => setMaxPrice(Number(e.target.value))}
-                className="w-full accent-espresso cursor-pointer"
-              />
-              <div className="flex justify-between text-[10px] text-soft-taupe mt-1 font-semibold">
-                <span>₹0</span>
-                <span>₹80,000</span>
-              </div>
-            </div>
-
-            {/* Room Filter */}
-            <div className="pt-3 border-t border-border-sand/60">
-              <span className="text-xs font-bold uppercase tracking-wider text-espresso block mb-2.5">
-                Room Space
-              </span>
-              <div className="space-y-2">
-                {roomOptions.map((room) => (
-                  <label key={room.id} className="flex items-center gap-2 text-xs text-espresso cursor-pointer select-none">
-                    <input
-                      type="checkbox"
-                      checked={selectedRooms.includes(room.id)}
-                      onChange={(e) => {
-                        if (e.target.checked) setSelectedRooms([...selectedRooms, room.id]);
-                        else setSelectedRooms(selectedRooms.filter((r) => r !== room.id));
-                      }}
-                      className="rounded-btn text-espresso focus:ring-espresso"
-                    />
-                    <span>{room.label}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
-
-            {/* Design Style Filter */}
-            <div className="pt-3 border-t border-border-sand/60">
-              <span className="text-xs font-bold uppercase tracking-wider text-espresso block mb-2.5">
-                Design Style
-              </span>
-              <div className="space-y-2">
-                {styleOptions.map((style) => (
-                  <label key={style.id} className="flex items-center gap-2 text-xs text-espresso cursor-pointer select-none">
-                    <input
-                      type="checkbox"
-                      checked={selectedStyles.includes(style.id)}
-                      onChange={(e) => {
-                        if (e.target.checked) setSelectedStyles([...selectedStyles, style.id]);
-                        else setSelectedStyles(selectedStyles.filter((s) => s !== style.id));
-                      }}
-                      className="rounded-btn text-espresso focus:ring-espresso"
-                    />
-                    <span>{style.label}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
-
-            {/* Wood Finish Filter */}
-            <div className="pt-3 border-t border-border-sand/60">
-              <span className="text-xs font-bold uppercase tracking-wider text-espresso block mb-2.5">
-                Wood Finish
-              </span>
-              <div className="space-y-2">
-                {finishOptions.map((finish) => (
-                  <label key={finish.id} className="flex items-center gap-2 text-xs text-espresso cursor-pointer select-none">
-                    <input
-                      type="checkbox"
-                      checked={selectedMaterials.includes(finish.id)}
-                      onChange={(e) => {
-                        if (e.target.checked) setSelectedMaterials([...selectedMaterials, finish.id]);
-                        else setSelectedMaterials(selectedMaterials.filter((m) => m !== finish.id));
-                      }}
-                      className="rounded-btn text-espresso focus:ring-espresso"
-                    />
-                    <span>{finish.label}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
-
-            {/* Direct WhatsApp Consultation Box */}
-            <div className="pt-4 border-t border-border-sand/60">
-              <div className="p-3.5 bg-warm-alabaster rounded-card border border-border-sand space-y-2">
-                <span className="text-[11px] font-bold text-charcoal block">Need Help Choosing?</span>
-                <p className="text-[10px] text-mid-gray leading-snug">
-                  Chat with our furniture specialist on WhatsApp for room planning.
-                </p>
-                <a
-                  href="https://wa.me/917291962356?text=Hi%20Rumea%20Home!%20I'd%20like%20help%20choosing%20furniture."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-[11px] font-medium text-[#48563A] hover:underline"
-                >
-                  <span>Chat on WhatsApp &rarr;</span>
-                </a>
-              </div>
-            </div>
-
-          </aside>
-
-          {/* Right Product Grid Area (Desktop: 9 cols) */}
-          <div className="lg:col-span-9 space-y-6">
-            
-            {/* Sticky Control Bar: Sort + Mobile Filter Toggle + Grid Toggle */}
-            <div className="sticky top-16 md:top-20 z-20 bg-white/95 backdrop-blur-md rounded-card p-3 sm:p-4 border border-border-sand shadow-card flex flex-wrap items-center justify-between gap-3">
-              
-              {/* Mobile Filter & Sort Button */}
+            {/* Grid Column Toggle */}
+            <div className="hidden sm:flex items-center gap-1 border border-[#D8C9B5] rounded-btn p-0.5 bg-[#F7F4EE]">
               <button
-                onClick={() => setMobileFilterOpen(true)}
-                className="lg:hidden inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#F7F4EE] text-[#2C2926] text-xs font-semibold rounded-btn border border-[#D8C9B5] shadow-xs cursor-pointer"
+                onClick={() => setViewMode('3col')}
+                className={`p-1.5 rounded-btn cursor-pointer ${viewMode === '3col' ? 'bg-white text-[#2C2926] shadow-2xs' : 'text-[#A69B8C] hover:text-[#2C2926]'}`}
+                aria-label="3 or 4 column grid"
               >
-                <SlidersHorizontal className="w-4 h-4 text-[#48563A]" />
-                <span>Filter &amp; Sort {hasActiveFilters ? '• Active' : ''}</span>
+                <Grid3X3 className="w-4 h-4" />
               </button>
-
-              {/* Sort By Dropdown */}
-              <div className="flex items-center gap-2 text-xs">
-                <span className="text-soft-taupe hidden sm:inline">Sort By:</span>
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="bg-warm-ivory border border-border-sand text-espresso font-semibold text-xs rounded-btn py-1.5 px-3 focus:outline-none focus:ring-1 focus:ring-espresso cursor-pointer"
-                >
-                  <option value="popular">Popularity</option>
-                  <option value="price-low">Price: Low to High</option>
-                  <option value="price-high">Price: High to Low</option>
-                  <option value="newest">Newest</option>
-                  <option value="rating">Highest Rated</option>
-                </select>
-              </div>
-
-              {/* Grid Column Toggle */}
-              <div className="hidden sm:flex items-center gap-1 border border-border-sand rounded-btn p-0.5 bg-warm-ivory">
-                <button
-                  onClick={() => setViewMode('3col')}
-                  className={`p-1.5 rounded-btn cursor-pointer ${viewMode === '3col' ? 'bg-white text-espresso shadow-xs' : 'text-soft-taupe hover:text-espresso'}`}
-                  aria-label="3 column grid"
-                >
-                  <Grid3X3 className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => setViewMode('2col')}
-                  className={`p-1.5 rounded-btn cursor-pointer ${viewMode === '2col' ? 'bg-white text-espresso shadow-xs' : 'text-soft-taupe hover:text-espresso'}`}
-                  aria-label="2 column grid"
-                >
-                  <Grid2X2 className="w-4 h-4" />
-                </button>
-              </div>
-
-            </div>
-
-            {/* Active Filter Pills (if any) */}
-            {hasActiveFilters && (
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-xs text-soft-taupe">Active Filters:</span>
-                {selectedRooms.map((r) => (
-                  <span
-                    key={r}
-                    className="inline-flex items-center gap-1 px-2.5 py-1 bg-white text-espresso text-xs rounded-full border border-border-sand shadow-xs font-medium"
-                  >
-                    {roomOptions.find((o) => o.id === r)?.label}
-                    <button onClick={() => setSelectedRooms(selectedRooms.filter((x) => x !== r))}>
-                      <X className="w-3 h-3 text-soft-taupe hover:text-espresso" />
-                    </button>
-                  </span>
-                ))}
-
-                {selectedStyles.map((s) => (
-                  <span
-                    key={s}
-                    className="inline-flex items-center gap-1 px-2.5 py-1 bg-white text-espresso text-xs rounded-full border border-border-sand shadow-xs font-medium"
-                  >
-                    {styleOptions.find((o) => o.id === s)?.label}
-                    <button onClick={() => setSelectedStyles(selectedStyles.filter((x) => x !== s))}>
-                      <X className="w-3 h-3 text-soft-taupe hover:text-espresso" />
-                    </button>
-                  </span>
-                ))}
-
-                {selectedMaterials.map((m) => (
-                  <span
-                    key={m}
-                    className="inline-flex items-center gap-1 px-2.5 py-1 bg-white text-espresso text-xs rounded-full border border-border-sand shadow-xs font-medium"
-                  >
-                    {finishOptions.find((o) => o.id === m)?.label || m}
-                    <button onClick={() => setSelectedMaterials(selectedMaterials.filter((x) => x !== m))}>
-                      <X className="w-3 h-3 text-soft-taupe hover:text-espresso" />
-                    </button>
-                  </span>
-                ))}
-
-                {maxPrice < 80000 && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-white text-espresso text-xs rounded-full border border-border-sand shadow-xs font-medium">
-                    Under ₹{maxPrice.toLocaleString('en-IN')}
-                    <button onClick={() => setMaxPrice(80000)}>
-                      <X className="w-3 h-3 text-soft-taupe hover:text-espresso" />
-                    </button>
-                  </span>
-                )}
-
-                <button
-                  onClick={clearAllFilters}
-                  className="text-xs text-antique-gold font-bold underline ml-1 cursor-pointer"
-                >
-                  Clear All
-                </button>
-              </div>
-            )}
-
-            {/* Product Grid */}
-            {sortedProducts.length === 0 ? (
-              <div className="text-center py-16 bg-white rounded-card border border-border-sand p-8">
-                <p className="font-serif text-2xl text-espresso mb-2">No pieces found</p>
-                <p className="text-xs text-soft-taupe max-w-sm mx-auto mb-6">
-                  Try adjusting your filter options or price range to find your piece.
-                </p>
-                <button
-                  onClick={clearAllFilters}
-                  className="px-6 py-2.5 bg-espresso text-warm-ivory text-xs font-semibold rounded-btn shadow-xs"
-                >
-                  Reset Filters
-                </button>
-              </div>
-            ) : (
-              <div
-                className={`grid gap-4 sm:gap-6 ${
-                  viewMode === '3col'
-                    ? 'grid-cols-2 sm:grid-cols-2 lg:grid-cols-3'
-                    : 'grid-cols-2 sm:grid-cols-2'
-                }`}
+              <button
+                onClick={() => setViewMode('2col')}
+                className={`p-1.5 rounded-btn cursor-pointer ${viewMode === '2col' ? 'bg-white text-[#2C2926] shadow-2xs' : 'text-[#A69B8C] hover:text-[#2C2926]'}`}
+                aria-label="2 column grid"
               >
-                {sortedProducts.map((product, idx) => (
-                  <ProductCard key={product.id} product={product} priority={idx < 6} />
-                ))}
-              </div>
-            )}
-
+                <Grid2X2 className="w-4 h-4" />
+              </button>
+            </div>
           </div>
 
         </div>
+
+        {/* Product Grid */}
+        {sortedProducts.length === 0 ? (
+          <div className="text-center py-16 bg-white rounded-card border border-[#D8C9B5] p-8">
+            <Compass className="w-8 h-8 text-[#A69B8C] mx-auto mb-2" />
+            <p className="font-serif text-2xl text-[#2C2926] mb-2">No products found</p>
+            <p className="text-xs text-[#A69B8C] max-w-sm mx-auto mb-6">
+              Try selecting another category filter or reset to browse all pieces.
+            </p>
+            <button
+              onClick={clearAllFilters}
+              className="px-6 py-2.5 bg-[#2C2926] text-[#F7F4EE] text-xs font-medium rounded-btn shadow-xs"
+            >
+              Reset Filters
+            </button>
+          </div>
+        ) : (
+          <div
+            className={`grid gap-4 sm:gap-6 ${
+              viewMode === '3col'
+                ? 'grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
+                : 'grid-cols-2 sm:grid-cols-2 md:grid-cols-3'
+            }`}
+          >
+            {sortedProducts.map((product, idx) => (
+              <ProductCard key={product.id} product={product} priority={idx < 6} />
+            ))}
+          </div>
+        )}
 
       </div>
 

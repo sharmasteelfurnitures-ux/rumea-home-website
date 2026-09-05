@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedHeading from '@/components/ui/AnimatedHeading';
-import { Sparkles, ArrowRight, ChevronRight, ShoppingBag } from 'lucide-react';
+import { Sparkles, ArrowRight, ChevronRight, ShoppingBag, X } from 'lucide-react';
 
 interface HotspotProduct {
   id: string;
@@ -259,7 +259,7 @@ export default function ShopTheLook() {
                       />
                     </button>
 
-                    {/* Pop-up Card (IKEA Style) */}
+                    {/* Pop-up Card (IKEA Style with Mobile Touch Close & Viewport Clamping) */}
                     <AnimatePresence>
                       {isActive && (
                         <motion.div
@@ -268,13 +268,28 @@ export default function ShopTheLook() {
                           exit={{ opacity: 0, scale: 0.95, y: 4 }}
                           transition={{ duration: 0.2 }}
                           className={`absolute z-40 w-52 sm:w-60 bg-white rounded-xl shadow-2xl border border-[#D8C9B5] p-3 sm:p-3.5 text-left ${
-                            item.popupAlign === 'left'
-                              ? 'right-full mr-3 top-1/2 -translate-y-1/2'
-                              : item.popupAlign === 'right'
-                              ? 'left-full ml-3 top-1/2 -translate-y-1/2'
-                              : 'bottom-full mb-3 left-1/2 -translate-x-1/2'
+                            item.pinY > 50 ? 'bottom-full mb-3' : 'top-full mt-3'
+                          } ${
+                            item.pinX > 65
+                              ? 'right-0 sm:right-auto sm:right-full sm:mr-3 sm:top-1/2 sm:-translate-y-1/2 sm:bottom-auto sm:mb-0'
+                              : item.pinX < 35
+                              ? 'left-0 sm:left-auto sm:left-full sm:ml-3 sm:top-1/2 sm:-translate-y-1/2 sm:bottom-auto sm:mb-0'
+                              : 'left-1/2 -translate-x-1/2 sm:left-1/2 sm:-translate-x-1/2'
                           }`}
                         >
+                          {/* Mobile Dismiss 'X' Button */}
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setActiveHotspotId(null);
+                            }}
+                            className="absolute -top-2.5 -right-2.5 w-6 h-6 bg-[#2C2926] text-[#F7F4EE] rounded-full flex items-center justify-center hover:bg-[#48563A] transition-colors shadow-md z-10 cursor-pointer"
+                            aria-label="Close product card"
+                          >
+                            <X className="w-3.5 h-3.5" />
+                          </button>
+
                           <Link href={`/products/${item.slug}`} className="block group/card">
                             <div className="flex items-start justify-between gap-2">
                               <div>

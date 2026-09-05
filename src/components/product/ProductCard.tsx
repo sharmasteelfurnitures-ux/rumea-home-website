@@ -93,14 +93,14 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
             />
           </button>
 
-          {/* Desktop Hover Quick View Button */}
-          <div className="absolute inset-x-3 bottom-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 hidden sm:block">
+          {/* Desktop Hover Quick View Button — Frosted Glassmorphism Style */}
+          <div className="absolute inset-x-3 bottom-2.5 sm:inset-x-4 sm:bottom-3 z-10 opacity-0 group-hover:opacity-100 translate-y-1.5 group-hover:translate-y-0 transition-all duration-300 ease-out hidden sm:block pointer-events-none group-hover:pointer-events-auto">
             <button
               onClick={() => setQuickViewOpen(true)}
-              className="w-full py-2.5 bg-[#2C2926]/90 hover:bg-[#2C2926] text-[#F7F4EE] text-xs font-semibold rounded-xl shadow-lg flex items-center justify-center gap-1.5 backdrop-blur-xs transition-colors"
+              className="w-full py-2 sm:py-2.5 px-3 bg-white/70 hover:bg-white/95 text-[#2C2926] hover:text-[#48563A] text-xs font-semibold rounded-xl border border-white/80 hover:border-white shadow-md hover:shadow-lg backdrop-blur-md flex items-center justify-center gap-1.5 transition-all duration-200 cursor-pointer group/btn"
             >
-              <Eye className="w-3.5 h-3.5 text-[#D8C9B5]" />
-              <span>Quick View</span>
+              <Eye className="w-3.5 h-3.5 text-[#48563A] group-hover/btn:scale-110 transition-transform" />
+              <span className="tracking-wide font-medium">Quick View</span>
             </button>
           </div>
         </div>

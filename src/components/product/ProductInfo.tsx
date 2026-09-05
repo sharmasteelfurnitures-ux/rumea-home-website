@@ -114,10 +114,11 @@ export default function ProductInfo({ product }: ProductInfoProps) {
             <span>From <strong className="font-semibold">₹{emiPerMonth.toLocaleString('en-IN')}/month</strong> with No Cost EMI</span>
           </div>
           <button
+            type="button"
             onClick={() => setShowEMIInfo(!showEMIInfo)}
-            className="text-[#48563A] hover:text-[#2C2926] font-medium underline text-[11px]"
+            className="text-[#48563A] hover:text-[#2C2926] font-medium underline text-[11px] cursor-pointer"
           >
-            {showEMIInfo ? 'Hide EMI' : 'View Plans'}
+            {showEMIInfo ? 'Hide Plans' : 'View Plans'}
           </button>
         </div>
 
@@ -181,13 +182,13 @@ export default function ProductInfo({ product }: ProductInfoProps) {
       </div>
 
       {/* CTA Buttons Row: Primary WhatsApp Order/Enquire + Direct Phone Consultation */}
-      <div className="space-y-3 pt-2">
+      <div className="flex flex-col gap-3 pt-2">
         <a
           href={productWhatsAppUrl}
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => trackWhatsAppClick({ source: 'pdp', product_id: product.id, product_name: product.name })}
-          className="relative group w-full flex items-center justify-center gap-2.5 py-4 px-6 bg-[#48563A] hover:bg-[#3B4730] text-[#F7F4EE] font-sans font-semibold text-sm sm:text-base rounded-btn shadow-warm hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 overflow-hidden cursor-pointer"
+          className="relative group w-full min-h-[48px] flex items-center justify-center gap-2.5 py-3.5 px-6 bg-[#48563A] hover:bg-[#3B4730] text-[#F7F4EE] font-sans font-semibold text-sm sm:text-base rounded-btn shadow-warm hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 overflow-hidden cursor-pointer"
         >
           {/* Shimmer sweep */}
           <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none" />
@@ -204,7 +205,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
 
         <a
           href="tel:+917291962356"
-          className="w-full flex items-center justify-center gap-2.5 py-3.5 px-6 bg-transparent text-[#2C2926] border-[1.5px] border-[#2C2926] hover:bg-[#2C2926] hover:text-[#F7F4EE] font-sans font-medium text-sm rounded-btn transition-all duration-200 group"
+          className="w-full min-h-[48px] flex items-center justify-center gap-2.5 py-3 px-6 bg-transparent text-[#2C2926] border-[1.5px] border-[#2C2926] hover:bg-[#2C2926] hover:text-[#F7F4EE] font-sans font-medium text-sm rounded-btn transition-all duration-200 group"
         >
           <Phone className="w-4 h-4 text-[#48563A] group-hover:text-[#F7F4EE]" />
           <span>Call +91 72919 62356 for Sizing &amp; Customization</span>

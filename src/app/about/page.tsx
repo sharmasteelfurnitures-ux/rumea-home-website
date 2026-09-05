@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -24,11 +24,11 @@ import {
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 export const metadata: Metadata = {
-  title: 'Our Story & Craftsmanship | Rumea Home',
+  title: 'Our Story & Craftsmanship',
   description:
     '100% Solid kiln-dried Sheesham wood furniture for modern Indian homes. Discover why we use zero MDF, mortise & tenon joinery, and honest workshop pricing.',
   openGraph: {
-    title: 'Our Story & Craftsmanship | Rumea Home',
+    title: 'Our Story & Craftsmanship',
     description: '100% Solid Sheesham Wood Furniture Handcrafted for Indian Homes.',
     url: 'https://rumeahome.com/about',
   },
@@ -99,7 +99,7 @@ export default function AboutPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb */}
-        <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Our Story' }]} className="mb-6" />
+        <Breadcrumb items={[{ label: 'Our Story' }]} className="mb-6" />
 
         {/* 1. Hero Brand Statement */}
         <section className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">

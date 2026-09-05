@@ -13,7 +13,7 @@ export default function MobileNav() {
   const navItems = [
     { label: 'Home', href: '/', icon: Home, match: (p: string) => p === '/' },
     { label: 'Products', href: '/products', icon: Armchair, match: (p: string) => p.startsWith('/products') },
-    { label: 'Rooms', href: '/rooms/living-room', icon: LayoutGrid, match: (p: string) => p.startsWith('/rooms') },
+    { label: 'Rooms', href: '/rooms', icon: LayoutGrid, match: (p: string) => p.startsWith('/rooms') },
     {
       label: 'WhatsApp',
       href: buildWhatsAppUrl('Hi! I am browsing on my phone and would like to ask a question.'),

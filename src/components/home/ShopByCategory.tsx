@@ -241,14 +241,14 @@ export default function ShopByCategory() {
           </Link>
         </div>
 
-        {/* 12-Category Grid with Mobile Horizontal Scroll Snap & Desktop 6-Col Grid */}
+        {/* 12-Category Grid with Mobile Horizontal Scroll Snap (3.5 items visible) & Desktop 6-Col Grid */}
         <div
           ref={scrollContainerRef}
           onScroll={handleScroll}
-          className="flex sm:grid sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-5 overflow-x-auto sm:overflow-x-visible snap-x snap-mandatory sm:snap-none mobile-swipe-rail pb-2 sm:pb-0 -mx-4 sm:mx-0 px-4 sm:px-0"
+          className="flex sm:grid sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-5 overflow-x-auto sm:overflow-x-visible snap-x snap-mandatory sm:snap-none mobile-swipe-rail pb-2 sm:pb-0 -mx-4 sm:mx-0 px-4 sm:px-0"
         >
           {categories.map((cat, idx) => (
-            <div key={cat.id} className="w-[42vw] max-w-[180px] sm:w-auto shrink-0 snap-start mobile-swipe-item">
+            <div key={cat.id} className="w-[26vw] min-w-[96px] sm:w-auto shrink-0 snap-start mobile-swipe-item">
               <InteractiveCategoryCard cat={cat} idx={idx} />
             </div>
           ))}

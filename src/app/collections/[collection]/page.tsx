@@ -59,15 +59,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!col) {
     return {
-      title: 'Collection Not Found | Rumea Home',
+      title: 'Collection Not Found',
     };
   }
 
   return {
-    title: `${col.name} Collection | Rumea Home`,
+    title: `${col.name} Collection`,
     description: col.description,
     openGraph: {
-      title: `${col.name} Collection | Rumea Home`,
+      title: `${col.name} Collection`,
       description: col.description,
       images: [{ url: col.image, width: 1200, height: 600, alt: col.name }],
     },

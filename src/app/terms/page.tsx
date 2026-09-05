@@ -1,15 +1,15 @@
-﻿import React from 'react';
+import React from 'react';
 import type { Metadata } from 'next';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import { Scale, ShieldCheck, Truck, RotateCcw, Hammer, FileText, CheckCircle2 } from 'lucide-react';
 import WhatsAppFloatingButton from '@/components/layout/WhatsAppFloatingButton';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service & Warranty Policy | Rumea Home',
+  title: 'Terms of Service & Warranty Policy',
   description:
     'Transparent terms of service, 5-Year Structural Frame Warranty terms, Free PAN India Delivery, and 30-Day Doorstep Return guidelines for Rumea Home.',
   openGraph: {
-    title: 'Terms of Service & Warranty | Rumea Home',
+    title: 'Terms of Service & Warranty',
     description: '5-Year Frame Warranty, Delivery, and Return terms for solid Sheesham furniture.',
     url: 'https://rumeahome.com/terms',
   },
@@ -22,7 +22,7 @@ export default function TermsPage() {
         
         {/* Breadcrumb */}
         <Breadcrumb
-          items={[{ label: 'Home', href: '/' }, { label: 'Terms of Service' }]}
+          items={[{ label: 'Terms of Service' }]}
           className="mb-6"
         />
 

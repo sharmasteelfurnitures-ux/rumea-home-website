@@ -1,15 +1,15 @@
-﻿import React from 'react';
+import React from 'react';
 import type { Metadata } from 'next';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import { ShieldCheck, Lock, Eye, MessageCircle, MapPin } from 'lucide-react';
 import WhatsAppFloatingButton from '@/components/layout/WhatsAppFloatingButton';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Rumea Home',
+  title: 'Privacy Policy',
   description:
     'Our commitment to your privacy and personal data protection. Transparent, compliant, and zero-spam policy for Rumea Home buyers.',
   openGraph: {
-    title: 'Privacy Policy | Rumea Home',
+    title: 'Privacy Policy',
     description: 'Data security, privacy protection, and transparent customer communication policies at Rumea Home.',
     url: 'https://rumeahome.com/privacy-policy',
   },
@@ -22,7 +22,7 @@ export default function PrivacyPolicyPage() {
         
         {/* Breadcrumb */}
         <Breadcrumb
-          items={[{ label: 'Home', href: '/' }, { label: 'Privacy Policy' }]}
+          items={[{ label: 'Privacy Policy' }]}
           className="mb-6"
         />
 

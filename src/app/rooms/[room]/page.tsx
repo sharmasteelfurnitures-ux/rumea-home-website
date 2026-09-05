@@ -28,15 +28,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!roomCat) {
     return {
-      title: 'Room Not Found | Rumea Home',
+      title: 'Room Not Found',
     };
   }
 
   return {
-    title: `${roomCat.name} Furniture | Rumea Home`,
+    title: `${roomCat.name} Furniture`,
     description: roomCat.description,
     openGraph: {
-      title: `${roomCat.name} Furniture | Rumea Home`,
+      title: `${roomCat.name} Furniture`,
       description: roomCat.description,
       images: [{ url: roomCat.image, width: 1000, height: 600, alt: roomCat.name }],
     },

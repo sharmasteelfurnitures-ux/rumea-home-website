@@ -32,16 +32,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!product) {
     return {
-      title: 'Product Not Found | Rumea Home',
+      title: 'Product Not Found',
     };
   }
 
   return {
-    title: `${product.name} | Solid Sheesham Furniture | Rumea Home`,
+    title: `${product.name} · Solid Sheesham Furniture`,
     description: product.meta.description,
     keywords: product.meta.keywords,
     openGraph: {
-      title: `${product.name} | Rumea Home`,
+      title: product.name,
       description: product.meta.description,
       images: [
         {
@@ -95,7 +95,7 @@ export default function ProductDetailPage({ params }: Props) {
     : 'Catalogue';
 
   return (
-    <div className="bg-warm-ivory min-h-screen py-6 sm:py-10 pb-28 lg:pb-12">
+    <div className="bg-warm-ivory min-h-screen py-6 sm:py-10 pb-[110px] md:pb-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -4,6 +4,7 @@ import React, { useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import AnimatedHeading from '@/components/ui/AnimatedHeading';
 import { ArrowRight } from 'lucide-react';
 
 interface CategoryItem {
@@ -221,14 +222,15 @@ export default function ShopByCategory() {
   ];
 
   return (
-    <section className="py-12 sm:py-16 bg-[#F7F4EE] border-t border-[#D8C9B5] overflow-hidden">
+    <section className="py-12 sm:py-16 bg-[#F7F4EE] subtle-grain-texture border-t border-[#D8C9B5] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Clean, Minimal Section Header */}
         <div className="flex items-center justify-between mb-8 sm:mb-10">
-          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#2C2926] font-medium tracking-tight">
-            Shop by category
-          </h2>
+          <AnimatedHeading 
+            text="Shop by category"
+            className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#2C2926] font-medium tracking-tight"
+          />
 
           <Link
             href="/products"
@@ -243,10 +245,10 @@ export default function ShopByCategory() {
         <div
           ref={scrollContainerRef}
           onScroll={handleScroll}
-          className="flex sm:grid sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-5 overflow-x-auto sm:overflow-x-visible snap-x snap-mandatory sm:snap-none no-scrollbar pb-2 sm:pb-0 -mx-4 sm:mx-0 px-4 sm:px-0"
+          className="flex sm:grid sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-5 overflow-x-auto sm:overflow-x-visible snap-x snap-mandatory sm:snap-none mobile-swipe-rail pb-2 sm:pb-0 -mx-4 sm:mx-0 px-4 sm:px-0"
         >
           {categories.map((cat, idx) => (
-            <div key={cat.id} className="w-[42vw] max-w-[180px] sm:w-auto shrink-0 snap-start">
+            <div key={cat.id} className="w-[42vw] max-w-[180px] sm:w-auto shrink-0 snap-start mobile-swipe-item">
               <InteractiveCategoryCard cat={cat} idx={idx} />
             </div>
           ))}

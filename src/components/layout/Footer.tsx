@@ -236,10 +236,10 @@ export default function Footer() {
                 href={buildWhatsAppUrl("Hi Rumea Home team! I would like design assistance for my apartment.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 bg-transparent border border-[#D8C9B5] text-[#D8C9B5] hover:bg-[#D8C9B5]/10 text-xs font-medium rounded-btn transition-all duration-200"
+                className="btn-fill-anim w-full inline-flex items-center justify-center gap-2 py-3 px-4 bg-transparent border border-[#D8C9B5] text-[#D8C9B5] text-xs font-medium rounded-btn transition-all duration-200"
               >
-                <MessageCircle className="w-4 h-4" />
-                <span>Chat on WhatsApp</span>
+                <MessageCircle className="w-4 h-4 relative z-10" />
+                <span className="relative z-10">Chat on WhatsApp</span>
               </a>
             </div>
           </div>

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import AnimatedHeading from '@/components/ui/AnimatedHeading';
 import { Sparkles, ArrowRight, ChevronRight, ShoppingBag } from 'lucide-react';
 
 interface HotspotProduct {
@@ -144,7 +145,7 @@ export default function ShopTheLook() {
   const bundlePrice = totalPrice - currentScene.bundleDiscount;
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-[#F7F4EE] border-t border-[#D8C9B5]">
+    <section className="py-12 sm:py-16 lg:py-20 bg-[#F7F4EE] subtle-grain-texture border-t border-[#D8C9B5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -156,9 +157,10 @@ export default function ShopTheLook() {
                 <Sparkles className="w-3.5 h-3.5 text-[#48563A]" /> INTERACTIVE ROOM EXPERIENCE
               </span>
             </div>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#2C2926] font-normal tracking-tight">
-              Shop The Complete Look
-            </h2>
+            <AnimatedHeading
+              text="Shop The Complete Look"
+              className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#2C2926] font-normal tracking-tight"
+            />
             <p className="text-[#A69B8C] text-xs sm:text-sm mt-1.5 max-w-xl">
               Hover or tap on the circle spots in the room to explore matched solid wood pieces, prices, and bundle savings.
             </p>
@@ -200,9 +202,18 @@ export default function ShopTheLook() {
               sizes="(max-width: 1024px) 100vw, 800px"
               className="object-cover object-center"
             />
+
+            {/* Warm amber overlay that fades to opacity: 0 over 800ms on viewport entry */}
+            <motion.div
+              initial={{ opacity: 1 }}
+              whileInView={{ opacity: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+              className="absolute inset-0 bg-[#B4783C]/35 pointer-events-none z-[5]"
+            />
             
             {/* Subtle Gradient Shadow */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/15 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/15 pointer-events-none z-[6]" />
 
             {/* Room Title Floating Pill (Top Left) */}
             <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20 pointer-events-none">
@@ -393,10 +404,10 @@ export default function ShopTheLook() {
 
               <Link
                 href="/contact"
-                className="w-full py-3 bg-[#D8C9B5] hover:bg-[#C9B9A3] text-[#2C2926] text-xs font-semibold rounded-btn flex items-center justify-center gap-2 transition-colors shadow-sm"
+                className="btn-fill-anim w-full py-3 bg-[#D8C9B5] text-[#2C2926] text-xs font-semibold rounded-btn flex items-center justify-center gap-2 transition-colors shadow-sm"
               >
-                <ShoppingBag className="w-3.5 h-3.5 text-[#2C2926]" />
-                <span>Inquire Room Set on WhatsApp</span>
+                <ShoppingBag className="w-3.5 h-3.5 text-[#2C2926] relative z-10" />
+                <span className="relative z-10">Inquire Room Set on WhatsApp</span>
               </Link>
             </div>
 

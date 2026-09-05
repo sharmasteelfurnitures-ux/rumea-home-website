@@ -4,6 +4,8 @@ import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProductCard from '@/components/product/ProductCard';
+import AnimatedHeading from '@/components/ui/AnimatedHeading';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 import { products } from '@/lib/products';
 import { ArrowRight, Sparkles, Flame, Grid, Compass } from 'lucide-react';
 
@@ -48,7 +50,7 @@ export default function NewArrivalsAndBestSellers() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-[#F7F4EE] border-t border-[#D8C9B5] overflow-hidden">
+    <section className="py-16 md:py-24 bg-[#F7F4EE] subtle-grain-texture border-t border-[#D8C9B5] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -57,9 +59,10 @@ export default function NewArrivalsAndBestSellers() {
             <span className="text-xs font-medium uppercase tracking-[0.12em] text-[#48563A] flex items-center gap-1.5 mb-2">
               <Sparkles className="w-3.5 h-3.5 text-[#48563A]" /> 100% SOLID SHEESHAM TIMBER
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#2C2926] font-medium tracking-tight leading-tight">
-              New Arrivals &amp; Best Sellers
-            </h2>
+            <AnimatedHeading
+              text="New Arrivals & Best Sellers"
+              className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#2C2926] font-medium tracking-tight leading-tight"
+            />
             <p className="text-[#A69B8C] text-sm sm:text-base mt-2 max-w-xl leading-relaxed">
               Explore timeless handcrafted pieces built with kiln-dried Sheesham wood and mortise &amp; tenon joinery for modern Indian homes.
             </p>
@@ -172,26 +175,28 @@ export default function NewArrivalsAndBestSellers() {
         </div>
 
         {/* Bottom CTA Banner with Workshop Direct Value Proposition */}
-        <div className="mt-12 sm:mt-16 p-6 sm:p-8 bg-white rounded-2xl border border-[#D8C9B5] shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div>
-            <p className="font-serif font-medium text-lg sm:text-xl text-[#2C2926]">
-              Looking for custom dimensions or bespoke room styling?
-            </p>
-            <p className="text-xs sm:text-sm text-[#A69B8C] mt-1">
-              Direct workshop pricing • 5-Year Frame Warranty • Free PAN India doorstep delivery
-            </p>
-          </div>
+        <ScrollReveal delay={100}>
+          <div className="mt-12 sm:mt-16 p-6 sm:p-8 bg-white rounded-2xl border border-[#D8C9B5] shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <p className="font-serif font-medium text-lg sm:text-xl text-[#2C2926]">
+                Looking for custom dimensions or bespoke room styling?
+              </p>
+              <p className="text-xs sm:text-sm text-[#A69B8C] mt-1">
+                Direct workshop pricing • 5-Year Frame Warranty • Free PAN India doorstep delivery
+              </p>
+            </div>
 
-          <div className="flex items-center gap-3 w-full sm:w-auto">
-            <Link
-              href="/products"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#2C2926] hover:bg-[#3D3632] text-[#F7F4EE] text-xs font-medium rounded-btn transition-colors shadow-xs"
-            >
-              <span>Browse Full Catalogue</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#D8C9B5]" />
-            </Link>
+            <div className="flex items-center gap-3 w-full sm:w-auto">
+              <Link
+                href="/products"
+                className="btn-fill-anim w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#2C2926] text-[#F7F4EE] text-xs font-medium rounded-btn transition-colors shadow-xs"
+              >
+                <span className="relative z-10">Browse Full Catalogue</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#D8C9B5] relative z-10" />
+              </Link>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
       </div>
     </section>

@@ -1,7 +1,8 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ProductImages as ProductImagesType } from '@/types/product';
 import WishlistIcon from '@/components/dormant/WishlistIcon';
 import { Maximize2, ShieldCheck, Sparkles, ChevronLeft, ChevronRight, Share2, Check } from 'lucide-react';
@@ -92,7 +93,7 @@ export default function AmazonImageGallery({ images, productName }: AmazonImageG
               onMouseEnter={() => setActiveIndex(idx)}
               className={`relative aspect-[4/3] w-18 lg:w-20 rounded-card overflow-hidden flex-shrink-0 border-2 transition-all duration-150 ${
                 activeIndex === idx
-                  ? 'border-espresso shadow-xs ring-1 ring-espresso'
+                  ? 'border-espresso shadow-xs ring-1 ring-espresso scale-[1.02]'
                   : 'border-border-sand/70 opacity-70 hover:opacity-100 hover:border-espresso/40'
               }`}
             >
@@ -116,17 +117,31 @@ export default function AmazonImageGallery({ images, productName }: AmazonImageG
             onMouseLeave={() => setIsHovering(false)}
             onMouseMove={handleMouseMove}
             onClick={() => setIsLightboxOpen(true)}
-            className="relative aspect-[4/3] bg-white rounded-card overflow-hidden border border-border-sand shadow-card cursor-crosshair group"
+            className="relative aspect-[4/3] bg-white rounded-card overflow-hidden border border-border-sand shadow-card cursor-zoom-in group"
           >
-            {/* Base Image */}
-            <Image
-              src={currentImage}
-              alt={`${productName} view ${activeIndex + 1}`}
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 55vw"
-              className="object-cover object-center pointer-events-none select-none"
-            />
+            {/* Base Image with Crossfade Animation */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ 
+                  duration: 0.25, 
+                  ease: [0.25, 0.46, 0.45, 0.94] 
+                }}
+                className="relative w-full h-full"
+              >
+                <Image
+                  src={currentImage}
+                  alt={`${productName} view ${activeIndex + 1}`}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 55vw"
+                  className="object-cover object-center pointer-events-none select-none transition-transform duration-400 ease-out group-hover:scale-[1.04]"
+                />
+              </motion.div>
+            </AnimatePresence>
 
             {/* Amazon-Style Shaded Hover Magnifier Lens Rectangle (Desktop only) */}
             {isHovering && (

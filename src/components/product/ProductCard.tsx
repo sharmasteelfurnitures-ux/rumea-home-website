@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Eye, Heart } from 'lucide-react';
@@ -15,10 +15,37 @@ interface ProductCardProps {
 export default function ProductCard({ product, priority = false }: ProductCardProps) {
   const [quickViewOpen, setQuickViewOpen] = useState(false);
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setInView(true);
+              observer.disconnect();
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+
+      if (cardRef.current) {
+        observer.observe(cardRef.current);
+      }
+
+      return () => observer.disconnect();
+    }
+  }, []);
 
   return (
     <>
-      <div className="group flex flex-col h-full transition-all duration-300">
+      <div
+        ref={cardRef}
+        className="group flex flex-col h-full product-card-hover rounded-2xl sm:rounded-3xl p-1 transition-all duration-300"
+      >
         
         {/* Large Prominent Hero Photo Container */}
         <div className="relative aspect-[4/3] w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-[#EBE7DF] shadow-xs">
@@ -29,7 +56,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
               fill
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
               priority={priority}
-              className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+              className="object-cover object-center product-card-img-zoom will-change-transform"
             />
           </Link>
 
@@ -78,7 +105,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
           </div>
         </div>
 
-        {/* Clean Typography Directly Below Photo (Zero Nested Boxes) */}
+        {/* Clean Typography Directly Below Photo */}
         <div className="mt-2.5 sm:mt-3 flex flex-col space-y-1">
           
           {/* Title */}
@@ -88,13 +115,21 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
             </Link>
           </h3>
 
-          {/* Pricing: Offer Price + Strikethrough MRP + % Off */}
+          {/* Pricing: Offer Price + Animated Strikethrough MRP + % Off */}
           <div className="flex items-baseline flex-wrap gap-x-2 gap-y-0.5 pt-0.5">
-            <span className="font-sans font-bold text-sm sm:text-base text-[#2C2926]">
+            <span
+              className={`font-sans font-bold text-sm sm:text-base text-[#2C2926] sale-price-fade ${
+                inView ? 'revealed' : ''
+              }`}
+            >
               ₹{product.pricing.offer.toLocaleString('en-IN')}
             </span>
             {product.pricing.mrp > product.pricing.offer && (
-              <span className="text-[11px] sm:text-xs text-[#A69B8C] line-through font-normal">
+              <span
+                className={`text-[11px] sm:text-xs text-[#A69B8C] font-normal strike-line ${
+                  inView ? 'struck' : ''
+                }`}
+              >
                 ₹{product.pricing.mrp.toLocaleString('en-IN')}
               </span>
             )}
@@ -116,3 +151,4 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
     </>
   );
 }
+

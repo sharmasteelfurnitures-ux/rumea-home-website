@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Phone, MessageCircle, Ruler, Sparkles, ShieldCheck, Check, ArrowRight, X } from 'lucide-react';
 import { getWhatsAppUrl, WHATSAPP_NUMBER } from '@/lib/whatsapp';
 
@@ -25,13 +26,13 @@ export default function CustomFurnitureBanner() {
 
   return (
     <>
-      <section className="py-8 sm:py-12 bg-[#F7F4EE]">
+      <section className="py-8 sm:py-12 bg-[#F7F4EE] subtle-grain-texture">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Main Hero Ad Banner Card */}
           <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-[#2C2926] border border-[#D8C9B5] shadow-2xl">
             
-            {/* Background Lifestyle Image (Right Side with Smooth Left Dark Fade) */}
+            {/* Background Lifestyle Image with Amber Overlay Reveal */}
             <div className="absolute inset-0 z-0">
               <div className="relative w-full h-full">
                 <Image
@@ -42,9 +43,19 @@ export default function CustomFurnitureBanner() {
                   sizes="(max-width: 1024px) 100vw, 1280px"
                   className="object-cover object-right lg:object-center"
                 />
+
+                {/* Warm amber overlay that fades to opacity: 0 over 800ms on viewport entry */}
+                <motion.div
+                  initial={{ opacity: 1 }}
+                  whileInView={{ opacity: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.8, ease: 'easeOut' }}
+                  className="absolute inset-0 bg-[#B4783C]/35 pointer-events-none z-[5]"
+                />
+
                 {/* Dark Gradient Wash: dense on the left for crisp typography readability */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[#2C2926] via-[#2C2926]/95 sm:via-[#2C2926]/85 to-[#2C2926]/30" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#2C2926]/80 via-transparent to-transparent sm:hidden" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#2C2926] via-[#2C2926]/95 sm:via-[#2C2926]/85 to-[#2C2926]/30 z-[6]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2C2926]/80 via-transparent to-transparent sm:hidden z-[6]" />
               </div>
             </div>
 
@@ -94,19 +105,19 @@ export default function CustomFurnitureBanner() {
                   {/* Phone Call Card Button */}
                   <a
                     href="tel:+917291962356"
-                    className="inline-flex items-center justify-center gap-2.5 px-5 py-3.5 bg-white text-[#2C2926] hover:bg-[#F7F4EE] rounded-btn font-sans font-semibold text-xs sm:text-sm transition-all duration-200 shadow-md group"
+                    className="btn-fill-anim inline-flex items-center justify-center gap-2.5 px-5 py-3.5 bg-white text-[#2C2926] hover:bg-[#F7F4EE] rounded-btn font-sans font-semibold text-xs sm:text-sm transition-all duration-200 shadow-md group"
                   >
-                    <Phone className="w-4 h-4 text-[#48563A] group-hover:scale-110 transition-transform" />
-                    <span>+91 72919 62356</span>
+                    <Phone className="w-4 h-4 text-[#48563A] group-hover:scale-110 transition-transform relative z-10" />
+                    <span className="relative z-10">+91 72919 62356</span>
                   </a>
 
                   {/* Request Call Back Button */}
                   <button
                     onClick={() => setModalOpen(true)}
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#D8C9B5] hover:bg-[#C9B9A3] text-[#2C2926] rounded-btn font-sans font-semibold text-xs sm:text-sm transition-all duration-200 shadow-md"
+                    className="btn-fill-anim inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#D8C9B5] text-[#2C2926] rounded-btn font-sans font-semibold text-xs sm:text-sm transition-all duration-200 shadow-md"
                   >
-                    <span>Request A Call Back</span>
-                    <ArrowRight className="w-4 h-4 text-[#2C2926]" />
+                    <span className="relative z-10">Request A Call Back</span>
+                    <ArrowRight className="w-4 h-4 text-[#2C2926] relative z-10" />
                   </button>
 
                   {/* Direct WhatsApp Consultation Link */}
@@ -114,10 +125,10 @@ export default function CustomFurnitureBanner() {
                     href={directWhatsAppUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-4 py-3.5 bg-transparent border border-[#D8C9B5]/40 hover:border-[#D8C9B5] text-[#F7F4EE] hover:bg-white/10 rounded-btn text-xs sm:text-sm font-medium transition-colors"
+                    className="btn-fill-anim inline-flex items-center justify-center gap-2 px-4 py-3.5 bg-transparent border border-[#D8C9B5]/40 hover:border-[#D8C9B5] text-[#F7F4EE] rounded-btn text-xs sm:text-sm font-medium transition-colors"
                   >
-                    <MessageCircle className="w-4 h-4 text-[#48563A]" />
-                    <span>Chat on WhatsApp</span>
+                    <MessageCircle className="w-4 h-4 text-[#48563A] relative z-10" />
+                    <span className="relative z-10">Chat on WhatsApp</span>
                   </a>
 
                 </div>

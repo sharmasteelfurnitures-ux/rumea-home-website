@@ -25,25 +25,28 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isFirstVisit, setIsFirstVisit] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
   const pathname = usePathname();
 
-  // Mouse position tracking for interactive WhatsApp button color change
-  const [waMousePos, setWaMousePos] = useState({ x: 50, y: 50 });
-  const [isWaHovered, setIsWaHovered] = useState(false);
-
-  const handleWaMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    setWaMousePos({ x, y });
-  };
-
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 15);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    if (typeof window !== 'undefined') {
+      const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      setReducedMotion(mediaQuery.matches);
+
+      const hasVisited = sessionStorage.getItem('rumea_visited');
+      if (!hasVisited && !mediaQuery.matches) {
+        setIsFirstVisit(true);
+        sessionStorage.setItem('rumea_visited', 'true');
+      }
+
+      const handleScroll = () => {
+        setIsScrolled(window.scrollY > 60);
+      };
+      handleScroll();
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
   }, []);
 
   useEffect(() => {
@@ -129,22 +132,50 @@ export default function Header() {
 
   return (
     <>
-      {/* Top Announcement Reassurance Bar (Brand Logo Brown - Deepened Frosted Glass) */}
+      {/* Top Announcement Reassurance Bar (Smooth Marquee Ticker) */}
       <aside
         aria-label="Announcement"
-        style={{ backgroundColor: 'rgba(61, 34, 18, 0.92)' }}
-        className="w-full backdrop-blur-md text-[#F7F4EE] text-[11px] sm:text-xs py-2.5 px-4 border-b border-[#D8C9B5]/30 shadow-sm relative z-40"
+        style={{ backgroundColor: 'rgba(61, 34, 18, 0.94)' }}
+        className="w-full text-[#F7F4EE] text-[11px] sm:text-xs py-2 px-0 border-b border-[#D8C9B5]/30 shadow-xs relative z-40 overflow-hidden select-none"
       >
-        <div className="w-full max-w-[1520px] mx-auto flex items-center justify-between gap-4">
+        <div className="w-full flex items-center justify-between">
           
-          {/* Left: PAN India Delivery */}
-          <div className="flex items-center gap-2 text-[#F7F4EE]">
-            <Truck className="w-3.5 h-3.5 text-[#D8C9B5] flex-shrink-0" />
-            <span className="font-medium tracking-wide">Free PAN India Delivery on All Orders</span>
+          {/* Seamless Marquee Ticker (Continuous loop at 40px/s) */}
+          <div className="flex-1 overflow-hidden">
+            <div className="animate-ticker flex items-center whitespace-nowrap">
+              <div className="flex items-center gap-6 px-4">
+                <span>Free PAN India Delivery on All Orders</span>
+                <span className="text-[#D8C9B5]/40">·</span>
+                <span>5-Year Frame Warranty</span>
+                <span className="text-[#D8C9B5]/40">·</span>
+                <span>30-Day Doorstep Returns</span>
+                <span className="text-[#D8C9B5]/40">·</span>
+                <span>Zero MDF / Zero Veneer</span>
+                <span className="text-[#D8C9B5]/40">·</span>
+                <span>100% Solid Kiln-Dried Sheesham</span>
+                <span className="text-[#D8C9B5]/40">·</span>
+                <span>Free PAN India Delivery on All Orders</span>
+                <span className="text-[#D8C9B5]/40">·</span>
+              </div>
+              <div className="flex items-center gap-6 px-4" aria-hidden="true">
+                <span>Free PAN India Delivery on All Orders</span>
+                <span className="text-[#D8C9B5]/40">·</span>
+                <span>5-Year Frame Warranty</span>
+                <span className="text-[#D8C9B5]/40">·</span>
+                <span>30-Day Doorstep Returns</span>
+                <span className="text-[#D8C9B5]/40">·</span>
+                <span>Zero MDF / Zero Veneer</span>
+                <span className="text-[#D8C9B5]/40">·</span>
+                <span>100% Solid Kiln-Dried Sheesham</span>
+                <span className="text-[#D8C9B5]/40">·</span>
+                <span>Free PAN India Delivery on All Orders</span>
+                <span className="text-[#D8C9B5]/40">·</span>
+              </div>
+            </div>
           </div>
 
-          {/* Right: Support (10 AM – 9 PM) [Clickable WhatsApp] • Phone Number */}
-          <div className="hidden sm:flex items-center gap-4 text-[#F7F4EE] text-xs">
+          {/* Right: Quick Direct Support & Phone Access */}
+          <div className="hidden md:flex items-center gap-3.5 pr-4 pl-3 bg-gradient-to-l from-[rgba(61,34,18,0.96)] via-[rgba(61,34,18,0.92)] to-transparent z-10 flex-shrink-0 text-xs">
             <a
               href={buildWhatsAppUrl("Hi Rumea Home! I'd like help choosing furniture.")}
               target="_blank"
@@ -169,35 +200,19 @@ export default function Header() {
             </a>
           </div>
 
-          {/* Mobile Right: Direct Support & Call Links */}
-          <div className="flex sm:hidden items-center gap-3 text-xs">
-            <a
-              href={buildWhatsAppUrl("Hi Rumea Home! I'd like help choosing furniture.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackWhatsAppClick({ source: 'nav' })}
-              className="text-[#F7F4EE] hover:text-[#D8C9B5] flex items-center gap-1 font-semibold"
-            >
-              <MessageCircle className="w-3.5 h-3.5 text-[#D8C9B5]" />
-              <span>Support</span>
-            </a>
-            <span className="text-[#D8C9B5]/40">•</span>
-            <a
-              href="tel:+917291962356"
-              className="text-[#F7F4EE] hover:text-[#D8C9B5] flex items-center gap-1 font-semibold"
-            >
-              <Phone className="w-3.5 h-3.5 text-[#D8C9B5]" />
-              <span>Call</span>
-            </a>
-          </div>
-
         </div>
       </aside>
 
-      {/* Main Single Sticky Header */}
+      {/* Main Single Sticky Header with Smooth Frosted Glass Transition */}
       <header
-        style={{ backgroundColor: isScrolled ? '#FFFFFF' : '#F7F4EE' }}
-        className={`sticky top-0 z-50 w-full transition-all duration-200 border-b border-[#D8C9B5] ${
+        style={{
+          backgroundColor: isScrolled ? 'rgba(255, 252, 248, 0.85)' : '#F7F4EE',
+          backdropFilter: isScrolled ? 'blur(12px)' : 'none',
+          WebkitBackdropFilter: isScrolled ? 'blur(12px)' : 'none',
+          borderBottom: isScrolled ? '1px solid rgba(0, 0, 0, 0.08)' : '1px solid #D8C9B5',
+          transition: 'background-color 300ms ease, backdrop-filter 300ms ease, border-color 300ms ease, padding 300ms ease',
+        }}
+        className={`sticky top-0 z-50 w-full ${
           isScrolled ? 'shadow-xs py-2.5' : 'py-3.5'
         }`}
       >
@@ -215,12 +230,12 @@ export default function Header() {
               </button>
             </div>
 
-            {/* Left: Brand Logo (Vertically Centered in Bar) */}
+            {/* Left: Brand Logo */}
             <div className="flex-shrink-0 flex items-center">
               <BrandLogo variant="dark" size="md" />
             </div>
 
-            {/* Center: Luxury Brand Navigation (Centered in Viewport) */}
+            {/* Center: Luxury Brand Navigation */}
             <nav className="hidden lg:flex items-center justify-center flex-1 mx-3 xl:mx-6 gap-1 xl:gap-2.5 2xl:gap-4">
               {navItems.map((item) => {
                 const isActive = pathname.startsWith(item.href);
@@ -240,7 +255,7 @@ export default function Header() {
                       }`}
                     >
                       <span>{item.name}</span>
-                      <ChevronDown className="w-3 h-3 text-[#A69B8C] group-hover:rotate-180 group-hover:text-[#48563A] transition-transform duration-200" />
+                      <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180 text-[#48563A]' : 'text-[#A69B8C]'}`} />
                     </Link>
 
                     {/* Dropdown Card */}

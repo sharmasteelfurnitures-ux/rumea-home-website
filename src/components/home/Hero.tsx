@@ -27,6 +27,43 @@ import { trackWhatsAppClick } from '@/lib/analytics';
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [parallaxY, setParallaxY] = useState(0);
+  const [isFirstVisit, setIsFirstVisit] = useState(false);
+
+  useEffect(() => {
+    // Check first visit in session
+    try {
+      if (!sessionStorage.getItem('rumea_visited')) {
+        setIsFirstVisit(true);
+        sessionStorage.setItem('rumea_visited', '1');
+      }
+    } catch {
+      // Ignore if sessionStorage unavailable
+    }
+
+    // Parallax scroll listener
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const isMobile = window.innerWidth < 768;
+          const factor = isMobile ? 0.2 : 0.4;
+          const currentScroll = window.scrollY;
+          if (currentScroll < 800) {
+            setParallaxY(currentScroll * factor);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const heroSlides = [
     {
@@ -92,36 +129,44 @@ export default function Hero() {
   ];
 
   return (
-    <div className="relative bg-warm-offwhite">
+    <div className="relative bg-warm-offwhite subtle-grain-texture">
       
-      {/* 1. Full-Width Immersive Showroom Banner with Rich Sheesham Wood Brown (#3D2212) Atmosphere */}
+      {/* 1. Full-Width Immersive Showroom Banner with Rich Sheesham Wood Brown Atmosphere */}
       <section className="relative w-full min-h-[540px] sm:min-h-[600px] lg:min-h-[660px] flex items-center overflow-hidden bg-[#2C180D]">
         
-        {/* Background Image Carousel with Smooth Cross-Fade */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={slide.id}
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute inset-0 z-0"
-          >
-            <Image
-              src={slide.image}
-              alt={slide.headline}
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover object-center brightness-[0.90] contrast-[1.02]"
-            />
+        {/* Parallax & Carousel Container for Background Image */}
+        <div 
+          className="absolute inset-0 z-0 pointer-events-none"
+          style={{
+            transform: `translate3d(0, ${parallaxY}px, 0)`,
+            willChange: 'transform',
+          }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={slide.id}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-0 w-full h-full"
+            >
+              <Image
+                src={slide.image}
+                alt={slide.headline}
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover object-center brightness-[0.90] contrast-[1.02] scale-[1.15]"
+              />
 
-            {/* 🪵 Soft Faded Logo Brown (#3D2212) Atmosphere Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#3D2212]/75 via-[#3D2212]/45 to-[#3D2212]/10 z-10" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#3D2212]/65 via-transparent to-black/10 z-10" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(200,169,122,0.18),transparent_65%)] z-10" />
-          </motion.div>
-        </AnimatePresence>
+              {/* Soft Atmosphere Gradients */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#3D2212]/80 via-[#3D2212]/50 to-[#3D2212]/15 z-10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#3D2212]/70 via-transparent to-black/15 z-10" />
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(200,169,122,0.18),transparent_65%)] z-10" />
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
         {/* Content Container (Max Width 1280px) */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 w-full">
@@ -140,14 +185,18 @@ export default function Hero() {
                 </span>
               </div>
 
-              {/* Dynamic H1 Headline */}
+              {/* Dynamic H1 Headline with Entrance Animation */}
               <AnimatePresence mode="wait">
                 <motion.h1
                   key={slide.id}
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -16 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: isFirstVisit ? 0.45 : 0, 
+                    ease: [0.16, 1, 0.3, 1] 
+                  }}
                   className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.12] max-w-2xl drop-shadow-sm"
                 >
                   {slide.headline}
@@ -155,19 +204,29 @@ export default function Hero() {
               </AnimatePresence>
 
               {/* Subtitle */}
-              <p className="font-sans text-sm sm:text-base lg:text-lg text-[#F7F4EE]/90 max-w-xl leading-relaxed drop-shadow-xs">
+              <motion.p 
+                initial={isFirstVisit ? { opacity: 0, y: 12 } : false}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: isFirstVisit ? 0.55 : 0 }}
+                className="font-sans text-sm sm:text-base lg:text-lg text-[#F7F4EE]/90 max-w-xl leading-relaxed drop-shadow-xs"
+              >
                 {slide.subtitle}
-              </p>
+              </motion.p>
 
-              {/* Action Buttons */}
-              <div className="flex flex-col min-[480px]:flex-row items-stretch min-[480px]:items-center gap-3.5 pt-2">
+              {/* Action Buttons with Fill Animation & Timing */}
+              <motion.div 
+                initial={isFirstVisit ? { opacity: 0, y: 12 } : false}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: isFirstVisit ? 0.7 : 0 }}
+                className="flex flex-col min-[480px]:flex-row items-stretch min-[480px]:items-center gap-3.5 pt-2"
+              >
                 <Link
                   href={slide.primaryHref}
-                  className="inline-flex items-center justify-center gap-2.5 min-h-[48px] px-4 min-[480px]:px-8 py-3.5 bg-[#2C2926] hover:bg-[#3D3632] text-[#F7F4EE] font-sans font-medium text-sm sm:text-base rounded-btn shadow-md hover:scale-[1.01] active:scale-[0.98] transition-all duration-200 group text-center"
+                  className="btn-fill-anim inline-flex items-center justify-center gap-2.5 min-h-[48px] px-4 min-[480px]:px-8 py-3.5 bg-[#2C2926] text-[#F7F4EE] font-sans font-medium text-sm sm:text-base rounded-btn shadow-md hover:scale-[1.01] active:scale-[0.98] transition-all duration-200 group text-center"
                 >
-                  <span className="min-[480px]:hidden">Explore Now</span>
-                  <span className="hidden min-[480px]:inline">{slide.primaryCta}</span>
-                  <ArrowRight className="w-4 h-4 text-[#F7F4EE] group-hover:translate-x-1.5 transition-transform" />
+                  <span className="min-[480px]:hidden relative z-10">Explore Now</span>
+                  <span className="hidden min-[480px]:inline relative z-10">{slide.primaryCta}</span>
+                  <ArrowRight className="w-4 h-4 text-[#F7F4EE] group-hover:translate-x-1.5 transition-transform relative z-10" />
                 </Link>
 
                 <a
@@ -175,12 +234,12 @@ export default function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackWhatsAppClick({ source: 'homepage' })}
-                  className="hidden min-[480px]:inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3.5 bg-transparent hover:bg-[#F7F4EE]/15 text-[#F7F4EE] border-[1.5px] border-[#F7F4EE] font-sans font-medium text-sm rounded-btn transition-all duration-200"
+                  className="btn-fill-anim hidden min-[480px]:inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3.5 bg-transparent text-[#F7F4EE] border-[1.5px] border-[#F7F4EE] font-sans font-medium text-sm rounded-btn transition-all duration-200"
                 >
-                  <MessageCircle className="w-4 h-4 text-[#F7F4EE]" />
-                  <span>Chat on WhatsApp</span>
+                  <MessageCircle className="w-4 h-4 text-[#F7F4EE] relative z-10" />
+                  <span className="relative z-10">Chat on WhatsApp</span>
                 </a>
-              </div>
+              </motion.div>
 
               {/* 4 Guarantees Row */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-white/15 text-xs text-[#F7F4EE]/90 font-medium">

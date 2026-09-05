@@ -4,6 +4,7 @@ import React from 'react';
 import { MessageCircle, Clock, ShieldCheck, Ruler } from 'lucide-react';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import { trackWhatsAppClick } from '@/lib/analytics';
+import AnimatedHeading from '@/components/ui/AnimatedHeading';
 
 export default function WhatsAppConcierge() {
   const whatsappUrl = buildWhatsAppUrl(
@@ -11,7 +12,7 @@ export default function WhatsAppConcierge() {
   );
 
   return (
-    <section className="relative w-full bg-white text-[#2C2926] py-10 md:py-12 border-y border-[#D8C9B5] overflow-hidden">
+    <section className="relative w-full bg-white subtle-grain-texture text-[#2C2926] py-10 md:py-12 border-y border-[#D8C9B5] overflow-hidden">
       
       <div className="w-full max-w-[1480px] mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -23,9 +24,10 @@ export default function WhatsAppConcierge() {
               <Ruler className="w-3.5 h-3.5 text-[#48563A]" />
               <span>FREE ROOM SIZING &amp; FINISH CONSULTATION</span>
             </div>
-            <h2 className="font-serif text-2xl sm:text-3xl text-[#2C2926] font-medium tracking-tight">
-              Not Sure What Fits Your Space?
-            </h2>
+            <AnimatedHeading
+              text="Not Sure What Fits Your Space?"
+              className="font-serif text-2xl sm:text-3xl text-[#2C2926] font-medium tracking-tight"
+            />
             <p className="text-[#6E645A] text-sm sm:text-base mt-1.5 leading-relaxed">
               Share your room dimensions, floor plans, or photos on WhatsApp. Our woodcraft designers provide honest sizing advice, custom finish previews, and direct delivery estimates.
             </p>

@@ -89,28 +89,28 @@ export default function Footer() {
             </p>
             <div className="pt-2 flex items-center space-x-3 text-[#A69B8C]">
               <a
-                href="https://instagram.com"
+                href="https://instagram.com/rumeahome"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram"
+                aria-label="Instagram @rumeahome"
                 className="w-9 h-9 rounded-full bg-white/5 border border-white/10 hover:border-[#D8C9B5] hover:text-[#D8C9B5] flex items-center justify-center transition-all duration-200"
               >
                 <Instagram className="w-4 h-4" />
               </a>
               <a
-                href="https://facebook.com"
+                href="https://facebook.com/rumeahome"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Facebook"
+                aria-label="Facebook @rumeahome"
                 className="w-9 h-9 rounded-full bg-white/5 border border-white/10 hover:border-[#D8C9B5] hover:text-[#D8C9B5] flex items-center justify-center transition-all duration-200"
               >
                 <Facebook className="w-4 h-4" />
               </a>
               <a
-                href="https://youtube.com"
+                href="https://youtube.com/@rumeahome"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="YouTube"
+                aria-label="YouTube @rumeahome"
                 className="w-9 h-9 rounded-full bg-white/5 border border-white/10 hover:border-[#D8C9B5] hover:text-[#D8C9B5] flex items-center justify-center transition-all duration-200"
               >
                 <Youtube className="w-4 h-4" />

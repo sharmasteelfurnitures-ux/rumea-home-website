@@ -311,7 +311,7 @@ export default function Header() {
                     : 'text-[#2C2926] hover:text-[#48563A] hover:bg-[#2C2926]/4'
                 }`}
               >
-                Our Story
+                About
               </Link>
             </nav>
 
@@ -427,7 +427,7 @@ export default function Header() {
                   href="/about"
                   className="block text-sm font-medium text-[#2C2926] hover:text-[#48563A] py-2"
                 >
-                  Our Story
+                  About
                 </Link>
                 <Link
                   href="/contact"

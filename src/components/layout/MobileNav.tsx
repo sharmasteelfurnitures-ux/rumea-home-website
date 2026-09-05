@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -56,17 +56,19 @@ export default function MobileNav() {
             <Link
               key={item.label}
               href={item.href}
-              className={`flex flex-col items-center justify-center flex-1 py-1 transition-colors relative ${
-                isActive ? 'text-espresso font-semibold' : 'text-soft-taupe hover:text-espresso'
+              className={`flex flex-col items-center justify-center flex-1 py-1 transition-all relative ${
+                isActive ? 'text-espresso font-bold' : 'text-soft-taupe font-medium hover:text-espresso'
               }`}
             >
               <div className="relative">
-                <Icon className={`w-5 h-5 ${isActive ? 'text-espresso' : 'text-soft-taupe'}`} />
-                {isActive && (
-                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-muted-olive rounded-full" />
-                )}
+                <Icon className={`w-5 h-5 transition-transform ${isActive ? 'text-espresso scale-105' : 'text-soft-taupe'}`} />
               </div>
-              <span className="text-[10px] mt-0.5">{item.label}</span>
+              <span className={`text-[10px] mt-0.5 tracking-tight ${isActive ? 'font-bold text-espresso' : 'font-medium'}`}>
+                {item.label}
+              </span>
+              {isActive && (
+                <span className="absolute bottom-0 w-6 h-0.5 bg-muted-olive rounded-full" />
+              )}
             </Link>
           );
         })}

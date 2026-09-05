@@ -225,23 +225,24 @@ export default function ShopTheLook() {
                   {/* The Interactive Hotspot Circle Spot */}
                   <div className="relative -translate-x-1/2 -translate-y-1/2">
                     
-                    {/* Pulsating Outer Ripple Ring */}
-                    <div className="absolute inset-0 rounded-full bg-white/40 animate-ping" />
+                    {/* Pulsating Outer Gentle Aura Ring */}
+                    <div className="absolute -inset-1.5 rounded-full bg-white/30 animate-ping pointer-events-none" />
+                    <div className="absolute -inset-1 rounded-full bg-[#48563A]/25 animate-pulse pointer-events-none" />
                     
-                    {/* Hotspot Button (IKEA Style) */}
+                    {/* Hotspot Button: Min 48x48px Touch Target */}
                     <button
                       onClick={() => setActiveHotspotId(isActive ? null : item.id)}
                       onMouseEnter={() => setActiveHotspotId(item.id)}
-                      className={`relative w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all duration-300 shadow-xl border-2 ${
+                      className={`relative w-12 h-12 min-w-[48px] min-h-[48px] rounded-full flex items-center justify-center transition-all duration-300 shadow-xl border-2 cursor-pointer ${
                         isActive
-                          ? 'bg-[#2C2926] border-[#D8C9B5] scale-125 ring-4 ring-[#48563A]/40'
-                          : 'bg-black/65 border-white hover:scale-110 hover:bg-black/85'
+                          ? 'bg-[#2C2926] border-[#D8C9B5] scale-110 ring-4 ring-[#48563A]/40'
+                          : 'bg-black/70 border-white hover:scale-105 hover:bg-black/90'
                       }`}
                       aria-label={`Explore ${item.name}`}
                     >
                       {/* Center Inner Dot */}
                       <span
-                        className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                        className={`w-3.5 h-3.5 rounded-full transition-colors ${
                           isActive ? 'bg-[#D8C9B5]' : 'bg-white'
                         }`}
                       />

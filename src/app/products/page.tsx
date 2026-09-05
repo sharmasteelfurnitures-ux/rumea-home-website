@@ -13,7 +13,6 @@ import {
   SlidersHorizontal, 
   Grid2X2, 
   Grid3X3, 
-  Star,
   Check
 } from 'lucide-react';
 
@@ -29,8 +28,7 @@ function ProductsPageContent() {
   );
   const [selectedStyles, setSelectedStyles] = useState<string[]>([]);
   const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
-  const [selectedMinRating, setSelectedMinRating] = useState<number>(0);
-  const [maxPrice, setMaxPrice] = useState<number>(60000);
+  const [maxPrice, setMaxPrice] = useState<number>(80000);
   const [sortBy, setSortBy] = useState<string>('popular');
   const [viewMode, setViewMode] = useState<'3col' | '2col'>('3col');
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
@@ -51,11 +49,10 @@ function ProductsPageContent() {
     { id: 'warm-traditional', label: 'Warm Traditional' },
   ];
 
-  const materialOptions = [
-    { id: 'Solid Sheesham Wood', label: 'Solid Sheesham Wood' },
-    { id: 'Natural Teak Finish', label: 'Natural Teak Finish' },
-    { id: 'Kiln-Dried Hardwood', label: 'Kiln-Dried Hardwood' },
-    { id: 'Breathable Linen', label: 'Breathable Linen Upholstery' },
+  const finishOptions = [
+    { id: 'Natural Teak', label: 'Natural Teak' },
+    { id: 'Walnut', label: 'Walnut' },
+    { id: 'Mahogany', label: 'Mahogany' },
   ];
 
   // Filtering Logic
@@ -72,19 +69,12 @@ function ProductsPageContent() {
         return false;
       }
 
-      // Material match
+      // Wood Finish match
       if (selectedMaterials.length > 0) {
-        const matchMat = selectedMaterials.some(
-          (m) =>
-            p.materials.frame.toLowerCase().includes(m.toLowerCase()) ||
-            p.materials.finish.some((f) => m.toLowerCase().includes(f.toLowerCase()))
+        const matchFinish = selectedMaterials.some((finish) =>
+          p.materials.finish.some((f) => f.toLowerCase().includes(finish.toLowerCase()))
         );
-        if (!matchMat) return false;
-      }
-
-      // Rating match
-      if (selectedMinRating > 0 && p.seo.rating < selectedMinRating) {
-        return false;
+        if (!matchFinish) return false;
       }
 
       // Price match
@@ -104,14 +94,13 @@ function ProductsPageContent() {
 
       return true;
     });
-  }, [selectedRooms, selectedStyles, selectedMaterials, selectedMinRating, maxPrice, searchQuery]);
+  }, [selectedRooms, selectedStyles, selectedMaterials, maxPrice, searchQuery]);
 
   // Sorting Logic
   const sortedProducts = useMemo(() => {
     const list = [...filteredProducts];
     if (sortBy === 'price-low') list.sort((a, b) => a.pricing.offer - b.pricing.offer);
     if (sortBy === 'price-high') list.sort((a, b) => b.pricing.offer - a.pricing.offer);
-    if (sortBy === 'rating') list.sort((a, b) => b.seo.rating - a.seo.rating);
     if (sortBy === 'newest') list.sort((a, b) => (b.seo.isNewArrival ? 1 : 0) - (a.seo.isNewArrival ? 1 : 0));
     return list;
   }, [filteredProducts, sortBy]);
@@ -120,16 +109,14 @@ function ProductsPageContent() {
     setSelectedRooms([]);
     setSelectedStyles([]);
     setSelectedMaterials([]);
-    setSelectedMinRating(0);
-    setMaxPrice(60000);
+    setMaxPrice(80000);
   };
 
   const hasActiveFilters =
     selectedRooms.length > 0 ||
     selectedStyles.length > 0 ||
     selectedMaterials.length > 0 ||
-    selectedMinRating > 0 ||
-    maxPrice < 60000;
+    maxPrice < 80000;
 
   return (
     <div className="bg-warm-ivory min-h-screen py-6 sm:py-10">
@@ -138,7 +125,6 @@ function ProductsPageContent() {
         {/* Breadcrumb Navigation */}
         <Breadcrumb
           items={[
-            { label: 'Home', href: '/' },
             { label: 'Catalogue', href: '/products' },
             ...(selectedRooms.length === 1
               ? [{ label: roomOptions.find((r) => r.id === selectedRooms[0])?.label || 'Room' }]
@@ -194,16 +180,16 @@ function ProductsPageContent() {
               </label>
               <input
                 type="range"
-                min="12000"
-                max="60000"
-                step="1000"
+                min="0"
+                max="80000"
+                step="2000"
                 value={maxPrice}
                 onChange={(e) => setMaxPrice(Number(e.target.value))}
                 className="w-full accent-espresso cursor-pointer"
               />
               <div className="flex justify-between text-[10px] text-soft-taupe mt-1 font-semibold">
-                <span>₹12,000</span>
-                <span>₹60,000</span>
+                <span>₹0</span>
+                <span>₹80,000</span>
               </div>
             </div>
 
@@ -253,24 +239,24 @@ function ProductsPageContent() {
               </div>
             </div>
 
-            {/* Material & Finish Filter */}
+            {/* Wood Finish Filter */}
             <div className="pt-3 border-t border-border-sand/60">
               <span className="text-xs font-bold uppercase tracking-wider text-espresso block mb-2.5">
-                Material &amp; Finish
+                Wood Finish
               </span>
               <div className="space-y-2">
-                {materialOptions.map((mat) => (
-                  <label key={mat.id} className="flex items-center gap-2 text-xs text-espresso cursor-pointer select-none">
+                {finishOptions.map((finish) => (
+                  <label key={finish.id} className="flex items-center gap-2 text-xs text-espresso cursor-pointer select-none">
                     <input
                       type="checkbox"
-                      checked={selectedMaterials.includes(mat.id)}
+                      checked={selectedMaterials.includes(finish.id)}
                       onChange={(e) => {
-                        if (e.target.checked) setSelectedMaterials([...selectedMaterials, mat.id]);
-                        else setSelectedMaterials(selectedMaterials.filter((m) => m !== mat.id));
+                        if (e.target.checked) setSelectedMaterials([...selectedMaterials, finish.id]);
+                        else setSelectedMaterials(selectedMaterials.filter((m) => m !== finish.id));
                       }}
                       className="rounded-btn text-espresso focus:ring-espresso"
                     />
-                    <span>{mat.label}</span>
+                    <span>{finish.label}</span>
                   </label>
                 ))}
               </div>
@@ -299,16 +285,16 @@ function ProductsPageContent() {
           {/* Right Product Grid Area (Desktop: 9 cols) */}
           <div className="lg:col-span-9 space-y-6">
             
-            {/* Top Control Bar: Sort + Mobile Filter Toggle + Grid Toggle */}
-            <div className="bg-white rounded-card p-3 sm:p-4 border border-border-sand shadow-card flex flex-wrap items-center justify-between gap-3">
+            {/* Sticky Control Bar: Sort + Mobile Filter Toggle + Grid Toggle */}
+            <div className="sticky top-16 md:top-20 z-20 bg-white/95 backdrop-blur-md rounded-card p-3 sm:p-4 border border-border-sand shadow-card flex flex-wrap items-center justify-between gap-3">
               
-              {/* Mobile Filter Button */}
+              {/* Mobile Filter & Sort Button */}
               <button
                 onClick={() => setMobileFilterOpen(true)}
-                className="lg:hidden inline-flex items-center gap-1.5 px-3 py-2 bg-warm-ivory text-espresso text-xs font-semibold rounded-btn border border-border-sand"
+                className="lg:hidden inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#F7F4EE] text-[#2C2926] text-xs font-semibold rounded-btn border border-[#D8C9B5] shadow-xs cursor-pointer"
               >
-                <Filter className="w-4 h-4 text-antique-gold" />
-                <span>Filters {hasActiveFilters ? '(Active)' : ''}</span>
+                <SlidersHorizontal className="w-4 h-4 text-[#48563A]" />
+                <span>Filter &amp; Sort {hasActiveFilters ? '• Active' : ''}</span>
               </button>
 
               {/* Sort By Dropdown */}
@@ -319,11 +305,11 @@ function ProductsPageContent() {
                   onChange={(e) => setSortBy(e.target.value)}
                   className="bg-warm-ivory border border-border-sand text-espresso font-semibold text-xs rounded-btn py-1.5 px-3 focus:outline-none focus:ring-1 focus:ring-espresso cursor-pointer"
                 >
-                  <option value="popular">Most Popular</option>
+                  <option value="popular">Popularity</option>
                   <option value="price-low">Price: Low to High</option>
                   <option value="price-high">Price: High to Low</option>
+                  <option value="newest">Newest</option>
                   <option value="rating">Highest Rated</option>
-                  <option value="newest">New Arrivals</option>
                 </select>
               </div>
 
@@ -331,14 +317,14 @@ function ProductsPageContent() {
               <div className="hidden sm:flex items-center gap-1 border border-border-sand rounded-btn p-0.5 bg-warm-ivory">
                 <button
                   onClick={() => setViewMode('3col')}
-                  className={`p-1.5 rounded-btn ${viewMode === '3col' ? 'bg-white text-espresso shadow-xs' : 'text-soft-taupe hover:text-espresso'}`}
+                  className={`p-1.5 rounded-btn cursor-pointer ${viewMode === '3col' ? 'bg-white text-espresso shadow-xs' : 'text-soft-taupe hover:text-espresso'}`}
                   aria-label="3 column grid"
                 >
                   <Grid3X3 className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setViewMode('2col')}
-                  className={`p-1.5 rounded-btn ${viewMode === '2col' ? 'bg-white text-espresso shadow-xs' : 'text-soft-taupe hover:text-espresso'}`}
+                  className={`p-1.5 rounded-btn cursor-pointer ${viewMode === '2col' ? 'bg-white text-espresso shadow-xs' : 'text-soft-taupe hover:text-espresso'}`}
                   aria-label="2 column grid"
                 >
                   <Grid2X2 className="w-4 h-4" />
@@ -375,10 +361,22 @@ function ProductsPageContent() {
                   </span>
                 ))}
 
-                {maxPrice < 60000 && (
+                {selectedMaterials.map((m) => (
+                  <span
+                    key={m}
+                    className="inline-flex items-center gap-1 px-2.5 py-1 bg-white text-espresso text-xs rounded-full border border-border-sand shadow-xs font-medium"
+                  >
+                    {finishOptions.find((o) => o.id === m)?.label || m}
+                    <button onClick={() => setSelectedMaterials(selectedMaterials.filter((x) => x !== m))}>
+                      <X className="w-3 h-3 text-soft-taupe hover:text-espresso" />
+                    </button>
+                  </span>
+                ))}
+
+                {maxPrice < 80000 && (
                   <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-white text-espresso text-xs rounded-full border border-border-sand shadow-xs font-medium">
                     Under ₹{maxPrice.toLocaleString('en-IN')}
-                    <button onClick={() => setMaxPrice(60000)}>
+                    <button onClick={() => setMaxPrice(80000)}>
                       <X className="w-3 h-3 text-soft-taupe hover:text-espresso" />
                     </button>
                   </span>
@@ -386,7 +384,7 @@ function ProductsPageContent() {
 
                 <button
                   onClick={clearAllFilters}
-                  className="text-xs text-antique-gold font-bold underline ml-1"
+                  className="text-xs text-antique-gold font-bold underline ml-1 cursor-pointer"
                 >
                   Clear All
                 </button>
@@ -398,21 +396,21 @@ function ProductsPageContent() {
               <div className="text-center py-16 bg-white rounded-card border border-border-sand p-8">
                 <p className="font-serif text-2xl text-espresso mb-2">No pieces found</p>
                 <p className="text-xs text-soft-taupe max-w-sm mx-auto mb-6">
-                  No furniture pieces match your selected filter criteria. Try adjusting price or room filters.
+                  Try adjusting your filter options or price range to find your piece.
                 </p>
                 <button
                   onClick={clearAllFilters}
-                  className="px-6 py-2.5 bg-espresso text-warm-ivory text-xs font-semibold rounded-btn shadow-warm"
+                  className="px-6 py-2.5 bg-espresso text-warm-ivory text-xs font-semibold rounded-btn shadow-xs"
                 >
-                  Reset All Filters
+                  Reset Filters
                 </button>
               </div>
             ) : (
               <div
                 className={`grid gap-4 sm:gap-6 ${
                   viewMode === '3col'
-                    ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
-                    : 'grid-cols-1 sm:grid-cols-2'
+                    ? 'grid-cols-2 sm:grid-cols-2 lg:grid-cols-3'
+                    : 'grid-cols-2 sm:grid-cols-2'
                 }`}
               >
                 {sortedProducts.map((product, idx) => (
@@ -427,60 +425,149 @@ function ProductsPageContent() {
 
       </div>
 
-      {/* Mobile Filter Drawer Modal */}
+      {/* Mobile Filter & Sort Bottom Sheet Drawer */}
       {mobileFilterOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden flex">
-          <div className="fixed inset-0 bg-espresso/60 backdrop-blur-xs" onClick={() => setMobileFilterOpen(false)} />
-          <div className="relative w-4/5 max-w-xs bg-warm-ivory h-full shadow-2xl flex flex-col justify-between overflow-y-auto p-6 z-10 border-r border-border-sand">
+        <div className="fixed inset-0 z-50 lg:hidden flex flex-col justify-end">
+          <div
+            className="fixed inset-0 bg-[#2C2926]/60 backdrop-blur-xs transition-opacity"
+            onClick={() => setMobileFilterOpen(false)}
+          />
+          <div className="relative w-full max-h-[85vh] bg-[#F7F4EE] rounded-t-3xl shadow-2xl flex flex-col justify-between overflow-y-auto p-6 z-10 border-t border-[#D8C9B5] animate-in slide-in-from-bottom duration-300">
             <div>
-              <div className="flex items-center justify-between pb-4 border-b border-border-sand">
-                <span className="font-serif font-bold text-base text-espresso">Filter Collection</span>
-                <button onClick={() => setMobileFilterOpen(false)} className="p-1.5 text-soft-taupe">
+              {/* Header with Close */}
+              <div className="flex items-center justify-between pb-4 border-b border-[#D8C9B5]">
+                <div>
+                  <h3 className="font-serif font-bold text-lg text-[#2C2926]">Filter &amp; Sort</h3>
+                  <p className="text-[11px] text-[#A69B8C]">Refine furniture specifications</p>
+                </div>
+                <button
+                  onClick={() => setMobileFilterOpen(false)}
+                  className="p-2 text-[#2C2926] hover:text-[#48563A] rounded-full hover:bg-white/80"
+                  aria-label="Close filters"
+                >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              {/* Mobile Price Filter */}
-              <div className="py-4 border-b border-border-sand/60">
-                <span className="text-xs font-bold uppercase text-espresso block mb-2">
-                  Max Price: ₹{maxPrice.toLocaleString('en-IN')}
+              {/* Mobile Sort Options */}
+              <div className="py-4 border-b border-[#D8C9B5]/60">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#2C2926] block mb-2.5">
+                  Sort By
                 </span>
-                <input
-                  type="range"
-                  min="12000"
-                  max="60000"
-                  step="1000"
-                  value={maxPrice}
-                  onChange={(e) => setMaxPrice(Number(e.target.value))}
-                  className="w-full accent-espresso"
-                />
+                <div className="grid grid-cols-2 gap-2">
+                  {[
+                    { id: 'popular', label: 'Popularity' },
+                    { id: 'price-low', label: 'Price: Low-High' },
+                    { id: 'price-high', label: 'Price: High-Low' },
+                    { id: 'newest', label: 'Newest' },
+                  ].map((opt) => (
+                    <button
+                      key={opt.id}
+                      onClick={() => setSortBy(opt.id)}
+                      className={`py-2 px-3 text-xs font-medium rounded-btn border text-center transition-all ${
+                        sortBy === opt.id
+                          ? 'bg-[#2C2926] text-[#F7F4EE] border-[#2C2926] shadow-xs'
+                          : 'bg-white text-[#2C2926] border-[#D8C9B5]'
+                      }`}
+                    >
+                      {opt.label}
+                    </button>
+                  ))}
+                </div>
               </div>
 
-              {/* Mobile Rooms */}
-              <div className="py-4 border-b border-border-sand/60">
-                <span className="text-xs font-bold uppercase text-espresso block mb-2">Room</span>
+              {/* Mobile Price Filter */}
+              <div className="py-4 border-b border-[#D8C9B5]/60">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#2C2926]">
+                    Max Price
+                  </span>
+                  <span className="text-xs font-bold text-[#48563A]">
+                    ₹{maxPrice.toLocaleString('en-IN')}
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="80000"
+                  step="2000"
+                  value={maxPrice}
+                  onChange={(e) => setMaxPrice(Number(e.target.value))}
+                  className="w-full accent-[#2C2926] cursor-pointer"
+                />
+                <div className="flex justify-between text-[10px] text-[#A69B8C] mt-1 font-medium">
+                  <span>₹0</span>
+                  <span>₹80,000</span>
+                </div>
+              </div>
+
+              {/* Mobile Wood Finish Filter */}
+              <div className="py-4 border-b border-[#D8C9B5]/60">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#2C2926] block mb-2.5">
+                  Wood Finish
+                </span>
                 <div className="space-y-2">
-                  {roomOptions.map((r) => (
-                    <label key={r.id} className="flex items-center gap-2 text-xs text-espresso">
+                  {finishOptions.map((finish) => (
+                    <label key={finish.id} className="flex items-center gap-2.5 text-xs text-[#2C2926] cursor-pointer">
                       <input
                         type="checkbox"
-                        checked={selectedRooms.includes(r.id)}
+                        checked={selectedMaterials.includes(finish.id)}
                         onChange={(e) => {
-                          if (e.target.checked) setSelectedRooms([...selectedRooms, r.id]);
-                          else setSelectedRooms(selectedRooms.filter((x) => x !== r.id));
+                          if (e.target.checked) setSelectedMaterials([...selectedMaterials, finish.id]);
+                          else setSelectedMaterials(selectedMaterials.filter((m) => m !== finish.id));
                         }}
+                        className="rounded text-[#2C2926] focus:ring-[#2C2926]"
                       />
-                      <span>{r.label}</span>
+                      <span>{finish.label}</span>
                     </label>
                   ))}
                 </div>
               </div>
+
+              {/* Mobile Rooms */}
+              <div className="py-4 border-b border-[#D8C9B5]/60">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#2C2926] block mb-2.5">
+                  Room Category
+                </span>
+                <div className="grid grid-cols-2 gap-2">
+                  {roomOptions.map((r) => {
+                    const isChecked = selectedRooms.includes(r.id);
+                    return (
+                      <button
+                        key={r.id}
+                        type="button"
+                        onClick={() => {
+                          if (isChecked) setSelectedRooms(selectedRooms.filter((x) => x !== r.id));
+                          else setSelectedRooms([...selectedRooms, r.id]);
+                        }}
+                        className={`py-2 px-3 text-xs font-medium rounded-btn border text-left flex items-center justify-between ${
+                          isChecked
+                            ? 'bg-[#48563A] text-white border-[#48563A]'
+                            : 'bg-white text-[#2C2926] border-[#D8C9B5]'
+                        }`}
+                      >
+                        <span>{r.label}</span>
+                        {isChecked && <Check className="w-3.5 h-3.5" />}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
 
-            <div className="pt-4 border-t border-border-sand">
+            {/* Bottom Actions: Clear + Apply */}
+            <div className="pt-4 mt-2 border-t border-[#D8C9B5] flex gap-3">
+              {hasActiveFilters && (
+                <button
+                  onClick={clearAllFilters}
+                  className="w-1/3 py-3 bg-white border border-[#D8C9B5] text-[#2C2926] font-medium text-xs rounded-btn"
+                >
+                  Reset
+                </button>
+              )}
               <button
                 onClick={() => setMobileFilterOpen(false)}
-                className="w-full py-3 bg-espresso text-warm-ivory font-bold text-xs rounded-btn shadow-warm"
+                className="flex-1 py-3 bg-[#2C2926] text-[#F7F4EE] font-bold text-xs rounded-btn shadow-warm"
               >
                 Apply Filters ({sortedProducts.length} Pieces)
               </button>
@@ -495,17 +582,39 @@ function ProductsPageContent() {
   );
 }
 
+function ProductGridSkeleton() {
+  return (
+    <div className="min-h-screen bg-[#F7F4EE] py-6 sm:py-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Breadcrumb Skeleton */}
+        <div className="h-4 w-48 bg-[#E6E0D5] rounded animate-pulse mb-6" />
+
+        {/* Banner Skeleton */}
+        <div className="mb-8 pb-6 border-b border-[#D8C9B5] space-y-3">
+          <div className="h-3 w-32 bg-[#E6E0D5] rounded animate-pulse" />
+          <div className="h-8 w-72 bg-[#E6E0D5] rounded animate-pulse" />
+          <div className="h-4 w-96 max-w-full bg-[#E6E0D5] rounded animate-pulse" />
+        </div>
+
+        {/* Grid Skeleton (2-column on mobile, 3-column on desktop) */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="flex flex-col space-y-3">
+              <div className="aspect-[4/3] w-full rounded-2xl sm:rounded-3xl bg-[#E6E0D5] animate-pulse" />
+              <div className="h-4 w-3/4 bg-[#E6E0D5] rounded animate-pulse mt-1" />
+              <div className="h-3 w-1/2 bg-[#E6E0D5] rounded animate-pulse" />
+              <div className="h-5 w-1/3 bg-[#E6E0D5] rounded animate-pulse" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function ProductsPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen bg-warm-ivory py-16 text-center">
-          <div className="max-w-7xl mx-auto px-4">
-            <p className="font-serif text-xl text-espresso">Loading collection...</p>
-          </div>
-        </div>
-      }
-    >
+    <Suspense fallback={<ProductGridSkeleton />}>
       <ProductsPageContent />
     </Suspense>
   );

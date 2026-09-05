@@ -36,7 +36,7 @@ export function trackAmazonClick(product: {
 }
 
 export function trackWhatsAppClick(data: {
-  source: 'pdp' | 'floating' | 'homepage' | 'contact' | 'nav' | 'footer' | 'customization';
+  source: 'pdp' | 'floating' | 'homepage' | 'contact' | 'nav' | 'footer' | 'customization' | 'amazon-cta-fallback' | 'pdp-sticky-bar' | (string & {});
   product_id?: string;
   product_name?: string;
 }) {

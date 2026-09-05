@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { roomCategories, getProductsByRoom, getRoomCategoryBySlug } from '@/lib/products';
 import { Room } from '@/types/product';
 import ProductCard from '@/components/product/ProductCard';
+import RoomProductGrid from '@/components/room/RoomProductGrid';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import { Lightbulb, Sparkles, ArrowRight } from 'lucide-react';
@@ -57,7 +58,7 @@ export default function RoomPage({ params }: Props) {
         
         <Breadcrumb
           items={[
-            { label: 'Rooms', href: '/products' },
+            { label: 'Catalogue', href: '/products' },
             { label: roomCat.name },
           ]}
           className="mb-6"
@@ -98,32 +99,7 @@ export default function RoomPage({ params }: Props) {
           </div>
         </div>
 
-        <div className="mb-16">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="font-display font-bold text-xl sm:text-2xl text-espresso">
-                {roomCat.name} Collection
-              </h2>
-              <p className="text-xs sm:text-sm text-soft-taupe mt-1">
-                Showing all {roomProducts.length} pieces designed for {roomCat.name.toLowerCase()} setups.
-              </p>
-            </div>
-
-            <Link
-              href="/products"
-              className="text-xs sm:text-sm font-semibold text-espresso hover:text-muted-olive flex items-center gap-1 transition-colors"
-            >
-              <span>All Rooms</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
-            {roomProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </div>
+        <RoomProductGrid products={roomProducts} roomName={roomCat.name} />
 
         {roomCat.tips && roomCat.tips.length > 0 && (
           <section className="bg-white rounded-3xl p-6 sm:p-10 border border-warm-sand/60 shadow-card mb-16">

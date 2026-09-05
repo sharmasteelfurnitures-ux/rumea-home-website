@@ -160,12 +160,13 @@ export default function Hero() {
               </p>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
+              <div className="flex flex-col min-[480px]:flex-row items-stretch min-[480px]:items-center gap-3.5 pt-2">
                 <Link
                   href={slide.primaryHref}
-                  className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#2C2926] hover:bg-[#3D3632] text-[#F7F4EE] font-sans font-medium text-sm sm:text-base rounded-btn shadow-md hover:scale-[1.01] active:scale-[0.98] transition-all duration-200 group"
+                  className="inline-flex items-center justify-center gap-2.5 min-h-[48px] px-4 min-[480px]:px-8 py-3.5 bg-[#2C2926] hover:bg-[#3D3632] text-[#F7F4EE] font-sans font-medium text-sm sm:text-base rounded-btn shadow-md hover:scale-[1.01] active:scale-[0.98] transition-all duration-200 group text-center"
                 >
-                  <span>{slide.primaryCta}</span>
+                  <span className="min-[480px]:hidden">Explore Now</span>
+                  <span className="hidden min-[480px]:inline">{slide.primaryCta}</span>
                   <ArrowRight className="w-4 h-4 text-[#F7F4EE] group-hover:translate-x-1.5 transition-transform" />
                 </Link>
 
@@ -174,7 +175,7 @@ export default function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackWhatsAppClick({ source: 'homepage' })}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent hover:bg-[#F7F4EE]/15 text-[#F7F4EE] border-[1.5px] border-[#F7F4EE] font-sans font-medium text-sm rounded-btn transition-all duration-200"
+                  className="hidden min-[480px]:inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3.5 bg-transparent hover:bg-[#F7F4EE]/15 text-[#F7F4EE] border-[1.5px] border-[#F7F4EE] font-sans font-medium text-sm rounded-btn transition-all duration-200"
                 >
                   <MessageCircle className="w-4 h-4 text-[#F7F4EE]" />
                   <span>Chat on WhatsApp</span>

@@ -44,6 +44,7 @@ interface Furniture3DModel {
   tabLabel: string;
   tagline: string;
   modelSrc: string;
+  images: string[];
   price: number;
   mrp: number;
   slug: string;
@@ -58,6 +59,11 @@ export default function Product360Viewer() {
       tabLabel: 'Aura Lounge',
       tagline: 'An architectural centerpiece with curved ergonomic contours and rich tactile velvet.',
       modelSrc: '/models/sofa-velvet.glb',
+      images: [
+        'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80',
+      ],
       price: 42999,
       mrp: 52999,
       slug: 'sofa-oslo-3seater',
@@ -69,6 +75,11 @@ export default function Product360Viewer() {
       tabLabel: 'Nordic Timber',
       tagline: 'Hand-selected solid Sheesham chassis paired with artisanal saddle-stitched leather.',
       modelSrc: '/models/sofa-wood-leather.glb',
+      images: [
+        'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=1200&q=80',
+      ],
       price: 54999,
       mrp: 68999,
       slug: 'sofa-oslo-3seater',
@@ -80,6 +91,11 @@ export default function Product360Viewer() {
       tabLabel: 'Kyoto Armchair',
       tagline: 'Sculptural curves with tapered solid wood dowel legs, tailored for statement corners.',
       modelSrc: '/models/chair.glb',
+      images: [
+        'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1200&q=80',
+      ],
       price: 18999,
       mrp: 24999,
       slug: 'table-kyoto-coffee',
@@ -88,6 +104,8 @@ export default function Product360Viewer() {
   ];
 
   const [selectedModelIdx, setSelectedModelIdx] = useState(0);
+  const [activeImageIdx, setActiveImageIdx] = useState(0);
+  const [enable3dOnMobile, setEnable3dOnMobile] = useState(false);
   const [isAutoRotating, setIsAutoRotating] = useState(true);
 
   // Client-side dynamic import of @google/model-viewer to guarantee immediate registration in production
@@ -96,6 +114,15 @@ export default function Product360Viewer() {
   }, []);
 
   const currentModel = models[selectedModelIdx];
+
+  const handleMobileScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const target = e.currentTarget;
+    const itemWidth = target.clientWidth;
+    const index = Math.round(target.scrollLeft / itemWidth);
+    if (index >= 0 && index < currentModel.images.length) {
+      setActiveImageIdx(index);
+    }
+  };
 
   return (
     <section className="py-10 sm:py-14 bg-white border-t border-[#D8C9B5]">
@@ -121,7 +148,7 @@ export default function Product360Viewer() {
               Experience Every Angle in 360°
             </h2>
             <p className="text-[#A69B8C] text-xs sm:text-sm mt-1 max-w-xl">
-              Take an intimate look at our kiln-dried solid timber framing, tailoring, and hand-finished details. Drag in any direction to explore the piece all around, or zoom in to appreciate the grain.
+              Take an intimate look at our kiln-dried solid timber framing, tailoring, and hand-finished details. Explore all angles and multi-view perspectives.
             </p>
           </div>
 
@@ -131,7 +158,10 @@ export default function Product360Viewer() {
               {models.map((m, idx) => (
                 <button
                   key={m.id}
-                  onClick={() => setSelectedModelIdx(idx)}
+                  onClick={() => {
+                    setSelectedModelIdx(idx);
+                    setActiveImageIdx(0);
+                  }}
                   className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer ${
                     selectedModelIdx === idx
                       ? 'bg-[#2C2926] text-[#F7F4EE] shadow-xs'
@@ -145,7 +175,7 @@ export default function Product360Viewer() {
 
             <button
               onClick={() => setIsAutoRotating(!isAutoRotating)}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#F7F4EE] border border-[#D8C9B5] text-[#2C2926] hover:bg-[#2C2926] hover:text-[#F7F4EE] text-xs font-medium transition-colors shadow-2xs cursor-pointer"
+              className="hidden md:inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#F7F4EE] border border-[#D8C9B5] text-[#2C2926] hover:bg-[#2C2926] hover:text-[#F7F4EE] text-xs font-medium transition-colors shadow-2xs cursor-pointer"
             >
               {isAutoRotating ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 text-[#48563A]" />}
               <span>{isAutoRotating ? 'Pause Spin' : 'Auto 360°'}</span>
@@ -156,44 +186,89 @@ export default function Product360Viewer() {
         {/* 3D WebGL Viewport Studio Card */}
         <div className="relative rounded-2xl sm:rounded-3xl border border-[#D8C9B5] bg-gradient-to-b from-[#F7F4EE] via-[#F3ECE0] to-[#E9DFD1] overflow-hidden shadow-xl">
           
-          {/* Main 3D Canvas Area (Controlled Proportional Height) */}
-          <div className="relative w-full h-[360px] sm:h-[440px] md:h-[480px] flex items-center justify-center">
+          {/* Main View Area: Mobile Swipeable Gallery on <768px, Desktop 3D Canvas on >=768px */}
+          <div className="relative w-full h-[320px] sm:h-[400px] md:h-[480px] flex items-center justify-center">
             
-            {/* Real 3D Model Viewer — Ultra-HD PBR Neutral Tone Mapping */}
-            <model-viewer
-              key={currentModel.id}
-              src={currentModel.modelSrc}
-              alt={currentModel.name}
-              camera-controls
-              auto-rotate={isAutoRotating}
-              rotation-per-second="24deg"
-              tone-mapping="neutral"
-              environment-image="neutral"
-              shadow-intensity="1.6"
-              shadow-softness="0.25"
-              exposure="1.08"
-              field-of-view="28deg"
-              camera-orbit="45deg 75deg 115%"
-              interpolation-decay="160"
-              loading="eager"
-              reveal="auto"
-              interaction-prompt="auto"
-              ar
-              ar-modes="webxr scene-viewer quick-look"
-              style={{
-                width: '100%',
-                height: '100%',
-                backgroundColor: 'transparent',
-                outline: 'none',
-                cursor: 'grab',
-              }}
-            />
+            {/* Mobile View: Swipeable Image Gallery to prevent scroll hijacking (< 768px) */}
+            <div className={`md:hidden relative w-full h-full ${enable3dOnMobile ? 'hidden' : 'flex flex-col'}`}>
+              <div
+                onScroll={handleMobileScroll}
+                className="flex-1 flex overflow-x-auto snap-x snap-mandatory no-scrollbar"
+              >
+                {currentModel.images.map((imgSrc, imgIdx) => (
+                  <div
+                    key={imgIdx}
+                    className="w-full h-full shrink-0 snap-center relative flex items-center justify-center p-4"
+                  >
+                    <img
+                      src={imgSrc}
+                      alt={`${currentModel.name} - View ${imgIdx + 1}`}
+                      className="max-h-full max-w-full object-contain rounded-xl drop-shadow-md"
+                    />
+                  </div>
+                ))}
+              </div>
 
-            {/* Drag & Orbit Direction Overlay */}
-            <div className="absolute bottom-4 inset-x-0 flex justify-center pointer-events-none z-10">
-              <div className="px-4 py-2 rounded-full bg-[#2C2926]/85 backdrop-blur-md text-[#F7F4EE] text-xs font-medium border border-white/15 flex items-center gap-2 shadow-lg">
-                <Move3d className="w-4 h-4 text-[#D8C9B5]" />
-                <span>Drag to spin 360° in any direction • Pinch or scroll to zoom details</span>
+              {/* Mobile Pagination Dots & 3D Interactive Launch Button */}
+              <div className="absolute bottom-3 inset-x-0 flex flex-col items-center gap-2 pointer-events-none">
+                <div className="flex items-center gap-1.5 bg-[#2C2926]/70 backdrop-blur-md px-3 py-1 rounded-full">
+                  {currentModel.images.map((_, dotIdx) => (
+                    <span
+                      key={dotIdx}
+                      className={`w-2 h-2 rounded-full transition-all ${
+                        activeImageIdx === dotIdx ? 'bg-warm-ivory w-4' : 'bg-warm-ivory/40'
+                      }`}
+                    />
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => setEnable3dOnMobile(true)}
+                  className="pointer-events-auto px-3 py-1 bg-white/95 text-espresso border border-warm-sand/80 text-[11px] font-semibold rounded-full shadow-sm hover:bg-white flex items-center gap-1.5 transition-all"
+                >
+                  <Move3d className="w-3.5 h-3.5 text-muted-olive" />
+                  <span>Tap for Interactive 3D Orbit</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Desktop / Explicitly Enabled Mobile: Real 3D Model Viewer */}
+            <div className={`w-full h-full ${enable3dOnMobile ? 'block' : 'hidden md:block'}`}>
+              <model-viewer
+                key={currentModel.id}
+                src={currentModel.modelSrc}
+                alt={currentModel.name}
+                camera-controls
+                auto-rotate={isAutoRotating}
+                rotation-per-second="24deg"
+                tone-mapping="neutral"
+                environment-image="neutral"
+                shadow-intensity="1.6"
+                shadow-softness="0.25"
+                exposure="1.08"
+                field-of-view="28deg"
+                camera-orbit="45deg 75deg 115%"
+                interpolation-decay="160"
+                loading="eager"
+                reveal="auto"
+                interaction-prompt="auto"
+                ar
+                ar-modes="webxr scene-viewer quick-look"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  backgroundColor: 'transparent',
+                  outline: 'none',
+                  cursor: 'grab',
+                }}
+              />
+
+              {/* Drag & Orbit Direction Overlay */}
+              <div className="absolute bottom-4 inset-x-0 flex justify-center pointer-events-none z-10">
+                <div className="px-4 py-2 rounded-full bg-[#2C2926]/85 backdrop-blur-md text-[#F7F4EE] text-xs font-medium border border-white/15 flex items-center gap-2 shadow-lg">
+                  <Move3d className="w-4 h-4 text-[#D8C9B5]" />
+                  <span>Drag to spin 360° in any direction • Pinch or scroll to zoom details</span>
+                </div>
               </div>
             </div>
 
@@ -209,7 +284,7 @@ export default function Product360Viewer() {
             <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
               <div className="px-3 py-1.5 rounded-full bg-[#2C2926]/90 backdrop-blur-md border border-white/10 text-[#F7F4EE] text-xs font-medium flex items-center gap-1.5 shadow-xs">
                 <Sparkles className="w-3.5 h-3.5 text-[#D8C9B5]" />
-                <span>Preview in Your Living Room</span>
+                <span>Preview in AR</span>
               </div>
             </div>
 

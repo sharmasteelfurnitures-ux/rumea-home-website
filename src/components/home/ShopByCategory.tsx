@@ -133,6 +133,18 @@ function InteractiveCategoryCard({ cat, idx }: { cat: CategoryItem; idx: number 
 }
 
 export default function ShopByCategory() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  const handleScroll = () => {
+    if (!scrollContainerRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+    const maxScroll = scrollWidth - clientWidth;
+    if (maxScroll > 0) {
+      setScrollProgress((scrollLeft / maxScroll) * 100);
+    }
+  };
+
   const categories: CategoryItem[] = [
     {
       id: 'sofas',
@@ -227,11 +239,27 @@ export default function ShopByCategory() {
           </Link>
         </div>
 
-        {/* 12-Category Grid with 3D Motion Physics (6 cols desktop, 3 cols tablet, 2 cols mobile) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-5">
+        {/* 12-Category Grid with Mobile Horizontal Scroll Snap & Desktop 6-Col Grid */}
+        <div
+          ref={scrollContainerRef}
+          onScroll={handleScroll}
+          className="flex sm:grid sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-5 overflow-x-auto sm:overflow-x-visible snap-x snap-mandatory sm:snap-none no-scrollbar pb-2 sm:pb-0 -mx-4 sm:mx-0 px-4 sm:px-0"
+        >
           {categories.map((cat, idx) => (
-            <InteractiveCategoryCard key={cat.id} cat={cat} idx={idx} />
+            <div key={cat.id} className="w-[42vw] max-w-[180px] sm:w-auto shrink-0 snap-start">
+              <InteractiveCategoryCard cat={cat} idx={idx} />
+            </div>
           ))}
+        </div>
+
+        {/* Mobile Scroll Progress Bar Indicator */}
+        <div className="sm:hidden mt-4 flex items-center justify-center">
+          <div className="w-24 h-1 bg-[#D8C9B5]/40 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-[#48563A] rounded-full transition-all duration-150"
+              style={{ width: `${Math.max(15, scrollProgress)}%` }}
+            />
+          </div>
         </div>
 
       </div>

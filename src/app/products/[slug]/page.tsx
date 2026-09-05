@@ -7,7 +7,6 @@ import AmazonImageGallery from '@/components/product/AmazonImageGallery';
 import ProductInfo from '@/components/product/ProductInfo';
 import ProductSpecs from '@/components/product/ProductSpecs';
 import FrequentlyBoughtTogether from '@/components/product/FrequentlyBoughtTogether';
-import RatingBreakdown from '@/components/product/RatingBreakdown';
 import ProductFAQ from '@/components/product/ProductFAQ';
 import RoomFitGuide from '@/components/product/RoomFitGuide';
 import WoodCareGuide from '@/components/product/WoodCareGuide';
@@ -89,11 +88,6 @@ export default function ProductDetailPage({ params }: Props) {
         name: 'Rumea Home',
       },
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: product.seo.rating,
-      reviewCount: product.seo.reviewCount,
-    },
   };
 
   const roomName = product.room[0]
@@ -112,8 +106,7 @@ export default function ProductDetailPage({ params }: Props) {
         {/* Breadcrumb Navigation */}
         <Breadcrumb
           items={[
-            { label: 'Home', href: '/' },
-            { label: 'Products', href: '/products' },
+            { label: 'Catalogue', href: '/products' },
             { label: roomName, href: `/rooms/${product.room[0] || 'living-room'}` },
             { label: product.name },
           ]}

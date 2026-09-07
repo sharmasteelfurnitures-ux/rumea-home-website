@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Move3d, Play, Pause, Sparkles, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
@@ -106,12 +106,26 @@ export default function Product360Viewer() {
   const [activeImageIdx, setActiveImageIdx] = useState(0);
   const [enable3dOnMobile, setEnable3dOnMobile] = useState(false);
   const [isAutoRotating, setIsAutoRotating] = useState(true);
+  const [isInViewport, setIsInViewport] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
-  // Client-side dynamic import of @google/model-viewer if not already registered in CustomElementRegistry
+  // Lazy load 3D engine only when section is near viewport
   useEffect(() => {
-    if (typeof window !== 'undefined' && !window.customElements?.get('model-viewer')) {
-      import('@google/model-viewer').catch(() => {});
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInViewport(entry.isIntersecting);
+        if (entry.isIntersecting && typeof window !== 'undefined' && !window.customElements?.get('model-viewer')) {
+          import('@google/model-viewer').catch(() => {});
+        }
+      },
+      { rootMargin: '300px' }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
+
+    return () => observer.disconnect();
   }, []);
 
   const currentModel = models[selectedModelIdx];
@@ -126,7 +140,7 @@ export default function Product360Viewer() {
   };
 
   return (
-    <section className="py-10 sm:py-14 bg-white border-t border-[#D8C9B5]">
+    <section ref={sectionRef} className="py-10 sm:py-14 bg-white border-t border-[#D8C9B5]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -230,10 +244,10 @@ export default function Product360Viewer() {
             <div className={`w-full h-full ${enable3dOnMobile ? 'block' : 'hidden md:block'}`}>
               <model-viewer
                 key={currentModel.id}
-                src={currentModel.modelSrc}
+                src={isInViewport ? currentModel.modelSrc : undefined}
                 alt={currentModel.name}
                 camera-controls
-                auto-rotate={isAutoRotating}
+                auto-rotate={isAutoRotating && isInViewport}
                 rotation-per-second="24deg"
                 tone-mapping="neutral"
                 environment-image="neutral"
@@ -243,7 +257,7 @@ export default function Product360Viewer() {
                 field-of-view="28deg"
                 camera-orbit="45deg 75deg 115%"
                 interpolation-decay="160"
-                loading="eager"
+                loading="lazy"
                 reveal="auto"
                 interaction-prompt="auto"
                 ar

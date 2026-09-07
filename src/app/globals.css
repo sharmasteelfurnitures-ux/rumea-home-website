@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
-
 :root {
   --color-espresso: #2C2926;
   --color-sand: #D8C9B5;
@@ -244,7 +242,7 @@ h1, h2, h3, h4, h5, h6 {
   animation: shimmer-sweep 1.4s infinite;
 }
 
-/* 6. Subtle Noise Texture Overlay for Warm/Cream Sections (opacity: 0.03) */
+/* 6. Subtle Noise Texture Overlay for Warm/Cream Sections (Lightweight, GPU-friendly) */
 .subtle-grain-texture {
   position: relative;
 }
@@ -254,7 +252,8 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  background-image: radial-gradient(rgba(44, 41, 38, 0.02) 1px, transparent 0);
+  background-size: 24px 24px;
   z-index: 1;
   border-radius: inherit;
 }

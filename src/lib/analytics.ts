@@ -8,7 +8,7 @@ declare global {
   }
 }
 
-export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
+export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-17YPJ1GZHS';
 
 export function trackEvent(eventName: string, params?: Record<string, any>) {
   if (typeof window !== 'undefined' && typeof window.gtag === 'function') {

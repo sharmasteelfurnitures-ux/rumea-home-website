@@ -8,7 +8,7 @@ import AnimatedHeading from '@/components/ui/AnimatedHeading';
 
 export default function WhatsAppConcierge() {
   const whatsappUrl = buildWhatsAppUrl(
-    "Hi Rumea Home! I'd like help choosing the right solid Sheesham furniture for my floor plan."
+    "Hi Rumea Home! I'd like help with furniture dimensions and room sizing."
   );
 
   return (
@@ -22,21 +22,21 @@ export default function WhatsAppConcierge() {
           <div className="flex-1 max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#48563A]/8 text-[#48563A] text-xs font-semibold uppercase tracking-[0.12em] rounded-full mb-2 border border-[#48563A]/15">
               <Ruler className="w-3.5 h-3.5 text-[#48563A]" />
-              <span>FREE ROOM SIZING &amp; FINISH CONSULTATION</span>
+              <span>SIZING &amp; ROOM FIT ASSISTANCE</span>
             </div>
             <AnimatedHeading
               text="Not Sure What Fits Your Space?"
               className="font-serif text-2xl sm:text-3xl text-[#2C2926] font-medium tracking-tight"
             />
             <p className="text-[#6E645A] text-sm sm:text-base mt-1.5 leading-relaxed">
-              Share your room dimensions, floor plans, or photos on WhatsApp. Our woodcraft designers provide honest sizing advice, custom finish previews, and direct delivery estimates.
+              Share your room dimensions, doorway widths, or photos on WhatsApp. We provide honest sizing guidance, walkway clearance checks, and direct assistance before you buy.
             </p>
 
             {/* Inline Trust Notes */}
             <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-[#6E645A] font-medium">
               <div className="flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5 text-[#48563A]" />
-                <span>Average reply &lt; 15 mins</span>
+                <span>Quick Response</span>
               </div>
               <span className="text-[#D8C9B5]">•</span>
               <div className="flex items-center gap-1.5">
@@ -44,9 +44,9 @@ export default function WhatsAppConcierge() {
                 <span>Zero Pressure, Honest Advice</span>
               </div>
               <span className="text-[#D8C9B5]">•</span>
-              <span>Experience Store Hours: 10AM–9PM</span>
+              <span>Available 10 AM – 9 PM</span>
               <span className="text-[#D8C9B5]">•</span>
-              <span>Free PAN India Delivery</span>
+              <span>Amazon India Order Support</span>
             </div>
           </div>
 

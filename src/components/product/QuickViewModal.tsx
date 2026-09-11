@@ -52,16 +52,16 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
                 className="object-cover object-center"
               />
               <span className="absolute top-3 left-3 px-2 py-0.5 bg-espresso text-warm-ivory text-[10px] font-semibold uppercase tracking-wider rounded-btn">
-                100% Solid Sheesham
+                Rumea Home
               </span>
             </div>
 
             <div className="mt-3 flex items-center justify-between text-xs text-soft-taupe font-medium">
               <span className="flex items-center gap-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-antique-gold" /> 5-Year Frame Warranty
+                <ShieldCheck className="w-3.5 h-3.5 text-antique-gold" /> Honest Materials
               </span>
               <span className="flex items-center gap-1">
-                <Truck className="w-3.5 h-3.5 text-antique-gold" /> Free Delivery
+                <Truck className="w-3.5 h-3.5 text-antique-gold" /> Safe Delivery via Amazon
               </span>
             </div>
           </div>
@@ -92,7 +92,7 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
 
               {/* Tagline / USP */}
               <p className="text-xs text-soft-taupe mt-2 leading-relaxed line-clamp-2">
-                {product.tagline || 'Crafted with master mortise & tenon joinery and durable kiln-dried hardwood.'}
+                {product.tagline || 'Thoughtfully proportioned for modern Indian homes and daily living.'}
               </p>
             </div>
 

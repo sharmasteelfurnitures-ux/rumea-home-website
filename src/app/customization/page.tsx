@@ -39,22 +39,22 @@ export default function CustomizationPage() {
     {
       icon: Ruler,
       title: '1. Share Space & Dimensions',
-      desc: 'Send us your room measurements, architectural blueprints, or a photo/sketch of the furniture piece you desire.',
+      desc: 'Send us your room measurements, layout photos, or space constraints via WhatsApp.',
     },
     {
       icon: Layers,
-      title: '2. 3D CAD & Timber Selection',
-      desc: 'Our design studio prepares proportional 3D drawings with your choice of 100% solid Sheesham, Teak, or Ash timber finishes.',
+      title: '2. Proportional Fit Guidance',
+      desc: 'Our team helps you check walking clearances, door swing room, and the best catalog fits.',
     },
     {
       icon: Hammer,
-      title: '3. Master Handcrafting',
-      desc: 'Generational carpenters hand-shape every mortise & tenon joint in our workshop. We share in-progress photos during build.',
+      title: '3. Finish & Material Advisory',
+      desc: 'Get advice on wood tones, fabric palettes, and durable finishes matching your home interior.',
     },
     {
       icon: Truck,
-      title: '4. White-Glove Installation',
-      desc: 'Delivered directly to your home with free assembly, leveling, and a certified 5-year structural timber warranty.',
+      title: '4. Reliable Doorstep Delivery',
+      desc: 'Order conveniently via Amazon India with multi-layer packaging and transit protection.',
     },
   ];
 
@@ -95,25 +95,25 @@ export default function CustomizationPage() {
           <div className="relative z-10 max-w-2xl">
             <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-white/10 text-[#D8C9B5] text-xs font-semibold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5 text-[#D8C9B5]" />
-              <span>Bespoke Workshop Studio</span>
+              <span>Room Fit &amp; Sizing Advisory</span>
             </div>
             <h1 className="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-white leading-tight">
-              Furniture Tailored to Your Exact Space
+              Furniture Sized for Your Exact Space
             </h1>
             <p className="text-[#D8C9B5] text-sm sm:text-base mt-4 leading-relaxed">
-              Cannot find the exact length for your wall or the right wood stain to match your flooring? Our master woodcrafters build custom solid timber pieces made precisely for your home.
+              Unsure if a sofa will fit your living room alcove or if a dining table leaves enough walking clearance? Connect directly with our team for honest dimensional and placement guidance.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
-                href={buildWhatsAppUrl("Hi Rumea Home! I would like to discuss a custom furniture design.")}
+                href={buildWhatsAppUrl("Hi Rumea Home! I would like advice on furniture sizing for my room.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsAppClick({ source: 'customization' })}
                 className="px-6 py-3.5 bg-[#D8C9B5] hover:bg-[#C9B9A3] text-[#2C2926] text-xs font-semibold rounded-btn transition-colors flex items-center gap-2 shadow-sm"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>Discuss on WhatsApp</span>
+                <span>Ask on WhatsApp</span>
               </a>
 
               <a
@@ -121,7 +121,7 @@ export default function CustomizationPage() {
                 className="px-6 py-3.5 bg-transparent hover:bg-white/10 text-[#F7F4EE] border border-white/20 text-xs font-semibold rounded-btn transition-colors flex items-center gap-2"
               >
                 <Phone className="w-4 h-4 text-[#D8C9B5]" />
-                <span>Call Workshop: +91 72919 62356</span>
+                <span>Call Support: +91 72919 62356</span>
               </a>
             </div>
           </div>

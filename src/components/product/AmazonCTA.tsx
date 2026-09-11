@@ -40,7 +40,7 @@ export default function AmazonCTA({ product, className = '' }: AmazonCTAProps) {
       </a>
       <p className="text-[11px] text-center text-[#A69B8C] flex items-center justify-center gap-1.5">
         <ShieldCheck className="w-3.5 h-3.5 text-[#48563A]" />
-        <span>Direct Workshop Pricing · 5-Year Frame Warranty · Free PAN India Delivery</span>
+        <span>Considered Proportions · Multi-Layer Transit Packaging · Direct WhatsApp Support</span>
       </p>
     </div>
   );

@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import { HelpCircle, ChevronDown, MessageCircle } from 'lucide-react';
@@ -13,24 +13,24 @@ export default function ProductFAQ({ productName }: ProductFAQProps) {
 
   const faqs = [
     {
-      q: `Is the ${productName} crafted from 100% solid wood or engineered wood?`,
-      a: 'This piece is built exclusively from 100% kiln-dried solid Indian Sheesham (Rosewood). We never use MDF, particleboard, or synthetic core fillers. The wood undergoes 3-stage anti-termite treatment and moisture seasoning to prevent seasonal warping.',
+      q: `What materials and construction are used for the ${productName}?`,
+      a: 'Each Rumea piece is crafted using durable, honest materials specified in the Technical Specifications above—such as seasoned solid hardwood, structural steel, or premium upholstery. We prioritize long-term durability and domestic stability.',
     },
     {
-      q: 'How does doorstep delivery and assembly work across India?',
-      a: 'We provide Free Pan-India delivery in heavy-duty reinforced 5-ply corrugated packaging with corner edge guards. For items requiring assembly, all necessary Allen keys, hardware bolts, and step-by-step visual guides are included. Professional doorstep assembly is available across 50+ metro and tier-2 cities.',
+      q: 'How is this item packaged and delivered across India?',
+      a: 'We use heavy-duty multi-layer corrugated cartons with reinforced corner edge protectors to ensure safe transit. For orders placed via Amazon India, tracking and delivery are managed through Amazon’s reliable logistics network.',
     },
     {
-      q: 'What is covered under the 5-Year Structural Frame Warranty?',
-      a: 'Our 5-Year Warranty covers any manufacturing defect, structural frame joint failure, termite/borer infestation, or timber warping. If an issue occurs, our support team on WhatsApp will arrange doorstep inspection and free replacement or repair.',
+      q: 'Is assembly required and how easy is it?',
+      a: 'If assembly is required, all necessary hardware, tools, and step-by-step visual diagrams are included. Most items can be assembled easily within 15–20 minutes using basic household tools.',
     },
     {
-      q: 'What is the return policy if the product does not match my expectations?',
-      a: 'We offer a 30-day hassle-free return and replacement policy. In the rare event of transit damage or manufacturing discrepancy, contact us immediately on WhatsApp or Amazon for an instant doorstep replacement.',
+      q: 'What should I do if an item arrives damaged or has a defect?',
+      a: 'Every piece is inspected prior to packing. In the rare event of transit damage or missing components, contact our WhatsApp support (+91 72919 62356) with photos for immediate assistance, or use Amazon’s return/replacement support.',
     },
     {
-      q: 'How should I care for and maintain the solid wood finish?',
-      a: 'Dust regularly with a dry, soft microfiber cloth. Clean spills immediately. Avoid placing hot pans directly without trivets, and keep away from prolonged direct exposure to outdoor monsoon rain for indoor pieces.',
+      q: 'How should I care for and maintain this piece?',
+      a: 'Dust regularly with a clean, dry microfiber cloth. Wipe liquid spills immediately with a damp cloth followed by a dry wipe. Avoid placing hot cookware directly on surfaces without coasters or trivets.',
     },
   ];
 

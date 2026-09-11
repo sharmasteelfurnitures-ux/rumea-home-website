@@ -30,7 +30,7 @@ export default function ProductSpecs({ product }: ProductSpecsProps) {
         <div className="space-y-4 text-xs sm:text-sm text-espresso leading-relaxed">
           <p>
             {product.meta.description ||
-              `The ${product.name} is handcrafted from 100% solid Indian Sheesham (Rosewood), designed specifically for urban Indian apartments. Built to balance timeless organic aesthetics with rock-solid durability.`}
+              `The ${product.name} is thoughtfully proportioned for modern Indian living, balancing warm organic aesthetics with enduring daily durability.`}
           </p>
           <div className="space-y-2 pt-2">
             <p className="font-bold text-xs uppercase tracking-wider text-antique-gold">Key Highlights:</p>
@@ -123,20 +123,20 @@ export default function ProductSpecs({ product }: ProductSpecsProps) {
         <div className="space-y-3 text-xs sm:text-sm text-espresso">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="p-3 bg-warm-ivory rounded-card border border-border-sand/60">
-              <p className="text-soft-taupe text-[11px]">Primary Timber</p>
+              <p className="text-soft-taupe text-[11px]">Primary Material</p>
               <p className="font-bold text-espresso">{product.materials.frame}</p>
             </div>
             <div className="p-3 bg-warm-ivory rounded-card border border-border-sand/60">
-              <p className="text-soft-taupe text-[11px]">Moisture Content</p>
-              <p className="font-bold text-espresso">8–10% Kiln-Dried</p>
+              <p className="text-soft-taupe text-[11px]">Timber Treatment</p>
+              <p className="font-bold text-espresso">Seasoned Hardwood</p>
             </div>
             <div className="p-3 bg-warm-ivory rounded-card border border-border-sand/60">
-              <p className="text-soft-taupe text-[11px]">Joinery Method</p>
-              <p className="font-bold text-espresso">{product.materials.joinery || 'Mortise & Tenon Interlocking'}</p>
+              <p className="text-soft-taupe text-[11px]">Joinery &amp; Build</p>
+              <p className="font-bold text-espresso">{product.materials.joinery || 'Precision Interlocking Joints'}</p>
             </div>
             <div className="p-3 bg-warm-ivory rounded-card border border-border-sand/60">
               <p className="text-soft-taupe text-[11px]">Finishing Coat</p>
-              <p className="font-bold text-espresso">{product.materials.coating || 'Food-Grade Zero-VOC Satin'}</p>
+              <p className="font-bold text-espresso">{product.materials.coating || 'Satin Protective Finish'}</p>
             </div>
           </div>
         </div>
@@ -144,33 +144,33 @@ export default function ProductSpecs({ product }: ProductSpecsProps) {
     },
     {
       id: 'assembly',
-      title: 'Assembly & Wood Care',
+      title: 'Assembly & Care',
       icon: ShieldCheck,
       content: (
         <div className="space-y-3 text-xs sm:text-sm text-espresso leading-relaxed">
           <p>
-            <strong>Doorstep Assembly:</strong> All necessary hardware, Allen keys, and visual assembly diagrams are included. Our logistics partner provides free professional assembly in 50+ metro cities.
+            <strong>Assembly Guidance:</strong> All necessary hardware, Allen keys, and visual step-by-step instructions are included. Most pieces can be assembled within 15–20 minutes.
           </p>
           <p>
-            <strong>Daily Care:</strong> Dust with a dry, soft microfiber cloth along the wood grain. Wipe spills immediately. Avoid harsh chemical cleaners, bleach, or placing hot cookware directly on the surface.
+            <strong>Daily Care:</strong> Dust regularly with a clean, soft dry cloth. Wipe spills immediately. Avoid placing hot cookware directly on the surface or exposing to prolonged standing moisture.
           </p>
         </div>
       ),
     },
     {
       id: 'shipping',
-      title: 'Shipping, Warranty & Returns',
+      title: 'Packaging & Support',
       icon: Truck,
       content: (
         <div className="space-y-3 text-xs sm:text-sm text-espresso leading-relaxed">
           <p>
-            <strong>🚚 Free Pan-India Delivery:</strong> Packed in heavy-duty 5-ply corrugated carton with corner foam edge guards to ensure zero transit damage.
+            <strong>🚚 Secure Transit Packaging:</strong> Packed in heavy-duty multi-layer corrugated boxes with high-density corner guards to prevent transit wear.
           </p>
           <p>
-            <strong>🛡️ 5-Year Structural Frame Warranty:</strong> Covers any timber joint loosening, natural borer/termite infestation, or manufacturing defect.
+            <strong>🛡️ Manufacturing Guarantee:</strong> Every piece is inspected before dispatch. If any transit damage or manufacturing issue occurs, our team assists promptly.
           </p>
           <p>
-            <strong>🔄 30-Day Doorstep Returns:</strong> If you are not completely satisfied, contact us via WhatsApp for a hassle-free doorstep return or replacement.
+            <strong>💬 Direct Support:</strong> For sizing verification, replacement parts, or delivery updates, message our team directly on WhatsApp (+91 72919 62356).
           </p>
         </div>
       ),

@@ -39,7 +39,7 @@ export default function ShopTheLook() {
       id: 'living-room-scandi',
       title: 'The Scandinavian Living Room Look',
       roomType: 'Living Room',
-      description: 'Coordinated solid Sheesham living ensemble — featuring our 3-seater sofa, low coffee table, and slatted almirah console.',
+      description: 'A coordinated living ensemble — featuring our 3-seater sofa, low coffee table, and media console designed to bring balance and warmth.',
       image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1600&q=85',
       bundleDiscount: 7500,
       products: [
@@ -162,7 +162,7 @@ export default function ShopTheLook() {
               className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#2C2926] font-normal tracking-tight"
             />
             <p className="text-[#A69B8C] text-xs sm:text-sm mt-1.5 max-w-xl">
-              Hover or tap on the circle spots in the room to explore matched solid wood pieces, prices, and bundle savings.
+              Tap or hover on any point in the room to explore individual pieces, exact dimensions, and how they harmonize together.
             </p>
           </div>
 
@@ -369,8 +369,8 @@ export default function ShopTheLook() {
               </div>
 
               <div className="mt-4 pt-3 border-t border-[#D8C9B5]/50 flex items-center justify-between">
-                <span className="text-[11px] text-[#48563A] font-semibold">
-                  100% Solid Kiln-Dried Sheesham
+                <span className="text-[11px] text-[#48563A] font-medium">
+                  Considered Living
                 </span>
                 <Link
                   href={`/products/${activeProduct.slug}`}
@@ -382,26 +382,23 @@ export default function ShopTheLook() {
               </div>
             </div>
 
-            {/* Complete 3-Piece Room Bundle Savings Card */}
+            {/* Coordinated Room Set Card */}
             <div className="bg-[#2C2926] text-[#F7F4EE] rounded-2xl p-5 border border-[#D8C9B5]/40 shadow-lg space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-[10px] font-semibold uppercase tracking-widest text-[#D8C9B5]">
-                  Bundle &amp; Save More
+                  Coordinated Set
                 </span>
-                <span className="px-2 py-0.5 rounded-full bg-[#48563A] text-white text-[10px] font-bold">
-                  Extra ₹{currentScene.bundleDiscount.toLocaleString('en-IN')} Off
+                <span className="px-2.5 py-0.5 rounded-full bg-[#48563A] text-white text-[10px] font-medium">
+                  Complete Room
                 </span>
               </div>
 
               <div>
                 <p className="text-xs text-[#D8C9B5]/90">
-                  Buy all 3 matching solid wood room pieces together:
+                  Total for all 3 coordinated pieces:
                 </p>
-                <div className="flex items-baseline gap-2 mt-2">
+                <div className="flex items-baseline gap-2 mt-1.5">
                   <span className="font-serif text-2xl font-normal text-white">
-                    ₹{bundlePrice.toLocaleString('en-IN')}
-                  </span>
-                  <span className="text-xs text-[#A69B8C] line-through">
                     ₹{totalPrice.toLocaleString('en-IN')}
                   </span>
                 </div>
@@ -422,7 +419,7 @@ export default function ShopTheLook() {
                 className="btn-fill-anim w-full py-3 bg-[#D8C9B5] text-[#2C2926] text-xs font-semibold rounded-btn flex items-center justify-center gap-2 transition-colors shadow-sm"
               >
                 <ShoppingBag className="w-3.5 h-3.5 text-[#2C2926] relative z-10" />
-                <span className="relative z-10">Inquire Room Set on WhatsApp</span>
+                <span className="relative z-10">Inquire Full Set on WhatsApp</span>
               </Link>
             </div>
 

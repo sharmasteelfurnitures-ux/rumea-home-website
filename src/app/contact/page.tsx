@@ -38,13 +38,13 @@ export default function ContactPage() {
         {/* Header Intro */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <span className="text-xs font-bold uppercase tracking-widest text-antique-gold block mb-2">
-            CUSTOMER CARE &amp; EXPERIENCE STORE
+            CUSTOMER CARE &amp; STUDIO ENQUIRIES
           </span>
           <h1 className="font-serif text-3xl sm:text-5xl text-espresso tracking-tight">
-            Visit Our Experience Store &amp; Connect With Us
+            Connect With the Rumea Home Team
           </h1>
           <p className="text-soft-taupe text-sm sm:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
-            Our woodcraft designers and store team personally attend to every customer enquiry. Visit our Vasant Kunj Experience Store or reach us directly on WhatsApp &amp; Phone.
+            Have questions about dimensions, apartment fit, timber tones, or Amazon orders? Our dedicated team is available directly on WhatsApp and phone to help.
           </p>
         </div>
 
@@ -69,7 +69,7 @@ export default function ContactPage() {
               </div>
 
               <p className="text-xs sm:text-sm text-soft-taupe leading-relaxed">
-                Connect with our furniture design specialists for custom sizing, wood finish previews, order tracking, and Experience Store visit appointments.
+                Connect with our team for dimension advice, doorway fit guidance, order assistance, and Amazon India catalog enquiries.
               </p>
 
               <div>
@@ -89,14 +89,14 @@ export default function ContactPage() {
                 <div className="flex items-start gap-2.5">
                   <MapPin className="w-4 h-4 text-antique-gold flex-shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-espresso block mb-0.5">Experience Store Address:</span>
+                    <span className="font-bold text-espresso block mb-0.5">Studio &amp; Registered Address:</span>
                     <span>F/F, 80, Masoodpur Dairy Farm, Masoodpur, Vasant Kunj, New Delhi - 110070, India</span>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2.5">
                   <Clock className="w-4 h-4 text-antique-gold flex-shrink-0" />
-                  <span>Experience Store Hours: 10:00 AM – 9:00 PM (All Days)</span>
+                  <span>Support Hours: 10:00 AM – 9:00 PM (Monday – Sunday)</span>
                 </div>
 
                 <div className="flex items-center gap-2.5">
@@ -115,7 +115,7 @@ export default function ContactPage() {
 
                 <div className="flex items-center gap-2.5 pt-1">
                   <Truck className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                  <span className="font-bold text-emerald-700">Free PAN India Delivery on All Orders</span>
+                  <span className="font-bold text-emerald-700">Reliable PAN India Delivery via Amazon</span>
                 </div>
               </div>
             </div>
@@ -205,12 +205,12 @@ export default function ContactPage() {
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       className="w-full px-3.5 py-2.5 bg-warm-ivory border border-border-sand text-xs text-espresso rounded-btn focus:outline-none focus:ring-1 focus:ring-espresso cursor-pointer"
                     >
-                      <option value="Furniture Consultation">Furniture Sizing Consultation</option>
-                      <option value="Experience Store Visit">Vasant Kunj Experience Store Visit</option>
-                      <option value="Delivery Timeline">Free PAN India Delivery Enquiry</option>
-                      <option value="Custom Finish">Timber Finish Swatches</option>
-                      <option value="Bulk Order">Commercial / Bulk Order</option>
-                      <option value="Warranty Claim">5-Year Warranty Support</option>
+                      <option value="Furniture Consultation">Furniture Sizing &amp; Fit Advice</option>
+                      <option value="Amazon Order">Amazon Order Assistance</option>
+                      <option value="Delivery Timeline">Delivery &amp; Shipping Enquiry</option>
+                      <option value="Product Details">Material &amp; Dimension Details</option>
+                      <option value="Bulk Order">Commercial / Bulk Enquiry</option>
+                      <option value="After Sales">After-Sales &amp; Product Support</option>
                     </select>
                   </div>
                 </div>

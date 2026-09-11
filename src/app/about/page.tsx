@@ -24,12 +24,12 @@ import {
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 export const metadata: Metadata = {
-  title: 'Our Story & Craftsmanship',
+  title: 'Our Story & Brand Philosophy',
   description:
-    '100% Solid kiln-dried Sheesham wood furniture for modern Indian homes. Discover why we use zero MDF, mortise & tenon joinery, and honest workshop pricing.',
+    'Thoughtful furniture designed for modern Indian homes. Discover Rumea Home — considered proportions, honest materials, and clear dimensions.',
   openGraph: {
-    title: 'Our Story & Craftsmanship',
-    description: '100% Solid Sheesham Wood Furniture Handcrafted for Indian Homes.',
+    title: 'Our Story & Brand Philosophy | Rumea Home',
+    description: 'Thoughtful Furniture Designed for the Way You Actually Live.',
     url: 'https://rumeahome.com/about',
   },
 };
@@ -37,58 +37,58 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   const brandPillars = [
     {
-      icon: Hammer,
-      title: '100% Solid Hardwood',
-      description: 'Authentic Indian Sheesham (Dalbergia sissoo). We do not use MDF, particle board, or veneer shortcuts in our structural frames.',
+      icon: Compass,
+      title: 'Apartment Proportions',
+      description: 'Calculated for modern 2BHK and 3BHK Indian floor plans with generous seating, clean profiles, and comfortable walking clearances.',
     },
     {
       icon: ShieldCheck,
-      title: '21-Day Kiln Seasoning',
-      description: 'Every plank is dried to 8–10% moisture content to resist monsoon humidity, warping, and joint loosening.',
+      title: 'Elevated Floor Clearance',
+      description: 'Thoughtfully designed leg heights so brooms, dusters, and mops pass underneath effortlessly during daily house cleaning.',
     },
     {
-      icon: Compass,
-      title: 'Apartment Proportions',
-      description: 'Calculated for modern 2BHK and 3BHK Indian floor plans with generous seating, clean lines, and elevated legs for easy cleaning.',
+      icon: Hammer,
+      title: 'Honest Materials',
+      description: 'Transparent disclosure of all materials, timbers, steel frames, and fabrics with zero hidden shortcuts or misleading claims.',
     },
     {
-      icon: Award,
-      title: 'Mortise & Tenon Joinery',
-      description: 'Interlocking wood joints engineered to hold firm for decades under heavy daily family use without wobbling.',
+      icon: Scale,
+      title: 'Exact Dimensions',
+      description: 'Clear, published measurements in cm and feet for every piece, helping you measure your room, doorway, or lift before ordering.',
     },
     {
       icon: Heart,
-      title: 'Direct Workshop Pricing',
-      description: 'Transparent ₹12,000 to ₹55,000 pricing without exorbitant multi-crore mall showroom markups or middleman commissions.',
+      title: 'Direct WhatsApp Advice',
+      description: 'Friendly, personalized room-sizing and fit guidance via WhatsApp with zero high-pressure sales tactics.',
     },
   ];
 
   const legalPolicies = [
     {
-      title: '5-Year Structural Frame Warranty',
+      title: 'Considered Sizing & Room Fit',
       content:
-        'Every solid Sheesham frame is protected by a 5-Year Warranty against manufacturing defects, termite infestation in seasoned wood, and joint separation. Natural grain variations and knot patterns are authentic characteristics of genuine solid timber.',
-      link: '/terms',
-      linkText: 'Read Warranty Terms →',
+        'Every product page publishes exact dimensions (width, depth, height, seat height) in centimeters and feet so you can measure your hallway, doorway, and room with complete certainty.',
+      link: '/products',
+      linkText: 'Explore Furniture Catalogue →',
     },
     {
-      title: 'Free PAN India Delivery on All Orders',
+      title: 'Reliable Amazon India Fulfillment',
       content:
-        'We provide Free Doorstep Delivery across India on all orders. Items are shipped in heavy-duty 5-ply export packaging with corner foam protectors. Free professional assembly is included across 50+ metro cities.',
+        'Rumea Home products are available with trusted fulfillment and doorstep delivery through Amazon India, backed by verified buyer reviews and transparent tracking.',
       link: '/terms',
-      linkText: 'View Delivery Policy →',
+      linkText: 'View Terms & Delivery Policy →',
     },
     {
-      title: '30-Day Doorstep Returns',
+      title: 'Direct Sizing & Support on WhatsApp',
       content:
-        'If your furniture arrives with transit damage or fails to match your expectations, message our WhatsApp team within 30 days of delivery for a free reverse pickup and prompt replacement or refund.',
-      link: '/terms',
-      linkText: 'View Return Policy →',
+        'Have a question about whether a sofa will fit your hallway or whether a bed frame will clear your lift? Message our team on WhatsApp for honest, personalized sizing advice.',
+      link: '/contact',
+      linkText: 'Connect on WhatsApp →',
     },
     {
       title: 'Privacy & Consumer Protection',
       content:
-        'Your contact details and delivery address are strictly used for order fulfillment and sizing consultation. We never sell or share customer data with third-party telemarketers.',
+        'Your contact details and inquiries are strictly used for customer assistance and sizing consultation. We never sell or share customer information with third-party telemarketers.',
       link: '/privacy-policy',
       linkText: 'Read Privacy Policy →',
     },
@@ -104,13 +104,13 @@ export default function AboutPage() {
         {/* 1. Hero Brand Statement */}
         <section className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#1F1A16] text-white text-[11px] font-bold uppercase tracking-widest rounded-btn mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-[#C8A97A]" /> OUR STORY &amp; CRAFTSMANSHIP
+            <Sparkles className="w-3.5 h-3.5 text-[#C8A97A]" /> OUR STORY &amp; PHILOSOPHY
           </div>
           <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#1F1A16] font-bold tracking-tight leading-tight">
-            Furniture built to earn its place in your home.
+            Furniture that settles naturally into your home.
           </h1>
           <p className="text-neutral-600 text-base sm:text-lg mt-5 leading-relaxed max-w-2xl mx-auto">
-            We started Rumea Home after living with flatpack, particle-board furniture that sagged and swelled after two monsoons. Indian homes deserve solid wood furniture that lasts for decades.
+            We started Rumea Home around a simple, honest observation: people don’t buy furniture merely to occupy square footage. They buy it to make their daily life feel calmer, more comfortable, and more like their own.
           </p>
         </section>
 
@@ -120,7 +120,7 @@ export default function AboutPage() {
             <div className="relative aspect-[4/3] rounded-card overflow-hidden border border-[#E5DCCE] bg-neutral-100">
               <Image
                 src="https://images.unsplash.com/photo-1540518614846-7ede433c4ef2?auto=format&fit=crop&w=1000&q=85"
-                alt="Solid Sheesham Wood Joinery"
+                alt="Considered Modern Furniture"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -128,38 +128,38 @@ export default function AboutPage() {
               />
             </div>
             <div className="absolute -bottom-4 -left-4 bg-[#1F1A16] text-white p-4 rounded-card shadow-lg max-w-xs hidden sm:block border border-white/10">
-              <p className="font-serif font-bold text-xs uppercase text-[#C8A97A]">Solid Sheesham Hardwood</p>
+              <p className="font-serif font-bold text-xs uppercase text-[#C8A97A]">Considered Design</p>
               <p className="text-[11px] text-white/90 mt-0.5">
-                Seasoned to 8–10% moisture for Indian weather endurance.
+                Proportioned for the real flow of modern Indian apartments.
               </p>
             </div>
           </div>
 
           <div className="lg:col-span-6 space-y-4 text-xs sm:text-sm text-neutral-700 leading-relaxed">
             <span className="text-xs font-bold uppercase tracking-widest text-[#8B6914]">
-              WHY WE STARTED
+              WHY RUMEA EXISTS
             </span>
             <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#1F1A16]">
               Built for Real Indian Living
             </h2>
             <p>
-              When furnishing our own apartments, we found two frustrating options: cheap engineered wood that peeled within years, or exorbitant luxury showrooms charging ₹1.5 Lakhs for a single sofa.
+              Furnishing a modern Indian apartment often presents frustrating extremes: fragile flatpack pieces that don&apos;t fit the room, or exorbitant retail showrooms marked up with massive overheads.
             </p>
             <p>
-              We chose a different path: <strong>100% Solid Indian Sheesham wood</strong>, seasoned in kilns for 21 days to prevent monsoon warping, assembled with traditional interlocking mortise-and-tenon joinery, and delivered directly from workshop to your home.
+              We believe in a more considered path: furniture shaped around real living needs. Raised legs that allow effortless daily sweeping underneath, compact silhouettes that don&apos;t block corridors, and exact dimensions published upfront.
             </p>
             <p>
-              No retail mall rents, no celebrity marketing costs, and no particle board fillers. Just solid, honest hardwood furniture priced fairly between ₹12,000 and ₹55,000.
+              No high-pressure sales tricks, no inflated markup-and-markdown games. Just thoughtful, well-proportioned furniture delivered reliably via Amazon India and backed by direct WhatsApp support.
             </p>
             <div className="pt-2 flex flex-wrap gap-4 text-xs text-[#1F1A16] font-bold">
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" /> Zero MDF or Veneer
+                <CheckCircle2 className="w-4 h-4 text-emerald-600" /> Apartment Proportions
               </span>
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" /> Mortise &amp; Tenon Joinery
+                <CheckCircle2 className="w-4 h-4 text-emerald-600" /> Elevated Floor Clearance
               </span>
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" /> 5-Year Frame Warranty
+                <CheckCircle2 className="w-4 h-4 text-emerald-600" /> Direct WhatsApp Sizing Advice
               </span>
             </div>
           </div>

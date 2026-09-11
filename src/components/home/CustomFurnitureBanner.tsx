@@ -69,33 +69,33 @@ export default function CustomFurnitureBanner() {
                 <div className="inline-flex items-center gap-2">
                   <span className="w-8 h-[2px] bg-[#D8C9B5]" />
                   <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.15em] text-[#D8C9B5] flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-[#D8C9B5]" /> BESPOKE FURNITURE CRAFTSMANSHIP
+                    <Sparkles className="w-3.5 h-3.5 text-[#D8C9B5]" /> THE RUMEA STANDARD • CONSIDERED LIVING
                   </span>
                 </div>
 
                 {/* Main Headline */}
                 <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#F7F4EE] leading-tight tracking-tight">
-                  Looking For <span className="text-[#D8C9B5] italic font-serif">Customized</span> Furniture Solutions?
+                  Furniture Designed for <span className="text-[#D8C9B5] italic font-serif">Real Indian</span> Homes
                 </h2>
 
                 {/* Subtitle */}
                 <p className="text-xs sm:text-sm lg:text-base text-[#D8C9B5]/90 max-w-2xl leading-relaxed font-sans">
-                  Bespoke offerings for a space that&apos;s uniquely yours. Tailor dimensions, wood finishes, and storage configurations direct from our Vasant Kunj workshop — 100% Solid Kiln-Dried Sheesham with zero middleman markups.
+                  Every piece is shaped around everyday domestic reality — elevated legs for effortless floor cleaning, compact footprints that preserve hallway walking space, and exact dimensions so there are never any surprises.
                 </p>
 
                 {/* 3 Quick Value Badges */}
                 <div className="flex flex-wrap items-center gap-2.5 sm:gap-4 pt-1">
                   <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-btn bg-white/10 backdrop-blur-xs border border-white/15 text-white text-[11px] sm:text-xs font-medium">
                     <Ruler className="w-3.5 h-3.5 text-[#D8C9B5]" />
-                    <span>Custom Dimensions</span>
+                    <span>Exact cm &amp; ft Measurements</span>
                   </div>
                   <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-btn bg-white/10 backdrop-blur-xs border border-white/15 text-white text-[11px] sm:text-xs font-medium">
-                    <Check className="w-3.5 h-3.5 text-[#48563A]" />
-                    <span>3 Timber Finishes</span>
+                    <Check className="w-3.5 h-3.5 text-[#D8C9B5]" />
+                    <span>Elevated Floor Clearance</span>
                   </div>
                   <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-btn bg-white/10 backdrop-blur-xs border border-white/15 text-white text-[11px] sm:text-xs font-medium">
                     <ShieldCheck className="w-3.5 h-3.5 text-[#D8C9B5]" />
-                    <span>5-Yr Structural Warranty</span>
+                    <span>2BHK &amp; 3BHK Proportions</span>
                   </div>
                 </div>
 
@@ -111,12 +111,12 @@ export default function CustomFurnitureBanner() {
                     <span className="relative z-10">+91 72919 62356</span>
                   </a>
 
-                  {/* Request Call Back Button */}
+                  {/* Request Sizing Advice Button */}
                   <button
                     onClick={() => setModalOpen(true)}
                     className="btn-fill-anim inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#D8C9B5] text-[#2C2926] rounded-btn font-sans font-semibold text-xs sm:text-sm transition-all duration-200 shadow-md"
                   >
-                    <span className="relative z-10">Request A Call Back</span>
+                    <span className="relative z-10">Check Room Fit</span>
                     <ArrowRight className="w-4 h-4 text-[#2C2926] relative z-10" />
                   </button>
 
@@ -127,7 +127,7 @@ export default function CustomFurnitureBanner() {
                     rel="noopener noreferrer"
                     className="btn-fill-anim inline-flex items-center justify-center gap-2 px-4 py-3.5 bg-transparent border border-[#D8C9B5]/40 hover:border-[#D8C9B5] text-[#F7F4EE] rounded-btn text-xs sm:text-sm font-medium transition-colors"
                   >
-                    <MessageCircle className="w-4 h-4 text-[#48563A] relative z-10" />
+                    <MessageCircle className="w-4 h-4 text-[#D8C9B5] relative z-10" />
                     <span className="relative z-10">Chat on WhatsApp</span>
                   </a>
 
@@ -135,18 +135,18 @@ export default function CustomFurnitureBanner() {
 
               </div>
 
-              {/* Right Column: Workshop Trust Floating Badge (4 cols on desktop) */}
+              {/* Right Column: Sizing Reassurance Card (4 cols on desktop) */}
               <div className="hidden lg:flex lg:col-span-4 justify-end">
-                <div className="p-5 rounded-2xl bg-[#2C2926]/85 backdrop-blur-md border border-[#D8C9B5]/40 shadow-xl max-w-xs space-y-3 text-[#F7F4EE]">
+                <div className="p-5 rounded-2xl bg-[#2C2926]/90 backdrop-blur-md border border-[#D8C9B5]/40 shadow-xl max-w-xs space-y-3 text-[#F7F4EE]">
                   <div className="flex items-center justify-between border-b border-[#D8C9B5]/30 pb-2.5">
-                    <span className="text-[10px] font-semibold uppercase tracking-widest text-[#D8C9B5]">Workshop Direct</span>
-                    <span className="px-2 py-0.5 rounded-full bg-[#48563A] text-white text-[10px] font-medium">Delhi NCR</span>
+                    <span className="text-[10px] font-semibold uppercase tracking-widest text-[#D8C9B5]">The Fit Promise</span>
+                    <span className="px-2 py-0.5 rounded-full bg-[#48563A] text-white text-[10px] font-medium">Doorway &amp; Lift Fit</span>
                   </div>
                   <p className="font-serif text-sm text-white font-medium leading-snug">
-                    Visit our Vasant Kunj Showroom to inspect kiln-dried wood grains &amp; mortise joints in person.
+                    Unsure if a sofa or bed frame will clear your hallway or lift?
                   </p>
                   <p className="text-[11px] text-[#D8C9B5]/80">
-                    Open 10:00 AM – 9:00 PM • All 7 Days
+                    Send your room or doorway dimensions on WhatsApp. We provide honest sizing advice before you purchase.
                   </p>
                 </div>
               </div>
@@ -171,20 +171,20 @@ export default function CustomFurnitureBanner() {
             </button>
 
             <div className="mb-5">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#48563A]">Bespoke Consultation</span>
-              <h3 className="font-serif font-medium text-2xl text-[#2C2926] mt-1">Request A Call Back</h3>
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#48563A]">Sizing &amp; Room Fit</span>
+              <h3 className="font-serif font-medium text-2xl text-[#2C2926] mt-1">Check Room &amp; Doorway Fit</h3>
               <p className="text-xs text-[#A69B8C] mt-1">
-                Our Master Carpenter team will call you within 2 business hours.
+                Share your room measurements or furniture query for direct, honest sizing guidance.
               </p>
             </div>
 
             <form onSubmit={handleCustomWhatsApp} className="space-y-3.5">
               <div>
-                <label className="block text-xs font-medium text-[#2C2926] mb-1">Your Full Name</label>
+                <label className="block text-xs font-medium text-[#2C2926] mb-1">Your Name</label>
                 <input
                   type="text"
                   required
-                  placeholder="e.g. Rahul Sharma"
+                  placeholder="e.g. Rahul"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="w-full px-3.5 py-2.5 bg-white border border-[#D8C9B5] rounded-btn text-xs text-[#2C2926] focus:outline-none focus:border-[#48563A]"
@@ -204,10 +204,10 @@ export default function CustomFurnitureBanner() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-[#2C2926] mb-1">Furniture Requirement</label>
+                <label className="block text-xs font-medium text-[#2C2926] mb-1">Room or Furniture Details</label>
                 <textarea
                   rows={3}
-                  placeholder="e.g. 6-seater dining table with walnut finish (custom size 6x3 ft)"
+                  placeholder="e.g. Living room size is 12x14 ft. Looking for sofa that leaves comfortable walking space."
                   value={requirement}
                   onChange={(e) => setRequirement(e.target.value)}
                   className="w-full px-3.5 py-2.5 bg-white border border-[#D8C9B5] rounded-btn text-xs text-[#2C2926] focus:outline-none focus:border-[#48563A]"
@@ -218,7 +218,7 @@ export default function CustomFurnitureBanner() {
                 type="submit"
                 className="w-full py-3.5 bg-[#2C2926] hover:bg-[#3D3632] text-[#F7F4EE] font-medium text-xs rounded-btn flex items-center justify-center gap-2 transition-colors shadow-sm"
               >
-                <span>Submit &amp; Connect on WhatsApp</span>
+                <span>Ask Sizing Advice on WhatsApp</span>
                 <ArrowRight className="w-4 h-4 text-[#D8C9B5]" />
               </button>
             </form>

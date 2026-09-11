@@ -115,10 +115,10 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
             </Link>
           </h3>
 
-          {/* Pricing: Offer Price + Animated Strikethrough MRP + % Off */}
+          {/* Pricing: Offer Price + Subtle Strikethrough MRP */}
           <div className="flex items-baseline flex-wrap gap-x-2 gap-y-0.5 pt-0.5">
             <span
-              className={`font-sans font-bold text-sm sm:text-base text-[#2C2926] sale-price-fade ${
+              className={`font-sans font-semibold text-sm sm:text-base text-[#2C2926] sale-price-fade ${
                 inView ? 'revealed' : ''
               }`}
             >
@@ -133,13 +133,14 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
                 ₹{product.pricing.mrp.toLocaleString('en-IN')}
               </span>
             )}
-            {product.pricing.discount > 0 && (
-              <span className="text-[11px] sm:text-xs font-bold text-[#48563A]">
-                {product.pricing.discount}% Off
-              </span>
-            )}
           </div>
 
+          {/* Compact Dimensions Specification */}
+          {product.dimensions?.width?.cm && product.dimensions?.depth?.cm && product.dimensions?.height?.cm && (
+            <div className="text-[11px] text-[#A69B8C] font-mono tracking-tight pt-0.5">
+              {product.dimensions.width.cm} × {product.dimensions.depth.cm} × {product.dimensions.height.cm} cm
+            </div>
+          )}
         </div>
 
       </div>

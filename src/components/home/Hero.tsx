@@ -68,13 +68,13 @@ export default function Hero() {
   const heroSlides = [
     {
       id: 1,
-      tag: 'LIVING ROOM SUITE',
-      discount: '100% SOLID SHEESHAM',
-      headline: 'Furniture that fits the way Indians actually live.',
-      subtitle: '100% Solid Kiln-Dried Sheesham. Zero MDF. Handcrafted for modern 2BHK & 3BHK living.',
+      tag: 'LIVING COLLECTION',
+      discount: 'CONSIDERED LIVING',
+      headline: 'Made to Belong.',
+      subtitle: 'Thoughtfully proportioned furniture designed for the rhythm and natural flow of modern Indian homes.',
       primaryCta: 'Explore Living Room',
       primaryHref: '/rooms/living-room',
-      productName: 'Oslo 3-Seater Sofa in Natural Teak',
+      productName: 'Oslo 3-Seater Sofa',
       productPrice: '₹38,999',
       productMrp: '₹45,999',
       productSlug: 'sofa-oslo-3seater',
@@ -82,13 +82,13 @@ export default function Hero() {
     },
     {
       id: 2,
-      tag: 'BEDROOM SUITE',
-      discount: 'MORTISE & TENON JOINERY',
-      headline: 'Rock-solid platform beds. Zero squeaks, for generations.',
-      subtitle: 'Seasoned hardwood with mortise & tenon interlocking joinery. Built to endure Indian monsoons.',
+      tag: 'BEDROOM COLLECTION',
+      discount: 'SERENE REST',
+      headline: 'Calm, Restorative Spaces.',
+      subtitle: 'Platform beds, bedside storage, and clean silhouettes designed to bring quiet order to your bedroom.',
       primaryCta: 'Explore Bedroom',
       primaryHref: '/rooms/bedroom',
-      productName: 'Kyoto King Size Platform Bed',
+      productName: 'Kyoto Platform Bed',
       productPrice: '₹42,999',
       productMrp: '₹49,999',
       productSlug: 'bed-kyoto-king',
@@ -96,13 +96,13 @@ export default function Hero() {
     },
     {
       id: 3,
-      tag: 'FAMILY DINING ROOM',
-      discount: 'DIRECT WORKSHOP PRICING',
-      headline: 'Where Indian family dinners and stories happen.',
-      subtitle: 'Heavy 6-seater solid wood tables with food-safe, non-toxic spill-resistant satin finishes.',
+      tag: 'DINING & GATHERING',
+      discount: 'EVERYDAY LIVING',
+      headline: 'Where Everyday Conversations Happen.',
+      subtitle: 'Dining tables and seating crafted for daily family meals, morning tea, and shared conversations.',
       primaryCta: 'Explore Dining',
       primaryHref: '/rooms/dining-room',
-      productName: 'Artisan 6-Seater Solid Dining Set',
+      productName: 'Artisan 6-Seater Dining Set',
       productPrice: '₹48,999',
       productMrp: '₹55,999',
       productSlug: 'dining-table-artisan-6s',
@@ -175,13 +175,13 @@ export default function Hero() {
             {/* Left Content (8 Cols): Editorial Headlines & Promotional Badges */}
             <div className="lg:col-span-8 space-y-5 sm:space-y-6">
               
-              {/* Badge & Promo Pill */}
+              {/* Eyebrow Collection & Philosophy Pill */}
               <div className="flex flex-wrap items-center gap-2.5">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#2C2926] text-[#D8C9B5] text-[11px] font-medium uppercase tracking-wider rounded-btn border border-[#D8C9B5]/30">
-                  <Tag className="w-3.5 h-3.5 text-[#D8C9B5]" /> {slide.discount}
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#2C2926]/80 backdrop-blur-md text-[#D8C9B5] text-[11px] font-medium uppercase tracking-wider rounded-btn border border-[#D8C9B5]/30">
+                  <Sparkles className="w-3.5 h-3.5 text-[#D8C9B5]" /> {slide.tag}
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#2C2926]/75 backdrop-blur-md text-[#F7F4EE] text-[11px] font-medium uppercase tracking-wider rounded-btn border border-white/10">
-                  <Sparkles className="w-3.5 h-3.5 text-[#A69B8C]" /> {slide.tag}
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 backdrop-blur-md text-[#F7F4EE] text-[11px] font-medium uppercase tracking-wider rounded-btn border border-white/15">
+                  {slide.discount}
                 </span>
               </div>
 
@@ -241,23 +241,23 @@ export default function Hero() {
                 </a>
               </motion.div>
 
-              {/* 4 Guarantees Row */}
+              {/* 4 Authentic Principles Row */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-white/15 text-xs text-[#F7F4EE]/90 font-medium">
                 <div className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
-                  <span>5-Year Frame Warranty</span>
+                  <span>Apartment Proportions</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
-                  <span>Free PAN India Delivery</span>
+                  <span>Elevated Floor Clearance</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
-                  <span>30-Day Doorstep Returns</span>
+                  <span>Exact Dimensions</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
-                  <span>Zero MDF / Veneer</span>
+                  <span>Available on Amazon</span>
                 </div>
               </div>
 
@@ -300,7 +300,7 @@ export default function Hero() {
                     <div className="flex items-baseline gap-2 mt-1.5">
                       <span className="font-serif font-semibold text-lg text-[#2C2926]">{slide.productPrice}</span>
                       <span className="text-xs text-[#A69B8C] line-through">{slide.productMrp}</span>
-                      <span className="text-[11px] font-medium text-[#48563A]">Direct Workshop Price</span>
+                      <span className="text-[11px] font-medium text-[#48563A]">Standard Pricing</span>
                     </div>
                   </div>
 
@@ -379,22 +379,22 @@ export default function Hero() {
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-around gap-4 text-xs sm:text-sm font-sans font-medium text-[#F7F4EE]">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
-            <span>5-Year Structural Frame Warranty</span>
+            <span>Proportioned for 2BHK & 3BHK Living</span>
           </div>
           <span className="hidden sm:inline text-[#A69B8C]">•</span>
           <div className="flex items-center gap-2">
             <Truck className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
-            <span>Free PAN India Delivery on All Orders</span>
+            <span>Reliable Delivery via Amazon India</span>
           </div>
           <span className="hidden sm:inline text-[#A69B8C]">•</span>
           <div className="flex items-center gap-2">
             <RotateCcw className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
-            <span>30-Day Doorstep Returns</span>
+            <span>Detailed Dimensions on Every Piece</span>
           </div>
           <span className="hidden sm:inline text-[#A69B8C]">•</span>
           <div className="flex items-center gap-2">
             <Award className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
-            <span>Made in India Artisanship</span>
+            <span>Direct WhatsApp Sizing Advice</span>
           </div>
         </div>
       </div>

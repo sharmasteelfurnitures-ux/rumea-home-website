@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: '%s | Rumea Home',
   },
   description:
-    'Premium furniture for modern Indian homes — solid sheesham wood sofas, beds, dining sets, study desks and storage. Free pan-India delivery, 5-year warranty, easy returns. Shop on Amazon or enquire on WhatsApp.',
+    'Made to Belong — Thoughtfully proportioned furniture for modern Indian living. Living room, bedroom, dining, study, and storage pieces available on Amazon India with direct WhatsApp sizing support.',
   keywords: [
     'furniture India',
     'sofa online India',
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: 'https://rumeahome.com',
     siteName: 'Rumea Home',
-    title: 'Rumea Home | Thoughtful Furniture for Modern Indian Homes',
+    title: 'Rumea Home | Made to Belong — Considered Furniture for Indian Homes',
     description:
-      'Thoughtful furniture designed for real Indian homes. Solid wood craftsmanship, 5-year warranty, and free pan-India delivery.',
+      'Thoughtfully proportioned furniture designed for real Indian homes and apartments. Honest materials, clear dimensions, and Amazon India delivery.',
     images: [
       {
         url: '/images/brand/logo.png',

@@ -144,31 +144,27 @@ export default function Header() {
           <div className="flex-1 overflow-hidden">
             <div className="animate-ticker flex items-center whitespace-nowrap">
               <div className="flex items-center gap-6 px-4">
-                <span>Free PAN India Delivery on All Orders</span>
+                <span>Thoughtful Furniture for Modern Indian Living</span>
                 <span className="text-[#D8C9B5]/40">·</span>
-                <span>5-Year Frame Warranty</span>
+                <span>Proportioned for 2BHK &amp; 3BHK Spaces</span>
                 <span className="text-[#D8C9B5]/40">·</span>
-                <span>30-Day Doorstep Returns</span>
+                <span>Available on Amazon India</span>
                 <span className="text-[#D8C9B5]/40">·</span>
-                <span>Zero MDF / Zero Veneer</span>
+                <span>Exact Dimensions on Every Piece</span>
                 <span className="text-[#D8C9B5]/40">·</span>
-                <span>100% Solid Kiln-Dried Sheesham</span>
-                <span className="text-[#D8C9B5]/40">·</span>
-                <span>Free PAN India Delivery on All Orders</span>
+                <span>Direct WhatsApp Sizing Guidance</span>
                 <span className="text-[#D8C9B5]/40">·</span>
               </div>
               <div className="flex items-center gap-6 px-4" aria-hidden="true">
-                <span>Free PAN India Delivery on All Orders</span>
+                <span>Thoughtful Furniture for Modern Indian Living</span>
                 <span className="text-[#D8C9B5]/40">·</span>
-                <span>5-Year Frame Warranty</span>
+                <span>Proportioned for 2BHK &amp; 3BHK Spaces</span>
                 <span className="text-[#D8C9B5]/40">·</span>
-                <span>30-Day Doorstep Returns</span>
+                <span>Available on Amazon India</span>
                 <span className="text-[#D8C9B5]/40">·</span>
-                <span>Zero MDF / Zero Veneer</span>
+                <span>Exact Dimensions on Every Piece</span>
                 <span className="text-[#D8C9B5]/40">·</span>
-                <span>100% Solid Kiln-Dried Sheesham</span>
-                <span className="text-[#D8C9B5]/40">·</span>
-                <span>Free PAN India Delivery on All Orders</span>
+                <span>Direct WhatsApp Sizing Guidance</span>
                 <span className="text-[#D8C9B5]/40">·</span>
               </div>
             </div>
@@ -296,16 +292,6 @@ export default function Header() {
                 );
               })}
 
-              <Link
-                href="/customization"
-                className={`text-[13px] xl:text-sm font-sans font-medium py-2 px-2.5 xl:px-3 rounded-full transition-all duration-200 whitespace-nowrap ${
-                  pathname === '/customization'
-                    ? 'text-[#48563A] font-semibold bg-[#48563A]/8'
-                    : 'text-[#2C2926] hover:text-[#48563A] hover:bg-[#2C2926]/4'
-                }`}
-              >
-                Customization
-              </Link>
 
               <Link
                 href="/blog"
@@ -426,12 +412,6 @@ export default function Header() {
                     </div>
                   </div>
                 ))}
-                <Link
-                  href="/customization"
-                  className="block text-sm font-medium text-[#2C2926] hover:text-[#48563A] py-2"
-                >
-                  Customization
-                </Link>
                 <Link
                   href="/blog"
                   className="block text-sm font-medium text-[#2C2926] hover:text-[#48563A] py-2"

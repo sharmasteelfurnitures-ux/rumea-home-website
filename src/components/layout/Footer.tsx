@@ -35,8 +35,8 @@ export default function Footer() {
                 <Truck className="w-5 h-5 text-[#2C2926]" />
               </div>
               <div>
-                <h4 className="font-serif font-medium text-xs sm:text-sm text-[#F7F4EE]">Free PAN India Delivery</h4>
-                <p className="text-[11px] text-[#A69B8C] mt-0.5">On all orders with professional transit packing</p>
+                <h4 className="font-serif font-medium text-xs sm:text-sm text-[#F7F4EE]">Amazon India Delivery</h4>
+                <p className="text-[11px] text-[#A69B8C] mt-0.5">Reliable transit and doorstep fulfillment</p>
               </div>
             </div>
 
@@ -45,8 +45,8 @@ export default function Footer() {
                 <ShieldCheck className="w-5 h-5 text-[#2C2926]" />
               </div>
               <div>
-                <h4 className="font-serif font-medium text-xs sm:text-sm text-[#F7F4EE]">5-Year Frame Warranty</h4>
-                <p className="text-[11px] text-[#A69B8C] mt-0.5">100% Solid Kiln-Dried Sheesham Timber</p>
+                <h4 className="font-serif font-medium text-xs sm:text-sm text-[#F7F4EE]">Apartment Proportions</h4>
+                <p className="text-[11px] text-[#A69B8C] mt-0.5">Sized for 2BHK &amp; 3BHK room flow</p>
               </div>
             </div>
 
@@ -55,8 +55,8 @@ export default function Footer() {
                 <RotateCcw className="w-5 h-5 text-[#2C2926]" />
               </div>
               <div>
-                <h4 className="font-serif font-medium text-xs sm:text-sm text-[#F7F4EE]">30-Day Doorstep Returns</h4>
-                <p className="text-[11px] text-[#A69B8C] mt-0.5">Zero hassle reverse pickup &amp; replacement</p>
+                <h4 className="font-serif font-medium text-xs sm:text-sm text-[#F7F4EE]">Elevated Clearance</h4>
+                <p className="text-[11px] text-[#A69B8C] mt-0.5">Effortless daily sweeping underneath</p>
               </div>
             </div>
 
@@ -65,8 +65,8 @@ export default function Footer() {
                 <Award className="w-5 h-5 text-[#2C2926]" />
               </div>
               <div>
-                <h4 className="font-serif font-medium text-xs sm:text-sm text-[#F7F4EE]">Zero MDF / Zero Veneer</h4>
-                <p className="text-[11px] text-[#A69B8C] mt-0.5">Authentic master woodcraft made in India</p>
+                <h4 className="font-serif font-medium text-xs sm:text-sm text-[#F7F4EE]">Direct Sizing Support</h4>
+                <p className="text-[11px] text-[#A69B8C] mt-0.5">WhatsApp guidance on doorway &amp; room fit</p>
               </div>
             </div>
 
@@ -85,7 +85,7 @@ export default function Footer() {
               Thoughtful Furniture for Modern Homes
             </p>
             <p className="text-xs text-[#A69B8C] leading-relaxed pr-4">
-              Handcrafted in India with 100% kiln-dried solid Sheesham hardwood, generational mortise &amp; tenon joinery, and non-toxic satin finishes. Built above carpenter shortcuts and priced below retail showroom markups.
+              Furniture designed to settle naturally into everyday life. Considered proportions, honest materials, and exact dimensions created for the rhythm and comfort of modern Indian homes.
             </p>
             <div className="pt-2 flex items-center space-x-3 text-[#A69B8C]">
               <a
@@ -166,17 +166,7 @@ export default function Footer() {
             <ul className="space-y-2.5 text-xs text-[#A69B8C]">
               <li>
                 <Link href="/terms" className="hover:text-[#D8C9B5] hover:underline transition-colors">
-                  Free PAN India Delivery
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="hover:text-[#D8C9B5] hover:underline transition-colors">
-                  5-Year Frame Warranty
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="hover:text-[#D8C9B5] hover:underline transition-colors">
-                  30-Day Doorstep Returns
+                  Terms &amp; Conditions
                 </Link>
               </li>
               <li>
@@ -186,34 +176,27 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/about" className="hover:text-[#D8C9B5] hover:underline transition-colors">
-                  Our Woodcraft Story
+                  About Rumea Home
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="hover:text-[#D8C9B5] hover:underline transition-colors">
-                  Experience Store &amp; Support
+                  Contact &amp; Customer Support
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Physical Store & WhatsApp Assistance (4 Cols) */}
+          {/* Column 4: Customer Support & WhatsApp Assistance (4 Cols) */}
           <div className="lg:col-span-4 space-y-4 bg-white/5 border border-[#D8C9B5]/15 rounded-card p-5 sm:p-6 shadow-2xs">
             <h4 className="font-serif text-sm font-medium uppercase tracking-[0.05em] text-[#D8C9B5]">
-              Experience Store &amp; WhatsApp Support
+              Customer Support &amp; Inquiries
             </h4>
             
             <div className="space-y-2.5 text-xs text-[#A69B8C]">
-              <div className="flex items-start gap-2 text-[#F7F4EE]">
-                <MapPin className="w-4 h-4 text-[#D8C9B5] flex-shrink-0 mt-0.5" />
-                <span className="leading-snug">
-                  F/F, 80, Masoodpur Dairy Farm, Masoodpur, Vasant Kunj, New Delhi - 110070
-                </span>
-              </div>
-              
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
-                <span>Experience Store Hours: 10:00 AM – 9:00 PM (All 7 Days)</span>
+                <span>Support Hours: 10:00 AM – 9:00 PM (Monday – Sunday)</span>
               </div>
 
               <div className="flex items-center gap-2">

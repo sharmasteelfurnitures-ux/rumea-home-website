@@ -57,14 +57,14 @@ export default function NewArrivalsAndBestSellers() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 sm:mb-12">
           <div>
             <span className="text-xs font-medium uppercase tracking-[0.12em] text-[#48563A] flex items-center gap-1.5 mb-2">
-              <Sparkles className="w-3.5 h-3.5 text-[#48563A]" /> 100% SOLID SHEESHAM TIMBER
+              <Sparkles className="w-3.5 h-3.5 text-[#48563A]" /> CURATED COLLECTION
             </span>
             <AnimatedHeading
-              text="New Arrivals & Best Sellers"
+              text="Furniture Made to Settle In"
               className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#2C2926] font-medium tracking-tight leading-tight"
             />
             <p className="text-[#A69B8C] text-sm sm:text-base mt-2 max-w-xl leading-relaxed">
-              Explore timeless handcrafted pieces built with kiln-dried Sheesham wood and mortise &amp; tenon joinery for modern Indian homes.
+              Explore thoughtfully designed pieces across living, bedroom, dining, and workspace — proportioned for the flow of modern Indian homes.
             </p>
           </div>
 
@@ -179,10 +179,10 @@ export default function NewArrivalsAndBestSellers() {
           <div className="mt-12 sm:mt-16 p-6 sm:p-8 bg-white rounded-2xl border border-[#D8C9B5] shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
               <p className="font-serif font-medium text-lg sm:text-xl text-[#2C2926]">
-                Looking for custom dimensions or bespoke room styling?
+                Looking for specific dimensions or floor plan advice?
               </p>
               <p className="text-xs sm:text-sm text-[#A69B8C] mt-1">
-                Direct workshop pricing • 5-Year Frame Warranty • Free PAN India doorstep delivery
+                Detailed measurements on every piece • Direct WhatsApp sizing assistance • Available on Amazon India
               </p>
             </div>
 

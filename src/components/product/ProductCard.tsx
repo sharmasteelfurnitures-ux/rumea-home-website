@@ -65,7 +65,9 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
             <div className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 z-10">
               <span
                 className={`px-2.5 py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider rounded-full shadow-xs backdrop-blur-xs ${
-                  product.seo.badge === 'Best Seller'
+                  product.seo.badge === 'Coming Soon'
+                    ? 'bg-[#B4783C] text-white font-bold'
+                    : product.seo.badge === 'Best Seller'
                     ? 'bg-[#48563A] text-white'
                     : product.seo.badge === 'New Arrival'
                     ? 'bg-[#2C2926] text-[#F7F4EE]'

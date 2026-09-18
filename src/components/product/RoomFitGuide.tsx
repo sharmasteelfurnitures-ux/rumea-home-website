@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import { Ruler, DoorOpen, Move, MessageCircle, CheckCircle2 } from 'lucide-react';

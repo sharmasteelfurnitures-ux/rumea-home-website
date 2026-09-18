@@ -64,7 +64,12 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           {product.category.replace('-', ' ')}
         </span>
 
-        {product.conversion.inStock ? (
+        {product.seo?.badge === 'Coming Soon' ? (
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#B4783C]/10 text-[#B4783C] text-xs font-semibold rounded-btn">
+            <span className="w-2 h-2 rounded-full bg-[#B4783C] animate-pulse" />
+            Coming Soon · Launching Shortly
+          </span>
+        ) : product.conversion.inStock ? (
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#48563A]/10 text-[#48563A] text-xs font-semibold rounded-btn">
             <span className="w-2 h-2 rounded-full bg-[#48563A] animate-pulse" />
             In Stock · Dispatch in 24–48 Hrs
@@ -149,7 +154,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
       {/* Pincode Delivery Estimator */}
       <div ref={pincodeContainerRef} className="bg-white rounded-card p-4 border border-[#D8C9B5] shadow-card">
         <span className="text-xs font-medium uppercase tracking-[0.05em] text-[#2C2926] block mb-2">
-          Check Delivery Timeline &amp; Free Assembly
+          Check Delivery Timeline &amp; Assembly Details
         </span>
         <form onSubmit={handlePincodeCheck} className="flex gap-2">
           <input
@@ -200,7 +205,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           </span>
 
           <MessageCircle className="w-5 h-5 text-[#D8C9B5]" />
-          <span>Enquire &amp; Order on WhatsApp</span>
+          <span>{product.seo?.badge === 'Coming Soon' ? 'Inquire on WhatsApp (Coming Soon)' : 'Enquire & Order on WhatsApp'}</span>
         </a>
 
         <a
@@ -208,31 +213,31 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           className="w-full min-h-[48px] flex items-center justify-center gap-2.5 py-3 px-6 bg-transparent text-[#2C2926] border-[1.5px] border-[#2C2926] hover:bg-[#2C2926] hover:text-[#F7F4EE] font-sans font-medium text-sm rounded-btn transition-all duration-200 group"
         >
           <Phone className="w-4 h-4 text-[#48563A] group-hover:text-[#F7F4EE]" />
-          <span>Call +91 72919 62356 for Sizing &amp; Customization</span>
+          <span>Call +91 72919 62356 for Sizing &amp; Space Guidance</span>
         </a>
       </div>
 
-      {/* Trust Icons Row (Standardised Free PAN India Delivery on All Orders) */}
+      {/* Trust Icons Row */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4 border-t border-[#D8C9B5] text-center">
         <div className="p-3 bg-[#F7F4EE] rounded-card border border-[#D8C9B5]">
-          <Truck className="w-4 h-4 text-[#48563A] mx-auto mb-1" />
-          <p className="text-[11px] font-medium text-[#2C2926]">Free Delivery</p>
-          <p className="text-[9px] text-[#A69B8C]">PAN India (All Orders)</p>
-        </div>
-        <div className="p-3 bg-[#F7F4EE] rounded-card border border-[#D8C9B5]">
-          <RotateCcw className="w-4 h-4 text-[#48563A] mx-auto mb-1" />
-          <p className="text-[11px] font-medium text-[#2C2926]">30-Day Returns</p>
-          <p className="text-[9px] text-[#A69B8C]">Hassle-Free</p>
-        </div>
-        <div className="p-3 bg-[#F7F4EE] rounded-card border border-[#D8C9B5]">
           <ShieldCheck className="w-4 h-4 text-[#48563A] mx-auto mb-1" />
-          <p className="text-[11px] font-medium text-[#2C2926]">5-Yr Warranty</p>
-          <p className="text-[9px] text-[#A69B8C]">Structural Frame</p>
+          <p className="text-[11px] font-medium text-[#2C2926]">Rust-Resistant</p>
+          <p className="text-[9px] text-[#A69B8C]">Powder-Coated Steel</p>
         </div>
         <div className="p-3 bg-[#F7F4EE] rounded-card border border-[#D8C9B5]">
           <Award className="w-4 h-4 text-[#48563A] mx-auto mb-1" />
-          <p className="text-[11px] font-medium text-[#2C2926]">100% Solid Wood</p>
-          <p className="text-[9px] text-[#A69B8C]">Kiln-Dried Sheesham</p>
+          <p className="text-[11px] font-medium text-[#2C2926]">Easy Assembly</p>
+          <p className="text-[9px] text-[#A69B8C]">Hardware Included</p>
+        </div>
+        <div className="p-3 bg-[#F7F4EE] rounded-card border border-[#D8C9B5]">
+          <RotateCcw className="w-4 h-4 text-[#48563A] mx-auto mb-1" />
+          <p className="text-[11px] font-medium text-[#2C2926]">Sized for Homes</p>
+          <p className="text-[9px] text-[#A69B8C]">2BHK &amp; 3BHK Friendly</p>
+        </div>
+        <div className="p-3 bg-[#F7F4EE] rounded-card border border-[#D8C9B5]">
+          <Truck className="w-4 h-4 text-[#48563A] mx-auto mb-1" />
+          <p className="text-[11px] font-medium text-[#2C2926]">Amazon India</p>
+          <p className="text-[9px] text-[#A69B8C]">Doorstep Delivery</p>
         </div>
       </div>
 

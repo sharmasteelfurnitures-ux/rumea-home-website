@@ -100,7 +100,7 @@ export default function ProductSpecs({ product }: ProductSpecsProps) {
               </div>
             )}
             <div className="p-3 bg-warm-ivory rounded-card border border-border-sand/60">
-              <p className="text-soft-taupe text-[11px]">Solid Wood Weight</p>
+              <p className="text-soft-taupe text-[11px]">Product Weight</p>
               <p className="font-bold text-sm text-espresso mt-0.5">
                 {product.dimensions.weight} kg
               </p>
@@ -108,7 +108,7 @@ export default function ProductSpecs({ product }: ProductSpecsProps) {
             <div className="p-3 bg-warm-ivory rounded-card border border-border-sand/60">
               <p className="text-soft-taupe text-[11px]">Assembly Mode</p>
               <p className="font-bold text-sm text-espresso mt-0.5">
-                {product.dimensions.assemblyRequired ? 'Knockdown (Easy)' : 'Pre-Assembled'}
+                {product.dimensions.assemblyRequired ? 'DIY Assembly (Tools Included)' : 'Pre-Assembled / Folding'}
               </p>
             </div>
           </div>
@@ -117,7 +117,7 @@ export default function ProductSpecs({ product }: ProductSpecsProps) {
     },
     {
       id: 'materials',
-      title: 'Materials & Craftsmanship',
+      title: 'Materials & Engineering',
       icon: Sparkles,
       content: (
         <div className="space-y-3 text-xs sm:text-sm text-espresso">
@@ -127,16 +127,16 @@ export default function ProductSpecs({ product }: ProductSpecsProps) {
               <p className="font-bold text-espresso">{product.materials.frame}</p>
             </div>
             <div className="p-3 bg-warm-ivory rounded-card border border-border-sand/60">
-              <p className="text-soft-taupe text-[11px]">Timber Treatment</p>
-              <p className="font-bold text-espresso">Seasoned Hardwood</p>
+              <p className="text-soft-taupe text-[11px]">Surface Treatment</p>
+              <p className="font-bold text-espresso">{product.materials.coating || 'Anti-Rust Powder Coating'}</p>
             </div>
             <div className="p-3 bg-warm-ivory rounded-card border border-border-sand/60">
-              <p className="text-soft-taupe text-[11px]">Joinery &amp; Build</p>
-              <p className="font-bold text-espresso">{product.materials.joinery || 'Precision Interlocking Joints'}</p>
+              <p className="text-soft-taupe text-[11px]">Joints &amp; Structure</p>
+              <p className="font-bold text-espresso">{product.materials.joinery || 'Reinforced Heavy-Gauge Rivets'}</p>
             </div>
             <div className="p-3 bg-warm-ivory rounded-card border border-border-sand/60">
-              <p className="text-soft-taupe text-[11px]">Finishing Coat</p>
-              <p className="font-bold text-espresso">{product.materials.coating || 'Satin Protective Finish'}</p>
+              <p className="text-soft-taupe text-[11px]">Finish / Texture</p>
+              <p className="font-bold text-espresso">{product.materials.selectedFinish || 'Matte Textured Finish'}</p>
             </div>
           </div>
         </div>

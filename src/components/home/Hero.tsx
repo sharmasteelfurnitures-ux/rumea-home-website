@@ -68,45 +68,45 @@ export default function Hero() {
   const heroSlides = [
     {
       id: 1,
-      tag: 'LIVING COLLECTION',
-      discount: 'CONSIDERED LIVING',
+      tag: 'ENTRYWAY STORAGE',
+      discount: 'SPACE SAVING',
       headline: 'Made to Belong.',
-      subtitle: 'Thoughtfully proportioned furniture designed for the rhythm and natural flow of modern Indian homes.',
-      primaryCta: 'Explore Living Room',
-      primaryHref: '/rooms/living-room',
-      productName: 'Oslo 3-Seater Sofa',
-      productPrice: '₹38,999',
-      productMrp: '₹45,999',
-      productSlug: 'sofa-oslo-3seater',
-      image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1920&q=85',
+      subtitle: 'Practical, well-built furniture for everyday Indian homes — shoe racks, folding tables, coat stands, and chairs that fit your space and your budget. Available on Amazon India.',
+      primaryCta: 'Explore Shoe Racks',
+      primaryHref: '/products?category=shoe-rack',
+      productName: 'Wall-Mounted Metal Shoe Rack (4 Slab)',
+      productPrice: '₹2,299',
+      productMrp: '₹3,699',
+      productSlug: 'shoe-rack-4slab',
+      image: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1920&q=85',
     },
     {
       id: 2,
-      tag: 'BEDROOM COLLECTION',
-      discount: 'SERENE REST',
-      headline: 'Calm, Restorative Spaces.',
-      subtitle: 'Platform beds, bedside storage, and clean silhouettes designed to bring quiet order to your bedroom.',
-      primaryCta: 'Explore Bedroom',
-      primaryHref: '/rooms/bedroom',
-      productName: 'Kyoto Platform Bed',
-      productPrice: '₹42,999',
-      productMrp: '₹49,999',
-      productSlug: 'bed-kyoto-king',
-      image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1920&q=85',
+      tag: 'FOLDING TABLES',
+      discount: 'MULTI-UTILITY',
+      headline: 'Space When You Need It. Floor When You Don’t.',
+      subtitle: 'Practical, well-built furniture for everyday Indian homes — shoe racks, folding tables, coat stands, and chairs that fit your space and your budget. Available on Amazon India.',
+      primaryCta: 'Explore Folding Tables',
+      primaryHref: '/products?category=folding-table',
+      productName: 'Folding Multipurpose Table (4x2 ft)',
+      productPrice: '₹2,599',
+      productMrp: '₹4,199',
+      productSlug: 'table-folding-particle-board-4x2',
+      image: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1920&q=85',
     },
     {
       id: 3,
-      tag: 'DINING & GATHERING',
-      discount: 'EVERYDAY LIVING',
-      headline: 'Where Everyday Conversations Happen.',
-      subtitle: 'Dining tables and seating crafted for daily family meals, morning tea, and shared conversations.',
-      primaryCta: 'Explore Dining',
-      primaryHref: '/rooms/dining-room',
-      productName: 'Artisan 6-Seater Dining Set',
-      productPrice: '₹48,999',
-      productMrp: '₹55,999',
-      productSlug: 'dining-table-artisan-6s',
-      image: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1920&q=85',
+      tag: 'STUDY & SEATING',
+      discount: 'HEAVY-DUTY STEEL',
+      headline: 'Sturdy Everyday Seating That Folds Flat.',
+      subtitle: 'Practical, well-built furniture for everyday Indian homes — shoe racks, folding tables, coat stands, and chairs that fit your space and your budget. Available on Amazon India.',
+      primaryCta: 'Explore Seating',
+      primaryHref: '/products?category=seating',
+      productName: 'Heavy-Duty Folding Metal Chair',
+      productPrice: '₹1,399',
+      productMrp: '₹2,199',
+      productSlug: 'chair-folding-metal',
+      image: 'https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=1920&q=85',
     },
   ];
 
@@ -121,17 +121,17 @@ export default function Hero() {
   const slide = heroSlides[currentSlide];
 
   const quickCategories = [
-    { name: 'Living Room', icon: Sofa, href: '/rooms/living-room' },
-    { name: 'Beds & Bedroom', icon: Bed, href: '/rooms/bedroom' },
-    { name: 'Dining Sets', icon: UtensilsCrossed, href: '/rooms/dining-room' },
-    { name: 'Study & Work', icon: Laptop, href: '/rooms/study' },
-    { name: 'Storage Units', icon: Package, href: '/products?category=storage' },
+    { name: 'Entryway & Shoe Storage', icon: Package, href: '/products?category=shoe-rack' },
+    { name: 'Folding Tables', icon: Laptop, href: '/products?category=folding-table' },
+    { name: 'Seating & Chairs', icon: Sofa, href: '/products?category=seating' },
+    { name: 'Coat & Clothes Stands', icon: UtensilsCrossed, href: '/products?category=coat-stand' },
+    { name: 'Study & Work Tables', icon: Laptop, href: '/products?category=desk' },
   ];
 
   return (
     <div className="relative bg-warm-offwhite subtle-grain-texture">
       
-      {/* 1. Full-Width Immersive Showroom Banner with Rich Sheesham Wood Brown Atmosphere */}
+      {/* 1. Full-Width Immersive Showroom Banner with Dark Brown Atmosphere */}
       <section className="relative w-full min-h-[540px] sm:min-h-[600px] lg:min-h-[660px] flex items-center overflow-hidden bg-[#2C180D]">
         
         {/* Parallax & Carousel Container for Background Image */}
@@ -230,7 +230,7 @@ export default function Hero() {
                 </Link>
 
                 <a
-                  href={buildWhatsAppUrl("Hi Rumea Home! I saw your website showcase and would like room sizing guidance.")}
+                  href={buildWhatsAppUrl("Hi Rumea Home! I'd like help choosing the right size for my space.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackWhatsAppClick({ source: 'homepage' })}
@@ -245,19 +245,19 @@ export default function Hero() {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-white/15 text-xs text-[#F7F4EE]/90 font-medium">
                 <div className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
-                  <span>Apartment Proportions</span>
+                  <span>Rust-Resistant Build</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
-                  <span>Elevated Floor Clearance</span>
+                  <span>Easy Assembly</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
-                  <span>Exact Dimensions</span>
+                  <span>Sized for Indian Homes</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
-                  <span>Available on Amazon</span>
+                  <span>Ships via Amazon India</span>
                 </div>
               </div>
 
@@ -379,22 +379,22 @@ export default function Hero() {
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-around gap-4 text-xs sm:text-sm font-sans font-medium text-[#F7F4EE]">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
-            <span>Proportioned for 2BHK & 3BHK Living</span>
-          </div>
-          <span className="hidden sm:inline text-[#A69B8C]">•</span>
-          <div className="flex items-center gap-2">
-            <Truck className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
-            <span>Reliable Delivery via Amazon India</span>
-          </div>
-          <span className="hidden sm:inline text-[#A69B8C]">•</span>
-          <div className="flex items-center gap-2">
-            <RotateCcw className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
-            <span>Detailed Dimensions on Every Piece</span>
+            <span>Rust-Resistant Build</span>
           </div>
           <span className="hidden sm:inline text-[#A69B8C]">•</span>
           <div className="flex items-center gap-2">
             <Award className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
-            <span>Direct WhatsApp Sizing Advice</span>
+            <span>Easy Assembly</span>
+          </div>
+          <span className="hidden sm:inline text-[#A69B8C]">•</span>
+          <div className="flex items-center gap-2">
+            <RotateCcw className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
+            <span>Sized for Indian Homes</span>
+          </div>
+          <span className="hidden sm:inline text-[#A69B8C]">•</span>
+          <div className="flex items-center gap-2">
+            <Truck className="w-4 h-4 text-[#D8C9B5] flex-shrink-0" />
+            <span>Ships via Amazon India</span>
           </div>
         </div>
       </div>

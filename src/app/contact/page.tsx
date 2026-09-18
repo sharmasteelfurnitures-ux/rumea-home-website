@@ -124,10 +124,10 @@ export default function ContactPage() {
             <div className="p-5 bg-warm-ivory rounded-card border border-border-sand space-y-2">
               <div className="flex items-center gap-2 text-espresso font-bold text-xs">
                 <ShieldCheck className="w-4 h-4 text-antique-gold" />
-                <span>Zero Pressure Woodcraft Guidance</span>
+                <span>Zero Pressure Furniture Guidance</span>
               </div>
               <p className="text-xs text-soft-taupe leading-relaxed">
-                Whether you have questions on room floor plans or solid wood vs veneer differences, our team is here to help without sales pressure.
+                Whether you have questions on entryway sizing or weight limits, our team is here to help without sales pressure.
               </p>
             </div>
 

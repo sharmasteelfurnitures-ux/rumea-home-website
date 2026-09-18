@@ -14,7 +14,8 @@ import {
   RotateCcw, 
   Award,
   ArrowRight,
-  Clock
+  Clock,
+  Wrench
 } from 'lucide-react';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import BrandLogo from '@/components/ui/BrandLogo';
@@ -32,21 +33,21 @@ export default function Footer() {
             
             <div className="flex flex-col md:flex-row items-center md:items-start gap-3">
               <div className="w-10 h-10 rounded-full bg-[#D8C9B5] text-[#2C2926] flex items-center justify-center flex-shrink-0 shadow-2xs">
-                <Truck className="w-5 h-5 text-[#2C2926]" />
+                <ShieldCheck className="w-5 h-5 text-[#2C2926]" />
               </div>
               <div>
-                <h4 className="font-serif font-medium text-xs sm:text-sm text-[#F7F4EE]">Amazon India Delivery</h4>
-                <p className="text-[11px] text-[#A69B8C] mt-0.5">Reliable transit and doorstep fulfillment</p>
+                <h4 className="font-serif font-medium text-xs sm:text-sm text-[#F7F4EE]">Rust-Resistant Build</h4>
+                <p className="text-[11px] text-[#A69B8C] mt-0.5">Powder-coated heavy-gauge steel</p>
               </div>
             </div>
 
             <div className="flex flex-col md:flex-row items-center md:items-start gap-3">
               <div className="w-10 h-10 rounded-full bg-[#D8C9B5] text-[#2C2926] flex items-center justify-center flex-shrink-0 shadow-2xs">
-                <ShieldCheck className="w-5 h-5 text-[#2C2926]" />
+                <Wrench className="w-5 h-5 text-[#2C2926]" />
               </div>
               <div>
-                <h4 className="font-serif font-medium text-xs sm:text-sm text-[#F7F4EE]">Apartment Proportions</h4>
-                <p className="text-[11px] text-[#A69B8C] mt-0.5">Sized for 2BHK &amp; 3BHK room flow</p>
+                <h4 className="font-serif font-medium text-xs sm:text-sm text-[#F7F4EE]">Easy Assembly</h4>
+                <p className="text-[11px] text-[#A69B8C] mt-0.5">Hardware &amp; tools included, simple DIY setup</p>
               </div>
             </div>
 
@@ -55,18 +56,18 @@ export default function Footer() {
                 <RotateCcw className="w-5 h-5 text-[#2C2926]" />
               </div>
               <div>
-                <h4 className="font-serif font-medium text-xs sm:text-sm text-[#F7F4EE]">Elevated Clearance</h4>
-                <p className="text-[11px] text-[#A69B8C] mt-0.5">Effortless daily sweeping underneath</p>
+                <h4 className="font-serif font-medium text-xs sm:text-sm text-[#F7F4EE]">Sized for Indian Homes</h4>
+                <p className="text-[11px] text-[#A69B8C] mt-0.5">Compact footprints for 2BHK &amp; 3BHK flats</p>
               </div>
             </div>
 
             <div className="flex flex-col md:flex-row items-center md:items-start gap-3">
               <div className="w-10 h-10 rounded-full bg-[#D8C9B5] text-[#2C2926] flex items-center justify-center flex-shrink-0 shadow-2xs">
-                <Award className="w-5 h-5 text-[#2C2926]" />
+                <Truck className="w-5 h-5 text-[#2C2926]" />
               </div>
               <div>
-                <h4 className="font-serif font-medium text-xs sm:text-sm text-[#F7F4EE]">Direct Sizing Support</h4>
-                <p className="text-[11px] text-[#A69B8C] mt-0.5">WhatsApp guidance on doorway &amp; room fit</p>
+                <h4 className="font-serif font-medium text-xs sm:text-sm text-[#F7F4EE]">Ships via Amazon India</h4>
+                <p className="text-[11px] text-[#A69B8C] mt-0.5">Reliable transit and doorstep fulfillment</p>
               </div>
             </div>
 
@@ -82,10 +83,10 @@ export default function Footer() {
           <div className="lg:col-span-4 space-y-4">
             <BrandLogo variant="light" size="md" />
             <p className="text-xs font-medium uppercase tracking-[0.05em] text-[#D8C9B5]">
-              Thoughtful Furniture for Modern Homes
+              Practical Furniture for Modern Homes
             </p>
             <p className="text-xs text-[#A69B8C] leading-relaxed pr-4">
-              Furniture designed to settle naturally into everyday life. Considered proportions, honest materials, and exact dimensions created for the rhythm and comfort of modern Indian homes.
+              Rumea Home makes furniture for real Indian apartments — not showrooms. Wall-mounted shoe racks that clear your floor, folding tables that disappear when you need space, and sturdy seating sized for how you live.
             </p>
             <div className="pt-2 flex items-center space-x-3 text-[#A69B8C]">
               <a
@@ -118,40 +119,40 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Shop by Space (2.5 Cols) */}
+          {/* Column 2: Shop by Need (2.5 Cols) */}
           <div className="lg:col-span-2 space-y-4">
             <h4 className="font-serif text-sm font-medium uppercase tracking-[0.05em] text-[#D8C9B5]">
-              Shop by Space
+              Shop by Need
             </h4>
             <ul className="space-y-2.5 text-xs text-[#A69B8C]">
               <li>
-                <Link href="/rooms/living-room" className="hover:text-[#D8C9B5] hover:underline transition-colors flex items-center gap-1 group">
-                  <span>Living Room Suites</span>
+                <Link href="/products?category=shoe-rack" className="hover:text-[#D8C9B5] hover:underline transition-colors flex items-center gap-1 group">
+                  <span>Entryway &amp; Shoe Storage</span>
                 </Link>
               </li>
               <li>
-                <Link href="/rooms/bedroom" className="hover:text-[#D8C9B5] hover:underline transition-colors flex items-center gap-1 group">
-                  <span>Bedroom &amp; Platform Beds</span>
+                <Link href="/products?category=folding-table" className="hover:text-[#D8C9B5] hover:underline transition-colors flex items-center gap-1 group">
+                  <span>Folding &amp; Space-Saving Tables</span>
                 </Link>
               </li>
               <li>
-                <Link href="/rooms/dining-room" className="hover:text-[#D8C9B5] hover:underline transition-colors flex items-center gap-1 group">
-                  <span>Dining Sets &amp; Tables</span>
+                <Link href="/products?category=seating" className="hover:text-[#D8C9B5] hover:underline transition-colors flex items-center gap-1 group">
+                  <span>Seating &amp; Chairs</span>
                 </Link>
               </li>
               <li>
-                <Link href="/rooms/study" className="hover:text-[#D8C9B5] hover:underline transition-colors flex items-center gap-1 group">
-                  <span>Study Desks &amp; Work</span>
+                <Link href="/products?category=coat-stand" className="hover:text-[#D8C9B5] hover:underline transition-colors flex items-center gap-1 group">
+                  <span>Coat &amp; Clothes Stands</span>
                 </Link>
               </li>
               <li>
-                <Link href="/collections/scandinavian" className="hover:text-[#D8C9B5] hover:underline transition-colors flex items-center gap-1 group">
-                  <span>Scandinavian Collection</span>
+                <Link href="/products?category=desk" className="hover:text-[#D8C9B5] hover:underline transition-colors flex items-center gap-1 group">
+                  <span>Study &amp; Work Tables</span>
                 </Link>
               </li>
               <li>
                 <Link href="/products" className="font-medium text-[#F7F4EE] hover:text-[#D8C9B5] transition-colors inline-flex items-center gap-1 pt-1">
-                  <span>View All 20+ Pieces</span>
+                  <span>View All Pieces</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </li>
@@ -216,7 +217,7 @@ export default function Footer() {
 
             <div className="pt-2">
               <a
-                href={buildWhatsAppUrl("Hi Rumea Home team! I would like design assistance for my apartment.")}
+                href={buildWhatsAppUrl("Hi Rumea Home! I'd like help choosing the right size for my space.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-fill-anim w-full inline-flex items-center justify-center gap-2 py-3 px-4 bg-transparent border border-[#D8C9B5] text-[#D8C9B5] text-xs font-medium rounded-btn transition-all duration-200"
@@ -232,23 +233,21 @@ export default function Footer() {
         {/* 3. Bottom Bar: Copyright & Reassurance Badges */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#A69B8C]">
           <div className="flex items-center flex-wrap gap-2 text-center sm:text-left">
-            <p>© {currentYear} Rumea Home. Handcrafted Solid Sheesham Hardwood.</p>
+            <p>© {currentYear} Rumea Home. Practical Furniture for Modern Indian Living.</p>
             <span className="hidden sm:inline">•</span>
             <Link href="/privacy-policy" className="hover:underline hover:text-[#D8C9B5]">Privacy Policy</Link>
             <span className="hidden sm:inline">•</span>
-            <Link href="/terms" className="hover:underline hover:text-[#D8C9B5]">Terms &amp; Warranty</Link>
+            <Link href="/terms" className="hover:underline hover:text-[#D8C9B5]">Terms &amp; Support</Link>
           </div>
 
-          <div className="flex items-center gap-4 text-[#A69B8C] text-[11px] font-medium">
-            <span className="flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#D8C9B5]" /> SSL 256-bit Encrypted
-            </span>
-            <span className="text-[#48563A]">•</span>
-            <span className="flex items-center gap-1">
-              <Heart className="w-3.5 h-3.5 text-[#48563A]" /> 100% Solid Wood
-            </span>
-            <span className="text-[#48563A]">•</span>
-            <span>Made in India 🇮🇳</span>
+          <div className="flex items-center gap-3 text-[#A69B8C] text-[11px] font-medium flex-wrap justify-center">
+            <span>Rust-Resistant</span>
+            <span className="text-[#48563A]">·</span>
+            <span>Easy Assembly</span>
+            <span className="text-[#48563A]">·</span>
+            <span>Amazon Delivered</span>
+            <span className="text-[#48563A]">·</span>
+            <span>Made for Indian Homes 🇮🇳</span>
           </div>
         </div>
 

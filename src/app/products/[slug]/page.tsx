@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${product.name} · Solid Sheesham Furniture`,
+    title: `${product.name} · Rumea Home`,
     description: product.meta.description,
     keywords: product.meta.keywords,
     openGraph: {
@@ -140,7 +140,7 @@ export default function ProductDetailPage({ params }: Props) {
         {/* "Complete the Look" / Frequently Bought Together Bundle Builder */}
         <FrequentlyBoughtTogether product={product} />
 
-        {/* Solid Hardwood Care & Generational Longevity Guide */}
+        {/* Product Care & Maintenance Guide */}
         <WoodCareGuide />
 
         {/* Customer Q&A / FAQs Accordion */}

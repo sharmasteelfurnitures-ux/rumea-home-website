@@ -56,75 +56,70 @@ export default function Header() {
 
   const navItems = [
     {
-      name: 'Living Room',
-      href: '/rooms/living-room',
+      name: 'Shoe Storage',
+      href: '/products?category=shoe-rack',
       subcategories: [
-        { name: '3-Seater Sofas', href: '/products?room=living-room' },
-        { name: 'Coffee & Nesting Tables', href: '/products?room=living-room' },
-        { name: 'TV Entertainment Units', href: '/products?room=living-room' },
-        { name: 'Solid Wood Bookshelves', href: '/products?room=living-room' },
+        { name: '3-Slab Metal Shoe Rack', href: '/products/shoe-rack-3slab' },
+        { name: '4-Slab Metal Shoe Rack', href: '/products/shoe-rack-4slab' },
+        { name: '5-Slab Metal Shoe Rack', href: '/products/shoe-rack-5slab' },
       ],
       featured: {
-        title: 'Oslo 3-Seater Sofa',
-        tagline: 'Solid Sheesham Hardwood Frame',
-        href: '/products/sofa-oslo-3seater',
+        title: 'Wall-Mounted Metal Shoe Rack (4 Slab)',
+        tagline: 'Heavy-Gauge Powder-Coated Steel',
+        href: '/products/shoe-rack-4slab',
       },
     },
     {
-      name: 'Bedroom',
-      href: '/rooms/bedroom',
+      name: 'Folding Tables',
+      href: '/products?category=folding-table',
       subcategories: [
-        { name: 'Platform & Storage Beds', href: '/products?room=bedroom' },
-        { name: 'King & Queen Beds', href: '/products?room=bedroom' },
-        { name: 'Bedside Nightstands', href: '/products?room=bedroom' },
-        { name: 'Solid Wood Wardrobes', href: '/products?room=bedroom' },
+        { name: 'Folding Table 3x2 ft', href: '/products/table-folding-particle-board-3x2' },
+        { name: 'Folding Table 4x2 ft', href: '/products/table-folding-particle-board-4x2' },
+        { name: 'Multipurpose Study & Work', href: '/products?category=folding-table' },
       ],
       featured: {
-        title: 'Kyoto Platform Bed',
-        tagline: 'Minimalist Floating Headboard',
-        href: '/products/bed-kyoto-king',
+        title: 'Folding Multipurpose Table (4x2 ft)',
+        tagline: 'Water-Resistant Melamine Finish',
+        href: '/products/table-folding-particle-board-4x2',
       },
     },
     {
-      name: 'Dining',
-      href: '/rooms/dining-room',
+      name: 'Chairs & Seating',
+      href: '/products?category=seating',
       subcategories: [
-        { name: '6-Seater Dining Tables', href: '/products?room=dining-room' },
-        { name: '4-Seater Dining Sets', href: '/products?room=dining-room' },
-        { name: 'Solid Wood Dining Chairs', href: '/products?room=dining-room' },
-        { name: 'Sideboards & Buffets', href: '/products?room=dining-room' },
+        { name: 'Heavy-Duty Folding Metal Chair', href: '/products/chair-folding-metal' },
+        { name: 'Classic 3-Seater Sofa (Coming Soon)', href: '/products/sofa-3seater-comfort' },
       ],
       featured: {
-        title: 'Artisan 6-Seater Table',
-        tagline: 'Hand-rubbed Natural Teak Finish',
-        href: '/products/dining-table-artisan-6s',
+        title: 'Heavy-Duty Folding Metal Chair',
+        tagline: 'Tested to Hold 150 kg',
+        href: '/products/chair-folding-metal',
       },
     },
     {
-      name: 'Study',
-      href: '/rooms/study',
+      name: 'Coat Stands',
+      href: '/products?category=coat-stand',
       subcategories: [
-        { name: 'Ergonomic Wooden Desks', href: '/products?room=study' },
-        { name: 'Executive Home Office Desks', href: '/products?room=study' },
-        { name: 'Modular Bookcases', href: '/products?room=study' },
+        { name: 'Multi-Hook Metal Coat Stand', href: '/products/coat-stand-metal' },
+        { name: 'Entryway Clothes & Bag Hanger', href: '/products/coat-stand-metal' },
       ],
       featured: {
-        title: 'Oslo Minimalist Study Desk',
-        tagline: 'Dual Drawers & Cable Channel',
-        href: '/products/desk-oslo-study',
+        title: 'Multi-Hook Metal Coat & Clothes Stand',
+        tagline: 'Heavy-Gauge Rust-Resistant Frame',
+        href: '/products/coat-stand-metal',
       },
     },
     {
       name: 'Catalogue',
       href: '/products',
       subcategories: [
-        { name: 'All 20+ Solid Wood Designs', href: '/products' },
-        { name: 'Bestselling Pieces', href: '/products?sort=popular' },
-        { name: 'New Arrivals 2026', href: '/products?sort=newest' },
+        { name: 'All Practical Pieces', href: '/products' },
+        { name: 'Best Sellers', href: '/products?sort=popular' },
+        { name: 'Space-Saving Furniture', href: '/products' },
       ],
       featured: {
         title: 'Complete Furniture Catalogue',
-        tagline: 'Filter by room, finish & dimensions',
+        tagline: 'Exact dimensions on every piece',
         href: '/products',
       },
     },
@@ -144,27 +139,31 @@ export default function Header() {
           <div className="flex-1 overflow-hidden">
             <div className="animate-ticker flex items-center whitespace-nowrap">
               <div className="flex items-center gap-6 px-4">
-                <span>Thoughtful Furniture for Modern Indian Living</span>
+                <span>Practical Furniture for Everyday Indian Homes</span>
                 <span className="text-[#D8C9B5]/40">·</span>
-                <span>Proportioned for 2BHK &amp; 3BHK Spaces</span>
+                <span>Rust-Resistant Build</span>
                 <span className="text-[#D8C9B5]/40">·</span>
-                <span>Available on Amazon India</span>
+                <span>Easy Assembly</span>
                 <span className="text-[#D8C9B5]/40">·</span>
-                <span>Exact Dimensions on Every Piece</span>
+                <span>Sized for Indian Homes</span>
                 <span className="text-[#D8C9B5]/40">·</span>
-                <span>Direct WhatsApp Sizing Guidance</span>
+                <span>Ships via Amazon India</span>
+                <span className="text-[#D8C9B5]/40">·</span>
+                <span>Direct WhatsApp Sizing Support</span>
                 <span className="text-[#D8C9B5]/40">·</span>
               </div>
               <div className="flex items-center gap-6 px-4" aria-hidden="true">
-                <span>Thoughtful Furniture for Modern Indian Living</span>
+                <span>Practical Furniture for Everyday Indian Homes</span>
                 <span className="text-[#D8C9B5]/40">·</span>
-                <span>Proportioned for 2BHK &amp; 3BHK Spaces</span>
+                <span>Rust-Resistant Build</span>
                 <span className="text-[#D8C9B5]/40">·</span>
-                <span>Available on Amazon India</span>
+                <span>Easy Assembly</span>
                 <span className="text-[#D8C9B5]/40">·</span>
-                <span>Exact Dimensions on Every Piece</span>
+                <span>Sized for Indian Homes</span>
                 <span className="text-[#D8C9B5]/40">·</span>
-                <span>Direct WhatsApp Sizing Guidance</span>
+                <span>Ships via Amazon India</span>
+                <span className="text-[#D8C9B5]/40">·</span>
+                <span>Direct WhatsApp Sizing Support</span>
                 <span className="text-[#D8C9B5]/40">·</span>
               </div>
             </div>
@@ -173,7 +172,7 @@ export default function Header() {
           {/* Right: Quick Direct Support & Phone Access */}
           <div className="hidden md:flex items-center gap-3.5 pr-4 pl-3 bg-gradient-to-l from-[rgba(61,34,18,0.96)] via-[rgba(61,34,18,0.92)] to-transparent z-10 flex-shrink-0 text-xs">
             <a
-              href={buildWhatsAppUrl("Hi Rumea Home! I'd like help choosing furniture.")}
+              href={buildWhatsAppUrl("Hi Rumea Home! I'd like help choosing the right size for my space.")}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackWhatsAppClick({ source: 'nav' })}
@@ -340,12 +339,12 @@ export default function Header() {
 
               {/* Luxury Olive Green WhatsApp CTA with Fluid Shimmer & Live Motion */}
               <a
-                href={buildWhatsAppUrl("Hi Rumea Home! I'd like advice on furniture sizing and options.")}
+                href={buildWhatsAppUrl("Hi Rumea Home! I'd like help choosing the right size for my space.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsAppClick({ source: 'nav' })}
                 className="relative group h-10 px-4 sm:px-5 bg-[#48563A] hover:bg-[#3B4730] text-[#F7F4EE] text-xs font-semibold rounded-full transition-all duration-300 flex items-center gap-2 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 overflow-hidden flex-shrink-0 cursor-pointer border border-[#3B4730]"
-                title="Chat with our woodcraft designers on WhatsApp"
+                title="Chat with Rumea sizing support on WhatsApp"
               >
                 {/* Shimmer Light Sweep Motion */}
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none" />
@@ -416,7 +415,7 @@ export default function Header() {
                   href="/blog"
                   className="block text-sm font-medium text-[#2C2926] hover:text-[#48563A] py-2"
                 >
-                  Blog &amp; Design Journal
+                  Blog &amp; Practical Living
                 </Link>
                 <Link
                   href="/about"
@@ -428,14 +427,14 @@ export default function Header() {
                   href="/contact"
                   className="block text-sm font-medium text-[#2C2926] hover:text-[#48563A] py-2"
                 >
-                  Contact &amp; Experience Store
+                  Contact &amp; Support
                 </Link>
               </div>
             </div>
 
             <div className="pt-6 border-t border-[#D8C9B5]">
               <a
-                href={buildWhatsAppUrl("Hi Rumea Home! I'd like help choosing furniture.")}
+                href={buildWhatsAppUrl("Hi Rumea Home! I'd like help choosing the right size for my space.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsAppClick({ source: 'nav' })}

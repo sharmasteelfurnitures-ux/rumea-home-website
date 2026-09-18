@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedHeading from '@/components/ui/AnimatedHeading';
 import { Sparkles, ArrowRight, ChevronRight, ShoppingBag, X } from 'lucide-react';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 interface HotspotProduct {
   id: string;
@@ -36,98 +37,98 @@ interface RoomScene {
 export default function ShopTheLook() {
   const roomScenes: RoomScene[] = [
     {
-      id: 'living-room-scandi',
-      title: 'The Scandinavian Living Room Look',
-      roomType: 'Living Room',
-      description: 'A coordinated living ensemble — featuring our 3-seater sofa, low coffee table, and media console designed to bring balance and warmth.',
-      image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1600&q=85',
-      bundleDiscount: 7500,
+      id: 'entryway-living-setup',
+      title: 'The Clutter-Free Entryway Setup',
+      roomType: 'Entryway',
+      description: 'A clean, space-saving entryway setup proportioned for Indian apartments — wall-mounted shoe storage, multi-hook coat stand, and sturdy folding seating.',
+      image: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1600&q=85',
+      bundleDiscount: 600,
       products: [
         {
-          id: 'sofa-oslo',
-          name: 'Oslo 3-Seater Solid Sheesham Sofa',
-          category: 'Sofa',
-          price: 38999,
-          mrp: 45999,
-          discountPercent: 15,
-          slug: 'sofa-oslo-3seater',
-          image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80',
-          pinX: 42,
-          pinY: 66,
-          popupAlign: 'top',
-        },
-        {
-          id: 'table-kyoto',
-          name: 'Kyoto Solid Wood Low Coffee Table',
-          category: 'Coffee Table',
-          price: 14499,
-          mrp: 18999,
-          discountPercent: 23,
-          slug: 'table-kyoto-coffee',
-          image: 'https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=400&q=80',
-          pinX: 68,
-          pinY: 82,
-          popupAlign: 'top',
-        },
-        {
-          id: 'almirah-nordic',
-          name: 'Nordic Slatted TV Console & Almirah',
-          category: 'Storage Almirah',
-          price: 26999,
-          mrp: 32999,
-          discountPercent: 18,
-          slug: 'tv-nordic-console',
+          id: 'shoe-rack-4',
+          name: 'Wall-Mounted Metal Shoe Rack (4 Slab)',
+          category: 'Shoe Storage',
+          price: 2299,
+          mrp: 3699,
+          discountPercent: 38,
+          slug: 'shoe-rack-4slab',
           image: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=400&q=80',
-          pinX: 82,
-          pinY: 38,
+          pinX: 42,
+          pinY: 60,
+          popupAlign: 'top',
+        },
+        {
+          id: 'coat-stand',
+          name: 'Multi-Hook Metal Coat & Clothes Stand',
+          category: 'Coat Stand',
+          price: 1599,
+          mrp: 2499,
+          discountPercent: 36,
+          slug: 'coat-stand-metal',
+          image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=400&q=80',
+          pinX: 72,
+          pinY: 45,
           popupAlign: 'left',
+        },
+        {
+          id: 'folding-chair',
+          name: 'Heavy-Duty Folding Metal Chair',
+          category: 'Chairs',
+          price: 1399,
+          mrp: 2199,
+          discountPercent: 36,
+          slug: 'chair-folding-metal',
+          image: 'https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=400&q=80',
+          pinX: 25,
+          pinY: 72,
+          popupAlign: 'right',
         },
       ],
     },
     {
-      id: 'bedroom-sanctuary',
-      title: 'The Kyoto Solid Timber Bedroom Look',
-      roomType: 'Bedroom',
-      description: 'Harmonious master sanctuary — king platform bed, artisan bedside table, and handcrafted storage almirah.',
-      image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=85',
-      bundleDiscount: 8500,
+      id: 'multipurpose-work-dining',
+      title: 'The Space-Saving Work & Dining Setup',
+      roomType: 'Work & Dining',
+      description: 'Adaptive living for 2BHK flats — multipurpose folding table and heavy-duty folding chairs that set up quickly and fold away when not in use.',
+      image: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1600&q=85',
+      bundleDiscount: 700,
       products: [
         {
-          id: 'bed-zenith',
-          name: 'Zenith King Size Solid Wood Bed',
-          category: 'King Bed',
-          price: 43999,
-          mrp: 54999,
-          discountPercent: 20,
-          slug: 'bed-zenith-king',
-          image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=400&q=80',
+          id: 'table-folding-4x2',
+          name: 'Folding Multipurpose Table (4x2 ft)',
+          category: 'Folding Table',
+          price: 2599,
+          mrp: 4199,
+          discountPercent: 38,
+          slug: 'table-folding-particle-board-4x2',
+          image: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=400&q=80',
           pinX: 52,
-          pinY: 68,
+          pinY: 65,
           popupAlign: 'top',
         },
         {
-          id: 'nightstand-aero',
-          name: 'Artisan Solid Wood Bedside Table',
-          category: 'Nightstand',
-          price: 8499,
-          mrp: 11999,
-          discountPercent: 29,
-          slug: 'table-kyoto-coffee',
-          image: 'https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=400&q=80',
-          pinX: 20,
-          pinY: 74,
+          id: 'chair-folding-dining',
+          name: 'Heavy-Duty Folding Metal Chair',
+          category: 'Chairs',
+          price: 1399,
+          mrp: 2199,
+          discountPercent: 36,
+          slug: 'chair-folding-metal',
+          image: 'https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=400&q=80',
+          pinX: 22,
+          pinY: 68,
           popupAlign: 'right',
         },
         {
-          id: 'wardrobe-dresser',
-          name: 'Nordic 4-Door Wardrobe Almirah',
-          category: 'Wardrobe Almirah',
-          price: 48999,
-          mrp: 62999,
-          discountPercent: 22,
-          slug: 'tv-nordic-console',
-          image: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=400&q=80',
-          pinX: 86,
+          id: 'coat-stand-work',
+          name: 'Multi-Hook Metal Coat & Clothes Stand',
+          category: 'Coat Stand',
+          price: 1599,
+          mrp: 2499,
+          discountPercent: 36,
+          slug: 'coat-stand-metal',
+          image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=400&q=80',
+          pinX: 82,
           pinY: 42,
           popupAlign: 'left',
         },
@@ -136,7 +137,7 @@ export default function ShopTheLook() {
   ];
 
   const [activeSceneIdx, setActiveSceneIdx] = useState(0);
-  const [activeHotspotId, setActiveHotspotId] = useState<string | null>('sofa-oslo');
+  const [activeHotspotId, setActiveHotspotId] = useState<string | null>('shoe-rack-4');
 
   const currentScene = roomScenes[activeSceneIdx];
   const activeProduct = currentScene.products.find((p) => p.id === activeHotspotId) || currentScene.products[0];
@@ -414,13 +415,15 @@ export default function ShopTheLook() {
                 ))}
               </div>
 
-              <Link
-                href="/contact"
+              <a
+                href={buildWhatsAppUrl(`Hi Rumea Home! I'm interested in the ${currentScene.title} set. Can you share dimensions and delivery details?`)}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-fill-anim w-full py-3 bg-[#D8C9B5] text-[#2C2926] text-xs font-semibold rounded-btn flex items-center justify-center gap-2 transition-colors shadow-sm"
               >
                 <ShoppingBag className="w-3.5 h-3.5 text-[#2C2926] relative z-10" />
                 <span className="relative z-10">Inquire Full Set on WhatsApp</span>
-              </Link>
+              </a>
             </div>
 
           </div>

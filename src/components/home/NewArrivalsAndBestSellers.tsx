@@ -10,7 +10,7 @@ import { products } from '@/lib/products';
 import { ArrowRight, Sparkles, Flame, Grid, Compass } from 'lucide-react';
 
 type TabType = 'bestsellers' | 'new-arrivals' | 'all';
-type RoomFilter = 'all' | 'living-room' | 'bedroom' | 'dining-room' | 'study';
+type RoomFilter = 'all' | 'storage' | 'study' | 'dining-room' | 'living-room';
 
 export default function NewArrivalsAndBestSellers() {
   const [activeTab, setActiveTab] = useState<TabType>('bestsellers');
@@ -24,7 +24,7 @@ export default function NewArrivalsAndBestSellers() {
     if (activeTab === 'bestsellers') {
       list = list.filter((p) => p.seo.badge === 'Best Seller');
     } else if (activeTab === 'new-arrivals') {
-      list = list.filter((p) => p.seo.badge === 'New Arrival');
+      list = list.filter((p) => p.seo.badge === 'New Arrival' || p.seo.isNewArrival);
     }
 
     // Room Filter
@@ -42,11 +42,11 @@ export default function NewArrivalsAndBestSellers() {
   ];
 
   const roomFilters: { id: RoomFilter; label: string }[] = [
-    { id: 'all', label: 'All Rooms' },
-    { id: 'living-room', label: 'Living' },
-    { id: 'bedroom', label: 'Bedroom' },
-    { id: 'dining-room', label: 'Dining' },
+    { id: 'all', label: 'All Items' },
+    { id: 'storage', label: 'Entryway' },
     { id: 'study', label: 'Study & Work' },
+    { id: 'dining-room', label: 'Dining' },
+    { id: 'living-room', label: 'Living' },
   ];
 
   return (
@@ -57,14 +57,14 @@ export default function NewArrivalsAndBestSellers() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 sm:mb-12">
           <div>
             <span className="text-xs font-medium uppercase tracking-[0.12em] text-[#48563A] flex items-center gap-1.5 mb-2">
-              <Sparkles className="w-3.5 h-3.5 text-[#48563A]" /> CURATED COLLECTION
+              <Sparkles className="w-3.5 h-3.5 text-[#48563A]" /> EVERYDAY LIVING ESSENTIALS
             </span>
             <AnimatedHeading
-              text="Furniture Made to Settle In"
+              text="Practical Essentials for Everyday Living"
               className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#2C2926] font-medium tracking-tight leading-tight"
             />
             <p className="text-[#A69B8C] text-sm sm:text-base mt-2 max-w-xl leading-relaxed">
-              Explore thoughtfully designed pieces across living, bedroom, dining, and workspace — proportioned for the flow of modern Indian homes.
+              Space-saving shoe storage, foldable tables, and sturdy seating proportioned for 2BHK and 3BHK flats.
             </p>
           </div>
 
@@ -130,7 +130,7 @@ export default function NewArrivalsAndBestSellers() {
             href="/products"
             className="inline-flex items-center gap-1 text-xs sm:text-sm font-medium text-[#2C2926] hover:text-[#48563A] transition-colors whitespace-nowrap group ml-auto"
           >
-            <span>Explore All 20+ Pieces</span>
+            <span>Explore All Pieces</span>
             <ArrowRight className="w-3.5 h-3.5 text-[#48563A] group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -163,7 +163,7 @@ export default function NewArrivalsAndBestSellers() {
             <div className="text-center py-16 bg-white rounded-card border border-[#D8C9B5] p-8">
               <Compass className="w-8 h-8 text-[#A69B8C] mx-auto mb-2" />
               <p className="font-serif text-lg text-[#2C2926]">No products found in this category</p>
-              <p className="text-xs text-[#A69B8C] mt-1">Try selecting another room filter or reset to &apos;All Rooms&apos;.</p>
+              <p className="text-xs text-[#A69B8C] mt-1">Try selecting another room filter or reset to &apos;All Items&apos;.</p>
               <button
                 onClick={() => setActiveRoom('all')}
                 className="mt-4 px-4 py-2 bg-[#2C2926] text-[#F7F4EE] rounded-btn text-xs font-medium"
@@ -182,7 +182,7 @@ export default function NewArrivalsAndBestSellers() {
                 Looking for specific dimensions or floor plan advice?
               </p>
               <p className="text-xs sm:text-sm text-[#A69B8C] mt-1">
-                Detailed measurements on every piece • Direct WhatsApp sizing assistance • Available on Amazon India
+                Rust-Resistant Build • Easy Assembly • Sized for Indian Homes • Ships via Amazon India
               </p>
             </div>
 

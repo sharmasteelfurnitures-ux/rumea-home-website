@@ -14,7 +14,7 @@ export default function ProductFAQ({ productName }: ProductFAQProps) {
   const faqs = [
     {
       q: `What materials and construction are used for the ${productName}?`,
-      a: 'Each Rumea piece is crafted using durable, honest materials specified in the Technical Specifications above—such as seasoned solid hardwood, structural steel, or premium upholstery. We prioritize long-term durability and domestic stability.',
+      a: 'Each Rumea piece is crafted using durable, honest materials specified in the Technical Specifications above — such as heavy-gauge powder-coated steel, pre-laminated engineered boards, or premium structural framing. We prioritize space efficiency and everyday domestic durability.',
     },
     {
       q: 'How is this item packaged and delivered across India?',
@@ -22,7 +22,7 @@ export default function ProductFAQ({ productName }: ProductFAQProps) {
     },
     {
       q: 'Is assembly required and how easy is it?',
-      a: 'If assembly is required, all necessary hardware, tools, and step-by-step visual diagrams are included. Most items can be assembled easily within 15–20 minutes using basic household tools.',
+      a: 'If assembly is required, all necessary hardware, tools, wall-mounting anchors, and step-by-step visual diagrams are included. Most items can be assembled easily within 10–20 minutes using basic household tools.',
     },
     {
       q: 'What should I do if an item arrives damaged or has a defect?',
@@ -30,7 +30,7 @@ export default function ProductFAQ({ productName }: ProductFAQProps) {
     },
     {
       q: 'How should I care for and maintain this piece?',
-      a: 'Dust regularly with a clean, dry microfiber cloth. Wipe liquid spills immediately with a damp cloth followed by a dry wipe. Avoid placing hot cookware directly on surfaces without coasters or trivets.',
+      a: 'Dust regularly with a clean, dry microfiber cloth. Wipe liquid spills immediately with a damp cloth followed by a dry wipe. For steel frames, keep dry to preserve the anti-rust coating over years of daily domestic use.',
     },
   ];
 
@@ -47,7 +47,7 @@ export default function ProductFAQ({ productName }: ProductFAQProps) {
         </div>
 
         <a
-          href={buildWhatsAppUrl(`Hi! I have a question about ${productName}.`)}
+          href={buildWhatsAppUrl(`Hi Rumea Home! I have a question about ${productName} and sizing.`)}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 px-4 py-2 bg-warm-ivory text-espresso text-xs font-semibold rounded-xl border border-warm-sand hover:bg-warm-sand/30 transition-colors self-start sm:self-auto"

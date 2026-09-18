@@ -53,52 +53,52 @@ interface Furniture3DModel {
 export default function Product360Viewer() {
   const models: Furniture3DModel[] = [
     {
-      id: 'sofa-velvet',
-      name: 'The Aura Sculpted Velvet Lounge Sofa',
-      tabLabel: 'Aura Lounge',
-      tagline: 'An architectural centerpiece with curved ergonomic contours and rich tactile velvet.',
+      id: 'sofa-classic',
+      name: 'Rumea Classic 3-Seater Living Room Sofa (Coming Soon)',
+      tabLabel: 'Classic Sofa',
+      tagline: 'Deep comfortable seating with clean lines — proportioned for standard 2BHK and 3BHK living rooms.',
       modelSrc: '/models/sofa-velvet.glb',
       images: [
         'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80',
         'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1200&q=80',
         'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80',
       ],
-      price: 42999,
-      mrp: 52999,
-      slug: 'sofa-oslo-3seater',
-      material: 'Kiln-Dried Hardwood Base • Zero-Sag S-Springs • 32D High-Resilience Cushioning',
+      price: 21999,
+      mrp: 28999,
+      slug: 'sofa-3seater-comfort',
+      material: 'Reinforced Structural Frame • High-Resilience Cushioning • Tested to hold 250 kg • 198 × 86 × 84 cm',
     },
     {
-      id: 'sofa-wood-leather',
-      name: 'The Nordic Solid Timber & Saddle Leather Sofa',
-      tabLabel: 'Nordic Timber',
-      tagline: 'Hand-selected solid Sheesham chassis paired with artisanal saddle-stitched leather.',
+      id: 'shoe-rack-metal',
+      name: 'Wall-Mounted Metal Shoe Rack (4 Slab)',
+      tabLabel: 'Shoe Rack Frame',
+      tagline: 'Heavy-gauge steel frame with seamless fold-down slabs that clear your entryway floor completely.',
       modelSrc: '/models/sofa-wood-leather.glb',
       images: [
+        'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1200&q=80',
         'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
         'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=1200&q=80',
       ],
-      price: 54999,
-      mrp: 68999,
-      slug: 'sofa-oslo-3seater',
-      material: '100% Solid Sheesham Timber • Top-Grain Nappa Leather • Mortise & Tenon Joinery',
+      price: 2299,
+      mrp: 3699,
+      slug: 'shoe-rack-4slab',
+      material: 'Powder-Coated Steel Frame • Anti-Rust Treatment • Tested to hold 40 kg • 50 × 15 × 135 cm',
     },
     {
-      id: 'chair-sheen',
-      name: 'The Kyoto Velvet & Teak Accent Armchair',
-      tabLabel: 'Kyoto Armchair',
-      tagline: 'Sculptural curves with tapered solid wood dowel legs, tailored for statement corners.',
+      id: 'chair-metal-folding',
+      name: 'Heavy-Duty Folding Metal Chair',
+      tabLabel: 'Folding Chair',
+      tagline: 'Sturdy powder-coated steel frame with ergonomic curved backrest and non-marking floor caps.',
       modelSrc: '/models/chair.glb',
       images: [
+        'https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=1200&q=80',
         'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80',
         'https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1200&q=80',
       ],
-      price: 18999,
-      mrp: 24999,
-      slug: 'table-kyoto-coffee',
-      material: 'Artisan Solid Teak Legs • Dual-Tone Velvet • Precision Metal Hardware',
+      price: 1399,
+      mrp: 2199,
+      slug: 'chair-folding-metal',
+      material: 'Powder-Coated Steel Frame • Reinforced Riveted Joints • Tested to hold 150 kg • 45 × 45 × 78 cm',
     },
   ];
 
@@ -156,7 +156,7 @@ export default function Product360Viewer() {
               Experience Every Angle in 360°
             </h2>
             <p className="text-[#A69B8C] text-xs sm:text-sm mt-1 max-w-xl">
-              Take an intimate look at our kiln-dried solid timber framing, tailoring, and hand-finished details. Explore all angles and multi-view perspectives.
+              Inspect our powder-coated steel framing, reinforced joints, and structural load-tested details from every perspective.
             </p>
           </div>
 

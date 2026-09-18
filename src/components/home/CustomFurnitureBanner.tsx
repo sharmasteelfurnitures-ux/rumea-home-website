@@ -14,14 +14,14 @@ export default function CustomFurnitureBanner() {
 
   const handleCustomWhatsApp = (e: React.FormEvent) => {
     e.preventDefault();
-    const text = `Hi Rumea Home! I would like to request a callback for customized furniture.\nName: ${name || 'Customer'}\nPhone: ${phone || 'Not provided'}\nRequirement: ${requirement || 'Custom sizing & design consultation'}`;
+    const text = `Hi Rumea Home! I'd like help choosing the right size for my space.\nName: ${name || 'Customer'}\nPhone: ${phone || 'Not provided'}\nSpace Details: ${requirement || 'Apartment sizing consultation'}`;
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
     setModalOpen(false);
   };
 
   const directWhatsAppUrl = getWhatsAppUrl(
-    'Hi Rumea Home! I am looking for customized solid wood furniture for my home. Can we discuss bespoke sizes, finishes, and estimates?'
+    "Hi Rumea Home! I'd like help choosing the right size for my space."
   );
 
   return (
@@ -37,7 +37,7 @@ export default function CustomFurnitureBanner() {
               <div className="relative w-full h-full">
                 <Image
                   src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=85"
-                  alt="Customized Solid Sheesham Furniture by Rumea Home"
+                  alt="Practical Furniture for Everyday Indian Homes by Rumea Home"
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 1280px"
@@ -69,18 +69,18 @@ export default function CustomFurnitureBanner() {
                 <div className="inline-flex items-center gap-2">
                   <span className="w-8 h-[2px] bg-[#D8C9B5]" />
                   <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.15em] text-[#D8C9B5] flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-[#D8C9B5]" /> THE RUMEA STANDARD • CONSIDERED LIVING
+                    <Sparkles className="w-3.5 h-3.5 text-[#D8C9B5]" /> THE RUMEA STANDARD • BUILT FOR APARTMENT LIVING
                   </span>
                 </div>
 
                 {/* Main Headline */}
                 <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#F7F4EE] leading-tight tracking-tight">
-                  Furniture Designed for <span className="text-[#D8C9B5] italic font-serif">Real Indian</span> Homes
+                  Built for the Home You Actually Live In
                 </h2>
 
                 {/* Subtitle */}
                 <p className="text-xs sm:text-sm lg:text-base text-[#D8C9B5]/90 max-w-2xl leading-relaxed font-sans">
-                  Every piece is shaped around everyday domestic reality — elevated legs for effortless floor cleaning, compact footprints that preserve hallway walking space, and exact dimensions so there are never any surprises.
+                  Rumea Home makes furniture for real Indian apartments — not showrooms. Wall-mounted shoe racks that clear your floor. Folding tables that disappear when you need the space. Coat stands that fit a narrow hallway. Every piece is sized for how you actually live.
                 </p>
 
                 {/* 3 Quick Value Badges */}
@@ -95,7 +95,7 @@ export default function CustomFurnitureBanner() {
                   </div>
                   <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-btn bg-white/10 backdrop-blur-xs border border-white/15 text-white text-[11px] sm:text-xs font-medium">
                     <ShieldCheck className="w-3.5 h-3.5 text-[#D8C9B5]" />
-                    <span>2BHK &amp; 3BHK Proportions</span>
+                    <span>Proportioned for 2BHK &amp; 3BHK</span>
                   </div>
                 </div>
 
@@ -143,10 +143,10 @@ export default function CustomFurnitureBanner() {
                     <span className="px-2 py-0.5 rounded-full bg-[#48563A] text-white text-[10px] font-medium">Doorway &amp; Lift Fit</span>
                   </div>
                   <p className="font-serif text-sm text-white font-medium leading-snug">
-                    Unsure if a sofa or bed frame will clear your hallway or lift?
+                    Unsure if a piece will clear your hallway, lift, or entryway?
                   </p>
                   <p className="text-[11px] text-[#D8C9B5]/80">
-                    Send your room or doorway dimensions on WhatsApp. We provide honest sizing advice before you purchase.
+                    Send your space dimensions on WhatsApp. We provide honest sizing advice before you purchase.
                   </p>
                 </div>
               </div>

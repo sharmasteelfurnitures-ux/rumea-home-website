@@ -1,29 +1,29 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
-import { Sparkles, Sun, Droplets, Shield, HeartHandshake } from 'lucide-react';
+import { Sparkles, Droplets, Shield, Wrench, HeartHandshake } from 'lucide-react';
 
 export default function WoodCareGuide() {
   const tips = [
     {
       icon: Sparkles,
       title: 'Regular Microfiber Dusting',
-      description: 'Wipe down surfaces weekly with a dry, lint-free microfiber cloth along the natural grain of the Sheesham wood.',
+      description: 'Wipe down steel frames and laminated surfaces weekly with a soft, dry microfiber cloth to keep your pieces looking fresh.',
     },
     {
       icon: Droplets,
       title: 'Immediate Spill Protection',
-      description: 'Blot water and tea spills immediately with a dry cotton cloth. Always use felt coasters under hot dishes and beverage mugs.',
-    },
-    {
-      icon: Sun,
-      title: 'Sunlight & AC Ventilation',
-      description: 'Position furniture away from direct intense outdoor UV sunlight or direct blowing drafts from air conditioner louvers.',
+      description: 'Blot water, tea, or food spills quickly with a damp cloth followed by a dry wipe to protect laminate finishes and hardware.',
     },
     {
       icon: Shield,
-      title: 'Natural Nourishment',
-      description: 'Apply natural beeswax or organic teak furniture oil once every 12 to 18 months to preserve the organic satin wood luster.',
+      title: 'Indoor & Balcony Care',
+      description: 'While powder-coated frames are rust-resistant against humid monsoon air, avoid continuous direct outdoor rain exposure.',
+    },
+    {
+      icon: Wrench,
+      title: 'Periodic Fastener Check',
+      description: 'Every 6 months, verify that wall-mount screws and folding hinge rivets remain securely tightened for optimal safety.',
     },
   ];
 
@@ -31,13 +31,13 @@ export default function WoodCareGuide() {
     <div className="bg-white rounded-card p-6 sm:p-8 border border-border-sand shadow-card my-12">
       <div className="mb-6">
         <span className="text-xs font-bold uppercase tracking-widest text-antique-gold flex items-center gap-1.5">
-          <HeartHandshake className="w-3.5 h-3.5" /> GENERATIONAL CARE
+          <HeartHandshake className="w-3.5 h-3.5" /> EVERYDAY MAINTENANCE
         </span>
         <h3 className="font-serif font-bold text-xl sm:text-2xl text-espresso mt-1">
-          Solid Hardwood Care &amp; Longevity Guide
+          Product Care &amp; Maintenance Guide
         </h3>
         <p className="text-xs text-soft-taupe mt-1">
-          Genuine solid timber matures and deepens in rich character over decades. Follow these 4 principles to preserve your investment.
+          Simple, easy care principles to ensure smooth folding mechanisms, pristine finishes, and long-lasting durability.
         </p>
       </div>
 

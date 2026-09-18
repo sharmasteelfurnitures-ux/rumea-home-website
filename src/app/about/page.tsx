@@ -280,7 +280,7 @@ export default function AboutPage() {
             Ready to Furnish Your Space?
           </h2>
           <p className="text-[#A89F91] text-xs sm:text-sm max-w-lg mx-auto mb-8 leading-relaxed">
-            Browse our solid Sheesham living, bedroom, and dining collections, or message our team directly on WhatsApp for room planning advice.
+            Browse our space-saving shoe racks, folding tables, coat stands, and chairs, or message our team directly on WhatsApp for sizing advice.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link

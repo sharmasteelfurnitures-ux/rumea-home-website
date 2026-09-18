@@ -17,7 +17,7 @@ export default function BrandLogo({
   variant = 'dark',
   size = 'md',
   showTagline = false,
-  taglineText = 'Solid Sheesham Furniture',
+  taglineText = 'Made to Belong',
   className = '',
   asLink = true,
 }: BrandLogoProps) {

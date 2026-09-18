@@ -10,10 +10,10 @@ import { Sparkles, ArrowRight, Sofa, Bed, UtensilsCrossed, Laptop, Package } fro
 export const metadata: Metadata = {
   title: 'Room Furniture Collections',
   description:
-    'Explore handcrafted solid Sheesham wood furniture suites for your living room, bedroom, dining room, and study. Mortise and tenon joinery with free pan-India delivery.',
+    'Explore practical, space-saving furniture tailored for your entryway, living room, dining area, and home office. Designed for Indian apartments with easy assembly and Amazon India delivery.',
   openGraph: {
     title: 'Room Furniture Collections',
-    description: 'Explore handcrafted solid Sheesham wood furniture suites for every room.',
+    description: 'Explore practical, space-saving furniture for everyday Indian homes.',
     url: 'https://rumeahome.com/rooms',
   },
 };
@@ -43,8 +43,8 @@ export default function RoomsHubPage() {
             Furnish Your Home By Room
           </h1>
           <p className="text-[#A69B8C] text-sm sm:text-base mt-3 leading-relaxed">
-            Coordinated solid Sheesham hardwood collections tailored for modern Indian apartments. 
-            Zero MDF, kiln-dried seasoned timber, and generational mortise &amp; tenon joinery.
+            Coordinated, space-efficient furniture tailored for modern Indian apartments (2BHK &amp; 3BHK). 
+            Durable powder-coated steel frames, water-resistant melamine tops, and smart folding storage.
           </p>
         </div>
 
@@ -110,7 +110,7 @@ export default function RoomsHubPage() {
             Need Help With Room Layout &amp; Sizing?
           </h2>
           <p className="text-xs sm:text-sm text-[#D8C9B5]/90 max-w-lg mx-auto mb-6 leading-relaxed">
-            Send your floor plan, room dimensions, or photos directly to our woodcraft consultants on WhatsApp for free customized guidance.
+            Send your room dimensions, entryway width, or photos directly to our furniture advisors on WhatsApp for free customized guidance.
           </p>
           <a
             href="https://wa.me/917291962356?text=Hi%20Rumea%20Home!%20I'd%20like%20guidance%20on%20room%20layout%20and%20furniture%20sizing."

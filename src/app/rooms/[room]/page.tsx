@@ -88,11 +88,11 @@ export default function RoomPage({ params }: Props) {
               </p>
               <div className="mt-6 flex items-center gap-3">
                 <span className="text-xs text-soft-taupe font-medium">
-                  {roomProducts.length} Handcrafted Designs
+                  {roomProducts.length} Practical Essentials
                 </span>
                 <span className="text-soft-taupe">•</span>
                 <span className="text-xs text-warm-sand font-medium">
-                  Solid Sheesham Wood
+                  Built for Everyday Living
                 </span>
               </div>
             </div>

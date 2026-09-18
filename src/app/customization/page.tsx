@@ -21,16 +21,16 @@ export default function CustomizationPage() {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    furnitureType: 'Custom Sofa',
+    furnitureType: 'Wall-Mounted Shoe Rack',
     dimensions: '',
-    woodPreference: 'Solid Sheesham',
+    materialPreference: 'Powder-Coated Steel (Matte Black)',
     notes: '',
   });
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const msg = `*New Custom Furniture Request*\n\nName: ${formData.name}\nPhone: ${formData.phone}\nType: ${formData.furnitureType}\nWood: ${formData.woodPreference}\nDimensions: ${formData.dimensions || 'To be discussed'}\nNotes: ${formData.notes || 'None'}`;
+    const msg = `*New Space Sizing & Furniture Request*\n\nName: ${formData.name}\nPhone: ${formData.phone}\nType: ${formData.furnitureType}\nMaterial/Finish: ${formData.materialPreference}\nDimensions: ${formData.dimensions || 'To be discussed'}\nNotes: ${formData.notes || 'None'}`;
     window.open(buildWhatsAppUrl(msg), '_blank');
     setSubmitted(true);
   };
@@ -60,22 +60,22 @@ export default function CustomizationPage() {
 
   const examples = [
     {
-      title: 'Made-to-Measure L-Shape Sectional',
-      category: 'Living Room',
-      desc: 'Customized length to fit exact 14-foot living alcove with high-resilience memory foam and solid timber feet.',
+      title: 'Compact Entryway Organizer Setup',
+      category: 'Entryway',
+      desc: 'Wall-Mounted 4-Slab Shoe Rack paired with Multi-Hook Coat Stand for narrow apartment foyers.',
       image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80',
     },
     {
-      title: 'Solid Teak 8-Seater Dining Suite',
-      category: 'Dining Space',
-      desc: 'Extended 8-foot monolithic solid timber tabletop with custom bevel edges and matching cane-back chairs.',
-      image: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=800&q=80',
+      title: 'Fold-Flat WFH & Study Station',
+      category: 'Home Office & Study',
+      desc: '4x2 Multipurpose Folding Table with Heavy-Duty Folding Chair for compact bedrooms and balconies.',
+      image: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=80',
     },
     {
-      title: 'Floor-to-Ceiling Wardrobe Almirah',
-      category: 'Master Bedroom',
-      desc: 'Customized interior shelving, soft-close hardware, and natural grain matching across all four solid doors.',
-      image: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80',
+      title: 'Flexible Guest Dining Arrangement',
+      category: 'Dining & Living',
+      desc: '3x2 Multipurpose Folding Table paired with extra foldaway seating that stows flat behind doors.',
+      image: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=800&q=80',
     },
   ];
 
@@ -254,24 +254,24 @@ export default function CustomizationPage() {
                     onChange={(e) => setFormData({ ...formData, furnitureType: e.target.value })}
                     className="w-full px-3.5 py-2.5 bg-[#F7F4EE] border border-[#D8C9B5] rounded-xl text-xs text-[#2C2926] focus:outline-none focus:ring-1 focus:ring-[#2C2926]"
                   >
-                    <option value="Custom Sofa">Sofa / Sectional</option>
-                    <option value="Platform Bed">Platform Bed / Storage Bed</option>
-                    <option value="Dining Table">Dining Table (4/6/8-Seater)</option>
-                    <option value="Almirah / Wardrobe">Almirah / Wardrobe Cabinet</option>
-                    <option value="Study Desk">Study Desk / Bookshelf</option>
-                    <option value="Complete Room Suite">Complete Room Suite</option>
+                    <option value="Wall-Mounted Shoe Rack">Wall-Mounted Shoe Rack (3/4/5 Slab)</option>
+                    <option value="Folding Multipurpose Table">Folding Multipurpose Table (3x2 or 4x2)</option>
+                    <option value="Heavy-Duty Folding Chair">Heavy-Duty Folding Chair</option>
+                    <option value="Multi-Hook Coat Stand">Multi-Hook Metal Coat Stand</option>
+                    <option value="Classic 3-Seater Sofa">Rumea Classic 3-Seater Sofa</option>
+                    <option value="Complete Apartment Bundle">Complete Apartment Bundle</option>
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-[#2C2926] mb-1">Preferred Solid Timber</label>
+                  <label className="block text-xs font-medium text-[#2C2926] mb-1">Material &amp; Finish</label>
                   <select
-                    value={formData.woodPreference}
-                    onChange={(e) => setFormData({ ...formData, woodPreference: e.target.value })}
+                    value={formData.materialPreference}
+                    onChange={(e) => setFormData({ ...formData, materialPreference: e.target.value })}
                     className="w-full px-3.5 py-2.5 bg-[#F7F4EE] border border-[#D8C9B5] rounded-xl text-xs text-[#2C2926] focus:outline-none focus:ring-1 focus:ring-[#2C2926]"
                   >
-                    <option value="Solid Sheesham">Solid Sheesham (Indian Rosewood)</option>
-                    <option value="Seasoned Teak Wood">Seasoned Teak Wood</option>
-                    <option value="White Ash / Natural Teak Stain">White Ash / Natural Teak Stain</option>
+                    <option value="Powder-Coated Steel (Matte Black)">Powder-Coated Steel (Matte Black)</option>
+                    <option value="Water-Resistant Melamine Finish">Water-Resistant Melamine Finish</option>
+                    <option value="Heavy-Duty Steel Frame">Heavy-Duty Steel Frame</option>
                     <option value="Open to Recommendation">Open to Recommendation</option>
                   </select>
                 </div>

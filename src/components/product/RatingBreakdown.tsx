@@ -37,9 +37,9 @@ export default function RatingBreakdown({ rating, reviewCount }: RatingBreakdown
       city: 'Indiranagar, Bengaluru',
       date: '14 August 2026',
       rating: 5,
-      title: 'Remarkable Sheesham grain and rock-solid build',
+      title: 'Rock-solid build and remarkably sturdy',
       comment:
-        'Was skeptical buying solid wood furniture online, but Rumea delivered on every promise. The timber is heavy, genuine heartwood with no chemical odor. Delivery team brought it right up to the 4th floor elevator and set it up in 15 minutes.',
+        'Was skeptical buying furniture online, but Rumea delivered on every promise. The steel frame is heavy-gauge with no wobble or sharp edges. Delivery was fast via Amazon and assembly took under 15 minutes.',
     },
     {
       id: 2,
@@ -49,7 +49,7 @@ export default function RatingBreakdown({ rating, reviewCount }: RatingBreakdown
       rating: 5,
       title: 'Fits our 2BHK flat proportions like a charm',
       comment:
-        'The dimensions are accurately tailored for compact urban living rooms without looking cramped. The natural satin finish shows off the rich natural grain without being overly shiny. Exceptional value compared to retail showrooms in Mumbai.',
+        'The dimensions are accurately tailored for compact urban apartments without eating into walking clearance. The powder-coated finish looks clean and modern. Exceptional value for money.',
     },
     {
       id: 3,
@@ -57,9 +57,9 @@ export default function RatingBreakdown({ rating, reviewCount }: RatingBreakdown
       city: 'Jubilee Hills, Hyderabad',
       date: '05 July 2026',
       rating: 5,
-      title: 'Zero wobble, true mortise & tenon joints',
+      title: 'Tested the weight capacity — absolutely zero wobble',
       comment:
-        'Inspected the joints underneath — authentic interlocking mortise and tenon woodwork. You can feel the heft immediately when moving it. 5 stars for customer service on WhatsApp too.',
+        'Inspected the hinges and locking mechanism — authentic heavy-duty construction that easily holds the rated weight. Folds neatly when we need more space. 5 stars for customer service on WhatsApp too.',
     },
   ];
 

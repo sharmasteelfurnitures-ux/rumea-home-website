@@ -21,10 +21,10 @@ const collectionsData: Record<
 > = {
   scandinavian: {
     name: 'Scandinavian Modern',
-    tagline: 'Nordic lightness meets Indian Sheesham craftsmanship',
-    description: 'Clean organic contours, tapered silhouettes, and light warm teak finishes designed for airy, clutter-free spaces.',
+    tagline: 'Nordic lightness meets smart Indian apartment living',
+    description: 'Clean organic contours, tapered silhouettes, and light warm finishes designed for airy, clutter-free spaces.',
     image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80',
-    philosophy: 'Inspired by Nordic functionalism and translated through solid Indian timber, this collection celebrates organic simplicity, functional utility, and soft warm textures that invite relaxation.',
+    philosophy: 'Inspired by Nordic functionalism and practical living, this collection celebrates clean simplicity, functional utility, and spaces that invite relaxation.',
   },
   modern: {
     name: 'Modern Minimalist',
@@ -35,10 +35,10 @@ const collectionsData: Record<
   },
   traditional: {
     name: 'Warm Traditional',
-    tagline: 'Rich heritage tones with heirloom longevity',
-    description: 'Deep walnut and mahogany grains, antique brass hardware, and hand-carved accents crafted for generations.',
+    tagline: 'Rich heritage tones with everyday durability',
+    description: 'Deep walnut and mahogany grains, durable hardware, and timeless accents crafted for daily comfort.',
     image: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1200&q=80',
-    philosophy: 'A tribute to classical Indian carpentry traditions. Robust timber sections, intricate fluted paneling, and hand-rubbed oil finishes that develop a deeper patina year after year.',
+    philosophy: 'Thoughtful engineering and sturdy construction that withstands everyday Indian household use while adding warmth to your home.',
   },
 };
 

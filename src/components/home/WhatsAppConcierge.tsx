@@ -8,7 +8,7 @@ import AnimatedHeading from '@/components/ui/AnimatedHeading';
 
 export default function WhatsAppConcierge() {
   const whatsappUrl = buildWhatsAppUrl(
-    "Hi Rumea Home! I'd like help with furniture dimensions and room sizing."
+    "Hi Rumea Home! I'd like help choosing the right size for my space."
   );
 
   return (

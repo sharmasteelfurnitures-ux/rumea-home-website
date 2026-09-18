@@ -1,4 +1,4 @@
-﻿export type ProductCategory = 
+export type ProductCategory = 
   | 'sofa' 
   | 'coffee-table' 
   | 'tv-unit' 
@@ -14,7 +14,11 @@
   | 'shoe-rack' 
   | 'storage-cabinet' 
   | 'balcony-chair' 
-  | 'outdoor-table';
+  | 'outdoor-table'
+  | 'folding-table'
+  | 'coat-stand'
+  | 'chair'
+  | 'seating';
 
 export type Room = 
   | 'living-room' 

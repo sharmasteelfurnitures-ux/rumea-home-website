@@ -3,22 +3,22 @@
     "id": "living-room",
     "name": "Living Room",
     "slug": "living-room",
-    "tagline": "The heart of your home where life unfolds",
-    "description": "Handcrafted solid wood sofas, sculptural coffee tables, and elegant TV consoles designed for everyday living and memorable gatherings.",
+    "tagline": "Comfortable, welcoming spaces made for real homes",
+    "description": "Smart, well-built seating and space-saving accents designed for everyday living, easy movement, and relaxed family gatherings.",
     "image": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=80",
-    "itemCount": 5,
+    "itemCount": 2,
     "tips": [
       {
-        "title": "Proportion Matters",
-        "description": "Leave at least 18 inches between your sofa and coffee table for comfortable legroom and easy movement."
+        "title": "Clear Walkways",
+        "description": "Leave at least 18-24 inches between your seating and central tables for comfortable legroom and smooth movement in 2BHK layouts."
       },
       {
-        "title": "Layer Textures",
-        "description": "Combine solid Sheesham wood with textured cotton upholstery and warm ambient lighting."
+        "title": "Multi-Purpose Placement",
+        "description": "Choose versatile folding seating that can be brought out when guests arrive and stowed away during daily family life."
       },
       {
-        "title": "Focal Anchor",
-        "description": "Position your primary sofa facing the natural light source or central wall unit for balanced energy."
+        "title": "Natural Light Anchor",
+        "description": "Position your primary seating towards natural light or balcony views to maximize daytime brightness."
       }
     ]
   },
@@ -26,45 +26,45 @@
     "id": "bedroom",
     "name": "Bedroom",
     "slug": "bedroom",
-    "tagline": "Calm, restorative sanctuaries for deep rest",
-    "description": "Solid Sheesham and teak wood beds with ergonomic headboards, sleek bedside tables, and spacious modular wardrobes.",
+    "tagline": "Calm, uncluttered sanctuaries for restorative rest",
+    "description": "Practical storage and functional accents proportioned to fit Indian apartment bedrooms without crowding circulation paths.",
     "image": "https://images.unsplash.com/photo-1540518614846-7ede433c4ef2?auto=format&fit=crop&w=1000&q=80",
-    "itemCount": 4,
+    "itemCount": 2,
     "tips": [
       {
-        "title": "Under-Bed Ventilation",
-        "description": "Ensure ample airflow beneath your bed frame to maintain mattress freshness in tropical Indian climates."
+        "title": "Clear Wall Space",
+        "description": "Wall-mounted storage keeps floor space open, making compact bedrooms feel twice as large and easier to clean."
       },
       {
-        "title": "Bedside Symmetry",
-        "description": "Keep nightstands at matching heights with the mattress top for effortless reach at night."
+        "title": "Corner Utilization",
+        "description": "Place multi-hook coat and garment stands in unused corners for daily laundry and work bags."
       },
       {
         "title": "Minimalist Visuals",
-        "description": "Opt for concealed storage to keep clutter out of sight, promoting calmer mental headspace."
+        "description": "Keep daily essentials off surfaces with designated wall hangers to maintain a calm, restful bedroom."
       }
     ]
   },
   {
     "id": "dining-room",
-    "name": "Dining Room",
+    "name": "Dining & Kitchen",
     "slug": "dining-room",
-    "tagline": "Where meals become memories and conversations linger",
-    "description": "Generously sized dining tables crafted from kiln-dried solid Sheesham, paired with ergonomic cushioned dining chairs.",
+    "tagline": "Flexible dining solutions that adapt to your gathering",
+    "description": "Foldable, sturdy multipurpose tables and metal folding chairs designed to host family meals without permanently eating into floor space.",
     "image": "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1000&q=80",
     "itemCount": 3,
     "tips": [
       {
-        "title": "Clearance Space",
-        "description": "Maintain 36 inches between the table edge and walls to pull chairs out comfortably."
+        "title": "Flexibility on Demand",
+        "description": "A folding table lets you host 4 to 6 people for dinner, then folds flat against the wall when you need floor space."
       },
       {
-        "title": "Solid Wood Care",
-        "description": "Use trivets and coasters to protect the natural grain and lacquer finish from direct heat."
+        "title": "Spill & Heat Resistance",
+        "description": "Durable melamine laminate tops wipe clean instantly with a damp cloth — perfect for hot chai cups and daily Indian curries."
       },
       {
-        "title": "Lighting Height",
-        "description": "Hang your dining pendant light 30 to 36 inches above the table surface for cozy illumination."
+        "title": "Stowaway Chairs",
+        "description": "Heavy-duty folding chairs can be stored in closet nooks or behind doors between family gatherings."
       }
     ]
   },
@@ -72,68 +72,68 @@
     "id": "study",
     "name": "Study & Work",
     "slug": "study",
-    "tagline": "Focused workspaces designed for modern productivity",
-    "description": "Ergonomic work desks with integrated cable channels, solid wood bookshelves, and supportive desk chairs.",
+    "tagline": "Focused workspaces built for modern Indian flats",
+    "description": "Compact folding desks and ergonomic folding chairs that set up in seconds for work-from-home and study routines.",
     "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1000&q=80",
     "itemCount": 3,
     "tips": [
       {
+        "title": "Instant Home Office",
+        "description": "Deploy a 4x2 or 3x2 ft folding table anywhere near a power socket, then fold it away when your workday ends."
+      },
+      {
         "title": "Ergonomic Height",
-        "description": "Ensure desktop height is between 29 to 30 inches to keep elbows at a comfortable 90-degree angle."
+        "description": "A standard 29.5-inch desktop height paired with supportive seating keeps your posture comfortable during long working hours."
       },
       {
-        "title": "Organized Surfaces",
-        "description": "Use dedicated wire trays and compact drawers to keep the primary working zone clear."
-      },
-      {
-        "title": "Natural Light Orientation",
-        "description": "Position desk perpendicular to windows to avoid screen glare while enjoying daylight."
+        "title": "Glamping the Clutter",
+        "description": "Keep laptop chargers, notebooks, and work accessories hung on a nearby coat stand to keep your desk clear."
       }
     ]
   },
   {
     "id": "storage",
-    "name": "Storage Solutions",
+    "name": "Entryway & Storage",
     "slug": "storage",
-    "tagline": "Smart, clutter-free storage with timeless silhouettes",
-    "description": "Compact shoe cabinets, multi-tiered bookshelves, and multi-purpose credenzas built to optimize compact apartments.",
+    "tagline": "Smart, clutter-free organization for everyday convenience",
+    "description": "Wall-mounted metal shoe racks and multi-hook coat stands engineered to keep narrow Indian apartment entryways organized and airy.",
     "image": "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1000&q=80",
-    "itemCount": 3,
+    "itemCount": 4,
     "tips": [
       {
-        "title": "Vertical Optimization",
-        "description": "Utilize taller shelving units to maximize storage without consuming floor square footage."
+        "title": "Zero Floor Footprint",
+        "description": "Wall mounting your shoe rack lifts footwear off the floor, preventing dust accumulation and simplifying daily sweeping/mopping."
       },
       {
-        "title": "Entryway Organization",
-        "description": "Place shoe racks near entry points with a small landing bowl for keys and daily essentials."
+        "title": "Narrow Hallway Friendly",
+        "description": "Slim fold-down shoe slabs protrude just 15 cm when closed, allowing free passage even in narrow 3-foot apartment hallways."
       },
       {
-        "title": "Multi-functionality",
-        "description": "Choose cabinets that can double as accent consoles for decorative styling."
+        "title": "Grab-and-Go Organization",
+        "description": "Position a multi-hook coat stand right next to the main door for motorcycle helmets, umbrellas, jackets, and grocery bags."
       }
     ]
   },
   {
     "id": "outdoor",
-    "name": "Outdoor & Balcony",
+    "name": "Balcony & Utility",
     "slug": "outdoor",
-    "tagline": "Turn cozy balconies into green morning retreats",
-    "description": "Weather-treated teak and acacia wood balcony sets, bistro tables, and lounge chairs built for Indian weather.",
+    "tagline": "Practical, weather-resistant utility for Indian balconies",
+    "description": "Rust-resistant powder-coated metal chairs and folding tables that withstand humid weather, morning tea, and evening breezes.",
     "image": "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=1000&q=80",
     "itemCount": 2,
     "tips": [
       {
-        "title": "Weather Protection",
-        "description": "Cover or oil natural wood frames twice a year before and after the monsoon season."
+        "title": "Powder-Coated Durability",
+        "description": "Multi-stage anti-rust phosphating and electro-powder coating protect steel components from monsoon humidity."
       },
       {
-        "title": "Space-saving Foldables",
-        "description": "Foldable bistro chairs allow flexible space utilization for plants and morning yoga."
+        "title": "Fold & Shield",
+        "description": "During heavy monsoon downpours, simply fold your metal chairs and lean them under balcony awnings or bring them indoors."
       },
       {
-        "title": "Outdoor Cushions",
-        "description": "Use quick-dry, UV-resistant fabrics that withstand sunlight and light moisture."
+        "title": "Breeze & Chai",
+        "description": "A 3x2 ft folding table turns a narrow 4-foot balcony into a relaxing morning coffee and plant potting nook."
       }
     ]
   }

@@ -20,15 +20,15 @@ interface BlogPost {
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const categories = ['All', 'Timber Guides', 'Interior Styling', 'Wood Care & Seasoning'];
+  const categories = ['All', 'Space Saving', 'Apartment Styling', 'Furniture Care'];
 
   const posts: BlogPost[] = [
     {
       id: '1',
-      slug: 'solid-sheesham-vs-mdf-furniture',
-      title: 'Solid Sheesham vs. Engineered Wood: What Truly Lasts 25+ Years in Indian Climates',
-      excerpt: 'Most modern furniture brands sell compressed sawdust covered with paper veneers that sag within 24 months. Here is why kiln-dried solid hardwood is the only generational investment.',
-      category: 'Timber Guides',
+      slug: 'space-saving-furniture-for-indian-apartments',
+      title: 'Practical Space Saving: How to Fit Everything into a 2BHK Without Feeling Cluttered',
+      excerpt: 'From wall-mounted shoe storage to folding multipurpose tables, here are smart design principles to maximize every square foot of your apartment.',
+      category: 'Space Saving',
       date: 'August 28, 2026',
       readTime: '6 min read',
       image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80',
@@ -39,39 +39,39 @@ export default function BlogPage() {
       slug: 'sizing-furniture-for-indian-apartments',
       title: 'The Living Room Proportions Guide: Sizing Sofas & Tables for 2BHK and 3BHK Spaces',
       excerpt: 'How to calculate walking clearance around your coffee table, choosing between 3-seater sofas and L-sectionals, and avoiding common sizing mistakes in compact layouts.',
-      category: 'Interior Styling',
+      category: 'Apartment Styling',
       date: 'August 19, 2026',
       readTime: '5 min read',
       image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80',
     },
     {
       id: '3',
-      slug: 'teak-vs-walnut-wood-stains',
-      title: 'Natural Teak, Honey & Dark Espresso: Choosing the Right Timber Palette for Your Floors',
-      excerpt: 'A comprehensive visual guide to matching solid Sheesham wood stains with Italian marble, warm vitrified tiles, and neutral linen upholstery.',
-      category: 'Timber Guides',
+      slug: 'entryway-shoe-storage-guide',
+      title: 'Entryway Clutter Solved: Choosing the Right Shoe Rack Capacity for Indian Households',
+      excerpt: 'A practical breakdown of 3-slab, 4-slab, and 5-slab wall-mounted shoe racks based on family size, footwear types, and narrow foyer dimensions.',
+      category: 'Space Saving',
       date: 'August 12, 2026',
       readTime: '4 min read',
       image: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=800&q=80',
     },
     {
       id: '4',
-      slug: 'monsoon-hardwood-care-guide',
-      title: 'Monsoon Furniture Care: How Seasonal Humidity Affects Wood & Simple Care Rituals',
-      excerpt: 'Indian humidity changes drastically between dry summers and wet monsoons. Learn how seasoned hardwood responds to seasonal moisture and simple domestic practices to protect your furniture.',
-      category: 'Wood Care & Seasoning',
+      slug: 'protecting-steel-and-wood-furniture',
+      title: 'Monsoon Furniture Care: Keeping Powder-Coated Steel & Melamine Rust-Free',
+      excerpt: 'Indian humidity changes drastically between dry summers and wet monsoons. Learn how rust-resistant coatings protect your furniture and simple cleaning habits for apartment living.',
+      category: 'Furniture Care',
       date: 'August 04, 2026',
-      readTime: '6 min read',
+      readTime: '4 min read',
       image: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80',
     },
     {
       id: '5',
-      slug: 'mortise-and-tenon-woodcraft',
-      title: 'The Fundamentals of Wood Joinery: Why Craftsmanship Matters in Daily Living',
-      excerpt: 'Interlocking wood joints distribute weight naturally across timber grain. Explore the joinery traditions and thoughtful construction behind enduring domestic furniture.',
-      category: 'Timber Guides',
+      slug: 'folding-furniture-durability',
+      title: 'Built to Hold 150 kg: What Makes a Heavy-Duty Folding Chair Truly Durable',
+      excerpt: 'Reinforced tubular steel, high-tensile cross-braces, and non-slip rubber boots. A closer look at engineering that outlasts flimsy market chairs.',
+      category: 'Furniture Care',
       date: 'July 26, 2026',
-      readTime: '5 min read',
+      readTime: '4 min read',
       image: 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=800&q=80',
     },
   ];
@@ -104,10 +104,10 @@ export default function BlogPage() {
             <span className="w-6 h-[2px] bg-[#48563A]" />
           </div>
           <h1 className="font-serif text-3xl sm:text-5xl text-[#2C2926] font-normal tracking-tight">
-            Timber Craft, Architecture &amp; Living
+            Practical Living, Space &amp; Design
           </h1>
           <p className="text-[#A69B8C] text-sm sm:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
-            Honest architectural guides on solid wood furniture, room proportioning, timber seasoning, and interior craftsmanship for Indian homes.
+            Honest practical guides on space planning, room proportioning, furniture durability, and everyday living for Indian homes.
           </p>
         </div>
 
@@ -225,20 +225,20 @@ export default function BlogPage() {
         {/* Newsletter / Custom Advice Box */}
         <div className="mt-20 bg-[#2C2926] text-[#F7F4EE] rounded-3xl p-8 sm:p-12 text-center max-w-3xl mx-auto shadow-lg">
           <span className="text-xs font-semibold uppercase tracking-widest text-[#D8C9B5] block mb-2">
-            TIMBER WISDOM DIRECT TO YOUR INBOX
+            PRACTICAL APARTMENT LIVING GUIDES
           </span>
           <h2 className="font-serif text-2xl sm:text-3xl text-white">
             Have a Specific Furniture Question?
           </h2>
           <p className="text-xs sm:text-sm text-[#D8C9B5] mt-2 max-w-xl mx-auto">
-            Our woodcraft designers are always happy to advise on room layout clearances, timber seasoning standards, and custom finishes.
+            Our furniture team is always happy to advise on entryway dimensions, folding storage fits, and product recommendations for your space.
           </p>
           <div className="mt-6 flex justify-center">
             <Link
               href="/contact"
               className="px-6 py-3 bg-[#D8C9B5] hover:bg-[#C9B9A3] text-[#2C2926] text-xs font-semibold rounded-btn transition-colors inline-flex items-center gap-2 shadow-sm"
             >
-              <span>Connect with Our Designers</span>
+              <span>Connect with Our Team</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>

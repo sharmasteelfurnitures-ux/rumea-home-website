@@ -58,10 +58,10 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
 
             <div className="mt-3 flex items-center justify-between text-xs text-soft-taupe font-medium">
               <span className="flex items-center gap-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-antique-gold" /> Honest Materials
+                <ShieldCheck className="w-3.5 h-3.5 text-antique-gold" /> Rust-Resistant Build
               </span>
               <span className="flex items-center gap-1">
-                <Truck className="w-3.5 h-3.5 text-antique-gold" /> Safe Delivery via Amazon
+                <Truck className="w-3.5 h-3.5 text-antique-gold" /> Ships via Amazon India
               </span>
             </div>
           </div>
@@ -92,7 +92,7 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
 
               {/* Tagline / USP */}
               <p className="text-xs text-soft-taupe mt-2 leading-relaxed line-clamp-2">
-                {product.tagline || 'Thoughtfully proportioned for modern Indian homes and daily living.'}
+                {product.tagline || 'Practical, space-saving furniture for modern Indian homes.'}
               </p>
             </div>
 

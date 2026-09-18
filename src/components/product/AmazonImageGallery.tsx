@@ -159,7 +159,7 @@ export default function AmazonImageGallery({ images, productName }: AmazonImageG
             {/* Top Left Craft Badges */}
             <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10 pointer-events-none">
               <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-espresso text-warm-ivory text-[10px] font-bold uppercase tracking-wider rounded-btn shadow-xs">
-                <Sparkles className="w-3 h-3 text-warm-sand" /> 100% Solid Sheesham
+                <Sparkles className="w-3 h-3 text-warm-sand" /> Sized for Indian Homes
               </span>
             </div>
 
@@ -242,7 +242,7 @@ export default function AmazonImageGallery({ images, productName }: AmazonImageG
           }}
         >
           <div className="absolute bottom-3 left-3 px-3 py-1 bg-espresso/80 backdrop-blur-xs text-warm-ivory text-[11px] font-semibold rounded-btn">
-            High-Resolution Wood Grain &amp; Joinery View (2.8× Zoom)
+            High-Resolution Material &amp; Detail View (2.8× Zoom)
           </div>
         </div>
       )}

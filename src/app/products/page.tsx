@@ -16,17 +16,15 @@ import {
   Check
 } from 'lucide-react';
 
-type CategoryFilter = 'all' | 'sofa' | 'bed' | 'dining' | 'coffee-table' | 'tv-unit' | 'study' | 'storage';
+type CategoryFilter = 'all' | 'shoe-rack' | 'folding-table' | 'seating' | 'coat-stand' | 'desk';
 
 const categoryTabs: { id: CategoryFilter; label: string }[] = [
   { id: 'all', label: 'All Pieces' },
-  { id: 'sofa', label: 'Sofas' },
-  { id: 'bed', label: 'Beds' },
-  { id: 'dining', label: 'Dining Sets' },
-  { id: 'coffee-table', label: 'Coffee Tables' },
-  { id: 'tv-unit', label: 'TV Units' },
-  { id: 'study', label: 'Study Desks' },
-  { id: 'storage', label: 'Storage & Wardrobes' },
+  { id: 'shoe-rack', label: 'Entryway & Shoe Storage' },
+  { id: 'folding-table', label: 'Folding & Space-Saving Tables' },
+  { id: 'seating', label: 'Seating & Chairs' },
+  { id: 'coat-stand', label: 'Coat & Clothes Stands' },
+  { id: 'desk', label: 'Study & Work Tables' },
 ];
 
 function ProductsPageContent() {
@@ -38,13 +36,11 @@ function ProductsPageContent() {
   // Active Category Tab
   const [activeCategoryTab, setActiveCategoryTab] = useState<CategoryFilter>(() => {
     if (paramCategory) {
-      if (paramCategory === 'sofa' || paramCategory === 'sofas') return 'sofa';
-      if (paramCategory === 'bed' || paramCategory === 'beds') return 'bed';
-      if (paramCategory.includes('dining')) return 'dining';
-      if (paramCategory.includes('coffee')) return 'coffee-table';
-      if (paramCategory.includes('tv')) return 'tv-unit';
-      if (paramCategory === 'desk' || paramCategory.includes('study')) return 'study';
-      if (paramCategory.includes('storage') || paramCategory.includes('wardrobe') || paramCategory.includes('shoe')) return 'storage';
+      if (paramCategory.includes('shoe')) return 'shoe-rack';
+      if (paramCategory.includes('table') || paramCategory.includes('folding')) return 'folding-table';
+      if (paramCategory === 'seating' || paramCategory.includes('chair') || paramCategory === 'sofa') return 'seating';
+      if (paramCategory.includes('coat')) return 'coat-stand';
+      if (paramCategory === 'desk' || paramCategory.includes('study')) return 'desk';
     }
     return 'all';
   });
@@ -52,23 +48,23 @@ function ProductsPageContent() {
   // Additional Filter States
   const [selectedRooms, setSelectedRooms] = useState<string[]>(paramRoom ? [paramRoom] : []);
   const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
-  const [maxPrice, setMaxPrice] = useState<number>(80000);
+  const [maxPrice, setMaxPrice] = useState<number>(30000);
   const [sortBy, setSortBy] = useState<string>('popular');
   const [viewMode, setViewMode] = useState<'3col' | '2col'>('3col');
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
   // Available Filter Options
   const roomOptions = [
-    { id: 'living-room', label: 'Living Room' },
-    { id: 'bedroom', label: 'Bedroom' },
-    { id: 'dining-room', label: 'Dining Room' },
+    { id: 'storage', label: 'Entryway & Storage' },
+    { id: 'dining-room', label: 'Dining & Kitchen' },
     { id: 'study', label: 'Study & Work' },
+    { id: 'living-room', label: 'Living Room' },
+    { id: 'outdoor', label: 'Balcony' },
   ];
 
   const finishOptions = [
-    { id: 'Natural Teak', label: 'Natural Teak' },
-    { id: 'Walnut', label: 'Rich Walnut' },
-    { id: 'Mahogany', label: 'Warm Mahogany' },
+    { id: 'Powder-Coated Steel', label: 'Powder-Coated Steel' },
+    { id: 'Particle Board', label: 'Melamine Laminate' },
   ];
 
   // Filtering Logic
@@ -76,23 +72,17 @@ function ProductsPageContent() {
     return products.filter((p) => {
       // Finish/Material match
       if (selectedMaterials.length > 0) {
-        const matchesFinish = p.materials.finish.some((f) => selectedMaterials.includes(f));
+        const matchesFinish = p.materials.finish.some((f) => selectedMaterials.includes(f)) ||
+          selectedMaterials.some((m) => p.materials.frame.toLowerCase().includes(m.toLowerCase()));
         if (!matchesFinish) return false;
       }
       // Category Tab Filter
       if (activeCategoryTab !== 'all') {
-        if (activeCategoryTab === 'sofa' && p.category !== 'sofa') return false;
-        if (activeCategoryTab === 'bed' && p.category !== 'bed') return false;
-        if (activeCategoryTab === 'dining' && p.category !== 'dining-table') return false;
-        if (activeCategoryTab === 'coffee-table' && p.category !== 'coffee-table') return false;
-        if (activeCategoryTab === 'tv-unit' && p.category !== 'tv-unit') return false;
-        if (activeCategoryTab === 'study' && p.category !== 'desk') return false;
-        if (
-          activeCategoryTab === 'storage' &&
-          !['storage-cabinet', 'wardrobe', 'shoe-rack', 'bookshelf', 'nightstand'].includes(p.category)
-        ) {
-          return false;
-        }
+        if (activeCategoryTab === 'shoe-rack' && p.category !== 'shoe-rack') return false;
+        if (activeCategoryTab === 'folding-table' && p.category !== 'folding-table') return false;
+        if (activeCategoryTab === 'seating' && !['chair', 'seating', 'sofa'].includes(p.category)) return false;
+        if (activeCategoryTab === 'coat-stand' && p.category !== 'coat-stand') return false;
+        if (activeCategoryTab === 'desk' && !['desk', 'folding-table'].includes(p.category)) return false;
       }
 
       // Room match
@@ -118,7 +108,7 @@ function ProductsPageContent() {
 
       return true;
     });
-  }, [activeCategoryTab, selectedRooms, maxPrice, searchQuery]);
+  }, [activeCategoryTab, selectedRooms, selectedMaterials, maxPrice, searchQuery]);
 
   // Sorting Logic
   const sortedProducts = useMemo(() => {
@@ -132,13 +122,15 @@ function ProductsPageContent() {
   const clearAllFilters = () => {
     setActiveCategoryTab('all');
     setSelectedRooms([]);
-    setMaxPrice(80000);
+    setSelectedMaterials([]);
+    setMaxPrice(30000);
   };
 
   const hasActiveFilters =
     activeCategoryTab !== 'all' ||
     selectedRooms.length > 0 ||
-    maxPrice < 80000;
+    selectedMaterials.length > 0 ||
+    maxPrice < 30000;
 
   return (
     <div className="bg-[#F7F4EE] min-h-screen py-6 sm:py-10">
@@ -159,13 +151,13 @@ function ProductsPageContent() {
         <div className="mb-6 pb-6 border-b border-[#D8C9B5] flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#48563A] flex items-center gap-1.5 mb-1.5">
-              <Sparkles className="w-3.5 h-3.5" /> 100% SOLID SHEESHAM TIMBER
+              <Sparkles className="w-3.5 h-3.5" /> PRACTICAL APARTMENT LIVING
             </span>
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#2C2926] font-medium tracking-tight">
-              Handcrafted Furniture Catalogue
+              Practical Furniture Catalogue
             </h1>
             <p className="text-[#A69B8C] text-xs sm:text-sm mt-1.5 max-w-xl">
-              Kiln-dried solid hardwood furniture with mortise &amp; tenon joinery for modern Indian homes.
+              Wall-mounted shoe racks, folding tables, coat stands, and sturdy seating proportioned for everyday Indian homes.
             </p>
           </div>
 

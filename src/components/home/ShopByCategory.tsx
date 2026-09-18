@@ -148,76 +148,34 @@ export default function ShopByCategory() {
 
   const categories: CategoryItem[] = [
     {
-      id: 'sofas',
-      name: 'Sofas',
-      image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80',
-      href: '/products?category=sofa',
-    },
-    {
-      id: 'beds',
-      name: 'Beds',
-      image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80',
-      href: '/products?category=bed',
-    },
-    {
-      id: 'dining',
-      name: 'Dining',
-      image: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=800&q=80',
-      href: '/products?category=dining-table',
-    },
-    {
-      id: 'coffee-tables',
-      name: 'Coffee Tables',
-      image: 'https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=800&q=80',
-      href: '/products?category=coffee-table',
-    },
-    {
-      id: 'tv-units',
-      name: 'TV Units',
-      image: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80',
-      href: '/products?category=tv-unit',
-    },
-    {
-      id: 'chairs',
-      name: 'Chairs',
-      image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80',
-      href: '/products?category=accent-chair',
-    },
-    {
-      id: 'desks',
-      name: 'Study Tables',
-      image: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=80',
-      href: '/products?category=desk',
-    },
-    {
-      id: 'bookshelves',
-      name: 'Bookshelves',
-      image: 'https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=800&q=80',
-      href: '/products?category=bookshelf',
-    },
-    {
-      id: 'wardrobes',
-      name: 'Wardrobes',
-      image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80',
-      href: '/products?category=wardrobe',
-    },
-    {
-      id: 'storage',
-      name: 'Sideboards',
-      image: 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=800&q=80',
-      href: '/products?category=storage-cabinet',
-    },
-    {
-      id: 'shoe-racks',
-      name: 'Shoe Racks',
+      id: 'entryway-shoe-storage',
+      name: 'Entryway & Shoe Storage',
       image: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80',
       href: '/products?category=shoe-rack',
     },
     {
-      id: 'nightstands',
-      name: 'Bedside Tables',
-      image: 'https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=800&q=80',
-      href: '/products?category=nightstand',
+      id: 'folding-tables',
+      name: 'Folding & Space-Saving Tables',
+      image: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=80',
+      href: '/products?category=folding-table',
+    },
+    {
+      id: 'seating-chairs',
+      name: 'Seating & Chairs',
+      image: 'https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=800&q=80',
+      href: '/products?category=seating',
+    },
+    {
+      id: 'coat-clothes-stands',
+      name: 'Coat & Clothes Stands',
+      image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80',
+      href: '/products?category=coat-stand',
+    },
+    {
+      id: 'study-work-tables',
+      name: 'Study & Work Tables',
+      image: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=80',
+      href: '/products?category=desk',
     },
   ];
 
@@ -228,7 +186,7 @@ export default function ShopByCategory() {
         {/* Clean, Minimal Section Header */}
         <div className="flex items-center justify-between mb-8 sm:mb-10">
           <AnimatedHeading 
-            text="Shop by category"
+            text="Shop by Need"
             className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#2C2926] font-medium tracking-tight"
           />
 
@@ -241,14 +199,14 @@ export default function ShopByCategory() {
           </Link>
         </div>
 
-        {/* 12-Category Grid with Mobile Horizontal Scroll Snap (3.5 items visible) & Desktop 6-Col Grid */}
+        {/* 5-Category Grid with Mobile Horizontal Scroll Snap & Desktop 5-Col Grid */}
         <div
           ref={scrollContainerRef}
           onScroll={handleScroll}
-          className="flex sm:grid sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-5 overflow-x-auto sm:overflow-x-visible snap-x snap-mandatory sm:snap-none mobile-swipe-rail pb-2 sm:pb-0 -mx-4 sm:mx-0 px-4 sm:px-0"
+          className="flex sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-5 overflow-x-auto sm:overflow-x-visible snap-x snap-mandatory sm:snap-none mobile-swipe-rail pb-2 sm:pb-0 -mx-4 sm:mx-0 px-4 sm:px-0"
         >
           {categories.map((cat, idx) => (
-            <div key={cat.id} className="w-[26vw] min-w-[96px] sm:w-auto shrink-0 snap-start mobile-swipe-item">
+            <div key={cat.id} className="w-[45vw] min-w-[140px] sm:w-auto shrink-0 snap-start mobile-swipe-item">
               <InteractiveCategoryCard cat={cat} idx={idx} />
             </div>
           ))}

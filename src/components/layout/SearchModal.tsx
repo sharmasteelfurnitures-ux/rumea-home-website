@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
@@ -38,12 +38,12 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   }, [onClose]);
 
   const popularSearches = [
-    'Solid Sheesham Sofa',
-    'Platform Bed',
-    '6-Seater Dining Set',
-    'Study Table',
-    'TV Console',
-    'Scandinavian',
+    'Wall-Mounted Shoe Rack',
+    'Folding Metal Chair',
+    'Folding Table 4x2',
+    'Metal Coat Stand',
+    'Space-Saving Table',
+    '3-Seater Sofa',
   ];
 
   const results: Product[] = query.trim()
@@ -78,7 +78,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search furniture (e.g. Oslo Sofa, Dining Table, Bed, Teak)..."
+            placeholder="Search furniture (e.g. Shoe Rack, Folding Table, Chair, Coat Stand)..."
             className="flex-1 bg-transparent text-sm sm:text-base text-espresso placeholder-soft-taupe focus:outline-none font-body"
           />
           {query && (
@@ -123,50 +123,50 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
               {/* Quick Categories */}
               <div>
                 <p className="text-xs font-bold uppercase tracking-wider text-muted-olive flex items-center gap-1.5 mb-3">
-                  <Sparkles className="w-3.5 h-3.5" /> Browse Spaces
+                  <Sparkles className="w-3.5 h-3.5" /> Browse by Need
                 </p>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs text-espresso">
                   <Link
-                    href="/rooms/living-room"
+                    href="/products?category=shoe-rack"
                     onClick={onClose}
                     className="p-2.5 bg-warm-ivory rounded-xl hover:bg-warm-sand/30 font-medium transition-colors"
                   >
-                    🛋️ Living Room &rarr;
+                    👟 Shoe Storage &rarr;
                   </Link>
                   <Link
-                    href="/rooms/bedroom"
+                    href="/products?category=folding-table"
                     onClick={onClose}
                     className="p-2.5 bg-warm-ivory rounded-xl hover:bg-warm-sand/30 font-medium transition-colors"
                   >
-                    🛏️ Bedroom &rarr;
+                    📐 Folding Tables &rarr;
                   </Link>
                   <Link
-                    href="/rooms/dining-room"
+                    href="/products?category=seating"
                     onClick={onClose}
                     className="p-2.5 bg-warm-ivory rounded-xl hover:bg-warm-sand/30 font-medium transition-colors"
                   >
-                    🪑 Dining Room &rarr;
+                    🪑 Chairs & Seating &rarr;
                   </Link>
                   <Link
-                    href="/rooms/study"
+                    href="/products?category=coat-stand"
+                    onClick={onClose}
+                    className="p-2.5 bg-warm-ivory rounded-xl hover:bg-warm-sand/30 font-medium transition-colors"
+                  >
+                    🧥 Coat Stands &rarr;
+                  </Link>
+                  <Link
+                    href="/products?category=desk"
                     onClick={onClose}
                     className="p-2.5 bg-warm-ivory rounded-xl hover:bg-warm-sand/30 font-medium transition-colors"
                   >
                     💻 Study & Work &rarr;
                   </Link>
                   <Link
-                    href="/rooms/storage"
-                    onClick={onClose}
-                    className="p-2.5 bg-warm-ivory rounded-xl hover:bg-warm-sand/30 font-medium transition-colors"
-                  >
-                    🗄️ Storage &rarr;
-                  </Link>
-                  <Link
                     href="/products"
                     onClick={onClose}
                     className="p-2.5 bg-warm-ivory rounded-xl hover:bg-warm-sand/30 font-medium transition-colors"
                   >
-                    ✨ All Products &rarr;
+                    ✨ All Pieces &rarr;
                   </Link>
                 </div>
               </div>

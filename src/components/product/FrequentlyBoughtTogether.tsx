@@ -63,7 +63,7 @@ export default function FrequentlyBoughtTogether({ product }: FrequentlyBoughtTo
           Frequently Paired Together
         </h3>
         <p className="text-xs text-[#A69B8C] mt-1">
-          Coordinating solid Sheesham wood pieces designed to harmonize in finish, proportions, and height.
+          Coordinating space-saving pieces designed to harmonize in finish, proportions, and everyday utility.
         </p>
       </div>
 

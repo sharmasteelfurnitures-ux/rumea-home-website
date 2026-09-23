@@ -91,9 +91,10 @@ export default function Product360Viewer() {
       tagline: 'Sturdy powder-coated steel frame with ergonomic curved backrest and non-marking floor caps.',
       modelSrc: '/models/chair.glb',
       images: [
-        'https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=1200&q=80',
+        '/images/chair-cutouts/perspective_front_left.png',
+        '/images/chair-cutouts/front.png',
+        '/images/chair-cutouts/side.png',
+        '/images/chair-cutouts/back.png',
       ],
       price: 1399,
       mrp: 2199,

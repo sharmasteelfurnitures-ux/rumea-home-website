@@ -43,7 +43,7 @@ export default function WhatsAppButton({
           rel="noopener noreferrer"
           onClick={handleClick}
           aria-label="Chat with us on WhatsApp"
-          className={`fixed z-50 flex items-center justify-center rounded-full bg-[#48563A] hover:bg-[#3B4730] text-[#F7F4EE] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 group border border-[#3B4730] bottom-6 right-6 w-14 h-14 cursor-pointer ${className}`}
+          className={`fixed z-50 flex items-center justify-center rounded-full bg-[#1E1E1B] hover:bg-[#2E2E2A] text-[#F7F5F0] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 group border border-[#DEDAD1] bottom-20 right-4 sm:bottom-6 sm:right-6 w-12 h-12 sm:w-14 sm:h-14 cursor-pointer ${className}`}
         >
           {/* Subtle online pulse beacon */}
           <span className="absolute top-0.5 right-0.5 flex h-3.5 w-3.5">

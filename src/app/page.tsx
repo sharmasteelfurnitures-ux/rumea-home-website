@@ -1,35 +1,39 @@
 import React from 'react';
 import Hero from '@/components/home/Hero';
+import TrustStrip from '@/components/home/TrustStrip';
 import ShopByCategory from '@/components/home/ShopByCategory';
-import CustomFurnitureBanner from '@/components/home/CustomFurnitureBanner';
-import NewArrivalsAndBestSellers from '@/components/home/NewArrivalsAndBestSellers';
-import ShopTheLook from '@/components/home/ShopTheLook';
-import Product360Viewer from '@/components/product/Product360Viewer';
-import WhatsAppConcierge from '@/components/home/WhatsAppConcierge';
+import ValueProposition from '@/components/home/ValueProposition';
+import BestSellers from '@/components/home/BestSellers';
+import FitAssistance from '@/components/home/FitAssistance';
+import CustomerProof from '@/components/home/CustomerProof';
+import FinalCta from '@/components/home/FinalCta';
 
 export default function HomePage() {
   return (
     <>
-      {/* 1. Hero Showcase Carousel + Quick Category Bar + Reassurance Strip */}
+      {/* 3. Hero Section */}
       <Hero />
 
-      {/* 2. Shop by Category (12 Essential Home Categories) */}
+      {/* 4. Trust Strip */}
+      <TrustStrip />
+
+      {/* 5. Shop by Need */}
       <ShopByCategory />
 
-      {/* 3. The Rumea Standard: Considered for Real Indian Living */}
-      <CustomFurnitureBanner />
+      {/* 6. Value Proposition Section */}
+      <ValueProposition />
 
-      {/* 4. Curated Furniture Collection (Best Sellers & New Arrivals) */}
-      <NewArrivalsAndBestSellers />
+      {/* 7. Best Sellers Shopping Section */}
+      <BestSellers />
 
-      {/* 5. Shop The Complete Room Look (Interactive Hotspots) */}
-      <ShopTheLook />
+      {/* 8. Fit Assistance Section */}
+      <FitAssistance />
 
-      {/* 6. Interactive 360° Studio Spin & Inspect Viewer */}
-      <Product360Viewer />
+      {/* 9. Customer Proof Section */}
+      <CustomerProof />
 
-      {/* 7. WhatsApp Room Sizing & Fit Consultation */}
-      <WhatsAppConcierge />
+      {/* 10. Final CTA Section */}
+      <FinalCta />
     </>
   );
 }

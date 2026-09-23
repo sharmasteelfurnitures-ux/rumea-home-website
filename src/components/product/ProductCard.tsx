@@ -1,11 +1,10 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Eye, Heart } from 'lucide-react';
+import { ExternalLink, ArrowRight } from 'lucide-react';
 import { Product } from '@/types/product';
-import QuickViewModal from './QuickViewModal';
 
 interface ProductCardProps {
   product: Product;
@@ -13,145 +12,88 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product, priority = false }: ProductCardProps) {
-  const [quickViewOpen, setQuickViewOpen] = useState(false);
-  const [isWishlisted, setIsWishlisted] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setInView(true);
-              observer.disconnect();
-            }
-          });
-        },
-        { threshold: 0.12 }
-      );
-
-      if (cardRef.current) {
-        observer.observe(cardRef.current);
-      }
-
-      return () => observer.disconnect();
-    }
-  }, []);
+  const amazonUrl = product.conversion?.amazonUrl || 'https://www.amazon.in';
+  const hasDiscount = product.pricing.mrp > product.pricing.offer;
 
   return (
-    <>
-      <div
-        ref={cardRef}
-        className="group flex flex-col h-full product-card-hover rounded-2xl sm:rounded-3xl p-1 transition-all duration-300"
-      >
-        
-        {/* Large Prominent Hero Photo Container */}
-        <div className="relative aspect-[4/3] w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-[#EBE7DF] shadow-xs">
-          <Link href={`/products/${product.slug}`} className="block w-full h-full">
-            <Image
-              src={product.images.primary}
-              alt={product.name}
-              fill
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-              priority={priority}
-              className="object-cover object-center product-card-img-zoom will-change-transform"
-            />
-          </Link>
+    <div className="group flex flex-col h-full bg-white rounded-xl border border-[#DEDAD1] overflow-hidden transition-all duration-300 hover:border-[#1E1E1B]/30 hover:shadow-sm">
+      
+      {/* Product Image Container */}
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#F0ECE1]">
+        <Link href={`/products/${product.slug}`} className="block w-full h-full">
+          <Image
+            src={product.images.primary}
+            alt={product.name}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            priority={priority}
+            className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.035]"
+          />
+        </Link>
 
-          {/* Top Right Badge Pill: Strictly Best Seller / New Arrival / Popular */}
-          {product.seo?.badge && (
-            <div className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 z-10">
-              <span
-                className={`px-2.5 py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider rounded-full shadow-xs backdrop-blur-xs ${
-                  product.seo.badge === 'Coming Soon'
-                    ? 'bg-[#B4783C] text-white font-bold'
-                    : product.seo.badge === 'Best Seller'
-                    ? 'bg-[#48563A] text-white'
-                    : product.seo.badge === 'New Arrival'
-                    ? 'bg-[#2C2926] text-[#F7F4EE]'
-                    : 'bg-[#5A524C] text-[#F7F4EE]'
-                }`}
-              >
-                {product.seo.badge}
-              </span>
-            </div>
-          )}
-
-          {/* Top Left Wishlist Heart */}
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              setIsWishlisted(!isWishlisted);
-            }}
-            className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 z-10 bg-white/90 backdrop-blur-xs rounded-full p-1.5 sm:p-2 shadow-xs hover:bg-white transition-all hover:scale-110"
-            aria-label="Save to wishlist"
-          >
-            <Heart
-              className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-colors ${
-                isWishlisted ? 'fill-[#48563A] text-[#48563A]' : 'text-[#2C2926]'
-              }`}
-            />
-          </button>
-
-          {/* Desktop Hover Quick View Button — Frosted Glassmorphism Style */}
-          <div className="absolute inset-x-3 bottom-2.5 sm:inset-x-4 sm:bottom-3 z-10 opacity-0 group-hover:opacity-100 translate-y-1.5 group-hover:translate-y-0 transition-all duration-300 ease-out hidden sm:block pointer-events-none group-hover:pointer-events-auto">
-            <button
-              onClick={() => setQuickViewOpen(true)}
-              className="w-full py-2 sm:py-2.5 px-3 bg-white/70 hover:bg-white/95 text-[#2C2926] hover:text-[#48563A] text-xs font-semibold rounded-xl border border-white/80 hover:border-white shadow-md hover:shadow-lg backdrop-blur-md flex items-center justify-center gap-1.5 transition-all duration-200 cursor-pointer group/btn"
-            >
-              <Eye className="w-3.5 h-3.5 text-[#48563A] group-hover/btn:scale-110 transition-transform" />
-              <span className="tracking-wide font-medium">Quick View</span>
-            </button>
+        {/* One small discreet label only when necessary */}
+        {product.seo?.badge && product.seo.badge !== 'Coming Soon' && (
+          <div className="absolute top-3 left-3 z-10">
+            <span className="px-2.5 py-1 text-[10px] font-sans font-medium uppercase tracking-wider rounded-md bg-[#1E1E1B] text-[#F7F5F0]">
+              {product.seo.badge}
+            </span>
           </div>
-        </div>
+        )}
+      </div>
 
-        {/* Clean Typography Directly Below Photo */}
-        <div className="mt-2.5 sm:mt-3 flex flex-col space-y-1">
-          
-          {/* Title */}
-          <h3 className="font-sans font-medium text-xs sm:text-sm text-[#2C2926] line-clamp-2 leading-snug group-hover:text-[#48563A] transition-colors">
+      {/* Product Details */}
+      <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+        <div>
+          {/* Product Title */}
+          <h3 className="font-sans font-medium text-sm text-[#1E1E1B] line-clamp-2 leading-snug group-hover:text-[#8A684A] transition-colors">
             <Link href={`/products/${product.slug}`}>
               {product.name}
             </Link>
           </h3>
 
-          {/* Pricing: Offer Price + Subtle Strikethrough MRP */}
-          <div className="flex items-baseline flex-wrap gap-x-2 gap-y-0.5 pt-0.5">
-            <span
-              className={`font-sans font-semibold text-sm sm:text-base text-[#2C2926] sale-price-fade ${
-                inView ? 'revealed' : ''
-              }`}
-            >
+          {/* Pricing: Offer Price + Strikethrough MRP */}
+          <div className="flex items-baseline gap-2 pt-2">
+            <span className="font-sans font-semibold text-base text-[#1E1E1B]">
               ₹{product.pricing.offer.toLocaleString('en-IN')}
             </span>
-            {product.pricing.mrp > product.pricing.offer && (
-              <span
-                className={`text-[11px] sm:text-xs text-[#A69B8C] font-normal strike-line ${
-                  inView ? 'struck' : ''
-                }`}
-              >
+            {hasDiscount && (
+              <span className="text-xs text-[#6B6962] line-through">
                 ₹{product.pricing.mrp.toLocaleString('en-IN')}
               </span>
             )}
           </div>
 
-          {/* Compact Dimensions Specification */}
+          {/* Dimensions */}
           {product.dimensions?.width?.cm && product.dimensions?.depth?.cm && product.dimensions?.height?.cm && (
-            <div className="text-[11px] text-[#A69B8C] font-mono tracking-tight pt-0.5">
+            <p className="text-[11px] text-[#6B6962] font-mono pt-1.5">
               {product.dimensions.width.cm} × {product.dimensions.depth.cm} × {product.dimensions.height.cm} cm
-            </div>
+            </p>
           )}
+        </div>
+
+        {/* Single Clear Interaction Button: Direct to Amazon India */}
+        <div className="pt-4 mt-3 border-t border-[#DEDAD1]/60 flex items-center justify-between gap-2">
+          <Link
+            href={`/products/${product.slug}`}
+            className="text-xs font-medium text-[#6B6962] hover:text-[#1E1E1B] transition-colors inline-flex items-center gap-1"
+          >
+            <span>Details</span>
+            <ArrowRight className="w-3 h-3" />
+          </Link>
+
+          <a
+            href={amazonUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 px-3 py-1.5 bg-[#F7F5F0] hover:bg-[#1E1E1B] text-[#1E1E1B] hover:text-[#F7F5F0] text-xs font-semibold rounded-md border border-[#DEDAD1] hover:border-[#1E1E1B] transition-colors"
+          >
+            <span>Shop on Amazon</span>
+            <ExternalLink className="w-3 h-3" />
+          </a>
         </div>
 
       </div>
 
-      {/* Quick View Modal */}
-      {quickViewOpen && (
-        <QuickViewModal product={product} onClose={() => setQuickViewOpen(false)} />
-      )}
-    </>
+    </div>
   );
 }
-

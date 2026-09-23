@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useMemo, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import React, { useState, useEffect, useMemo, Suspense } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { products } from '@/lib/products';
 import ProductCard from '@/components/product/ProductCard';
 import Breadcrumb from '@/components/ui/Breadcrumb';
@@ -28,6 +28,7 @@ const categoryTabs: { id: CategoryFilter; label: string }[] = [
 ];
 
 function ProductsPageContent() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const paramCategory = searchParams.get('category');
   const paramRoom = searchParams.get('room');
@@ -45,8 +46,29 @@ function ProductsPageContent() {
     return 'all';
   });
 
+  // Sync category tab with URL search parameter changes
+  useEffect(() => {
+    if (paramCategory) {
+      if (paramCategory.includes('shoe')) setActiveCategoryTab('shoe-rack');
+      else if (paramCategory.includes('table') || paramCategory.includes('folding')) setActiveCategoryTab('folding-table');
+      else if (paramCategory === 'seating' || paramCategory.includes('chair') || paramCategory === 'sofa') setActiveCategoryTab('seating');
+      else if (paramCategory.includes('coat')) setActiveCategoryTab('coat-stand');
+      else if (paramCategory === 'desk' || paramCategory.includes('study')) setActiveCategoryTab('desk');
+      else setActiveCategoryTab('all');
+    } else {
+      setActiveCategoryTab('all');
+    }
+  }, [paramCategory]);
+
   // Additional Filter States
   const [selectedRooms, setSelectedRooms] = useState<string[]>(paramRoom ? [paramRoom] : []);
+
+  // Sync room filter with URL search parameter changes
+  useEffect(() => {
+    if (paramRoom) {
+      setSelectedRooms([paramRoom]);
+    }
+  }, [paramRoom]);
   const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
   const [maxPrice, setMaxPrice] = useState<number>(30000);
   const [sortBy, setSortBy] = useState<string>('popular');
@@ -176,7 +198,14 @@ function ProductsPageContent() {
               return (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveCategoryTab(tab.id)}
+                  onClick={() => {
+                    setActiveCategoryTab(tab.id);
+                    if (tab.id === 'all') {
+                      router.push('/products', { scroll: false });
+                    } else {
+                      router.push(`/products?category=${tab.id}`, { scroll: false });
+                    }
+                  }}
                   className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
                     isActive
                       ? 'bg-[#2C2926] text-[#F7F4EE] shadow-xs'

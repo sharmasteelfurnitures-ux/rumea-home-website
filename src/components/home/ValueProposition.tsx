@@ -45,11 +45,11 @@ export default function ValueProposition() {
             transition={{ duration: 0.8, delay: 0.1, ease: smoothEase }}
             className="lg:col-span-6 flex flex-col items-start"
           >
-            <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.16em] text-[#8A684A] mb-2.5">
+            <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-[#7A6B5D] mb-2.5">
               THE RUMEA APPROACH
             </span>
 
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] text-[#1E1E1B] font-normal tracking-tight leading-tight mb-4 sm:mb-5">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] text-[#2C2926] font-normal tracking-tight leading-tight mb-4 sm:mb-5">
               Built for the home you actually live in.
             </h2>
 
@@ -61,10 +61,10 @@ export default function ValueProposition() {
             <div className="space-y-3 mb-8 w-full">
               {points.map((pt, idx) => (
                 <div key={idx} className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#F7F5F0] border border-[#DEDAD1] flex items-center justify-center flex-shrink-0">
-                    <Check className="w-3 h-3 text-[#1E1E1B]" strokeWidth={2.5} />
+                  <div className="w-5 h-5 rounded-full bg-[#2C2926]/5 border border-[#2C2926]/15 flex items-center justify-center flex-shrink-0">
+                    <Check className="w-3 h-3 text-[#2C2926]" strokeWidth={2.5} />
                   </div>
-                  <span className="text-xs sm:text-sm font-sans font-medium text-[#1E1E1B]">
+                  <span className="text-xs sm:text-sm font-sans font-medium text-[#2C2926]">
                     {pt}
                   </span>
                 </div>
@@ -74,7 +74,7 @@ export default function ValueProposition() {
             {/* Clean CTA with subtle hover animation */}
             <Link
               href="/about"
-              className="group inline-flex items-center gap-2 px-6 py-3.5 bg-transparent hover:bg-[#F7F5F0] border border-[#DEDAD1] hover:border-[#1E1E1B] text-[#1E1E1B] text-xs sm:text-sm font-medium rounded-full transition-all duration-200"
+              className="group inline-flex items-center gap-2 px-6 py-3.5 bg-transparent hover:bg-[#2C2926] border border-[#DEDAD1] hover:border-[#2C2926] text-[#2C2926] hover:text-[#F7F5F0] text-xs sm:text-sm font-medium rounded-full transition-all duration-200"
             >
               <span>Why Rumea</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />

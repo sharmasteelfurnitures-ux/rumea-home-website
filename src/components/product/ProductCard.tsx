@@ -34,7 +34,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
         {/* One small discreet label only when necessary */}
         {product.seo?.badge && product.seo.badge !== 'Coming Soon' && (
           <div className="absolute top-3 left-3 z-10">
-            <span className="px-2.5 py-1 text-[10px] font-sans font-medium uppercase tracking-wider rounded-md bg-[#1E1E1B] text-[#F7F5F0]">
+            <span className="px-2.5 py-1 text-[10px] font-sans font-medium uppercase tracking-wider rounded-md bg-[#2C2926] text-[#F7F5F0]">
               {product.seo.badge}
             </span>
           </div>
@@ -45,7 +45,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
       <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
         <div>
           {/* Product Title */}
-          <h3 className="font-sans font-medium text-sm text-[#1E1E1B] line-clamp-2 leading-snug group-hover:text-[#8A684A] transition-colors">
+          <h3 className="font-sans font-medium text-sm text-[#2C2926] line-clamp-2 leading-snug group-hover:text-[#7A6B5D] transition-colors">
             <Link href={`/products/${product.slug}`}>
               {product.name}
             </Link>
@@ -53,7 +53,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
 
           {/* Pricing: Offer Price + Strikethrough MRP */}
           <div className="flex items-baseline gap-2 pt-2">
-            <span className="font-sans font-semibold text-base text-[#1E1E1B]">
+            <span className="font-sans font-semibold text-base text-[#2C2926]">
               ₹{product.pricing.offer.toLocaleString('en-IN')}
             </span>
             {hasDiscount && (
@@ -75,7 +75,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
         <div className="pt-4 mt-3 border-t border-[#DEDAD1]/60 flex items-center justify-between gap-2">
           <Link
             href={`/products/${product.slug}`}
-            className="text-xs font-medium text-[#6B6962] hover:text-[#1E1E1B] transition-colors inline-flex items-center gap-1"
+            className="text-xs font-medium text-[#6B6962] hover:text-[#2C2926] transition-colors inline-flex items-center gap-1"
           >
             <span>Details</span>
             <ArrowRight className="w-3 h-3" />
@@ -85,10 +85,10 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
             href={amazonUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 px-3 py-1.5 bg-[#F7F5F0] hover:bg-[#1E1E1B] text-[#1E1E1B] hover:text-[#F7F5F0] text-xs font-semibold rounded-md border border-[#DEDAD1] hover:border-[#1E1E1B] transition-colors"
+            className="inline-flex items-center gap-1 px-3.5 py-1.5 bg-[#2C2926] hover:bg-[#3D3632] text-[#F7F5F0] text-xs font-semibold rounded-md transition-colors shadow-2xs"
           >
             <span>Shop on Amazon</span>
-            <ExternalLink className="w-3 h-3" />
+            <ExternalLink className="w-3 h-3 text-[#D8C9B5]" />
           </a>
         </div>
 

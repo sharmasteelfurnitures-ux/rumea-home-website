@@ -30,10 +30,10 @@ export default function ExperiencePage() {
 
         {/* Page Hero */}
         <div className="mb-10 text-center max-w-2xl mx-auto">
-          <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.15em] text-[#8A684A] inline-flex items-center gap-1.5 mb-2">
+          <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-[#7A6B5D] inline-flex items-center gap-1.5 mb-2">
             <Sparkles className="w-3.5 h-3.5" /> INTERACTIVE 3D STUDIO
           </span>
-          <h1 className="font-serif text-3xl sm:text-5xl text-[#1E1E1B] font-normal tracking-tight">
+          <h1 className="font-serif text-3xl sm:text-5xl text-[#2C2926] font-normal tracking-tight">
             Inspect Every Detail in 360°
           </h1>
           <p className="text-[#6B6962] text-sm sm:text-base mt-3 leading-relaxed">
@@ -49,24 +49,24 @@ export default function ExperiencePage() {
         {/* Informational Guidance Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
           <div className="p-6 bg-white rounded-xl border border-[#DEDAD1]">
-            <Box className="w-5 h-5 text-[#8A684A] mb-3" />
-            <h3 className="font-sans font-semibold text-sm text-[#1E1E1B]">True-to-Scale Dimensions</h3>
+            <Box className="w-5 h-5 text-[#7A6B5D] mb-3" />
+            <h3 className="font-sans font-semibold text-sm text-[#2C2926]">True-to-Scale Dimensions</h3>
             <p className="text-xs text-[#6B6962] mt-1.5 leading-relaxed">
               Every 3D model is built using exact millimeter blueprints to reflect real entryway clearance and floor footprints.
             </p>
           </div>
 
           <div className="p-6 bg-white rounded-xl border border-[#DEDAD1]">
-            <Smartphone className="w-5 h-5 text-[#8A684A] mb-3" />
-            <h3 className="font-sans font-semibold text-sm text-[#1E1E1B]">Instant Room Projection</h3>
+            <Smartphone className="w-5 h-5 text-[#7A6B5D] mb-3" />
+            <h3 className="font-sans font-semibold text-sm text-[#2C2926]">Instant Room Projection</h3>
             <p className="text-xs text-[#6B6962] mt-1.5 leading-relaxed">
               Supported on iOS (AR Quick Look) and Android (Scene Viewer). See how the piece fits beside your doorway or desk.
             </p>
           </div>
 
           <div className="p-6 bg-white rounded-xl border border-[#DEDAD1]">
-            <CheckCircle className="w-5 h-5 text-[#8A684A] mb-3" />
-            <h3 className="font-sans font-semibold text-sm text-[#1E1E1B]">Need Dimensional Help?</h3>
+            <CheckCircle className="w-5 h-5 text-[#48563A] mb-3" />
+            <h3 className="font-sans font-semibold text-sm text-[#2C2926]">Need Dimensional Help?</h3>
             <p className="text-xs text-[#6B6962] mt-1.5 leading-relaxed">
               Send your room photo or lift measurements to our WhatsApp team for quick, honest sizing confirmation before ordering.
             </p>

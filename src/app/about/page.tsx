@@ -190,7 +190,7 @@ export default function AboutPage() {
                 href={buildWhatsAppUrl("Hi Rumea Home! I'd like to book a visit to your Vasant Kunj showroom.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3.5 px-5 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold text-xs rounded-btn flex items-center justify-center gap-2 shadow-md transition-colors"
+                className="w-full py-3.5 px-5 bg-[#48563A] hover:bg-[#3B4730] text-white font-bold text-xs rounded-btn flex items-center justify-center gap-2 shadow-md transition-colors"
               >
                 <MessageCircle className="w-4 h-4 fill-current" />
                 <span>Book a Showroom Visit on WhatsApp</span>
@@ -293,7 +293,7 @@ export default function AboutPage() {
               href={buildWhatsAppUrl("Hi Rumea Home! I'd like help choosing the right pieces for my apartment.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#25D366] hover:bg-[#1EBE5D] text-white text-xs font-bold rounded-btn shadow-md transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#48563A] hover:bg-[#3B4730] text-white text-xs font-bold rounded-btn shadow-md transition-colors"
             >
               <MessageCircle className="w-4 h-4 fill-current" />
               <span>Chat on WhatsApp</span>

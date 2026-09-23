@@ -54,10 +54,10 @@ export default function BestSellers() {
           className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-12"
         >
           <div>
-            <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.16em] text-[#8A684A] block mb-2">
+            <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-[#7A6B5D] block mb-2">
               CURATED CATALOGUE
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#1E1E1B] font-normal tracking-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl text-[#2C2926] font-normal tracking-tight">
               Everyday pieces, thoughtfully designed.
             </h2>
           </div>
@@ -72,15 +72,15 @@ export default function BestSellers() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`pb-2.5 px-3 text-xs sm:text-sm font-sans transition-colors relative cursor-pointer ${
                     isActive
-                      ? 'text-[#1E1E1B] font-semibold'
-                      : 'text-[#6B6962] hover:text-[#1E1E1B] font-normal'
+                      ? 'text-[#2C2926] font-semibold'
+                      : 'text-[#6B6962] hover:text-[#2C2926] font-normal'
                   }`}
                 >
                   <span>{tab.label}</span>
                   {isActive && (
                     <motion.span
                       layoutId="activeTabUnderline"
-                      className="absolute bottom-0 inset-x-0 h-[2px] bg-[#1E1E1B]"
+                      className="absolute bottom-0 inset-x-0 h-[2px] bg-[#2C2926]"
                       transition={{ type: 'spring', stiffness: 500, damping: 35 }}
                     />
                   )}
@@ -117,7 +117,7 @@ export default function BestSellers() {
         <div className="mt-12 text-center">
           <Link
             href="/products"
-            className="group inline-flex items-center gap-2 px-8 py-3.5 bg-transparent hover:bg-white border border-[#DEDAD1] hover:border-[#1E1E1B] text-[#1E1E1B] text-xs sm:text-sm font-semibold rounded-full transition-all duration-200 shadow-2xs hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-2 px-8 py-3.5 bg-transparent hover:bg-[#2C2926] border border-[#DEDAD1] hover:border-[#2C2926] text-[#2C2926] hover:text-[#F7F5F0] text-xs sm:text-sm font-semibold rounded-full transition-all duration-200 shadow-2xs hover:-translate-y-0.5"
           >
             <span>View all products</span>
             <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />

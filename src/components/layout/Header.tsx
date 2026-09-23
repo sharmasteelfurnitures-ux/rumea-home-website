@@ -48,15 +48,15 @@ export default function Header() {
       {/* 1. Static Announcement Bar */}
       <aside
         aria-label="Announcement"
-        className="w-full bg-[#1E1E1B] text-[#F7F5F0] text-xs py-2 px-4 text-center font-sans tracking-wide"
+        className="w-full bg-[#2C2926] text-[#F7F5F0] text-xs py-2 px-4 text-center font-sans tracking-wide"
       >
         <span>Practical furniture for Indian apartments</span>
-        <span className="mx-2 text-[#6B6962]">|</span>
+        <span className="mx-2 text-[#D8C9B5]/50">|</span>
         <a
           href="https://www.amazon.in"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline hover:text-[#DEDAD1] transition-colors"
+          className="underline hover:text-[#D8C9B5] transition-colors"
         >
           Shop on Amazon India
         </a>
@@ -124,10 +124,10 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsAppClick({ source: 'header' })}
-                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[#1E1E1B] hover:text-[#8A684A] transition-colors"
+                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[#2C2926] hover:text-[#48563A] transition-colors"
                 title="Sizing support on WhatsApp"
               >
-                <MessageCircle className="w-3.5 h-3.5 text-[#8A684A]" />
+                <MessageCircle className="w-3.5 h-3.5 text-[#48563A]" />
                 <span>Help</span>
               </a>
 
@@ -136,10 +136,10 @@ export default function Header() {
                 href="https://www.amazon.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#1E1E1B] hover:bg-[#2E2E2A] text-[#F7F5F0] text-xs font-semibold rounded-full transition-colors shadow-2xs"
+                className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#2C2926] hover:bg-[#3D3632] text-[#F7F5F0] text-xs font-semibold rounded-full transition-colors shadow-2xs"
               >
                 <span>Shop on Amazon</span>
-                <ExternalLink className="w-3 h-3 text-[#DEDAD1]" />
+                <ExternalLink className="w-3 h-3 text-[#D8C9B5]" />
               </a>
 
             </div>
@@ -172,17 +172,58 @@ export default function Header() {
               </div>
 
               {/* Navigation Links */}
-              <div className="py-6 space-y-4">
+              <div className="py-6 space-y-3">
                 {navLinks.map((link) => (
                   <Link
                     key={link.label}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block text-base font-sans text-[#1E1E1B] hover:text-[#8A684A] transition-colors py-1"
+                    className="block text-base font-sans text-[#1E1E1B] hover:text-[#2C2926] transition-colors py-1"
                   >
                     {link.label}
                   </Link>
                 ))}
+
+                <div className="pt-4 mt-2 border-t border-[#DEDAD1]/60 space-y-2">
+                  <p className="text-[10px] font-sans font-semibold uppercase tracking-wider text-[#7A6B5D]">
+                    Discover More
+                  </p>
+                  <Link
+                    href="/rooms"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-xs font-sans text-[#6B6962] hover:text-[#1E1E1B] py-1"
+                  >
+                    Rooms Hub &amp; Layouts
+                  </Link>
+                  <Link
+                    href="/collections"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-xs font-sans text-[#6B6962] hover:text-[#1E1E1B] py-1"
+                  >
+                    Style Collections
+                  </Link>
+                  <Link
+                    href="/experience"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-xs font-sans text-[#6B6962] hover:text-[#1E1E1B] py-1"
+                  >
+                    360° Studio &amp; AR
+                  </Link>
+                  <Link
+                    href="/contact"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-xs font-sans text-[#6B6962] hover:text-[#1E1E1B] py-1"
+                  >
+                    Contact &amp; Support
+                  </Link>
+                  <Link
+                    href="/blog"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-xs font-sans text-[#6B6962] hover:text-[#1E1E1B] py-1"
+                  >
+                    Design Journal &amp; Guides
+                  </Link>
+                </div>
               </div>
             </div>
 
@@ -192,10 +233,10 @@ export default function Header() {
                 href="https://www.amazon.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 py-3 bg-[#1E1E1B] text-[#F7F5F0] text-xs font-semibold rounded-btn text-center"
+                className="w-full flex items-center justify-center gap-2 py-3 bg-[#2C2926] hover:bg-[#3D3632] text-[#F7F5F0] text-xs font-semibold rounded-btn text-center transition-colors"
               >
                 <span>Shop on Amazon India</span>
-                <ExternalLink className="w-3.5 h-3.5 text-[#DEDAD1]" />
+                <ExternalLink className="w-3.5 h-3.5 text-[#D8C9B5]" />
               </a>
 
               <a
@@ -203,9 +244,9 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsAppClick({ source: 'mobile_menu' })}
-                className="w-full flex items-center justify-center gap-2 py-2.5 bg-white border border-[#DEDAD1] text-[#1E1E1B] text-xs font-medium rounded-btn"
+                className="w-full flex items-center justify-center gap-2 py-2.5 bg-white border border-[#48563A]/40 text-[#48563A] hover:bg-[#48563A]/5 text-xs font-medium rounded-btn transition-colors"
               >
-                <MessageCircle className="w-3.5 h-3.5 text-[#8A684A]" />
+                <MessageCircle className="w-3.5 h-3.5 text-[#48563A]" />
                 <span>Room Sizing on WhatsApp</span>
               </a>
             </div>

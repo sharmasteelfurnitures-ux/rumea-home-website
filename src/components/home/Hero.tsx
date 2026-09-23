@@ -22,12 +22,12 @@ export default function Hero() {
             className="lg:col-span-7 flex flex-col items-start"
           >
             {/* Eyebrow */}
-            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8A684A] mb-3 sm:mb-4">
+            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7A6B5D] mb-3 sm:mb-4">
               FURNITURE FOR REAL INDIAN HOMES
             </span>
 
             {/* Main Heading */}
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-normal text-[#1E1E1B] tracking-tight leading-[1.08] mb-5 sm:mb-6">
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-normal text-[#2C2926] tracking-tight leading-[1.08] mb-5 sm:mb-6">
               Make more room for living.
             </h1>
 
@@ -40,7 +40,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 w-full sm:w-auto">
               <Link
                 href="/products"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#1E1E1B] hover:bg-[#2E2E2A] text-[#F7F5F0] text-sm font-semibold rounded-full transition-all duration-200 shadow-xs hover:shadow-sm"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#2C2926] hover:bg-[#3D3632] text-[#F7F5F0] text-sm font-semibold rounded-full transition-all duration-200 shadow-xs hover:shadow-sm"
               >
                 <span>Shop all furniture</span>
                 <ArrowRight className="w-4 h-4" />
@@ -48,7 +48,7 @@ export default function Hero() {
 
               <a
                 href="#fit-assistance"
-                className="inline-flex items-center justify-center px-8 py-4 bg-transparent hover:bg-white border border-[#DEDAD1] hover:border-[#1E1E1B] text-[#1E1E1B] text-sm font-medium rounded-full transition-all duration-200"
+                className="inline-flex items-center justify-center px-8 py-4 bg-transparent hover:bg-white border border-[#DEDAD1] hover:border-[#2C2926] text-[#2C2926] text-sm font-medium rounded-full transition-all duration-200"
               >
                 <span>Find the right fit</span>
               </a>

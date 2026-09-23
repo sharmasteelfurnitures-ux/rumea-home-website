@@ -29,11 +29,11 @@ export default function FitAssistance() {
           viewport={{ once: true, margin: '-40px' }}
           transition={{ duration: 0.7, ease: smoothEase }}
         >
-          <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.16em] text-[#8A684A] block mb-2.5">
+          <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.16em] text-[#48563A] block mb-2.5">
             APARTMENT FIT PROMISE
           </span>
 
-          <h2 className="font-serif text-3xl sm:text-4xl text-[#1E1E1B] font-normal tracking-tight mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl text-[#2C2926] font-normal tracking-tight mb-4">
             Not sure what will fit?
           </h2>
 
@@ -42,11 +42,11 @@ export default function FitAssistance() {
           </p>
 
           {/* 3 small supporting points */}
-          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 mb-8 text-xs sm:text-sm text-[#1E1E1B] font-medium">
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 mb-8 text-xs sm:text-sm text-[#2C2926] font-medium">
             {points.map((pt, idx) => (
               <div key={idx} className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded-full bg-[#F7F5F0] border border-[#DEDAD1] flex items-center justify-center flex-shrink-0">
-                  <Check className="w-2.5 h-2.5 text-[#1E1E1B]" strokeWidth={2.5} />
+                <div className="w-4 h-4 rounded-full bg-[#48563A]/10 border border-[#48563A]/25 flex items-center justify-center flex-shrink-0">
+                  <Check className="w-2.5 h-2.5 text-[#48563A]" strokeWidth={2.5} />
                 </div>
                 <span>{pt}</span>
               </div>
@@ -60,9 +60,9 @@ export default function FitAssistance() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackWhatsAppClick({ source: 'fit_assistance' })}
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#1E1E1B] hover:bg-[#2E2E2A] text-[#F7F5F0] text-sm font-semibold rounded-full transition-all duration-200 shadow-2xs hover:shadow-xs hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#48563A] hover:bg-[#3B4730] text-white text-sm font-semibold rounded-full transition-all duration-200 shadow-xs hover:shadow-sm hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
             >
-              <MessageCircle className="w-4 h-4 text-[#DEDAD1]" />
+              <MessageCircle className="w-4 h-4 text-[#D8C9B5]" />
               <span>Check room fit on WhatsApp</span>
             </a>
           </div>

@@ -41,8 +41,8 @@ export default function TrustStrip() {
                 transition={{ duration: 0.6, delay: idx * 0.08, ease: smoothEase }}
                 className="flex items-center justify-center gap-2.5 text-center sm:text-left"
               >
-                <Icon className="w-4 h-4 text-[#8A684A] flex-shrink-0" strokeWidth={1.75} />
-                <span className="text-xs sm:text-sm font-sans font-medium text-[#1E1E1B] tracking-tight">
+                <Icon className="w-4 h-4 text-[#7A6B5D] flex-shrink-0" strokeWidth={1.75} />
+                <span className="text-xs sm:text-sm font-sans font-medium text-[#2C2926] tracking-tight">
                   {pt.label}
                 </span>
               </motion.div>

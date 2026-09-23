@@ -19,10 +19,10 @@ export default function CustomerProof() {
           transition={{ duration: 0.7, ease: smoothEase }}
           className="mb-10 sm:mb-12 text-center max-w-xl mx-auto"
         >
-          <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.16em] text-[#8A684A] block mb-2">
+          <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-[#7A6B5D] block mb-2">
             REAL HOMES, REAL SPACES
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl text-[#1E1E1B] font-normal tracking-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl text-[#2C2926] font-normal tracking-tight">
             Loved in everyday Indian homes
           </h2>
         </motion.div>
@@ -36,19 +36,19 @@ export default function CustomerProof() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-30px' }}
               transition={{ duration: 0.6, delay: idx * 0.1, ease: smoothEase }}
-              className="bg-white rounded-xl p-6 sm:p-7 border border-[#DEDAD1] shadow-2xs hover:border-[#1E1E1B]/30 hover:shadow-xs transition-all duration-300 flex flex-col justify-between"
+              className="bg-white rounded-xl p-6 sm:p-7 border border-[#DEDAD1] shadow-2xs hover:border-[#2C2926]/25 hover:shadow-xs transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                <p className="text-sm font-sans text-[#1E1E1B] leading-relaxed mb-6">
+                <p className="text-sm font-sans text-[#2C2926] leading-relaxed mb-6">
                   &ldquo;{review.reviewText}&rdquo;
                 </p>
               </div>
 
               <div className="pt-4 border-t border-[#DEDAD1]/50">
-                <p className="font-sans font-semibold text-xs text-[#1E1E1B]">
+                <p className="font-sans font-semibold text-xs text-[#2C2926]">
                   {review.name} <span className="text-[#6B6962] font-normal">• {review.city}</span>
                 </p>
-                <p className="text-[11px] text-[#8A684A] font-medium mt-0.5">
+                <p className="text-[11px] text-[#7A6B5D] font-medium mt-0.5">
                   {review.productName}
                 </p>
               </div>

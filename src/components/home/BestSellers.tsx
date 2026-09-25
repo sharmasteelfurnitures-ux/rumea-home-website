@@ -42,7 +42,7 @@ export default function BestSellers() {
   ];
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-[#F7F5F0]">
+    <section className="py-16 sm:py-20 md:py-24 bg-[#F7F4EE]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header & Simple Filter Tabs */}
@@ -54,10 +54,10 @@ export default function BestSellers() {
           className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-12"
         >
           <div>
-            <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-[#7A6B5D] block mb-2">
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[#78806A] block mb-2">
               CURATED CATALOGUE
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#2C2926] font-normal tracking-tight">
+            <h2 className="font-heading text-3xl sm:text-4xl text-[#2C2926] font-bold tracking-tight">
               Everyday pieces, thoughtfully designed.
             </h2>
           </div>

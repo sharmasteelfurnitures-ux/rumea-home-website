@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #F7F5F0;
-  --text-primary: #1E1E1B;
+  --bg-primary: #F7F4EE;
+  --text-primary: #2C2926;
   --text-secondary: #6B6962;
   --border-subtle: #DEDAD1;
-  --accent-soft: #7A6B5D;
+  --accent-soft: #78806A;
   --bg-dark: #2C2926;
   --bg-white: #FFFFFF;
 
   --color-espresso: #2C2926;
   --color-sand: #D8C9B5;
   --color-ivory: #F7F4EE;
-  --color-olive: #48563A;
+  --color-olive: #78806A;
   --color-taupe: #A69B8C;
   --color-brand-taupe: #7A6B5D;
   --color-logobrown: #3D2212;
@@ -30,14 +30,15 @@
   --soft-taupe: #A69B8C;
   --border-sand: #DEDAD1;
 
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Inter', 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
 
-  --radius-card: 12px;
-  --radius-btn: 6px;
+  --radius-card: 18px;
+  --radius-btn: 9999px;
 
-  --shadow-card: 0 1px 3px rgba(30, 30, 27, 0.04), 0 4px 12px rgba(30, 30, 27, 0.03);
-  --shadow-hover: 0 8px 24px rgba(30, 30, 27, 0.07);
+  --shadow-card: 0 2px 14px -2px rgba(44, 41, 38, 0.05);
+  --shadow-hover: 0 14px 34px -4px rgba(44, 41, 38, 0.11);
 }
 
 * {
@@ -53,16 +54,18 @@ html {
 }
 
 body {
-  background-color: #F7F5F0;
-  color: #1E1E1B;
+  background-color: #F7F4EE;
+  color: #2C2926;
   font-family: var(--font-body);
   line-height: 1.6;
   min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif);
-  color: #1E1E1B;
+  font-family: var(--font-heading);
+  color: #2C2926;
+  letter-spacing: -0.025em;
+  font-weight: 600;
 }
 
 /* Silky smooth card hover interaction */

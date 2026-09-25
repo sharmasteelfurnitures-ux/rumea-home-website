@@ -43,7 +43,7 @@ export default function WhatsAppButton({
           rel="noopener noreferrer"
           onClick={handleClick}
           aria-label="Chat with us on WhatsApp"
-          className={`fixed z-50 flex items-center justify-center rounded-full bg-[#48563A] hover:bg-[#3B4730] text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 group border border-[#48563A]/40 bottom-20 right-4 sm:bottom-6 sm:right-6 w-12 h-12 sm:w-14 sm:h-14 cursor-pointer ${className}`}
+          className={`fixed z-50 flex items-center justify-center rounded-full bg-[#78806A] hover:bg-[#68705B] text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 group border border-[#78806A]/40 bottom-20 right-4 sm:bottom-6 sm:right-6 w-12 h-12 sm:w-14 sm:h-14 cursor-pointer ${className}`}
         >
           {/* Subtle online pulse beacon */}
           <span className="absolute top-0.5 right-0.5 flex h-3.5 w-3.5">
@@ -53,7 +53,7 @@ export default function WhatsAppButton({
           <MessageCircle className="w-7 h-7 text-white relative z-10" />
           
           {/* Tooltip on desktop hover */}
-          <span className="hidden md:group-hover:inline-block absolute right-full mr-3 px-3 py-1.5 bg-[#2C2926] text-[#F7F4EE] text-xs font-medium rounded-lg whitespace-nowrap shadow-md border border-[#D8C9B5]/20 pointer-events-none">
+          <span className="hidden md:group-hover:inline-block absolute right-full mr-3 px-3.5 py-1.5 bg-[#2C2926] text-[#F7F4EE] text-xs font-semibold rounded-full whitespace-nowrap shadow-md border border-[#D8C9B5]/20 pointer-events-none">
             Chat on WhatsApp
           </span>
         </a>

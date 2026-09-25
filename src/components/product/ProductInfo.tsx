@@ -3,7 +3,7 @@
 import React, { useState, useRef } from 'react';
 import { Product } from '@/types/product';
 import { buildProductWhatsAppUrl } from '@/lib/whatsapp';
-import { trackWhatsAppClick } from '@/lib/analytics';
+import { trackWhatsAppClick, trackAmazonClick } from '@/lib/analytics';
 import { 
   ShieldCheck, 
   Truck, 
@@ -11,7 +11,8 @@ import {
   CreditCard, 
   Award,
   MessageCircle,
-  Phone
+  Phone,
+  ExternalLink
 } from 'lucide-react';
 
 interface ProductInfoProps {
@@ -186,14 +187,36 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         )}
       </div>
 
-      {/* CTA Buttons Row: Primary WhatsApp Order/Enquire + Direct Phone Consultation */}
+      {/* CTA Buttons Row: Primary Amazon Purchase + WhatsApp Fit / Order Consultation */}
       <div className="flex flex-col gap-3 pt-2">
+        {/* Primary eCommerce Action: Shop on Amazon India */}
+        {product.seo?.badge !== 'Coming Soon' && (
+          <a
+            href={product.conversion?.amazonUrl || 'https://www.amazon.in'}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() =>
+              trackAmazonClick({
+                id: product.id,
+                name: product.name,
+                price: product.pricing.offer,
+                category: product.category,
+              })
+            }
+            className="w-full min-h-[48px] flex items-center justify-center gap-2 py-3.5 px-6 bg-[#2C2926] hover:bg-[#3D3632] text-[#F7F4EE] font-heading font-semibold text-sm sm:text-base rounded-full shadow-warm hover:shadow-hover transition-all duration-200 cursor-pointer"
+          >
+            <span>Shop on Amazon India</span>
+            <ExternalLink className="w-4 h-4 text-[#D8C9B5]" />
+          </a>
+        )}
+
+        {/* Human Assistance: WhatsApp Room-Fit Check */}
         <a
           href={productWhatsAppUrl}
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => trackWhatsAppClick({ source: 'pdp', product_id: product.id, product_name: product.name })}
-          className="relative group w-full min-h-[48px] flex items-center justify-center gap-2.5 py-3.5 px-6 bg-[#48563A] hover:bg-[#3B4730] text-[#F7F4EE] font-sans font-semibold text-sm sm:text-base rounded-btn shadow-warm hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 overflow-hidden cursor-pointer"
+          className="relative group w-full min-h-[48px] flex items-center justify-center gap-2.5 py-3.5 px-6 bg-[#78806A] hover:bg-[#68705B] text-white font-heading font-semibold text-sm rounded-full shadow-warm hover:shadow-hover hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 overflow-hidden cursor-pointer"
         >
           {/* Shimmer sweep */}
           <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none" />
@@ -204,16 +227,16 @@ export default function ProductInfo({ product }: ProductInfoProps) {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#D8C9B5]" />
           </span>
 
-          <MessageCircle className="w-5 h-5 text-[#D8C9B5]" />
-          <span>{product.seo?.badge === 'Coming Soon' ? 'Inquire on WhatsApp (Coming Soon)' : 'Enquire & Order on WhatsApp'}</span>
+          <MessageCircle className="w-4 h-4 text-[#D8C9B5]" />
+          <span>{product.seo?.badge === 'Coming Soon' ? 'Inquire on WhatsApp (Coming Soon)' : 'Check Room Fit on WhatsApp'}</span>
         </a>
 
+        {/* Direct Phone Advice */}
         <a
           href="tel:+917291962356"
-          className="w-full min-h-[48px] flex items-center justify-center gap-2.5 py-3 px-6 bg-transparent text-[#2C2926] border-[1.5px] border-[#2C2926] hover:bg-[#2C2926] hover:text-[#F7F4EE] font-sans font-medium text-sm rounded-btn transition-all duration-200 group"
+          className="w-full py-2 px-3 text-center text-xs text-[#6B6962] hover:text-[#2C2926] font-sans transition-colors"
         >
-          <Phone className="w-4 h-4 text-[#48563A] group-hover:text-[#F7F4EE]" />
-          <span>Call +91 72919 62356 for Sizing &amp; Space Guidance</span>
+          Need quick sizing guidance? Call <span className="underline font-semibold text-[#2C2926]">+91 72919 62356</span>
         </a>
       </div>
 

@@ -16,10 +16,10 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
   const hasDiscount = product.pricing.mrp > product.pricing.offer;
 
   return (
-    <div className="group flex flex-col h-full bg-white rounded-xl border border-[#DEDAD1] overflow-hidden transition-all duration-300 hover:border-[#1E1E1B]/30 hover:shadow-sm">
+    <div className="group flex flex-col h-full bg-white rounded-2xl border border-[#D8C9B5] overflow-hidden transition-all duration-300 hover:border-[#2C2926]/40 hover:shadow-card">
       
       {/* Product Image Container */}
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#F0ECE1]">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#EDE7DC]">
         <Link href={`/products/${product.slug}`} className="block w-full h-full">
           <Image
             src={product.images.primary}
@@ -27,14 +27,14 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             priority={priority}
-            className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.035]"
+            className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.04]"
           />
         </Link>
 
-        {/* One small discreet label only when necessary */}
+        {/* Brand badge in Muted Olive */}
         {product.seo?.badge && product.seo.badge !== 'Coming Soon' && (
           <div className="absolute top-3 left-3 z-10">
-            <span className="px-2.5 py-1 text-[10px] font-sans font-medium uppercase tracking-wider rounded-md bg-[#2C2926] text-[#F7F5F0]">
+            <span className="px-3 py-1 text-[10px] font-sans font-semibold uppercase tracking-wider rounded-full bg-[#78806A] text-white shadow-xs">
               {product.seo.badge}
             </span>
           </div>
@@ -44,20 +44,20 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
       {/* Product Details */}
       <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
         <div>
-          {/* Product Title */}
-          <h3 className="font-sans font-medium text-sm text-[#2C2926] line-clamp-2 leading-snug group-hover:text-[#7A6B5D] transition-colors">
+          {/* Product Title in Plus Jakarta Sans */}
+          <h3 className="font-heading font-semibold text-sm sm:text-base text-[#2C2926] line-clamp-2 leading-snug group-hover:text-[#78806A] transition-colors">
             <Link href={`/products/${product.slug}`}>
               {product.name}
             </Link>
           </h3>
 
           {/* Pricing: Offer Price + Strikethrough MRP */}
-          <div className="flex items-baseline gap-2 pt-2">
-            <span className="font-sans font-semibold text-base text-[#2C2926]">
+          <div className="flex items-baseline gap-2 pt-2.5">
+            <span className="font-heading font-bold text-base sm:text-lg text-[#2C2926]">
               ₹{product.pricing.offer.toLocaleString('en-IN')}
             </span>
             {hasDiscount && (
-              <span className="text-xs text-[#6B6962] line-through">
+              <span className="text-xs text-[#A69B8C] line-through font-normal">
                 ₹{product.pricing.mrp.toLocaleString('en-IN')}
               </span>
             )}
@@ -65,17 +65,17 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
 
           {/* Dimensions */}
           {product.dimensions?.width?.cm && product.dimensions?.depth?.cm && product.dimensions?.height?.cm && (
-            <p className="text-[11px] text-[#6B6962] font-mono pt-1.5">
+            <p className="text-[11px] text-[#78806A] font-medium pt-1">
               {product.dimensions.width.cm} × {product.dimensions.depth.cm} × {product.dimensions.height.cm} cm
             </p>
           )}
         </div>
 
-        {/* Single Clear Interaction Button: Direct to Amazon India */}
-        <div className="pt-4 mt-3 border-t border-[#DEDAD1]/60 flex items-center justify-between gap-2">
+        {/* Interaction Actions */}
+        <div className="pt-4 mt-3 border-t border-[#D8C9B5]/50 flex items-center justify-between gap-2">
           <Link
             href={`/products/${product.slug}`}
-            className="text-xs font-medium text-[#6B6962] hover:text-[#2C2926] transition-colors inline-flex items-center gap-1"
+            className="text-xs font-semibold text-[#6B6962] hover:text-[#2C2926] transition-colors inline-flex items-center gap-1"
           >
             <span>Details</span>
             <ArrowRight className="w-3 h-3" />
@@ -85,7 +85,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
             href={amazonUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 px-3.5 py-1.5 bg-[#2C2926] hover:bg-[#3D3632] text-[#F7F5F0] text-xs font-semibold rounded-md transition-colors shadow-2xs"
+            className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#2C2926] hover:bg-[#3D3632] text-[#F7F4EE] text-xs font-semibold rounded-full transition-all shadow-xs hover:shadow-sm"
           >
             <span>Shop on Amazon</span>
             <ExternalLink className="w-3 h-3 text-[#D8C9B5]" />

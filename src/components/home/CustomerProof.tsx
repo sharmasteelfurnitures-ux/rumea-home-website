@@ -8,7 +8,7 @@ export default function CustomerProof() {
   const smoothEase = [0.16, 1, 0.3, 1];
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-[#F7F5F0]">
+    <section className="py-16 sm:py-20 md:py-24 bg-[#F7F4EE]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -19,10 +19,10 @@ export default function CustomerProof() {
           transition={{ duration: 0.7, ease: smoothEase }}
           className="mb-10 sm:mb-12 text-center max-w-xl mx-auto"
         >
-          <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-[#7A6B5D] block mb-2">
+          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[#78806A] block mb-2">
             REAL HOMES, REAL SPACES
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl text-[#2C2926] font-normal tracking-tight">
+          <h2 className="font-heading text-3xl sm:text-4xl text-[#2C2926] font-bold tracking-tight">
             Loved in everyday Indian homes
           </h2>
         </motion.div>
@@ -36,19 +36,24 @@ export default function CustomerProof() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-30px' }}
               transition={{ duration: 0.6, delay: idx * 0.1, ease: smoothEase }}
-              className="bg-white rounded-xl p-6 sm:p-7 border border-[#DEDAD1] shadow-2xs hover:border-[#2C2926]/25 hover:shadow-xs transition-all duration-300 flex flex-col justify-between"
+              className="bg-white rounded-2xl p-6 sm:p-7 border border-[#D8C9B5] shadow-xs hover:border-[#2C2926]/30 hover:shadow-card transition-all duration-300 flex flex-col justify-between"
             >
               <div>
+                {/* 5-Star indicator */}
+                <div className="flex items-center gap-1 text-[#78806A] text-xs mb-4">
+                  {'★'.repeat(5)}
+                  <span className="text-[11px] text-[#A69B8C] ml-1 font-medium">Verified Buyer</span>
+                </div>
                 <p className="text-sm font-sans text-[#2C2926] leading-relaxed mb-6">
                   &ldquo;{review.reviewText}&rdquo;
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#DEDAD1]/50">
-                <p className="font-sans font-semibold text-xs text-[#2C2926]">
-                  {review.name} <span className="text-[#6B6962] font-normal">• {review.city}</span>
+              <div className="pt-4 border-t border-[#D8C9B5]/50">
+                <p className="font-heading font-bold text-xs text-[#2C2926]">
+                  {review.name} <span className="text-[#6B6962] font-normal font-sans">• {review.city}</span>
                 </p>
-                <p className="text-[11px] text-[#7A6B5D] font-medium mt-0.5">
+                <p className="text-[11px] text-[#78806A] font-semibold mt-0.5">
                   {review.productName}
                 </p>
               </div>

@@ -40,6 +40,8 @@ const nextConfig = {
       { source: '/faqs', destination: '/contact', permanent: true },
       { source: '/shipping', destination: '/terms', permanent: true },
       { source: '/returns', destination: '/terms', permanent: true },
+      { source: '/experience', destination: '/products', permanent: true },
+      { source: '/360', destination: '/products', permanent: true },
     ];
   },
 };

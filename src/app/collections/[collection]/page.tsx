@@ -121,7 +121,7 @@ export default function CollectionPage({ params }: Props) {
   const colProducts = rawProducts.length > 0 ? rawProducts : getAllProducts().slice(0, 4);
 
   return (
-    <div className="bg-warm-ivory min-h-screen py-6 sm:py-10">
+    <div className="bg-surface-page min-h-screen py-6 sm:py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <Breadcrumb
@@ -132,7 +132,7 @@ export default function CollectionPage({ params }: Props) {
           className="mb-6"
         />
 
-        <div className="relative rounded-3xl overflow-hidden shadow-warm border border-warm-sand/60 mb-12 sm:mb-16">
+        <div className="relative rounded-3xl overflow-hidden shadow-warm border border-border mb-12 sm:mb-16">
           <div className="relative aspect-[16/9] sm:aspect-[21/9] min-h-[320px]">
             <Image
               src={col.image}
@@ -142,19 +142,19 @@ export default function CollectionPage({ params }: Props) {
               sizes="100vw"
               className="object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-espresso/90 via-espresso/60 to-espresso/30" />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/60 to-primary/30" />
             
-            <div className="absolute inset-0 p-6 sm:p-12 lg:p-16 flex flex-col justify-center max-w-2xl text-warm-ivory">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-warm-sand/20 text-warm-sand text-xs font-bold uppercase tracking-widest rounded-full self-start mb-3">
+            <div className="absolute inset-0 p-6 sm:p-12 lg:p-16 flex flex-col justify-center max-w-2xl text-primary-text">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-sand/20 text-sand text-xs font-bold uppercase tracking-widest rounded-full self-start mb-3">
                 <Sparkles className="w-3.5 h-3.5" /> Style Philosophy
               </span>
-              <h1 className="font-display font-extrabold text-2xl sm:text-4xl lg:text-5xl text-warm-ivory tracking-tight">
+              <h1 className="font-display font-extrabold text-2xl sm:text-4xl lg:text-5xl text-primary-text tracking-tight">
                 {col.name}
               </h1>
-              <p className="text-warm-sand/90 text-sm sm:text-base lg:text-lg mt-3 leading-relaxed">
+              <p className="text-sand/90 text-sm sm:text-base lg:text-lg mt-3 leading-relaxed">
                 {col.tagline}
               </p>
-              <p className="text-xs sm:text-sm text-soft-taupe/90 mt-2 max-w-xl">
+              <p className="text-xs sm:text-sm text-sand/80 mt-2 max-w-xl">
                 {col.philosophy}
               </p>
             </div>
@@ -164,17 +164,17 @@ export default function CollectionPage({ params }: Props) {
         <div className="mb-16">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="font-display font-bold text-xl sm:text-2xl text-espresso">
+              <h2 className="font-display font-bold text-xl sm:text-2xl text-primary">
                 {col.name} Designs
               </h2>
-              <p className="text-xs sm:text-sm text-soft-taupe mt-1">
+              <p className="text-xs sm:text-sm text-content-muted mt-1">
                 Showing {colProducts.length} coordinated pieces in this aesthetic.
               </p>
             </div>
 
             <Link
               href="/products"
-              className="text-xs sm:text-sm font-semibold text-espresso hover:text-muted-olive flex items-center gap-1 transition-colors"
+              className="text-xs sm:text-sm font-semibold text-primary hover:text-accent flex items-center gap-1 transition-colors"
             >
               <span>All Collections</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -188,11 +188,11 @@ export default function CollectionPage({ params }: Props) {
           </div>
         </div>
 
-        <div className="bg-white rounded-3xl p-8 sm:p-12 text-center border border-warm-sand/60 shadow-card">
-          <h3 className="font-display font-bold text-xl sm:text-2xl text-espresso mb-2">
+        <div className="bg-surface rounded-3xl p-8 sm:p-12 text-center border border-border shadow-card">
+          <h3 className="font-display font-bold text-xl sm:text-2xl text-primary mb-2">
             Looking for Customization in the {col.name} Style?
           </h3>
-          <p className="text-soft-taupe text-xs sm:text-sm max-w-lg mx-auto mb-6">
+          <p className="text-content-muted text-xs sm:text-sm max-w-lg mx-auto mb-6">
             Our interior experts can help customize finishes, wood tones, and sizing to match your home&apos;s architectural palette.
           </p>
           <WhatsAppButton

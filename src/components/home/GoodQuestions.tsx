@@ -40,16 +40,16 @@ export default function GoodQuestions() {
   ];
 
   return (
-    <section className="py-20 sm:py-24 lg:py-28 bg-[#F7F4EE] border-t border-[#DEDAD1]">
+    <section className="py-20 sm:py-24 lg:py-28 bg-surface-page border-t border-border">
       <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-12">
         
         {/* Header: Clean accordion FAQ */}
         <div className="mb-12 sm:mb-14">
-          <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-[#2C2926] tracking-tight">
+          <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-primary tracking-tight">
             Good questions.
           </h2>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-3">
-            <p className="text-sm text-[#6B6962] font-sans">
+            <p className="text-sm text-content-muted font-sans">
               Anything else? Reach out on WhatsApp and a real person will help you.
             </p>
             <a
@@ -57,7 +57,7 @@ export default function GoodQuestions() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackWhatsAppClick({ source: 'faq_header' })}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-[#78806A] hover:underline"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-accent hover:underline"
             >
               <MessageCircle className="w-3.5 h-3.5" />
               <span>Ask on WhatsApp &rarr;</span>
@@ -66,7 +66,7 @@ export default function GoodQuestions() {
         </div>
 
         {/* Minimalist Accordion List */}
-        <div className="border-t border-[#DEDAD1] divide-y divide-[#DEDAD1]">
+        <div className="border-t border-border divide-y divide-border">
           {faqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
@@ -75,19 +75,19 @@ export default function GoodQuestions() {
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
                   className="w-full flex items-center justify-between text-left gap-4 focus:outline-none cursor-pointer group"
                 >
-                  <span className="font-heading font-semibold text-lg sm:text-xl text-[#2C2926] group-hover:text-[#7A6B5D] transition-colors">
+                  <span className="font-heading font-semibold text-lg sm:text-xl text-primary group-hover:text-accent transition-colors">
                     {faq.q}
                   </span>
                   <ChevronDown
-                    className={`w-5 h-5 text-[#6B6962] transition-transform duration-300 shrink-0 ${
-                      isOpen ? 'rotate-180 text-[#2C2926]' : ''
+                    className={`w-5 h-5 text-content-muted transition-transform duration-300 shrink-0 ${
+                      isOpen ? 'rotate-180 text-primary' : ''
                     }`}
                   />
                 </button>
 
                 {isOpen && (
                   <div className="mt-3.5 pr-8">
-                    <p className="text-sm sm:text-base text-[#6B6962] font-sans leading-relaxed">
+                    <p className="text-sm sm:text-base text-content-muted font-sans leading-relaxed">
                       {faq.a}
                     </p>
                   </div>

@@ -8,51 +8,74 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Official Brand Kit System
-        espresso: {
-          DEFAULT: '#2C2926',
-          hover: '#3D3632',
-          light: '#433E39',
+        // Strict Semantic Roles (CSS Variables)
+        primary: {
+          DEFAULT: 'var(--color-primary)',
+          hover: 'var(--color-primary-hover)',
+          active: 'var(--color-primary-active)',
+          text: 'var(--color-primary-text)',
         },
-        sand: {
-          DEFAULT: '#D8C9B5',
-          light: '#EAE2D7',
-          border: '#DEDAD1',
+        surface: {
+          DEFAULT: 'var(--color-bg-surface)',
+          page: 'var(--color-bg-page)',
+          card: 'var(--color-bg-card)',
+          elevated: 'var(--color-bg-card-elevated)',
         },
-        ivory: {
-          DEFAULT: '#F7F4EE',
-          warm: '#F7F4EE',
-          dark: '#EDE7DC',
-          surface: '#FDFBF7',
+        content: {
+          heading: 'var(--color-text-heading)',
+          body: 'var(--color-text-body)',
+          muted: 'var(--color-text-muted)',
         },
-        olive: {
-          DEFAULT: '#78806A',
-          hover: '#68705B',
-          light: '#EFF2EC',
-          dark: '#585E4D',
+        border: {
+          DEFAULT: 'var(--color-border)',
+          subtle: 'var(--color-border-subtle)',
         },
-        taupe: {
-          DEFAULT: '#A69B8C',
-          dark: '#7A6B5D',
-          muted: '#6B6962',
+        accent: {
+          DEFAULT: 'var(--color-accent)',
+          hover: 'var(--color-accent-hover)',
+          subtle: 'var(--color-accent-subtle)',
+          text: 'var(--color-accent-text)',
         },
 
-        // Color aliases
-        'warm-bg': '#F7F4EE',
-        'warm-ivory': '#F7F4EE',
-        'dark-ivory': '#F0EBE2',
-        'warm-sand': '#D8C9B5',
-        'border-warm': '#E8E4DA',
-        'border-sand': '#DEDAD1',
-        'brand-brown': '#7A6B5D',
-        'brand-olive': '#78806A',
-        'brand-taupe': '#7A6B5D',
-        'muted-olive': '#78806A',
-        'olive-hover': '#68705B',
-        'primary-dark': '#2C2926',
-        'secondary-gray': '#6B6962',
-        'muted-grey': '#A69B8C',
-        charcoal: '#2C2926',
+        // Brand Tokens (Mapped to CSS Variables)
+        espresso: {
+          DEFAULT: 'var(--brand-espresso)',
+          hover: 'var(--color-primary-hover)',
+        },
+        sand: {
+          DEFAULT: 'var(--brand-sand)',
+          border: 'var(--brand-sand)',
+        },
+        ivory: {
+          DEFAULT: 'var(--brand-ivory)',
+          dark: 'var(--brand-dark-ivory)',
+        },
+        olive: {
+          DEFAULT: 'var(--brand-olive)',
+          hover: 'var(--color-accent-hover)',
+          subtle: 'var(--color-accent-subtle)',
+        },
+        taupe: {
+          DEFAULT: 'var(--brand-taupe)',
+          muted: 'var(--brand-taupe)',
+        },
+
+        // Backward compatibility mappings
+        'warm-bg': 'var(--brand-ivory)',
+        'warm-ivory': 'var(--brand-ivory)',
+        'dark-ivory': 'var(--brand-dark-ivory)',
+        'warm-sand': 'var(--brand-sand)',
+        'border-warm': 'var(--brand-sand)',
+        'border-sand': 'var(--brand-sand)',
+        'brand-brown': 'var(--brand-espresso)',
+        'brand-olive': 'var(--brand-olive)',
+        'brand-taupe': 'var(--brand-taupe)',
+        'muted-olive': 'var(--brand-olive)',
+        'olive-hover': 'var(--color-accent-hover)',
+        'primary-dark': 'var(--brand-espresso)',
+        'secondary-gray': 'var(--brand-taupe)',
+        'muted-grey': 'var(--brand-taupe)',
+        charcoal: 'var(--brand-espresso)',
       },
       fontSize: {
         base: ['16px', { lineHeight: '1.65' }],

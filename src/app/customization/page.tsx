@@ -80,27 +80,27 @@ export default function CustomizationPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F7F4EE] pt-8 pb-20">
+    <div className="min-h-screen bg-surface-page pt-8 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="text-xs text-[#A69B8C] mb-8">
-          <Link href="/" className="hover:text-[#2C2926] transition-colors">Home</Link>
+        <nav aria-label="Breadcrumb" className="text-xs text-content-muted mb-8">
+          <Link href="/" className="hover:text-primary transition-colors">Home</Link>
           <span className="mx-2">/</span>
-          <span className="text-[#2C2926] font-medium">Bespoke Customization</span>
+          <span className="text-primary font-medium">Bespoke Customization</span>
         </nav>
 
         {/* Hero Banner */}
-        <div className="relative rounded-3xl bg-[#2C2926] text-[#F7F4EE] p-8 sm:p-14 lg:p-16 overflow-hidden shadow-xl mb-16">
+        <div className="relative rounded-3xl bg-primary text-primary-text p-8 sm:p-14 lg:p-16 overflow-hidden shadow-xl mb-16">
           <div className="relative z-10 max-w-2xl">
-            <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-white/10 text-[#D8C9B5] text-xs font-semibold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5 text-[#D8C9B5]" />
+            <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-sand/15 text-sand text-xs font-semibold uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5 text-sand" />
               <span>Room Fit &amp; Sizing Advisory</span>
             </div>
-            <h1 className="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-white leading-tight">
+            <h1 className="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-primary-text leading-tight">
               Furniture Sized for Your Exact Space
             </h1>
-            <p className="text-[#D8C9B5] text-sm sm:text-base mt-4 leading-relaxed">
+            <p className="text-sand text-sm sm:text-base mt-4 leading-relaxed">
               Unsure if a sofa will fit your living room alcove or if a dining table leaves enough walking clearance? Connect directly with our team for honest dimensional and placement guidance.
             </p>
 
@@ -110,7 +110,7 @@ export default function CustomizationPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsAppClick({ source: 'customization' })}
-                className="px-6 py-3.5 bg-[#D8C9B5] hover:bg-[#C9B9A3] text-[#2C2926] text-xs font-semibold rounded-btn transition-colors flex items-center gap-2 shadow-sm"
+                className="px-6 py-3.5 bg-sand hover:bg-sand/80 text-primary text-xs font-semibold rounded-btn transition-colors flex items-center gap-2 shadow-sm"
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>Ask on WhatsApp</span>
@@ -118,9 +118,9 @@ export default function CustomizationPage() {
 
               <a
                 href="tel:+917291962356"
-                className="px-6 py-3.5 bg-transparent hover:bg-white/10 text-[#F7F4EE] border border-white/20 text-xs font-semibold rounded-btn transition-colors flex items-center gap-2"
+                className="px-6 py-3.5 bg-transparent hover:bg-white/10 text-primary-text border border-sand/30 text-xs font-semibold rounded-btn transition-colors flex items-center gap-2"
               >
-                <Phone className="w-4 h-4 text-[#D8C9B5]" />
+                <Phone className="w-4 h-4 text-sand" />
                 <span>Call Support: +91 72919 62356</span>
               </a>
             </div>
@@ -130,10 +130,10 @@ export default function CustomizationPage() {
         {/* 4 Step Process */}
         <div className="mb-20">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#48563A] block mb-2">
+            <span className="text-xs font-semibold uppercase tracking-widest text-accent block mb-2">
               HOW BESPOKE CRAFT WORKS
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#2C2926]">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-primary">
               From Concept to Your Living Room
             </h2>
           </div>
@@ -144,16 +144,16 @@ export default function CustomizationPage() {
               return (
                 <div
                   key={idx}
-                  className="bg-white rounded-2xl p-6 border border-[#D8C9B5] shadow-sm flex flex-col justify-between"
+                  className="bg-surface rounded-2xl p-6 border border-border shadow-sm flex flex-col justify-between"
                 >
                   <div>
-                    <div className="w-12 h-12 rounded-xl bg-[#F7F4EE] border border-[#D8C9B5] flex items-center justify-center text-[#48563A] mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-surface-page border border-border flex items-center justify-center text-accent mb-4">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <h3 className="font-serif font-medium text-base text-[#2C2926] mb-2">
+                    <h3 className="font-serif font-medium text-base text-primary mb-2">
                       {s.title}
                     </h3>
-                    <p className="text-xs text-[#A69B8C] leading-relaxed">
+                    <p className="text-xs text-content-muted leading-relaxed">
                       {s.desc}
                     </p>
                   </div>
@@ -167,10 +167,10 @@ export default function CustomizationPage() {
         <div className="mb-20">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
             <div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-[#48563A] block mb-1">
+              <span className="text-xs font-semibold uppercase tracking-widest text-accent block mb-1">
                 RECENT WORKSHOP COMMISSIONS
               </span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#2C2926]">
+              <h2 className="font-serif text-2xl sm:text-3xl text-primary">
                 Crafted for Modern Indian Homes
               </h2>
             </div>
@@ -178,21 +178,21 @@ export default function CustomizationPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {examples.map((item, idx) => (
-              <div key={idx} className="bg-white rounded-2xl overflow-hidden border border-[#D8C9B5] shadow-sm">
-                <div className="relative aspect-[4/3] w-full bg-[#EAE5DC]">
+              <div key={idx} className="bg-surface rounded-2xl overflow-hidden border border-border shadow-sm">
+                <div className="relative aspect-[4/3] w-full bg-surface-page">
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute top-3 left-3 bg-[#2C2926]/90 backdrop-blur-md text-[#F7F4EE] text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full">
+                  <div className="absolute top-3 left-3 bg-primary/90 backdrop-blur-md text-primary-text text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full">
                     {item.category}
                   </div>
                 </div>
                 <div className="p-5">
-                  <h3 className="font-serif font-medium text-base text-[#2C2926]">{item.title}</h3>
-                  <p className="text-xs text-[#A69B8C] mt-1.5 leading-relaxed">{item.desc}</p>
+                  <h3 className="font-serif font-medium text-base text-primary">{item.title}</h3>
+                  <p className="text-xs text-content-muted mt-1.5 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -200,59 +200,59 @@ export default function CustomizationPage() {
         </div>
 
         {/* Custom Consultation Form Card */}
-        <div className="bg-white rounded-3xl border border-[#D8C9B5] p-8 sm:p-12 shadow-md max-w-3xl mx-auto">
+        <div className="bg-surface rounded-3xl border border-border p-8 sm:p-12 shadow-md max-w-3xl mx-auto">
           <div className="text-center max-w-lg mx-auto mb-8">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#48563A] block mb-2">
+            <span className="text-xs font-semibold uppercase tracking-widest text-accent block mb-2">
               START YOUR COMMISSION
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-[#2C2926]">
+            <h2 className="font-serif text-2xl sm:text-3xl text-primary">
               Request a Custom Sizing Quote
             </h2>
-            <p className="text-xs sm:text-sm text-[#A69B8C] mt-1.5">
+            <p className="text-xs sm:text-sm text-content-muted mt-1.5">
               Fill in your dimensions or requirements below. Our workshop manager will connect within 30 minutes with 3D options and pricing.
             </p>
           </div>
 
           {submitted ? (
-            <div className="text-center py-8 bg-[#F7F4EE] rounded-2xl border border-[#D8C9B5]">
-              <CheckCircle2 className="w-12 h-12 text-[#48563A] mx-auto mb-3" />
-              <h3 className="font-serif text-lg text-[#2C2926]">Quote Request Sent!</h3>
-              <p className="text-xs text-[#A69B8C] mt-1">Our woodcraft specialist is reviewing your measurements on WhatsApp.</p>
+            <div className="text-center py-8 bg-surface-page rounded-2xl border border-border">
+              <CheckCircle2 className="w-12 h-12 text-accent mx-auto mb-3" />
+              <h3 className="font-serif text-lg text-primary">Quote Request Sent!</h3>
+              <p className="text-xs text-content-muted mt-1">Our woodcraft specialist is reviewing your measurements on WhatsApp.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-[#2C2926] mb-1">Your Name *</label>
+                  <label className="block text-xs font-medium text-primary mb-1">Your Name *</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. Rahul Sharma"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-[#F7F4EE] border border-[#D8C9B5] rounded-xl text-xs text-[#2C2926] focus:outline-none focus:ring-1 focus:ring-[#2C2926]"
+                    className="w-full px-3.5 py-2.5 bg-surface-page border border-border rounded-xl text-xs text-primary focus:outline-none focus:ring-1 focus:ring-primary"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-[#2C2926] mb-1">Phone / WhatsApp *</label>
+                  <label className="block text-xs font-medium text-primary mb-1">Phone / WhatsApp *</label>
                   <input
                     type="tel"
                     required
                     placeholder="+91 98765 43210"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-[#F7F4EE] border border-[#D8C9B5] rounded-xl text-xs text-[#2C2926] focus:outline-none focus:ring-1 focus:ring-[#2C2926]"
+                    className="w-full px-3.5 py-2.5 bg-surface-page border border-border rounded-xl text-xs text-primary focus:outline-none focus:ring-1 focus:ring-primary"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-[#2C2926] mb-1">Furniture Type</label>
+                  <label className="block text-xs font-medium text-primary mb-1">Furniture Type</label>
                   <select
                     value={formData.furnitureType}
                     onChange={(e) => setFormData({ ...formData, furnitureType: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-[#F7F4EE] border border-[#D8C9B5] rounded-xl text-xs text-[#2C2926] focus:outline-none focus:ring-1 focus:ring-[#2C2926]"
+                    className="w-full px-3.5 py-2.5 bg-surface-page border border-border rounded-xl text-xs text-primary focus:outline-none focus:ring-1 focus:ring-primary"
                   >
                     <option value="Wall-Mounted Shoe Rack">Wall-Mounted Shoe Rack (3/4/5 Slab)</option>
                     <option value="Folding Multipurpose Table">Folding Multipurpose Table (3x2 or 4x2)</option>
@@ -263,11 +263,11 @@ export default function CustomizationPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-[#2C2926] mb-1">Material &amp; Finish</label>
+                  <label className="block text-xs font-medium text-primary mb-1">Material &amp; Finish</label>
                   <select
                     value={formData.materialPreference}
                     onChange={(e) => setFormData({ ...formData, materialPreference: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-[#F7F4EE] border border-[#D8C9B5] rounded-xl text-xs text-[#2C2926] focus:outline-none focus:ring-1 focus:ring-[#2C2926]"
+                    className="w-full px-3.5 py-2.5 bg-surface-page border border-border rounded-xl text-xs text-primary focus:outline-none focus:ring-1 focus:ring-primary"
                   >
                     <option value="Powder-Coated Steel (Matte Black)">Powder-Coated Steel (Matte Black)</option>
                     <option value="Water-Resistant Melamine Finish">Water-Resistant Melamine Finish</option>
@@ -278,39 +278,39 @@ export default function CustomizationPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-[#2C2926] mb-1">Space Dimensions / Target Size</label>
+                <label className="block text-xs font-medium text-primary mb-1">Space Dimensions / Target Size</label>
                 <input
                   type="text"
                   placeholder="e.g. 7 feet length x 3 feet depth, or 84 x 36 inches"
                   value={formData.dimensions}
                   onChange={(e) => setFormData({ ...formData, dimensions: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-[#F7F4EE] border border-[#D8C9B5] rounded-xl text-xs text-[#2C2926] focus:outline-none focus:ring-1 focus:ring-[#2C2926]"
+                  className="w-full px-3.5 py-2.5 bg-surface-page border border-border rounded-xl text-xs text-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-[#2C2926] mb-1">Specific Design Requirements</label>
+                <label className="block text-xs font-medium text-primary mb-1">Specific Design Requirements</label>
                 <textarea
                   rows={3}
                   placeholder="Any reference design ideas, fabric color preferences, or room layout notes..."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-[#F7F4EE] border border-[#D8C9B5] rounded-xl text-xs text-[#2C2926] focus:outline-none focus:ring-1 focus:ring-[#2C2926]"
+                  className="w-full px-3.5 py-2.5 bg-surface-page border border-border rounded-xl text-xs text-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3.5 bg-[#2C2926] hover:bg-[#3D3632] text-[#F7F4EE] text-xs font-semibold rounded-btn transition-colors flex items-center justify-center gap-2 shadow-sm cursor-pointer"
+                className="w-full py-3.5 bg-primary hover:bg-primary-hover text-primary-text text-xs font-semibold rounded-btn transition-colors flex items-center justify-center gap-2 shadow-sm cursor-pointer"
               >
-                <MessageCircle className="w-4 h-4 text-[#D8C9B5]" />
+                <MessageCircle className="w-4 h-4 text-sand" />
                 <span>Submit Specification to Workshop via WhatsApp</span>
               </button>
             </form>
           )}
 
-          <div className="mt-6 pt-4 border-t border-[#D8C9B5]/50 flex items-center justify-center gap-6 text-[11px] text-[#A69B8C]">
-            <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-[#48563A]" /> 5-Year Timber Warranty</span>
+          <div className="mt-6 pt-4 border-t border-border/50 flex items-center justify-center gap-6 text-[11px] text-content-muted">
+            <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-accent" /> 5-Year Timber Warranty</span>
             <span>•</span>
             <span>Free PAN India Delivery</span>
             <span>•</span>

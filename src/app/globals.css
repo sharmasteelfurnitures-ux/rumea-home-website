@@ -3,33 +3,75 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #F7F4EE;
-  --text-primary: #2C2926;
-  --text-secondary: #6B6962;
-  --border-subtle: #DEDAD1;
-  --accent-soft: #7A6B5D;
-  --bg-dark: #2C2926;
-  --bg-white: #FFFFFF;
+  /* ========================================================
+     AUTHENTIC BRAND PALETTE TOKENS (Single Source of Truth)
+     Defined in docs/BRAND_GUIDE.md & branding-kit.png
+     ======================================================== */
+  --brand-espresso: #2C2926;    /* Espresso: Primary headings, CTAs, wordmark, dark footer */
+  --brand-ivory: #F7F4EE;       /* Warm Ivory: Canvas background (never use pure white) */
+  --brand-dark-ivory: #F0EBE2;  /* Dark Ivory: Card & container surfaces, alternating bands */
+  --brand-sand: #D8C9B5;        /* Warm Sand: Dividers, borders, outlines */
+  --brand-olive: #78806A;       /* Muted Olive: Accent badges, tags, WhatsApp triggers */
+  --brand-taupe: #A69B8C;       /* Soft Taupe: Secondary/muted body copy, strikethrough prices */
 
-  --color-espresso: #2C2926;
-  --color-sand: #D8C9B5;
-  --color-ivory: #F7F4EE;
-  --color-dark-ivory: #F0EBE2;
-  --color-olive: #78806A;
-  --color-taupe: #A69B8C;
-  --color-brand-taupe: #7A6B5D;
-  --color-brand-brown: #7A6B5D;
-  --color-logobrown: #2C2926;
+  /* ========================================================
+     STRICT SEMANTIC ROLES (Applied Uniformly Across All UI)
+     ======================================================== */
+  /* Primary Role → buttons, links, CTAs */
+  --color-primary: var(--brand-espresso);
+  --color-primary-hover: #3D3935;
+  --color-primary-active: #1E1C1A;
+  --color-primary-text: var(--brand-ivory);
 
-  --charcoal: #2C2926;
-  --espresso: #2C2926;
-  --warm-offwhite: #F7F4EE;
-  --warm-alabaster: #F7F4EE;
-  --terracotta: #7A6B5D;
-  --warm-sand: #D8C9B5;
-  --mid-gray: #6B6962;
-  --soft-taupe: #A69B8C;
-  --border-sand: #DEDAD1;
+  /* Background Role → page surface, cards, containers */
+  --color-bg-page: var(--brand-ivory);
+  --color-bg-surface: var(--brand-dark-ivory);
+  --color-bg-card: var(--brand-dark-ivory);
+  --color-bg-card-elevated: #FAF8F5;
+
+  /* Text Role → headings, body, muted */
+  --color-text-heading: var(--brand-espresso);
+  --color-text-body: var(--brand-espresso);
+  --color-text-muted: var(--brand-taupe);
+
+  /* Border Role → dividers, outlines, card edges */
+  --color-border: var(--brand-sand);
+  --color-border-subtle: rgba(216, 201, 181, 0.45);
+
+  /* Accent Role → highlights, badges, WhatsApp */
+  --color-accent: var(--brand-olive);
+  --color-accent-hover: #68705B;
+  --color-accent-subtle: rgba(120, 128, 106, 0.14);
+  --color-accent-text: var(--brand-ivory);
+
+  /* Backward Compatibility Aliases (Strictly Mapped to Brand) */
+  --bg-primary: var(--color-bg-page);
+  --text-primary: var(--color-text-heading);
+  --text-secondary: var(--color-text-muted);
+  --border-subtle: var(--color-border);
+  --accent-soft: var(--color-accent);
+  --bg-dark: var(--brand-espresso);
+  --bg-white: var(--color-bg-page);
+
+  --color-espresso: var(--brand-espresso);
+  --color-sand: var(--brand-sand);
+  --color-ivory: var(--brand-ivory);
+  --color-dark-ivory: var(--brand-dark-ivory);
+  --color-olive: var(--brand-olive);
+  --color-taupe: var(--brand-taupe);
+  --color-brand-taupe: var(--brand-taupe);
+  --color-brand-brown: var(--brand-espresso);
+  --color-logobrown: var(--brand-espresso);
+
+  --charcoal: var(--brand-espresso);
+  --espresso: var(--brand-espresso);
+  --warm-offwhite: var(--brand-ivory);
+  --warm-alabaster: var(--brand-ivory);
+  --terracotta: var(--brand-espresso);
+  --warm-sand: var(--brand-sand);
+  --mid-gray: var(--brand-taupe);
+  --soft-taupe: var(--brand-taupe);
+  --border-sand: var(--brand-sand);
 
   --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-serif: 'Cormorant Garamond', Georgia, serif;
@@ -55,8 +97,8 @@ html {
 }
 
 body {
-  background-color: #F7F4EE;
-  color: #2C2926;
+  background-color: var(--color-bg-page);
+  color: var(--color-text-body);
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.65;
@@ -65,7 +107,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  color: #2C2926;
+  color: var(--color-text-heading);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -241,7 +283,7 @@ h1, h2, h3, h4, h5, h6 {
 .shimmer-bg {
   position: relative;
   overflow: hidden;
-  background-color: #E7E2D9;
+  background-color: var(--brand-dark-ivory);
 }
 
 .shimmer-bg::after {

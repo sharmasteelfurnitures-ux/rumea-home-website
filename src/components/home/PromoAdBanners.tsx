@@ -20,7 +20,7 @@ const promoBanners: PromoBanner[] = [
   {
     id: 'metal-shoe-rack',
     badge: 'UPTO 45% OFF',
-    badgeBg: 'bg-[#9E471D]', // Warm Rust
+    badgeBg: 'bg-accent',
     title: 'METAL SHOE RACK',
     tagline: 'Clutter-Free Entryways, Heavy Duty',
     startingPrice: '2,499',
@@ -31,7 +31,7 @@ const promoBanners: PromoBanner[] = [
   {
     id: 'sofa-3-seater',
     badge: 'UPTO 50% OFF',
-    badgeBg: 'bg-[#556B2F]', // Olive Green
+    badgeBg: 'bg-accent',
     title: 'SOFA 3 SEATER',
     tagline: 'Sink-In Velvet & Kiln-Dried Solid Sheesham',
     startingPrice: '28,999',
@@ -42,7 +42,7 @@ const promoBanners: PromoBanner[] = [
   {
     id: 'bar-chairs',
     badge: 'UPTO 40% OFF',
-    badgeBg: 'bg-[#9E471D]', // Warm Rust
+    badgeBg: 'bg-accent',
     title: 'BAR CHAIRS',
     tagline: 'Ergonomic Height for Counters & Island Bars',
     startingPrice: '4,499',
@@ -66,7 +66,7 @@ export default function PromoAdBanners() {
   };
 
   return (
-    <section className="py-8 md:py-12 bg-[#F7F4EE] border-t border-[#D8C9B5] overflow-hidden">
+    <section className="py-8 md:py-12 bg-surface-page border-t border-border overflow-hidden">
       <div className="max-w-[1480px] mx-auto px-4 sm:px-6 lg:px-8 relative">
         
         {/* Carousel / Responsive Grid Container */}
@@ -75,7 +75,7 @@ export default function PromoAdBanners() {
           {/* Left Arrow (Visible on mobile/tablet) */}
           <button
             onClick={() => scroll('left')}
-            className="absolute -left-2 sm:-left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white border border-[#D8C9B5] shadow-md flex items-center justify-center text-[#2C2926] hover:bg-[#F7F4EE] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer lg:hidden"
+            className="absolute -left-2 sm:-left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-surface border border-border shadow-md flex items-center justify-center text-primary hover:bg-surface-page hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer lg:hidden"
             aria-label="Previous promo"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -84,7 +84,7 @@ export default function PromoAdBanners() {
           {/* Right Arrow (Visible on mobile/tablet) */}
           <button
             onClick={() => scroll('right')}
-            className="absolute -right-2 sm:-right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white border border-[#D8C9B5] shadow-md flex items-center justify-center text-[#2C2926] hover:bg-[#F7F4EE] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer lg:hidden"
+            className="absolute -right-2 sm:-right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-surface border border-border shadow-md flex items-center justify-center text-primary hover:bg-surface-page hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer lg:hidden"
             aria-label="Next promo"
           >
             <ChevronRight className="w-5 h-5" />
@@ -99,45 +99,45 @@ export default function PromoAdBanners() {
               <Link
                 key={banner.id}
                 href={banner.href}
-                className="flex-shrink-0 w-[85vw] sm:w-[380px] lg:w-auto snap-center group/card relative rounded-2xl bg-[#F4EFE6] border border-[#D8C9B5]/80 overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex flex-col sm:flex-row min-h-[200px]"
+                className="flex-shrink-0 w-[85vw] sm:w-[380px] lg:w-auto snap-center group/card relative rounded-2xl bg-surface border border-border/80 overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex flex-col sm:flex-row min-h-[200px]"
               >
                 {/* Left Side: Content & Discount */}
                 <div className="flex-1 p-5 sm:p-6 flex flex-col justify-between z-10">
                   <div>
                     {/* Discount Pill Badge */}
                     <span
-                      className={`inline-block ${banner.badgeBg} text-white text-[11px] font-bold tracking-wider uppercase px-3 py-1 rounded-md shadow-2xs`}
+                      className={`inline-block ${banner.badgeBg} text-accent-text text-[11px] font-bold tracking-wider uppercase px-3 py-1 rounded-md shadow-2xs`}
                     >
                       {banner.badge}
                     </span>
 
                     {/* Title */}
-                    <h3 className="font-sans font-extrabold text-lg sm:text-xl text-[#2C2926] mt-3 tracking-tight">
+                    <h3 className="font-sans font-extrabold text-lg sm:text-xl text-primary mt-3 tracking-tight">
                       {banner.title}
                     </h3>
 
                     {/* Tagline */}
-                    <p className="text-xs text-[#6E645A] mt-1 font-medium leading-snug line-clamp-2">
+                    <p className="text-xs text-content-muted mt-1 font-medium leading-snug line-clamp-2">
                       {banner.tagline}
                     </p>
                   </div>
 
                   {/* Price & Delivery Callout */}
                   <div className="mt-4 pt-2">
-                    <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#6E645A] font-medium">
+                    <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-content-muted font-medium">
                       Starting From
                     </p>
-                    <p className="font-sans font-extrabold text-2xl sm:text-3xl text-[#2C2926] tracking-tight">
+                    <p className="font-sans font-extrabold text-2xl sm:text-3xl text-primary tracking-tight">
                       ₹{banner.startingPrice}
                     </p>
-                    <p className="text-[10px] sm:text-[11px] font-semibold text-[#48563A] uppercase tracking-wide mt-0.5 flex items-center gap-1">
-                      <Truck className="w-3 h-3 text-[#48563A]" /> FREE Delivery Available
+                    <p className="text-[10px] sm:text-[11px] font-semibold text-accent uppercase tracking-wide mt-0.5 flex items-center gap-1">
+                      <Truck className="w-3 h-3 text-accent" /> FREE Delivery Available
                     </p>
                   </div>
                 </div>
 
                 {/* Right Side: Product Lifestyle Cutout / Imagery */}
-                <div className="relative w-full sm:w-[48%] h-44 sm:h-auto overflow-hidden bg-gradient-to-t sm:bg-gradient-to-r from-[#F4EFE6] via-transparent to-transparent flex items-center justify-center">
+                <div className="relative w-full sm:w-[48%] h-44 sm:h-auto overflow-hidden bg-gradient-to-t sm:bg-gradient-to-r from-surface via-transparent to-transparent flex items-center justify-center">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={banner.image}

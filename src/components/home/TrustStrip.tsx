@@ -27,7 +27,7 @@ export default function TrustStrip() {
   const smoothEase = [0.16, 1, 0.3, 1];
 
   return (
-    <section aria-label="Key Commitments" className="w-full border-y border-[#DEDAD1] bg-white py-4 sm:py-5 overflow-hidden">
+    <section aria-label="Key Commitments" className="w-full border-y border-border bg-surface py-4 sm:py-5 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 items-center">
           {points.map((pt, idx) => {
@@ -41,8 +41,8 @@ export default function TrustStrip() {
                 transition={{ duration: 0.6, delay: idx * 0.08, ease: smoothEase }}
                 className="flex items-center justify-center gap-2.5 text-center sm:text-left"
               >
-                <Icon className="w-4 h-4 text-[#7A6B5D] flex-shrink-0" strokeWidth={1.75} />
-                <span className="text-xs sm:text-sm font-sans font-medium text-[#2C2926] tracking-tight">
+                <Icon className="w-4 h-4 text-accent flex-shrink-0" strokeWidth={1.75} />
+                <span className="text-xs sm:text-sm font-sans font-medium text-primary tracking-tight">
                   {pt.label}
                 </span>
               </motion.div>

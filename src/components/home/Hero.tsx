@@ -123,7 +123,7 @@ export default function Hero() {
 
   return (
     <section 
-      className="relative w-full bg-[#2C2926] text-white overflow-hidden select-none font-sans"
+      className="relative w-full bg-primary text-white overflow-hidden select-none font-sans"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
@@ -135,7 +135,7 @@ export default function Hero() {
       <div className="relative w-full min-h-[74vh] md:min-h-[660px] lg:min-h-[720px] flex flex-col justify-end px-6 sm:px-12 lg:px-20 pb-20 sm:pb-24 pt-16 overflow-hidden">
         
         {/* Background Images with Animated Fade & Slow Zoom */}
-        <div className="absolute inset-0 z-0 bg-[#2C2926] overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 z-0 bg-primary overflow-hidden pointer-events-none">
           <AnimatePresence mode="wait">
             <motion.div
               key={slide.id}
@@ -154,7 +154,7 @@ export default function Hero() {
                 className="object-cover object-center"
               />
               {/* Warm Scrim Overlay (Espresso-tinted gradient preserves room warmth, protects text) */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#2C2926]/95 via-[#2C2926]/65 to-[#2C2926]/35 md:bg-gradient-to-r md:from-[#2C2926]/95 md:via-[#2C2926]/60 md:to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/65 to-primary/35 md:bg-gradient-to-r md:from-primary/95 md:via-primary/60 md:to-transparent" />
             </motion.div>
           </AnimatePresence>
         </div>
@@ -181,7 +181,7 @@ export default function Hero() {
               {/* Headline: Clean Architectural Bold Typography (Plus Jakarta Sans) */}
               <h1 className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.06] tracking-tight text-white mb-4 sm:mb-5">
                 <span className="block">{slide.titleLine1}</span>
-                <span className="block text-[#D8C9B5]">{slide.titleLine2}</span>
+                <span className="block text-sand">{slide.titleLine2}</span>
               </h1>
 
               {/* Subheading */}
@@ -191,8 +191,8 @@ export default function Hero() {
 
               {/* Spec Pill */}
               <div className="mb-8">
-                <span className="inline-flex items-center gap-2 text-xs font-sans text-white/80 bg-[#2C2926]/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#78806A]" />
+                <span className="inline-flex items-center gap-2 text-xs font-sans text-white/80 bg-primary/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
                   <span>{slide.specPill}</span>
                 </span>
               </div>
@@ -202,7 +202,7 @@ export default function Hero() {
                 {/* Primary Button: Warm Ivory Pill Button with Espresso Text */}
                 <Link
                   href={slide.primaryCtaHref}
-                  className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#F7F4EE] hover:bg-white text-[#2C2926] text-xs font-semibold uppercase tracking-[0.1em] rounded-full transition-all duration-200 shadow-md hover:-translate-y-0.5"
+                  className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-surface-page hover:bg-surface text-primary text-xs font-semibold uppercase tracking-[0.1em] rounded-full transition-all duration-200 shadow-md hover:-translate-y-0.5"
                 >
                   <span>{slide.primaryCtaText}</span>
                   <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
@@ -214,9 +214,9 @@ export default function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackWhatsAppClick({ source: 'homepage', product_name: slide.categoryTag })}
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#78806A] hover:bg-[#68705B] text-white text-xs font-semibold uppercase tracking-[0.1em] rounded-full transition-all duration-200 shadow-xs hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-accent hover:bg-accent-hover text-accent-text text-xs font-semibold uppercase tracking-[0.1em] rounded-full transition-all duration-200 shadow-xs hover:-translate-y-0.5"
                 >
-                  <MessageCircle className="w-4 h-4 text-[#D8C9B5]" />
+                  <MessageCircle className="w-4 h-4 text-accent-text" />
                   <span>WhatsApp Sizing Help</span>
                 </a>
               </div>
@@ -264,7 +264,7 @@ export default function Hero() {
                     {isActive && (
                       <motion.div
                         layoutId="activeSlideProgress"
-                        className="h-full bg-[#D8C9B5]"
+                        className="h-full bg-sand"
                         initial={{ width: '0%' }}
                         animate={{ width: '100%' }}
                         transition={{ duration: 6.5, ease: 'linear' }}

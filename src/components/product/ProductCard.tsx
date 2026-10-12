@@ -31,7 +31,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
       className="group flex flex-col h-full focus:outline-hidden cursor-pointer"
     >
       {/* Product Image: Clean Square Container */}
-      <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-[#F0EBE2] border border-[#E8E4DA]/80 transition-all duration-300 group-hover:border-[#D8C9B5] group-hover:shadow-xs">
+      <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-surface border border-border/80 transition-all duration-300 group-hover:border-border group-hover:shadow-xs">
         {/* Primary Image */}
         <Image
           src={product.images.primary}
@@ -58,15 +58,15 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
         {/* Minimalist Brand Badge (e.g. Best Seller) */}
         {product.seo?.badge && product.seo.badge !== 'Coming Soon' && (
           <div className="absolute top-3 left-3 z-10">
-            <span className="px-2.5 py-1 text-[10px] font-sans font-medium uppercase tracking-wider rounded-full bg-[#2C2926]/90 backdrop-blur-xs text-[#F7F4EE]">
+            <span className="px-2.5 py-1 text-[10px] font-sans font-medium uppercase tracking-wider rounded-full bg-primary/90 backdrop-blur-xs text-primary-text">
               {product.seo.badge}
             </span>
           </div>
         )}
 
         {/* Subtle Desktop Hover Indicator */}
-        <div className="absolute bottom-3 right-3 z-10 opacity-0 translate-y-1 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-y-0 hidden sm:flex items-center justify-center w-8 h-8 rounded-full bg-[#2C2926] text-white shadow-md">
-          <ArrowUpRight className="w-4 h-4 text-[#F7F4EE]" />
+        <div className="absolute bottom-3 right-3 z-10 opacity-0 translate-y-1 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-y-0 hidden sm:flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-text shadow-md">
+          <ArrowUpRight className="w-4 h-4 text-primary-text" />
         </div>
       </div>
 
@@ -74,13 +74,13 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
       <div className="pt-3.5 pb-1 px-0.5 flex flex-col flex-1 justify-between">
         <div>
           {/* Product Title */}
-          <h3 className="font-heading font-semibold text-[15px] sm:text-base text-[#2C2926] leading-snug line-clamp-2 transition-colors duration-200 group-hover:text-[#78806A]">
+          <h3 className="font-heading font-semibold text-[15px] sm:text-base text-primary leading-snug line-clamp-2 transition-colors duration-200 group-hover:text-accent">
             {product.name}
           </h3>
 
           {/* Minimal Finish / Category Subtitle */}
           {product.materials?.selectedFinish && (
-            <p className="text-[11px] sm:text-xs text-[#A69B8C] font-sans mt-0.5 line-clamp-1">
+            <p className="text-[11px] sm:text-xs text-content-muted font-sans mt-0.5 line-clamp-1">
               {product.materials.selectedFinish}
             </p>
           )}
@@ -88,12 +88,12 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
 
         {/* Clean Minimalist Price Row */}
         <div className="flex items-baseline gap-2 pt-2 mt-auto">
-          <span className="text-xs sm:text-sm font-sans text-[#A69B8C]">From</span>
-          <span className="font-sans font-medium text-sm sm:text-base text-[#2C2926]">
+          <span className="text-xs sm:text-sm font-sans text-content-muted">From</span>
+          <span className="font-sans font-medium text-sm sm:text-base text-primary">
             ₹{product.pricing.offer.toLocaleString('en-IN')}
           </span>
           {hasDiscount && (
-            <span className="text-xs text-[#A69B8C] line-through font-normal">
+            <span className="text-xs text-content-muted line-through font-normal">
               ₹{product.pricing.mrp.toLocaleString('en-IN')}
             </span>
           )}

@@ -38,9 +38,6 @@ const nextConfig = {
       { source: '/collections/chairs', destination: '/products?category=seating', permanent: true },
       { source: '/faq', destination: '/contact', permanent: true },
       { source: '/faqs', destination: '/contact', permanent: true },
-      { source: '/experience', destination: '/products', permanent: true },
-      { source: '/360', destination: '/products', permanent: true },
-      { source: '/studio', destination: '/products', permanent: true },
       { source: '/shipping', destination: '/terms', permanent: true },
       { source: '/returns', destination: '/terms', permanent: true },
     ];

@@ -43,17 +43,17 @@ export default function WhatsAppButton({
           rel="noopener noreferrer"
           onClick={handleClick}
           aria-label="Chat with us on WhatsApp"
-          className={`fixed z-50 flex items-center justify-center rounded-full bg-[#48563A] hover:bg-[#3B4730] text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 group border border-[#48563A]/40 bottom-20 right-4 sm:bottom-6 sm:right-6 w-12 h-12 sm:w-14 sm:h-14 cursor-pointer ${className}`}
+          className={`fixed z-50 flex items-center justify-center rounded-full bg-accent hover:bg-accent-hover text-accent-text shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 group border border-accent/40 bottom-20 right-4 sm:bottom-6 sm:right-6 w-12 h-12 sm:w-14 sm:h-14 cursor-pointer ${className}`}
         >
           {/* Subtle online pulse beacon */}
           <span className="absolute top-0.5 right-0.5 flex h-3.5 w-3.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D8C9B5] opacity-75" />
-            <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-[#D8C9B5]" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sand opacity-75" />
+            <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-sand" />
           </span>
-          <MessageCircle className="w-7 h-7 text-white relative z-10" />
+          <MessageCircle className="w-7 h-7 text-accent-text relative z-10" />
           
           {/* Tooltip on desktop hover */}
-          <span className="hidden md:group-hover:inline-block absolute right-full mr-3 px-3 py-1.5 bg-[#2C2926] text-[#F7F4EE] text-xs font-medium rounded-lg whitespace-nowrap shadow-md border border-[#D8C9B5]/20 pointer-events-none">
+          <span className="hidden md:group-hover:inline-block absolute right-full mr-3 px-3 py-1.5 bg-primary text-primary-text text-xs font-medium rounded-lg whitespace-nowrap shadow-md border border-border/20 pointer-events-none">
             Chat on WhatsApp
           </span>
         </a>
@@ -68,9 +68,9 @@ export default function WhatsAppButton({
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleClick}
-        className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-warm-sand text-espresso font-body font-medium text-sm rounded-lg hover:bg-soft-taupe/40 transition-colors shadow-sm ${className}`}
+        className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-accent hover:bg-accent-hover text-accent-text font-body font-medium text-sm rounded-btn transition-colors shadow-sm ${className}`}
       >
-        <MessageCircle className="w-4 h-4 text-espresso" />
+        <MessageCircle className="w-4 h-4 text-accent-text" />
         <span>{children || 'Chat on WhatsApp'}</span>
       </a>
     );
@@ -83,7 +83,7 @@ export default function WhatsAppButton({
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleClick}
-        className={`inline-flex items-center justify-center gap-1.5 px-3 py-1.5 bg-muted-olive/10 hover:bg-muted-olive/20 text-muted-olive text-xs font-medium rounded-md transition-colors ${className}`}
+        className={`inline-flex items-center justify-center gap-1.5 px-3 py-1.5 bg-accent-subtle hover:bg-accent/20 text-accent text-xs font-medium rounded-btn transition-colors ${className}`}
       >
         <MessageCircle className="w-3.5 h-3.5" />
         <span>{children || 'Enquire on WhatsApp'}</span>
@@ -98,9 +98,9 @@ export default function WhatsAppButton({
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
-      className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-warm-sand text-espresso border border-warm-sand font-body font-medium text-sm rounded-lg hover:bg-warm-sand/80 transition-colors shadow-sm ${className}`}
+      className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-accent hover:bg-accent-hover text-accent-text border border-accent font-body font-medium text-sm rounded-btn transition-colors shadow-sm ${className}`}
     >
-      <MessageCircle className="w-4 h-4 text-espresso" />
+      <MessageCircle className="w-4 h-4 text-accent-text" />
       <span>{children || 'Chat with Our Furniture Experts'}</span>
     </a>
   );

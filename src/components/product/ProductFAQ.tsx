@@ -35,13 +35,13 @@ export default function ProductFAQ({ productName }: ProductFAQProps) {
   ];
 
   return (
-    <div className="bg-white rounded-3xl p-6 sm:p-8 border border-warm-sand/70 shadow-card my-12">
+    <div className="bg-surface rounded-3xl p-6 sm:p-8 border border-border shadow-card my-12">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div>
-          <span className="text-xs font-bold uppercase tracking-widest text-muted-olive flex items-center gap-1.5">
+          <span className="text-xs font-bold uppercase tracking-widest text-accent flex items-center gap-1.5">
             <HelpCircle className="w-3.5 h-3.5" /> HAVE QUESTIONS?
           </span>
-          <h3 className="font-display font-bold text-xl sm:text-2xl text-espresso mt-1">
+          <h3 className="font-display font-bold text-xl sm:text-2xl text-primary mt-1">
             Frequently Asked Questions & Answers
           </h3>
         </div>
@@ -50,9 +50,9 @@ export default function ProductFAQ({ productName }: ProductFAQProps) {
           href={buildWhatsAppUrl(`Hi Rumea Home! I have a question about ${productName} and sizing.`)}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 px-4 py-2 bg-warm-ivory text-espresso text-xs font-semibold rounded-xl border border-warm-sand hover:bg-warm-sand/30 transition-colors self-start sm:self-auto"
+          className="inline-flex items-center gap-1.5 px-4 py-2 bg-surface-page text-primary text-xs font-semibold rounded-xl border border-border hover:bg-sand/30 transition-colors self-start sm:self-auto"
         >
-          <MessageCircle className="w-4 h-4 text-muted-olive" />
+          <MessageCircle className="w-4 h-4 text-accent" />
           <span>Ask on WhatsApp</span>
         </a>
       </div>
@@ -63,22 +63,22 @@ export default function ProductFAQ({ productName }: ProductFAQProps) {
           return (
             <div
               key={idx}
-              className="border border-warm-sand/50 rounded-2xl overflow-hidden transition-colors bg-warm-ivory/30"
+              className="border border-border rounded-2xl overflow-hidden transition-colors bg-surface-page/50"
             >
               <button
                 onClick={() => setOpenIndex(isOpen ? null : idx)}
-                className="w-full flex items-center justify-between p-4 sm:p-5 text-left font-display font-semibold text-xs sm:text-sm text-espresso hover:text-muted-olive transition-colors"
+                className="w-full flex items-center justify-between p-4 sm:p-5 text-left font-display font-semibold text-xs sm:text-sm text-primary hover:text-accent transition-colors"
               >
                 <span>{faq.q}</span>
                 <ChevronDown
-                  className={`w-4 h-4 text-soft-taupe flex-shrink-0 ml-3 transition-transform duration-200 ${
-                    isOpen ? 'rotate-180 text-espresso' : ''
+                  className={`w-4 h-4 text-content-muted flex-shrink-0 ml-3 transition-transform duration-200 ${
+                    isOpen ? 'rotate-180 text-primary' : ''
                   }`}
                 />
               </button>
 
               {isOpen && (
-                <div className="px-4 pb-5 sm:px-5 sm:pb-5 text-xs text-soft-taupe leading-relaxed border-t border-warm-sand/30 animate-in fade-in duration-150">
+                <div className="px-4 pb-5 sm:px-5 sm:pb-5 text-xs text-content-muted leading-relaxed border-t border-border/40 animate-in fade-in duration-150">
                   {faq.a}
                 </div>
               )}

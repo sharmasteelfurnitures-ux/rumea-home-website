@@ -84,29 +84,29 @@ export default function BlogPage() {
   const standardPosts = filteredPosts.filter(p => p.id !== featuredPost.id || selectedCategory !== 'All');
 
   return (
-    <div className="min-h-screen bg-[#F7F4EE] pt-8 pb-20">
+    <div className="min-h-screen bg-surface-page pt-8 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="text-xs text-[#A69B8C] mb-8">
-          <Link href="/" className="hover:text-[#2C2926] transition-colors">Home</Link>
+        <nav aria-label="Breadcrumb" className="text-xs text-content-muted mb-8">
+          <Link href="/" className="hover:text-primary transition-colors">Home</Link>
           <span className="mx-2">/</span>
-          <span className="text-[#2C2926] font-medium">Design Journal &amp; Blog</span>
+          <span className="text-primary font-medium">Design Journal &amp; Blog</span>
         </nav>
 
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 mb-3">
-            <span className="w-6 h-[2px] bg-[#48563A]" />
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#48563A] flex items-center gap-1.5">
-              <BookOpen className="w-3.5 h-3.5 text-[#48563A]" /> THE RUMEA JOURNAL
+            <span className="w-6 h-[2px] bg-accent" />
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent flex items-center gap-1.5">
+              <BookOpen className="w-3.5 h-3.5 text-accent" /> THE RUMEA JOURNAL
             </span>
-            <span className="w-6 h-[2px] bg-[#48563A]" />
+            <span className="w-6 h-[2px] bg-accent" />
           </div>
-          <h1 className="font-serif text-3xl sm:text-5xl text-[#2C2926] font-normal tracking-tight">
+          <h1 className="font-serif text-3xl sm:text-5xl text-primary font-normal tracking-tight">
             Practical Living, Space &amp; Design
           </h1>
-          <p className="text-[#A69B8C] text-sm sm:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-content-muted text-sm sm:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
             Honest practical guides on space planning, room proportioning, furniture durability, and everyday living for Indian homes.
           </p>
         </div>
@@ -119,8 +119,8 @@ export default function BlogPage() {
               onClick={() => setSelectedCategory(cat)}
               className={`px-4 py-2 rounded-full text-xs font-medium transition-all cursor-pointer ${
                 selectedCategory === cat
-                  ? 'bg-[#2C2926] text-[#F7F4EE] shadow-sm'
-                  : 'bg-white text-[#2C2926] border border-[#D8C9B5] hover:border-[#2C2926]'
+                  ? 'bg-primary text-primary-text shadow-sm'
+                  : 'bg-surface text-primary border border-border hover:border-primary'
               }`}
             >
               {cat}
@@ -131,43 +131,43 @@ export default function BlogPage() {
         {/* Featured Article Card (Shown when 'All' selected) */}
         {selectedCategory === 'All' && (
           <div className="mb-14">
-            <div className="bg-white rounded-3xl border border-[#D8C9B5] overflow-hidden shadow-md grid grid-cols-1 lg:grid-cols-12 items-center">
-              <div className="relative aspect-[16/10] lg:aspect-auto lg:h-full lg:col-span-7 bg-[#EAE5DC]">
+            <div className="bg-surface rounded-3xl border border-border overflow-hidden shadow-md grid grid-cols-1 lg:grid-cols-12 items-center">
+              <div className="relative aspect-[16/10] lg:aspect-auto lg:h-full lg:col-span-7 bg-surface-page">
                 <Image
                   src={featuredPost.image}
                   alt={featuredPost.title}
                   fill
                   className="object-cover"
                 />
-                <div className="absolute top-4 left-4 bg-[#2C2926]/90 backdrop-blur-md text-[#F7F4EE] text-[10px] font-semibold uppercase px-3 py-1.5 rounded-full flex items-center gap-1.5">
-                  <Sparkles className="w-3 h-3 text-[#D8C9B5]" />
+                <div className="absolute top-4 left-4 bg-primary/90 backdrop-blur-md text-primary-text text-[10px] font-semibold uppercase px-3 py-1.5 rounded-full flex items-center gap-1.5">
+                  <Sparkles className="w-3 h-3 text-sand" />
                   <span>Featured Editorial</span>
                 </div>
               </div>
 
               <div className="p-6 sm:p-10 lg:p-12 lg:col-span-5 flex flex-col justify-between h-full">
                 <div>
-                  <div className="flex items-center gap-3 text-xs text-[#A69B8C] mb-3">
-                    <span className="font-semibold uppercase tracking-wider text-[#48563A]">{featuredPost.category}</span>
+                  <div className="flex items-center gap-3 text-xs text-content-muted mb-3">
+                    <span className="font-semibold uppercase tracking-wider text-accent">{featuredPost.category}</span>
                     <span>•</span>
                     <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {featuredPost.readTime}</span>
                   </div>
 
-                  <h2 className="font-serif text-xl sm:text-2xl lg:text-3xl text-[#2C2926] font-normal leading-snug">
+                  <h2 className="font-serif text-xl sm:text-2xl lg:text-3xl text-primary font-normal leading-snug">
                     {featuredPost.title}
                   </h2>
 
-                  <p className="text-xs sm:text-sm text-[#A69B8C] mt-3 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-content-muted mt-3 leading-relaxed">
                     {featuredPost.excerpt}
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-[#D8C9B5]/60 flex items-center justify-between">
-                  <span className="text-xs text-[#A69B8C] flex items-center gap-1.5">
+                <div className="mt-6 pt-4 border-t border-border/60 flex items-center justify-between">
+                  <span className="text-xs text-content-muted flex items-center gap-1.5">
                     <Calendar className="w-3.5 h-3.5" /> {featuredPost.date}
                   </span>
 
-                  <span className="text-xs font-semibold text-[#2C2926] hover:text-[#48563A] flex items-center gap-1.5 transition-colors">
+                  <span className="text-xs font-semibold text-primary hover:text-accent flex items-center gap-1.5 transition-colors">
                     Read Article <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
@@ -181,40 +181,40 @@ export default function BlogPage() {
           {standardPosts.map((post) => (
             <article
               key={post.id}
-              className="bg-white rounded-2xl overflow-hidden border border-[#D8C9B5] shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
+              className="bg-surface rounded-2xl overflow-hidden border border-border shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
             >
               <div>
-                <div className="relative aspect-[16/10] w-full bg-[#EAE5DC] overflow-hidden">
+                <div className="relative aspect-[16/10] w-full bg-surface-page overflow-hidden">
                   <Image
                     src={post.image}
                     alt={post.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute top-3 left-3 bg-[#2C2926]/90 backdrop-blur-md text-[#F7F4EE] text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full">
+                  <div className="absolute top-3 left-3 bg-primary/90 backdrop-blur-md text-primary-text text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full">
                     {post.category}
                   </div>
                 </div>
 
                 <div className="p-6">
-                  <div className="flex items-center gap-2 text-[11px] text-[#A69B8C] mb-2">
+                  <div className="flex items-center gap-2 text-[11px] text-content-muted mb-2">
                     <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {post.date}</span>
                     <span>•</span>
                     <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {post.readTime}</span>
                   </div>
 
-                  <h3 className="font-serif font-medium text-lg text-[#2C2926] group-hover:text-[#48563A] transition-colors leading-snug">
+                  <h3 className="font-serif font-medium text-lg text-primary group-hover:text-accent transition-colors leading-snug">
                     {post.title}
                   </h3>
 
-                  <p className="text-xs text-[#A69B8C] mt-2.5 leading-relaxed line-clamp-3">
+                  <p className="text-xs text-content-muted mt-2.5 leading-relaxed line-clamp-3">
                     {post.excerpt}
                   </p>
                 </div>
               </div>
 
               <div className="px-6 pb-6 pt-2">
-                <span className="text-xs font-semibold text-[#2C2926] group-hover:text-[#48563A] flex items-center gap-1.5 transition-colors">
+                <span className="text-xs font-semibold text-primary group-hover:text-accent flex items-center gap-1.5 transition-colors">
                   Read Guide <ArrowRight className="w-3.5 h-3.5" />
                 </span>
               </div>
@@ -223,20 +223,20 @@ export default function BlogPage() {
         </div>
 
         {/* Newsletter / Custom Advice Box */}
-        <div className="mt-20 bg-[#2C2926] text-[#F7F4EE] rounded-3xl p-8 sm:p-12 text-center max-w-3xl mx-auto shadow-lg">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[#D8C9B5] block mb-2">
+        <div className="mt-20 bg-primary text-primary-text rounded-3xl p-8 sm:p-12 text-center max-w-3xl mx-auto shadow-lg">
+          <span className="text-xs font-semibold uppercase tracking-widest text-sand block mb-2">
             PRACTICAL APARTMENT LIVING GUIDES
           </span>
-          <h2 className="font-serif text-2xl sm:text-3xl text-white">
+          <h2 className="font-serif text-2xl sm:text-3xl text-primary-text">
             Have a Specific Furniture Question?
           </h2>
-          <p className="text-xs sm:text-sm text-[#D8C9B5] mt-2 max-w-xl mx-auto">
+          <p className="text-xs sm:text-sm text-sand mt-2 max-w-xl mx-auto">
             Our furniture team is always happy to advise on entryway dimensions, folding storage fits, and product recommendations for your space.
           </p>
           <div className="mt-6 flex justify-center">
             <Link
               href="/contact"
-              className="px-6 py-3 bg-[#D8C9B5] hover:bg-[#C9B9A3] text-[#2C2926] text-xs font-semibold rounded-btn transition-colors inline-flex items-center gap-2 shadow-sm"
+              className="px-6 py-3 bg-sand hover:bg-sand/80 text-primary text-xs font-semibold rounded-btn transition-colors inline-flex items-center gap-2 shadow-sm"
             >
               <span>Connect with Our Team</span>
               <ArrowRight className="w-3.5 h-3.5" />

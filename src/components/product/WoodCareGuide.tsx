@@ -28,15 +28,15 @@ export default function WoodCareGuide() {
   ];
 
   return (
-    <div className="bg-white rounded-card p-6 sm:p-8 border border-border-sand shadow-card my-12">
+    <div className="bg-surface rounded-card p-6 sm:p-8 border border-border shadow-card my-12">
       <div className="mb-6">
-        <span className="text-xs font-bold uppercase tracking-widest text-antique-gold flex items-center gap-1.5">
+        <span className="text-xs font-bold uppercase tracking-widest text-accent flex items-center gap-1.5">
           <HeartHandshake className="w-3.5 h-3.5" /> EVERYDAY MAINTENANCE
         </span>
-        <h3 className="font-serif font-bold text-xl sm:text-2xl text-espresso mt-1">
+        <h3 className="font-serif font-bold text-xl sm:text-2xl text-primary mt-1">
           Product Care &amp; Maintenance Guide
         </h3>
-        <p className="text-xs text-soft-taupe mt-1">
+        <p className="text-xs text-content-muted mt-1">
           Simple, easy care principles to ensure smooth folding mechanisms, pristine finishes, and long-lasting durability.
         </p>
       </div>
@@ -47,16 +47,16 @@ export default function WoodCareGuide() {
           return (
             <div
               key={idx}
-              className="p-4 rounded-card bg-warm-ivory/60 border border-border-sand/60 flex flex-col justify-between"
+              className="p-4 rounded-card bg-surface-page/60 border border-border/60 flex flex-col justify-between"
             >
               <div>
-                <div className="w-9 h-9 rounded-btn bg-espresso text-warm-ivory flex items-center justify-center mb-3 shadow-xs">
-                  <Icon className="w-4 h-4 text-warm-sand" />
+                <div className="w-9 h-9 rounded-btn bg-primary text-primary-text flex items-center justify-center mb-3 shadow-xs">
+                  <Icon className="w-4 h-4 text-sand" />
                 </div>
-                <h4 className="font-serif font-bold text-xs sm:text-sm text-espresso mb-1">
+                <h4 className="font-serif font-bold text-xs sm:text-sm text-primary mb-1">
                   {tip.title}
                 </h4>
-                <p className="text-[11px] text-soft-taupe leading-relaxed">
+                <p className="text-[11px] text-content-muted leading-relaxed">
                   {tip.description}
                 </p>
               </div>

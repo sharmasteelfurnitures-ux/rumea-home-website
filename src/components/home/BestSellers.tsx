@@ -40,22 +40,22 @@ export default function BestSellers() {
   ];
 
   return (
-    <section className="py-20 sm:py-24 lg:py-28 bg-[#F7F4EE]">
+    <section className="py-20 sm:py-24 lg:py-28 bg-surface-page">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
         
         {/* Section Header: Architectural headline with brand typography */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-14">
           <div>
-            <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-[#2C2926] tracking-tight">
+            <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-primary tracking-tight">
               Most Loved
             </h2>
-            <p className="text-sm text-[#7A746B] font-sans mt-2">
+            <p className="text-sm text-content-muted font-sans mt-2">
               Practical, space-saving essentials for modern Indian apartments.
             </p>
           </div>
 
           {/* Clean minimal tabs */}
-          <div className="flex items-center gap-1.5 border-b border-[#D8C9B5] self-start sm:self-auto">
+          <div className="flex items-center gap-1.5 border-b border-border self-start sm:self-auto">
             {tabs.map((tab) => {
               const isActive = activeTab === tab.id;
               return (
@@ -64,15 +64,15 @@ export default function BestSellers() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`pb-3 px-3 text-xs sm:text-sm font-sans transition-colors relative cursor-pointer ${
                     isActive
-                      ? 'text-[#2C2926] font-semibold'
-                      : 'text-[#8C8479] hover:text-[#2C2926] font-normal'
+                      ? 'text-primary font-semibold'
+                      : 'text-content-muted hover:text-primary font-normal'
                   }`}
                 >
                   <span>{tab.label}</span>
                   {isActive && (
                     <motion.span
                       layoutId="activeTabUnderline"
-                      className="absolute bottom-0 inset-x-0 h-[2px] bg-[#2C2926]"
+                      className="absolute bottom-0 inset-x-0 h-[2px] bg-primary"
                       transition={{ type: 'spring', stiffness: 500, damping: 35 }}
                     />
                   )}
@@ -102,7 +102,7 @@ export default function BestSellers() {
         <div className="mt-12 sm:mt-16 text-center">
           <Link
             href="/products"
-            className="group inline-flex items-center gap-2 px-8 py-3.5 bg-transparent hover:bg-[#2C2926] text-[#2C2926] hover:text-[#F7F4EE] border border-[#2C2926] text-xs font-semibold uppercase tracking-[0.1em] rounded-full transition-all duration-200 shadow-2xs hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-2 px-8 py-3.5 bg-transparent hover:bg-primary text-primary hover:text-primary-text border border-primary text-xs font-semibold uppercase tracking-[0.1em] rounded-full transition-all duration-200 shadow-2xs hover:-translate-y-0.5"
           >
             <span>Shop all pieces</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />

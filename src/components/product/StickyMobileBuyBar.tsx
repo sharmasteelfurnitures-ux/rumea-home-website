@@ -18,20 +18,20 @@ export default function StickyMobileBuyBar({ product }: StickyMobileBuyBarProps)
   });
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 backdrop-blur-md border-t border-[#D8C9B5] px-4 py-2.5 shadow-[0_-4px_16px_rgba(44,41,38,0.08)]">
+    <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-surface-page/95 backdrop-blur-md border-t border-border px-4 py-2.5 shadow-[0_-4px_16px_rgba(44,41,38,0.08)]">
       <div className="flex items-center justify-between gap-3 max-w-lg mx-auto">
         
         {/* Price & Discount Info */}
         <div className="flex-1 min-w-0">
           <div className="flex items-baseline gap-1.5">
-            <span className="font-sans font-bold text-base sm:text-lg text-[#2C2926] tracking-tight">
+            <span className="font-sans font-bold text-base sm:text-lg text-primary tracking-tight">
               ₹{product.pricing.offer.toLocaleString('en-IN')}
             </span>
-            <span className="text-xs text-[#A69B8C] line-through font-normal">
+            <span className="text-xs text-content-muted line-through font-normal">
               ₹{product.pricing.mrp.toLocaleString('en-IN')}
             </span>
           </div>
-          <p className="text-[10px] text-[#48563A] font-medium truncate">
+          <p className="text-[10px] text-accent font-medium truncate">
             {product.pricing.discount}% OFF • Free PAN India Delivery
           </p>
         </div>
@@ -40,11 +40,11 @@ export default function StickyMobileBuyBar({ product }: StickyMobileBuyBarProps)
         <div className="flex items-center gap-2">
           <a
             href="tel:+917291962356"
-            className="p-2.5 bg-[#F7F4EE] text-[#2C2926] border border-[#D8C9B5] rounded-btn hover:bg-[#D8C9B5]/20 transition-colors flex items-center justify-center"
+            className="p-2.5 bg-surface text-primary border border-border rounded-btn hover:bg-surface-page transition-colors flex items-center justify-center"
             aria-label="Call for sizing and customization"
             title="Call Support"
           >
-            <Phone className="w-4 h-4 text-[#48563A]" />
+            <Phone className="w-4 h-4 text-accent" />
           </a>
 
           <a
@@ -52,9 +52,9 @@ export default function StickyMobileBuyBar({ product }: StickyMobileBuyBarProps)
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackWhatsAppClick({ source: 'pdp-sticky-bar', product_id: product.id, product_name: product.name })}
-            className="flex items-center gap-1.5 px-4 py-2.5 bg-[#48563A] hover:bg-[#3B4730] text-[#F7F4EE] text-xs font-semibold rounded-btn shadow-warm active:scale-95 transition-all cursor-pointer whitespace-nowrap"
+            className="flex items-center gap-1.5 px-4 py-2.5 bg-accent hover:bg-accent-hover text-accent-text text-xs font-semibold rounded-btn shadow-warm active:scale-95 transition-all cursor-pointer whitespace-nowrap"
           >
-            <MessageCircle className="w-4 h-4 text-[#D8C9B5]" />
+            <MessageCircle className="w-4 h-4 text-accent-text" />
             <span>Order on WhatsApp</span>
           </a>
         </div>

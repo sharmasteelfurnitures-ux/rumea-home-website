@@ -49,20 +49,20 @@ const collections = [
 
 export default function CollectionsHubPage() {
   return (
-    <main className="bg-[#F7F4EE] min-h-screen py-6 sm:py-10">
+    <main className="bg-surface-page min-h-screen py-6 sm:py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <Breadcrumb items={[{ label: 'Collections' }]} className="mb-6" />
 
         {/* Header */}
         <div className="mb-12 text-center max-w-3xl mx-auto">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7A6B5D] inline-flex items-center gap-1.5 mb-2">
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent inline-flex items-center gap-1.5 mb-2">
             <Sparkles className="w-3.5 h-3.5" /> CURATED DESIGN STYLES
           </span>
-          <h1 className="font-serif text-3xl sm:text-5xl text-[#2C2926] font-normal tracking-tight">
+          <h1 className="font-serif text-3xl sm:text-5xl text-primary font-normal tracking-tight">
             Furniture Collections
           </h1>
-          <p className="text-[#6B6962] text-sm sm:text-base mt-3 leading-relaxed">
+          <p className="text-content-muted text-sm sm:text-base mt-3 leading-relaxed">
             Cohesive furniture aesthetics tailored for everyday Indian homes. Explore our signature design collections.
           </p>
         </div>
@@ -73,9 +73,9 @@ export default function CollectionsHubPage() {
             <Link
               key={col.slug}
               href={col.link}
-              className="group bg-white rounded-2xl overflow-hidden border border-[#DEDAD1] shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+              className="group bg-surface rounded-2xl overflow-hidden border border-border shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col justify-between"
             >
-              <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#2C2926]">
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-primary">
                 <Image
                   src={col.image}
                   alt={col.name}
@@ -93,19 +93,19 @@ export default function CollectionsHubPage() {
 
               <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-[#7A6B5D] mb-1.5">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-1.5">
                     {col.tagline}
                   </p>
-                  <p className="text-xs text-[#6B6962] leading-relaxed line-clamp-3">
+                  <p className="text-xs text-content-muted leading-relaxed line-clamp-3">
                     {col.description}
                   </p>
                 </div>
 
-                <div className="mt-5 pt-4 border-t border-[#DEDAD1] flex items-center justify-between">
-                  <span className="text-xs font-semibold text-[#2C2926] group-hover:text-[#7A6B5D] transition-colors">
+                <div className="mt-5 pt-4 border-t border-border flex items-center justify-between">
+                  <span className="text-xs font-semibold text-primary group-hover:text-accent transition-colors">
                     Explore Collection
                   </span>
-                  <div className="w-7 h-7 rounded-full bg-[#F7F5F0] group-hover:bg-[#2C2926] text-[#2C2926] group-hover:text-white flex items-center justify-center transition-colors">
+                  <div className="w-7 h-7 rounded-full bg-surface-page group-hover:bg-primary text-primary group-hover:text-primary-text flex items-center justify-center transition-colors">
                     <ArrowRight className="w-3.5 h-3.5" />
                   </div>
                 </div>

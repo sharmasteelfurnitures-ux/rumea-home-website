@@ -56,7 +56,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="w-full bg-[#F7F4EE] border-t border-[#DEDAD1] pt-16 sm:pt-20 lg:pt-24 pb-10 sm:pb-14 px-5 sm:px-8 lg:px-12 text-[#2C2926] overflow-hidden">
+    <footer className="w-full bg-surface-page border-t border-border pt-16 sm:pt-20 lg:pt-24 pb-10 sm:pb-14 px-5 sm:px-8 lg:px-12 text-primary overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
         {/* Top Grid: Lead Title & Newsletter (Left) + Nav Columns (Right) */}
@@ -64,29 +64,29 @@ export default function Footer() {
           
           {/* Left Column: Clean Architectural Lead Statement & Single-Underline Input */}
           <div className="lg:col-span-5 space-y-7">
-            <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl leading-[1.08] tracking-tight text-[#2C2926]">
-              Thoughtful furniture. <span className="block text-[#7A6B5D] font-medium">Built for real homes.</span>
+            <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl leading-[1.08] tracking-tight text-primary">
+              Thoughtful furniture. <span className="block text-content-muted font-medium">Built for real homes.</span>
             </h2>
 
             {/* Newsletter: Single underline field matching brand minimalism */}
             <div className="pt-1 max-w-sm">
-              <label htmlFor="footer-newsletter-email" className="block text-xs font-sans text-[#6B6962] leading-relaxed mb-3">
+              <label htmlFor="footer-newsletter-email" className="block text-xs font-sans text-content-muted leading-relaxed mb-3">
                 New pieces, dimensions &amp; apartment layouts in your inbox.
               </label>
               
-              <form onSubmit={handleNewsletterSubmit} className="flex items-center border-b border-[#2C2926]/30 focus-within:border-[#2C2926] transition-colors pb-2">
+              <form onSubmit={handleNewsletterSubmit} className="flex items-center border-b border-border focus-within:border-primary transition-colors pb-2">
                 <input
                   id="footer-newsletter-email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email address"
-                  className="flex-1 bg-transparent border-0 outline-none text-sm text-[#2C2926] placeholder-[#A69B8C] py-1 font-sans"
+                  className="flex-1 bg-transparent border-0 outline-none text-sm text-primary placeholder:text-content-muted py-1 font-sans"
                   required
                 />
                 <button
                   type="submit"
-                  className="group inline-flex items-center gap-1.5 text-xs font-sans font-semibold text-[#2C2926] hover:text-[#7A6B5D] transition-colors pl-3 shrink-0 uppercase tracking-wider"
+                  className="group inline-flex items-center gap-1.5 text-xs font-sans font-semibold text-primary hover:text-primary-hover transition-colors pl-3 shrink-0 uppercase tracking-wider"
                 >
                   <span>Sign up</span>
                   <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
@@ -94,7 +94,7 @@ export default function Footer() {
               </form>
 
               {subscribed && (
-                <p className="mt-2 text-xs text-[#78806A] font-semibold">
+                <p className="mt-2 text-xs text-accent font-semibold">
                   Thank you! You are now subscribed to apartment sizing updates.
                 </p>
               )}
@@ -106,9 +106,9 @@ export default function Footer() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#78806A]/15 text-[#585E4D] hover:bg-[#78806A] hover:text-white transition-all duration-200 text-xs font-semibold"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent-subtle text-accent hover:bg-accent hover:text-accent-text transition-all duration-200 text-xs font-semibold"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#78806A] animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
                 <span>WhatsApp Sizing Help: +91 72919 62356</span>
               </a>
             </div>
@@ -119,15 +119,15 @@ export default function Footer() {
             
             {/* Column 1: Shop */}
             <div>
-              <p className="text-[11px] font-sans font-semibold uppercase tracking-[0.14em] text-[#6B6962] mb-4 sm:mb-5">
+              <p className="text-[11px] font-sans font-semibold uppercase tracking-[0.14em] text-content-muted mb-4 sm:mb-5">
                 Shop
               </p>
-              <ul className="space-y-3 text-sm font-sans text-[#2C2926]/80">
+              <ul className="space-y-3 text-sm font-sans text-content-body">
                 {shopLinks.map((item) => (
                   <li key={item.label}>
                     <Link
                       href={item.href}
-                      className="hover:text-[#2C2926] hover:underline underline-offset-4 transition-colors duration-150 block py-0.5"
+                      className="hover:text-primary hover:underline underline-offset-4 transition-colors duration-150 block py-0.5"
                     >
                       {item.label}
                     </Link>
@@ -138,10 +138,10 @@ export default function Footer() {
 
             {/* Column 2: Help */}
             <div>
-              <p className="text-[11px] font-sans font-semibold uppercase tracking-[0.14em] text-[#6B6962] mb-4 sm:mb-5">
+              <p className="text-[11px] font-sans font-semibold uppercase tracking-[0.14em] text-content-muted mb-4 sm:mb-5">
                 Help
               </p>
-              <ul className="space-y-3 text-sm font-sans text-[#2C2926]/80">
+              <ul className="space-y-3 text-sm font-sans text-content-body">
                 {helpLinks.map((item) => (
                   <li key={item.label}>
                     {item.external ? (
@@ -149,15 +149,15 @@ export default function Footer() {
                         href={item.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 hover:text-[#2C2926] hover:underline underline-offset-4 transition-colors duration-150 py-0.5"
+                        className="inline-flex items-center gap-1 hover:text-primary hover:underline underline-offset-4 transition-colors duration-150 py-0.5"
                       >
                         <span>{item.label}</span>
-                        <ExternalLink className="w-3 h-3 text-[#A69B8C]" />
+                        <ExternalLink className="w-3 h-3 text-content-muted" />
                       </a>
                     ) : (
                       <Link
                         href={item.href}
-                        className="hover:text-[#2C2926] hover:underline underline-offset-4 transition-colors duration-150 block py-0.5"
+                        className="hover:text-primary hover:underline underline-offset-4 transition-colors duration-150 block py-0.5"
                       >
                         {item.label}
                       </Link>
@@ -169,15 +169,15 @@ export default function Footer() {
 
             {/* Column 3: Company */}
             <div>
-              <p className="text-[11px] font-sans font-semibold uppercase tracking-[0.14em] text-[#6B6962] mb-4 sm:mb-5">
+              <p className="text-[11px] font-sans font-semibold uppercase tracking-[0.14em] text-content-muted mb-4 sm:mb-5">
                 Company
               </p>
-              <ul className="space-y-3 text-sm font-sans text-[#2C2926]/80">
+              <ul className="space-y-3 text-sm font-sans text-content-body">
                 {companyLinks.map((item) => (
                   <li key={item.label}>
                     <Link
                       href={item.href}
-                      className="hover:text-[#2C2926] hover:underline underline-offset-4 transition-colors duration-150 block py-0.5"
+                      className="hover:text-primary hover:underline underline-offset-4 transition-colors duration-150 block py-0.5"
                     >
                       {item.label}
                     </Link>
@@ -191,7 +191,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Meta Bar: Socials + Legal Links */}
-        <div className="border-t border-[#DEDAD1] pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-xs text-[#6B6962]">
+        <div className="border-t border-border pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-xs text-content-muted">
           
           {/* Social Channels Row */}
           <div className="flex items-center gap-3">
@@ -200,7 +200,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className="w-8 h-8 rounded-full bg-white hover:bg-[#7A6B5D] text-[#2C2926] hover:text-white transition-all duration-200 flex items-center justify-center border border-[#DEDAD1] hover:border-[#7A6B5D] hover:-translate-y-0.5"
+              className="w-8 h-8 rounded-full bg-surface hover:bg-primary text-primary hover:text-primary-text transition-all duration-200 flex items-center justify-center border border-border hover:border-primary hover:-translate-y-0.5"
             >
               <Instagram className="w-3.5 h-3.5" />
             </a>
@@ -210,7 +210,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp Support"
-              className="w-8 h-8 rounded-full bg-white hover:bg-[#78806A] text-[#2C2926] hover:text-white transition-all duration-200 flex items-center justify-center border border-[#DEDAD1] hover:border-[#78806A] hover:-translate-y-0.5"
+              className="w-8 h-8 rounded-full bg-surface hover:bg-accent text-accent hover:text-accent-text transition-all duration-200 flex items-center justify-center border border-border hover:border-accent hover:-translate-y-0.5"
             >
               <MessageCircle className="w-3.5 h-3.5" />
             </a>
@@ -220,7 +220,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Amazon India Store"
-              className="w-8 h-8 rounded-full bg-white hover:bg-[#7A6B5D] text-[#2C2926] hover:text-white transition-all duration-200 flex items-center justify-center border border-[#DEDAD1] hover:border-[#7A6B5D] hover:-translate-y-0.5"
+              className="w-8 h-8 rounded-full bg-surface hover:bg-primary text-primary hover:text-primary-text transition-all duration-200 flex items-center justify-center border border-border hover:border-primary hover:-translate-y-0.5"
             >
               <ShoppingBag className="w-3.5 h-3.5" />
             </a>
@@ -228,29 +228,29 @@ export default function Footer() {
             <a
               href="mailto:support@rumeahome.com"
               aria-label="Email Support"
-              className="w-8 h-8 rounded-full bg-white hover:bg-[#7A6B5D] text-[#2C2926] hover:text-white transition-all duration-200 flex items-center justify-center border border-[#DEDAD1] hover:border-[#7A6B5D] hover:-translate-y-0.5"
+              className="w-8 h-8 rounded-full bg-surface hover:bg-primary text-primary hover:text-primary-text transition-all duration-200 flex items-center justify-center border border-border hover:border-primary hover:-translate-y-0.5"
             >
               <Mail className="w-3.5 h-3.5" />
             </a>
 
-            <span className="text-[11px] font-sans text-[#A69B8C] ml-2 hidden sm:inline-block">
+            <span className="text-[11px] font-sans text-content-muted ml-2 hidden sm:inline-block">
               India (INR ₹)
             </span>
           </div>
 
           {/* Legal Links */}
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-sans">
-            <span>&copy; {currentYear}. All rights reserved.</span>
-            <Link href="/terms" className="hover:text-[#2C2926] transition-colors underline-offset-4 hover:underline">
+            <span>&copy; {currentYear} Rumea Home</span>
+            <Link href="/terms" className="hover:text-primary transition-colors underline-offset-4 hover:underline">
               Terms
             </Link>
-            <Link href="/privacy-policy" className="hover:text-[#2C2926] transition-colors underline-offset-4 hover:underline">
+            <Link href="/privacy-policy" className="hover:text-primary transition-colors underline-offset-4 hover:underline">
               Privacy
             </Link>
-            <Link href="/terms" className="hover:text-[#2C2926] transition-colors underline-offset-4 hover:underline">
+            <Link href="/terms" className="hover:text-primary transition-colors underline-offset-4 hover:underline">
               Shipping &amp; Returns
             </Link>
-            <Link href="/contact" className="hover:text-[#2C2926] transition-colors underline-offset-4 hover:underline">
+            <Link href="/contact" className="hover:text-primary transition-colors underline-offset-4 hover:underline">
               Support
             </Link>
           </div>

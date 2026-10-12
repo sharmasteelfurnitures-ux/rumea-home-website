@@ -50,26 +50,26 @@ export default function NewArrivalsAndBestSellers() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-[#F7F4EE] subtle-grain-texture border-t border-[#D8C9B5] overflow-hidden">
+    <section className="py-16 md:py-24 bg-surface-page subtle-grain-texture border-t border-border overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 sm:mb-12">
           <div>
-            <span className="text-xs font-medium uppercase tracking-[0.12em] text-[#48563A] flex items-center gap-1.5 mb-2">
-              <Sparkles className="w-3.5 h-3.5 text-[#48563A]" /> EVERYDAY LIVING ESSENTIALS
+            <span className="text-xs font-medium uppercase tracking-[0.12em] text-accent flex items-center gap-1.5 mb-2">
+              <Sparkles className="w-3.5 h-3.5 text-accent" /> EVERYDAY LIVING ESSENTIALS
             </span>
             <AnimatedHeading
               text="Practical Essentials for Everyday Living"
-              className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#2C2926] font-medium tracking-tight leading-tight"
+              className="font-serif text-3xl sm:text-4xl lg:text-5xl text-primary font-medium tracking-tight leading-tight"
             />
-            <p className="text-[#A69B8C] text-sm sm:text-base mt-2 max-w-xl leading-relaxed">
+            <p className="text-content-muted text-sm sm:text-base mt-2 max-w-xl leading-relaxed">
               Space-saving shoe storage, foldable tables, and sturdy seating proportioned for 2BHK and 3BHK flats.
             </p>
           </div>
 
           {/* Primary View Switcher: Best Sellers / New Arrivals / All Curated */}
-          <div className="flex items-center gap-1.5 p-1.5 bg-white border border-[#D8C9B5] rounded-xl shadow-xs self-start lg:self-end">
+          <div className="flex items-center gap-1.5 p-1.5 bg-surface border border-border rounded-xl shadow-xs self-start lg:self-end">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -81,19 +81,19 @@ export default function NewArrivalsAndBestSellers() {
                   }}
                   className={`relative flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 focus:outline-none ${
                     isActive
-                      ? 'text-[#F7F4EE]'
-                      : 'text-[#2C2926] hover:text-[#48563A]'
+                      ? 'text-primary-text'
+                      : 'text-primary hover:text-accent'
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="activePillTab"
-                      className="absolute inset-0 bg-[#2C2926] rounded-lg shadow-xs"
+                      className="absolute inset-0 bg-primary rounded-lg shadow-xs"
                       transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                     />
                   )}
                   <span className="relative z-10 flex items-center gap-1.5">
-                    <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#D8C9B5]' : 'text-[#48563A]'}`} />
+                    <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-sand' : 'text-accent'}`} />
                     <span>{tab.label}</span>
                   </span>
                 </button>
@@ -103,9 +103,9 @@ export default function NewArrivalsAndBestSellers() {
         </div>
 
         {/* Secondary Room Filter Pills */}
-        <div className="flex items-center justify-between gap-3 pb-6 sm:pb-8 border-b border-[#D8C9B5]/60 overflow-x-auto no-scrollbar">
+        <div className="flex items-center justify-between gap-3 pb-6 sm:pb-8 border-b border-border/60 overflow-x-auto no-scrollbar">
           <div className="flex items-center gap-2 flex-nowrap">
-            <span className="text-[11px] uppercase tracking-wider text-[#A69B8C] font-medium mr-1 hidden sm:inline-block">
+            <span className="text-[11px] uppercase tracking-wider text-content-muted font-medium mr-1 hidden sm:inline-block">
               Filter:
             </span>
             {roomFilters.map((rf) => {
@@ -116,8 +116,8 @@ export default function NewArrivalsAndBestSellers() {
                   onClick={() => setActiveRoom(rf.id)}
                   className={`px-3.5 py-1.5 rounded-btn text-xs font-medium whitespace-nowrap transition-all duration-150 ${
                     isSelected
-                      ? 'bg-[#48563A] text-white shadow-2xs'
-                      : 'bg-white border border-[#D8C9B5] text-[#2C2926] hover:border-[#2C2926]'
+                      ? 'bg-accent text-accent-text shadow-2xs'
+                      : 'bg-surface border border-border text-primary hover:border-primary'
                   }`}
                 >
                   {rf.label}
@@ -128,10 +128,10 @@ export default function NewArrivalsAndBestSellers() {
 
           <Link
             href="/products"
-            className="inline-flex items-center gap-1 text-xs sm:text-sm font-medium text-[#2C2926] hover:text-[#48563A] transition-colors whitespace-nowrap group ml-auto"
+            className="inline-flex items-center gap-1 text-xs sm:text-sm font-medium text-primary hover:text-accent transition-colors whitespace-nowrap group ml-auto"
           >
             <span>Explore All Pieces</span>
-            <ArrowRight className="w-3.5 h-3.5 text-[#48563A] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-3.5 h-3.5 text-accent group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
@@ -160,13 +160,13 @@ export default function NewArrivalsAndBestSellers() {
           </AnimatePresence>
 
           {filteredProducts.length === 0 && (
-            <div className="text-center py-16 bg-white rounded-card border border-[#D8C9B5] p-8">
-              <Compass className="w-8 h-8 text-[#A69B8C] mx-auto mb-2" />
-              <p className="font-serif text-lg text-[#2C2926]">No products found in this category</p>
-              <p className="text-xs text-[#A69B8C] mt-1">Try selecting another room filter or reset to &apos;All Items&apos;.</p>
+            <div className="text-center py-16 bg-surface rounded-card border border-border p-8">
+              <Compass className="w-8 h-8 text-content-muted mx-auto mb-2" />
+              <p className="font-serif text-lg text-primary">No products found in this category</p>
+              <p className="text-xs text-content-muted mt-1">Try selecting another room filter or reset to &apos;All Items&apos;.</p>
               <button
                 onClick={() => setActiveRoom('all')}
-                className="mt-4 px-4 py-2 bg-[#2C2926] text-[#F7F4EE] rounded-btn text-xs font-medium"
+                className="mt-4 px-4 py-2 bg-primary text-primary-text rounded-btn text-xs font-medium"
               >
                 Reset Filters
               </button>
@@ -176,12 +176,12 @@ export default function NewArrivalsAndBestSellers() {
 
         {/* Bottom CTA Banner with Workshop Direct Value Proposition */}
         <ScrollReveal delay={100}>
-          <div className="mt-12 sm:mt-16 p-6 sm:p-8 bg-white rounded-2xl border border-[#D8C9B5] shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="mt-12 sm:mt-16 p-6 sm:p-8 bg-surface rounded-2xl border border-border shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-              <p className="font-serif font-medium text-lg sm:text-xl text-[#2C2926]">
+              <p className="font-serif font-medium text-lg sm:text-xl text-primary">
                 Looking for specific dimensions or floor plan advice?
               </p>
-              <p className="text-xs sm:text-sm text-[#A69B8C] mt-1">
+              <p className="text-xs sm:text-sm text-content-muted mt-1">
                 Rust-Resistant Build • Easy Assembly • Sized for Indian Homes • Ships via Amazon India
               </p>
             </div>
@@ -189,10 +189,10 @@ export default function NewArrivalsAndBestSellers() {
             <div className="flex items-center gap-3 w-full sm:w-auto">
               <Link
                 href="/products"
-                className="btn-fill-anim w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#2C2926] text-[#F7F4EE] text-xs font-medium rounded-btn transition-colors shadow-xs"
+                className="btn-fill-anim w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-primary text-primary-text text-xs font-medium rounded-btn transition-colors shadow-xs"
               >
                 <span className="relative z-10">Browse Full Catalogue</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#D8C9B5] relative z-10" />
+                <ArrowRight className="w-3.5 h-3.5 text-sand relative z-10" />
               </Link>
             </div>
           </div>

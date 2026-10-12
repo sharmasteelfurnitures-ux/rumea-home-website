@@ -33,13 +33,13 @@ export default function AmazonCTA({ product, className = '' }: AmazonCTAProps) {
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleClick}
-        className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-[#48563A] hover:bg-[#3B4730] text-[#F7F4EE] font-sans font-semibold text-base md:text-lg rounded-xl shadow-warm hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 group"
+        className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-accent hover:bg-accent-hover text-accent-text font-sans font-semibold text-base md:text-lg rounded-xl shadow-warm hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 group"
       >
-        <MessageCircle className="w-5 h-5 text-[#D8C9B5]" />
+        <MessageCircle className="w-5 h-5 text-accent-text" />
         <span>Enquire &amp; Order on WhatsApp</span>
       </a>
-      <p className="text-[11px] text-center text-[#A69B8C] flex items-center justify-center gap-1.5">
-        <ShieldCheck className="w-3.5 h-3.5 text-[#48563A]" />
+      <p className="text-[11px] text-center text-content-muted flex items-center justify-center gap-1.5">
+        <ShieldCheck className="w-3.5 h-3.5 text-accent" />
         <span>Considered Proportions · Multi-Layer Transit Packaging · Direct WhatsApp Support</span>
       </p>
     </div>

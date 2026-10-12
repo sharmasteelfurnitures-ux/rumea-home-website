@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -29,7 +29,7 @@ export default function CategoryNavStrip() {
   ];
 
   return (
-    <div className="bg-white border-b border-warm-sand/50 shadow-xs hidden md:block">
+    <div className="bg-surface border-b border-border shadow-xs hidden md:block">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between overflow-x-auto py-2.5 gap-6 no-scrollbar">
           {categories.map((cat) => {
@@ -41,12 +41,12 @@ export default function CategoryNavStrip() {
                 href={cat.href}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-body font-medium transition-all duration-200 whitespace-nowrap group ${
                   isActive
-                    ? 'bg-espresso text-warm-ivory font-semibold shadow-xs'
-                    : 'text-espresso/80 hover:text-espresso hover:bg-warm-ivory'
+                    ? 'bg-primary text-primary-text font-semibold shadow-xs'
+                    : 'text-primary/80 hover:text-primary hover:bg-surface-page'
                 }`}
               >
                 <Icon className={`w-3.5 h-3.5 transition-colors ${
-                  isActive ? 'text-warm-sand' : 'text-muted-olive group-hover:text-espresso'
+                  isActive ? 'text-sand' : 'text-accent group-hover:text-primary'
                 }`} />
                 <span>{cat.name}</span>
               </Link>

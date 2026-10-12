@@ -28,23 +28,23 @@ export default function EnduringMaterials() {
   ];
 
   return (
-    <section className="py-20 sm:py-24 lg:py-28 bg-[#F7F4EE]">
+    <section className="py-20 sm:py-24 lg:py-28 bg-surface-page">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
         
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div className="max-w-xl">
-            <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-[#2C2926] tracking-tight">
+            <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-primary tracking-tight">
               Built with enduring materials.
             </h2>
-            <p className="text-sm sm:text-base text-[#6B6962] font-sans mt-3 leading-relaxed">
+            <p className="text-sm sm:text-base text-content-muted font-sans mt-3 leading-relaxed">
               No hollow plastic or flimsy particle board. Crafted with heavy-gauge steel and solid engineered wood for real daily life.
             </p>
           </div>
 
           <Link
             href="/about"
-            className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.1em] text-[#2C2926] hover:text-[#7A6B5D] transition-colors self-start sm:self-auto"
+            className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.1em] text-primary hover:text-accent transition-colors self-start sm:self-auto"
           >
             <span>Learn about our build</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
@@ -56,9 +56,9 @@ export default function EnduringMaterials() {
           {materials.map((m, idx) => (
             <div
               key={idx}
-              className="group bg-white rounded-2xl border border-[#DEDAD1] overflow-hidden transition-all duration-300 hover:border-[#2C2926] hover:shadow-md flex flex-col justify-between"
+              className="group bg-surface rounded-2xl border border-border overflow-hidden transition-all duration-300 hover:border-primary hover:shadow-md flex flex-col justify-between"
             >
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#EBE7DF]">
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface">
                 <Image
                   src={m.image}
                   alt={m.title}
@@ -67,17 +67,17 @@ export default function EnduringMaterials() {
                   className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                 />
                 <div className="absolute top-3.5 left-3.5 z-10">
-                  <span className="px-3 py-1 rounded-full text-[10px] font-sans font-semibold uppercase tracking-wider bg-[#2C2926] text-white">
+                  <span className="px-3 py-1 rounded-full text-[10px] font-sans font-semibold uppercase tracking-wider bg-primary text-primary-text">
                     {m.tag}
                   </span>
                 </div>
               </div>
 
               <div className="p-6">
-                <h3 className="font-heading font-semibold text-xl text-[#2C2926] mb-2 group-hover:text-[#7A6B5D] transition-colors">
+                <h3 className="font-heading font-semibold text-xl text-primary mb-2 group-hover:text-accent transition-colors">
                   {m.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-[#6B6962] font-sans leading-relaxed">
+                <p className="text-xs sm:text-sm text-content-muted font-sans leading-relaxed">
                   {m.subtitle}
                 </p>
               </div>

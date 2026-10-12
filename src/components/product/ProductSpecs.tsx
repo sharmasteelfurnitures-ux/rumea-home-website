@@ -27,17 +27,17 @@ export default function ProductSpecs({ product }: ProductSpecsProps) {
       title: 'Description & Design Story',
       icon: Sparkles,
       content: (
-        <div className="space-y-4 text-xs sm:text-sm text-espresso leading-relaxed">
+        <div className="space-y-4 text-xs sm:text-sm text-primary leading-relaxed">
           <p>
             {product.meta.description ||
               `The ${product.name} is thoughtfully proportioned for modern Indian living, balancing warm organic aesthetics with enduring daily durability.`}
           </p>
           <div className="space-y-2 pt-2">
-            <p className="font-bold text-xs uppercase tracking-wider text-antique-gold">Key Highlights:</p>
+            <p className="font-bold text-xs uppercase tracking-wider text-accent">Key Highlights:</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
               {product.features.map((feat, i) => (
                 <div key={i} className="flex items-start gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-antique-gold flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-accent flex-shrink-0 mt-0.5" />
                   <span>{feat}</span>
                 </div>
               ))}
@@ -51,63 +51,63 @@ export default function ProductSpecs({ product }: ProductSpecsProps) {
       title: 'Dimensions & Line Diagram',
       icon: Ruler,
       content: (
-        <div className="space-y-5 text-xs sm:text-sm text-espresso">
+        <div className="space-y-5 text-xs sm:text-sm text-primary">
           {/* Visual Line Diagram Box */}
-          <div className="p-4 bg-warm-ivory rounded-card border border-border-sand flex flex-col items-center justify-center text-center">
-            <div className="relative w-48 h-28 border-2 border-dashed border-espresso/40 rounded-sm flex items-center justify-center bg-white/60 mb-2">
-              <Box className="w-8 h-8 text-antique-gold" />
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-warm-ivory px-2 text-[10px] font-bold text-espresso">
+          <div className="p-4 bg-surface-page rounded-card border border-border flex flex-col items-center justify-center text-center">
+            <div className="relative w-48 h-28 border-2 border-dashed border-primary/40 rounded-sm flex items-center justify-center bg-surface mb-2">
+              <Box className="w-8 h-8 text-accent" />
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-surface-page px-2 text-[10px] font-bold text-primary">
                 W: {product.dimensions.width.cm} cm ({product.dimensions.width.ft})
               </span>
-              <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-warm-ivory px-2 text-[10px] font-bold text-espresso">
+              <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-surface-page px-2 text-[10px] font-bold text-primary">
                 D: {product.dimensions.depth.cm} cm ({product.dimensions.depth.ft})
               </span>
-              <span className="absolute -right-7 top-1/2 -translate-y-1/2 -rotate-90 bg-warm-ivory px-1 text-[10px] font-bold text-espresso">
+              <span className="absolute -right-7 top-1/2 -translate-y-1/2 -rotate-90 bg-surface-page px-1 text-[10px] font-bold text-primary">
                 H: {product.dimensions.height.cm} cm
               </span>
             </div>
-            <p className="text-[11px] text-soft-taupe font-medium">
+            <p className="text-[11px] text-content-muted font-medium">
               Overall Footprint: {product.dimensions.width.cm} × {product.dimensions.depth.cm} × {product.dimensions.height.cm} cm
             </p>
           </div>
 
           {/* Metric & Imperial Spec Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            <div className="p-3 bg-warm-ivory rounded-card border border-border-sand/60">
-              <p className="text-soft-taupe text-[11px]">Width (L to R)</p>
-              <p className="font-bold text-sm text-espresso mt-0.5">
-                {product.dimensions.width.cm} cm <span className="font-normal text-xs text-soft-taupe">({product.dimensions.width.ft})</span>
+            <div className="p-3 bg-surface-page rounded-card border border-border/60">
+              <p className="text-content-muted text-[11px]">Width (L to R)</p>
+              <p className="font-bold text-sm text-primary mt-0.5">
+                {product.dimensions.width.cm} cm <span className="font-normal text-xs text-content-muted">({product.dimensions.width.ft})</span>
               </p>
             </div>
-            <div className="p-3 bg-warm-ivory rounded-card border border-border-sand/60">
-              <p className="text-soft-taupe text-[11px]">Depth (F to B)</p>
-              <p className="font-bold text-sm text-espresso mt-0.5">
-                {product.dimensions.depth.cm} cm <span className="font-normal text-xs text-soft-taupe">({product.dimensions.depth.ft})</span>
+            <div className="p-3 bg-surface-page rounded-card border border-border/60">
+              <p className="text-content-muted text-[11px]">Depth (F to B)</p>
+              <p className="font-bold text-sm text-primary mt-0.5">
+                {product.dimensions.depth.cm} cm <span className="font-normal text-xs text-content-muted">({product.dimensions.depth.ft})</span>
               </p>
             </div>
-            <div className="p-3 bg-warm-ivory rounded-card border border-border-sand/60">
-              <p className="text-soft-taupe text-[11px]">Height (Floor to Top)</p>
-              <p className="font-bold text-sm text-espresso mt-0.5">
-                {product.dimensions.height.cm} cm <span className="font-normal text-xs text-soft-taupe">({product.dimensions.height.ft})</span>
+            <div className="p-3 bg-surface-page rounded-card border border-border/60">
+              <p className="text-content-muted text-[11px]">Height (Floor to Top)</p>
+              <p className="font-bold text-sm text-primary mt-0.5">
+                {product.dimensions.height.cm} cm <span className="font-normal text-xs text-content-muted">({product.dimensions.height.ft})</span>
               </p>
             </div>
             {product.dimensions.seatHeight && (
-              <div className="p-3 bg-warm-ivory rounded-card border border-border-sand/60">
-                <p className="text-soft-taupe text-[11px]">Seat Height</p>
-                <p className="font-bold text-sm text-espresso mt-0.5">
-                  {product.dimensions.seatHeight.cm} cm <span className="font-normal text-xs text-soft-taupe">({product.dimensions.seatHeight.ft})</span>
+              <div className="p-3 bg-surface-page rounded-card border border-border/60">
+                <p className="text-content-muted text-[11px]">Seat Height</p>
+                <p className="font-bold text-sm text-primary mt-0.5">
+                  {product.dimensions.seatHeight.cm} cm <span className="font-normal text-xs text-content-muted">({product.dimensions.seatHeight.ft})</span>
                 </p>
               </div>
             )}
-            <div className="p-3 bg-warm-ivory rounded-card border border-border-sand/60">
-              <p className="text-soft-taupe text-[11px]">Product Weight</p>
-              <p className="font-bold text-sm text-espresso mt-0.5">
+            <div className="p-3 bg-surface-page rounded-card border border-border/60">
+              <p className="text-content-muted text-[11px]">Product Weight</p>
+              <p className="font-bold text-sm text-primary mt-0.5">
                 {product.dimensions.weight} kg
               </p>
             </div>
-            <div className="p-3 bg-warm-ivory rounded-card border border-border-sand/60">
-              <p className="text-soft-taupe text-[11px]">Assembly Mode</p>
-              <p className="font-bold text-sm text-espresso mt-0.5">
+            <div className="p-3 bg-surface-page rounded-card border border-border/60">
+              <p className="text-content-muted text-[11px]">Assembly Mode</p>
+              <p className="font-bold text-sm text-primary mt-0.5">
                 {product.dimensions.assemblyRequired ? 'DIY Assembly (Tools Included)' : 'Pre-Assembled / Folding'}
               </p>
             </div>
@@ -120,23 +120,23 @@ export default function ProductSpecs({ product }: ProductSpecsProps) {
       title: 'Materials & Engineering',
       icon: Sparkles,
       content: (
-        <div className="space-y-3 text-xs sm:text-sm text-espresso">
+        <div className="space-y-3 text-xs sm:text-sm text-primary">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="p-3 bg-warm-ivory rounded-card border border-border-sand/60">
-              <p className="text-soft-taupe text-[11px]">Primary Material</p>
-              <p className="font-bold text-espresso">{product.materials.frame}</p>
+            <div className="p-3 bg-surface-page rounded-card border border-border/60">
+              <p className="text-content-muted text-[11px]">Primary Material</p>
+              <p className="font-bold text-primary">{product.materials.frame}</p>
             </div>
-            <div className="p-3 bg-warm-ivory rounded-card border border-border-sand/60">
-              <p className="text-soft-taupe text-[11px]">Surface Treatment</p>
-              <p className="font-bold text-espresso">{product.materials.coating || 'Anti-Rust Powder Coating'}</p>
+            <div className="p-3 bg-surface-page rounded-card border border-border/60">
+              <p className="text-content-muted text-[11px]">Surface Treatment</p>
+              <p className="font-bold text-primary">{product.materials.coating || 'Anti-Rust Powder Coating'}</p>
             </div>
-            <div className="p-3 bg-warm-ivory rounded-card border border-border-sand/60">
-              <p className="text-soft-taupe text-[11px]">Joints &amp; Structure</p>
-              <p className="font-bold text-espresso">{product.materials.joinery || 'Reinforced Heavy-Gauge Rivets'}</p>
+            <div className="p-3 bg-surface-page rounded-card border border-border/60">
+              <p className="text-content-muted text-[11px]">Joints &amp; Structure</p>
+              <p className="font-bold text-primary">{product.materials.joinery || 'Reinforced Heavy-Gauge Rivets'}</p>
             </div>
-            <div className="p-3 bg-warm-ivory rounded-card border border-border-sand/60">
-              <p className="text-soft-taupe text-[11px]">Finish / Texture</p>
-              <p className="font-bold text-espresso">{product.materials.selectedFinish || 'Matte Textured Finish'}</p>
+            <div className="p-3 bg-surface-page rounded-card border border-border/60">
+              <p className="text-content-muted text-[11px]">Finish / Texture</p>
+              <p className="font-bold text-primary">{product.materials.selectedFinish || 'Matte Textured Finish'}</p>
             </div>
           </div>
         </div>
@@ -178,17 +178,17 @@ export default function ProductSpecs({ product }: ProductSpecsProps) {
   ];
 
   return (
-    <div className="bg-white rounded-card border border-[#D8C9B5] shadow-card overflow-hidden my-10">
-      <div className="p-5 sm:p-6 border-b border-[#D8C9B5] bg-[#F7F4EE]/50">
-        <span className="text-xs font-medium uppercase tracking-[0.10em] text-[#48563A]">
+    <div className="bg-surface rounded-card border border-border shadow-card overflow-hidden my-10">
+      <div className="p-5 sm:p-6 border-b border-border bg-surface-page/60">
+        <span className="text-xs font-medium uppercase tracking-[0.10em] text-accent">
           TECHNICAL SPECIFICATIONS
         </span>
-        <h3 className="font-serif font-medium text-xl sm:text-2xl text-[#2C2926] mt-1">
+        <h3 className="font-serif font-medium text-xl sm:text-2xl text-primary mt-1">
           Product Details &amp; Engineering
         </h3>
       </div>
 
-      <div className="divide-y divide-[#D8C9B5]">
+      <div className="divide-y divide-border">
         {sections.map((sec) => {
           const Icon = sec.icon;
           const isOpen = !!openSections[sec.id];
@@ -196,16 +196,16 @@ export default function ProductSpecs({ product }: ProductSpecsProps) {
             <div key={sec.id} className="transition-colors">
               <button
                 onClick={() => toggleSection(sec.id)}
-                className="w-full flex items-center justify-between p-5 text-left font-serif font-medium text-sm sm:text-base text-[#2C2926] hover:bg-[#F7F4EE]/40 transition-colors"
+                className="w-full flex items-center justify-between p-5 text-left font-serif font-medium text-sm sm:text-base text-primary hover:bg-surface-page/40 transition-colors"
                 aria-expanded={isOpen}
               >
                 <div className="flex items-center gap-3">
-                  <Icon className="w-4 h-4 text-[#48563A] flex-shrink-0" />
+                  <Icon className="w-4 h-4 text-accent flex-shrink-0" />
                   <span>{sec.title}</span>
                 </div>
                 <ChevronDown
-                  className={`w-4 h-4 text-[#A69B8C] transition-transform duration-200 ${
-                    isOpen ? 'rotate-180 text-[#2C2926]' : ''
+                  className={`w-4 h-4 text-content-muted transition-transform duration-200 ${
+                    isOpen ? 'rotate-180 text-primary' : ''
                   }`}
                 />
               </button>

@@ -155,7 +155,7 @@ function ProductsPageContent() {
     maxPrice < 30000;
 
   return (
-    <div className="bg-[#F7F4EE] min-h-screen py-6 sm:py-10">
+    <div className="bg-surface-page min-h-screen py-6 sm:py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}
@@ -170,21 +170,21 @@ function ProductsPageContent() {
         />
 
         {/* Page Header Banner */}
-        <div className="mb-6 pb-6 border-b border-[#D8C9B5] flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="mb-6 pb-6 border-b border-border flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#48563A] flex items-center gap-1.5 mb-1.5">
+            <span className="text-xs font-semibold uppercase tracking-[0.15em] text-accent flex items-center gap-1.5 mb-1.5">
               <Sparkles className="w-3.5 h-3.5" /> PRACTICAL APARTMENT LIVING
             </span>
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#2C2926] font-medium tracking-tight">
+            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-primary font-medium tracking-tight">
               Practical Furniture Catalogue
             </h1>
-            <p className="text-[#A69B8C] text-xs sm:text-sm mt-1.5 max-w-xl">
+            <p className="text-content-muted text-xs sm:text-sm mt-1.5 max-w-xl">
               Wall-mounted shoe racks, folding tables, coat stands, and sturdy seating proportioned for everyday Indian homes.
             </p>
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="text-xs sm:text-sm text-[#2C2926] font-semibold bg-white px-4 py-2 rounded-btn border border-[#D8C9B5] shadow-xs">
+            <span className="text-xs sm:text-sm text-primary font-semibold bg-surface px-4 py-2 rounded-btn border border-border shadow-xs">
               Showing {sortedProducts.length} {sortedProducts.length === 1 ? 'product' : 'products'}
             </span>
           </div>
@@ -208,8 +208,8 @@ function ProductsPageContent() {
                   }}
                   className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? 'bg-[#2C2926] text-[#F7F4EE] shadow-xs'
-                      : 'bg-white text-[#2C2926] hover:bg-white/80 border border-[#D8C9B5]'
+                      ? 'bg-primary text-primary-text shadow-xs'
+                      : 'bg-surface text-primary hover:bg-surface/80 border border-border'
                   }`}
                 >
                   {tab.label}
@@ -220,19 +220,19 @@ function ProductsPageContent() {
         </div>
 
         {/* Sticky Control Bar: Sort + Room Filter Pills + Grid Toggle */}
-        <div className="mb-6 bg-white rounded-card p-3 sm:p-4 border border-[#D8C9B5] shadow-xs flex flex-wrap items-center justify-between gap-3">
+        <div className="mb-6 bg-surface rounded-card p-3 sm:p-4 border border-border shadow-xs flex flex-wrap items-center justify-between gap-3">
           
           {/* Quick Room Filter Pills */}
           <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
-            <span className="text-[11px] uppercase font-semibold text-[#A69B8C] mr-1 hidden sm:inline">
+            <span className="text-[11px] uppercase font-semibold text-content-muted mr-1 hidden sm:inline">
               Room:
             </span>
             <button
               onClick={() => setSelectedRooms([])}
               className={`px-3 py-1.5 text-xs font-medium rounded-btn transition-all ${
                 selectedRooms.length === 0
-                  ? 'bg-[#48563A] text-white shadow-2xs'
-                  : 'bg-[#F7F4EE] text-[#2C2926] hover:bg-white border border-[#D8C9B5]'
+                  ? 'bg-primary text-primary-text shadow-2xs'
+                  : 'bg-surface-page text-primary hover:bg-surface border border-border'
               }`}
             >
               All Rooms
@@ -248,8 +248,8 @@ function ProductsPageContent() {
                   }}
                   className={`px-3 py-1.5 text-xs font-medium rounded-btn whitespace-nowrap transition-all ${
                     isSelected
-                      ? 'bg-[#48563A] text-white shadow-2xs'
-                      : 'bg-[#F7F4EE] text-[#2C2926] hover:bg-white border border-[#D8C9B5]'
+                      ? 'bg-primary text-primary-text shadow-2xs'
+                      : 'bg-surface-page text-primary hover:bg-surface border border-border'
                   }`}
                 >
                   {r.label}
@@ -261,11 +261,11 @@ function ProductsPageContent() {
           <div className="flex items-center gap-3 ml-auto">
             {/* Sort By Dropdown */}
             <div className="flex items-center gap-2 text-xs">
-              <span className="text-[#A69B8C] hidden sm:inline">Sort By:</span>
+              <span className="text-content-muted hidden sm:inline">Sort By:</span>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="bg-[#F7F4EE] border border-[#D8C9B5] text-[#2C2926] font-medium text-xs rounded-btn py-1.5 px-3 focus:outline-none focus:ring-1 focus:ring-[#2C2926] cursor-pointer"
+                className="bg-surface-page border border-border text-primary font-medium text-xs rounded-btn py-1.5 px-3 focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer"
               >
                 <option value="popular">Popularity</option>
                 <option value="price-low">Price: Low to High</option>
@@ -275,17 +275,17 @@ function ProductsPageContent() {
             </div>
 
             {/* Grid Column Toggle */}
-            <div className="hidden sm:flex items-center gap-1 border border-[#D8C9B5] rounded-btn p-0.5 bg-[#F7F4EE]">
+            <div className="hidden sm:flex items-center gap-1 border border-border rounded-btn p-0.5 bg-surface-page">
               <button
                 onClick={() => setViewMode('3col')}
-                className={`p-1.5 rounded-btn cursor-pointer ${viewMode === '3col' ? 'bg-white text-[#2C2926] shadow-2xs' : 'text-[#A69B8C] hover:text-[#2C2926]'}`}
+                className={`p-1.5 rounded-btn cursor-pointer ${viewMode === '3col' ? 'bg-surface text-primary shadow-2xs' : 'text-content-muted hover:text-primary'}`}
                 aria-label="3 or 4 column grid"
               >
                 <Grid3X3 className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setViewMode('2col')}
-                className={`p-1.5 rounded-btn cursor-pointer ${viewMode === '2col' ? 'bg-white text-[#2C2926] shadow-2xs' : 'text-[#A69B8C] hover:text-[#2C2926]'}`}
+                className={`p-1.5 rounded-btn cursor-pointer ${viewMode === '2col' ? 'bg-surface text-primary shadow-2xs' : 'text-content-muted hover:text-primary'}`}
                 aria-label="2 column grid"
               >
                 <Grid2X2 className="w-4 h-4" />
@@ -297,15 +297,15 @@ function ProductsPageContent() {
 
         {/* Product Grid */}
         {sortedProducts.length === 0 ? (
-          <div className="text-center py-16 bg-white rounded-card border border-[#D8C9B5] p-8">
-            <Compass className="w-8 h-8 text-[#A69B8C] mx-auto mb-2" />
-            <p className="font-serif text-2xl text-[#2C2926] mb-2">No products found</p>
-            <p className="text-xs text-[#A69B8C] max-w-sm mx-auto mb-6">
+          <div className="text-center py-16 bg-surface rounded-card border border-border p-8">
+            <Compass className="w-8 h-8 text-content-muted mx-auto mb-2" />
+            <p className="font-serif text-2xl text-primary mb-2">No products found</p>
+            <p className="text-xs text-content-muted max-w-sm mx-auto mb-6">
               Try selecting another category filter or reset to browse all pieces.
             </p>
             <button
               onClick={clearAllFilters}
-              className="px-6 py-2.5 bg-[#2C2926] text-[#F7F4EE] text-xs font-medium rounded-btn shadow-xs"
+              className="px-6 py-2.5 bg-primary text-primary-text text-xs font-medium rounded-btn shadow-xs hover:bg-primary-hover transition-colors"
             >
               Reset Filters
             </button>
@@ -330,20 +330,20 @@ function ProductsPageContent() {
       {mobileFilterOpen && (
         <div className="fixed inset-0 z-50 lg:hidden flex flex-col justify-end">
           <div
-            className="fixed inset-0 bg-[#2C2926]/60 backdrop-blur-xs transition-opacity"
+            className="fixed inset-0 bg-primary/60 backdrop-blur-xs transition-opacity"
             onClick={() => setMobileFilterOpen(false)}
           />
-          <div className="relative w-full max-h-[85vh] bg-[#F7F4EE] rounded-t-3xl shadow-2xl flex flex-col justify-between overflow-y-auto p-6 z-10 border-t border-[#D8C9B5] animate-in slide-in-from-bottom duration-300">
+          <div className="relative w-full max-h-[85vh] bg-surface-page rounded-t-3xl shadow-2xl flex flex-col justify-between overflow-y-auto p-6 z-10 border-t border-border animate-in slide-in-from-bottom duration-300">
             <div>
               {/* Header with Close */}
-              <div className="flex items-center justify-between pb-4 border-b border-[#D8C9B5]">
+              <div className="flex items-center justify-between pb-4 border-b border-border">
                 <div>
-                  <h3 className="font-serif font-bold text-lg text-[#2C2926]">Filter &amp; Sort</h3>
-                  <p className="text-[11px] text-[#A69B8C]">Refine furniture specifications</p>
+                  <h3 className="font-serif font-bold text-lg text-primary">Filter &amp; Sort</h3>
+                  <p className="text-[11px] text-content-muted">Refine furniture specifications</p>
                 </div>
                 <button
                   onClick={() => setMobileFilterOpen(false)}
-                  className="p-2 text-[#2C2926] hover:text-[#48563A] rounded-full hover:bg-white/80"
+                  className="p-2 text-primary hover:text-accent rounded-full hover:bg-surface/80"
                   aria-label="Close filters"
                 >
                   <X className="w-5 h-5" />
@@ -351,8 +351,8 @@ function ProductsPageContent() {
               </div>
 
               {/* Mobile Sort Options */}
-              <div className="py-4 border-b border-[#D8C9B5]/60">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#2C2926] block mb-2.5">
+              <div className="py-4 border-b border-border/60">
+                <span className="text-xs font-bold uppercase tracking-wider text-primary block mb-2.5">
                   Sort By
                 </span>
                 <div className="grid grid-cols-2 gap-2">
@@ -367,8 +367,8 @@ function ProductsPageContent() {
                       onClick={() => setSortBy(opt.id)}
                       className={`py-2 px-3 text-xs font-medium rounded-btn border text-center transition-all ${
                         sortBy === opt.id
-                          ? 'bg-[#2C2926] text-[#F7F4EE] border-[#2C2926] shadow-xs'
-                          : 'bg-white text-[#2C2926] border-[#D8C9B5]'
+                          ? 'bg-primary text-primary-text border-primary shadow-xs'
+                          : 'bg-surface text-primary border-border'
                       }`}
                     >
                       {opt.label}
@@ -378,12 +378,12 @@ function ProductsPageContent() {
               </div>
 
               {/* Mobile Price Filter */}
-              <div className="py-4 border-b border-[#D8C9B5]/60">
+              <div className="py-4 border-b border-border/60">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#2C2926]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-primary">
                     Max Price
                   </span>
-                  <span className="text-xs font-bold text-[#48563A]">
+                  <span className="text-xs font-bold text-accent">
                     ₹{maxPrice.toLocaleString('en-IN')}
                   </span>
                 </div>
@@ -394,22 +394,22 @@ function ProductsPageContent() {
                   step="2000"
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(Number(e.target.value))}
-                  className="w-full accent-[#2C2926] cursor-pointer"
+                  className="w-full accent-primary cursor-pointer"
                 />
-                <div className="flex justify-between text-[10px] text-[#A69B8C] mt-1 font-medium">
+                <div className="flex justify-between text-[10px] text-content-muted mt-1 font-medium">
                   <span>₹0</span>
                   <span>₹80,000</span>
                 </div>
               </div>
 
               {/* Mobile Wood Finish Filter */}
-              <div className="py-4 border-b border-[#D8C9B5]/60">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#2C2926] block mb-2.5">
+              <div className="py-4 border-b border-border/60">
+                <span className="text-xs font-bold uppercase tracking-wider text-primary block mb-2.5">
                   Wood Finish
                 </span>
                 <div className="space-y-2">
                   {finishOptions.map((finish) => (
-                    <label key={finish.id} className="flex items-center gap-2.5 text-xs text-[#2C2926] cursor-pointer">
+                    <label key={finish.id} className="flex items-center gap-2.5 text-xs text-primary cursor-pointer">
                       <input
                         type="checkbox"
                         checked={selectedMaterials.includes(finish.id)}
@@ -417,7 +417,7 @@ function ProductsPageContent() {
                           if (e.target.checked) setSelectedMaterials([...selectedMaterials, finish.id]);
                           else setSelectedMaterials(selectedMaterials.filter((m) => m !== finish.id));
                         }}
-                        className="rounded text-[#2C2926] focus:ring-[#2C2926]"
+                        className="rounded text-primary focus:ring-primary"
                       />
                       <span>{finish.label}</span>
                     </label>
@@ -426,8 +426,8 @@ function ProductsPageContent() {
               </div>
 
               {/* Mobile Rooms */}
-              <div className="py-4 border-b border-[#D8C9B5]/60">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#2C2926] block mb-2.5">
+              <div className="py-4 border-b border-border/60">
+                <span className="text-xs font-bold uppercase tracking-wider text-primary block mb-2.5">
                   Room Category
                 </span>
                 <div className="grid grid-cols-2 gap-2">
@@ -443,8 +443,8 @@ function ProductsPageContent() {
                         }}
                         className={`py-2 px-3 text-xs font-medium rounded-btn border text-left flex items-center justify-between ${
                           isChecked
-                            ? 'bg-[#48563A] text-white border-[#48563A]'
-                            : 'bg-white text-[#2C2926] border-[#D8C9B5]'
+                            ? 'bg-primary text-primary-text border-primary'
+                            : 'bg-surface text-primary border-border'
                         }`}
                       >
                         <span>{r.label}</span>
@@ -457,18 +457,18 @@ function ProductsPageContent() {
             </div>
 
             {/* Bottom Actions: Clear + Apply */}
-            <div className="pt-4 mt-2 border-t border-[#D8C9B5] flex gap-3">
+            <div className="pt-4 mt-2 border-t border-border flex gap-3">
               {hasActiveFilters && (
                 <button
                   onClick={clearAllFilters}
-                  className="w-1/3 py-3 bg-white border border-[#D8C9B5] text-[#2C2926] font-medium text-xs rounded-btn"
+                  className="w-1/3 py-3 bg-surface border border-border text-primary font-medium text-xs rounded-btn"
                 >
                   Reset
                 </button>
               )}
               <button
                 onClick={() => setMobileFilterOpen(false)}
-                className="flex-1 py-3 bg-[#2C2926] text-[#F7F4EE] font-bold text-xs rounded-btn shadow-warm"
+                className="flex-1 py-3 bg-primary text-primary-text font-bold text-xs rounded-btn shadow-warm hover:bg-primary-hover transition-colors"
               >
                 Apply Filters ({sortedProducts.length} Pieces)
               </button>
@@ -485,26 +485,26 @@ function ProductsPageContent() {
 
 function ProductGridSkeleton() {
   return (
-    <div className="min-h-screen bg-[#F7F4EE] py-6 sm:py-10">
+    <div className="min-h-screen bg-surface-page py-6 sm:py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb Skeleton */}
-        <div className="h-4 w-48 bg-[#E6E0D5] rounded animate-pulse mb-6" />
+        <div className="h-4 w-48 bg-surface rounded animate-pulse mb-6" />
 
         {/* Banner Skeleton */}
-        <div className="mb-8 pb-6 border-b border-[#D8C9B5] space-y-3">
-          <div className="h-3 w-32 bg-[#E6E0D5] rounded animate-pulse" />
-          <div className="h-8 w-72 bg-[#E6E0D5] rounded animate-pulse" />
-          <div className="h-4 w-96 max-w-full bg-[#E6E0D5] rounded animate-pulse" />
+        <div className="mb-8 pb-6 border-b border-border space-y-3">
+          <div className="h-3 w-32 bg-surface rounded animate-pulse" />
+          <div className="h-8 w-72 bg-surface rounded animate-pulse" />
+          <div className="h-4 w-96 max-w-full bg-surface rounded animate-pulse" />
         </div>
 
         {/* Grid Skeleton (2-column on mobile, 3-column on desktop) */}
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {Array.from({ length: 6 }).map((_, i) => (
             <div key={i} className="flex flex-col space-y-3">
-              <div className="aspect-square w-full rounded-2xl bg-[#E6E0D5] animate-pulse" />
-              <div className="h-4 w-3/4 bg-[#E6E0D5] rounded animate-pulse mt-1" />
-              <div className="h-3 w-1/2 bg-[#E6E0D5] rounded animate-pulse" />
-              <div className="h-5 w-1/3 bg-[#E6E0D5] rounded animate-pulse" />
+              <div className="aspect-square w-full rounded-2xl bg-surface animate-pulse" />
+              <div className="h-4 w-3/4 bg-surface rounded animate-pulse mt-1" />
+              <div className="h-3 w-1/2 bg-surface rounded animate-pulse" />
+              <div className="h-5 w-1/3 bg-surface rounded animate-pulse" />
             </div>
           ))}
         </div>

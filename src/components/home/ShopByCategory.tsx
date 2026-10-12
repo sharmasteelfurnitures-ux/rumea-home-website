@@ -50,7 +50,7 @@ export default function ShopByCategory() {
   const smoothEase = [0.16, 1, 0.3, 1];
 
   return (
-    <section className="py-20 sm:py-24 lg:py-28 bg-[#F7F5F0]">
+    <section className="py-20 sm:py-24 lg:py-28 bg-surface-page">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -63,19 +63,19 @@ export default function ShopByCategory() {
         >
           <div>
             <div className="flex items-center gap-2.5 mb-2.5">
-              <span className="w-8 h-[2px] bg-[#8B6F5E] inline-block flex-shrink-0" />
-              <span className="text-[10px] sm:text-[11px] font-normal uppercase tracking-[0.2em] text-[#8E8B85]">
+              <span className="w-8 h-[2px] bg-sand inline-block flex-shrink-0" />
+              <span className="text-[10px] sm:text-[11px] font-normal uppercase tracking-[0.2em] text-content-muted">
                 Catalogue by Space
               </span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#2C2926] font-normal tracking-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl text-primary font-normal tracking-tight">
               Shop by need
             </h2>
           </div>
 
           <Link
             href="/products"
-            className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-[#2C2926] hover:text-[#7A6B5D] transition-colors self-start sm:self-auto"
+            className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-primary hover:text-accent transition-colors self-start sm:self-auto"
           >
             <span>View all products</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
@@ -97,7 +97,7 @@ export default function ShopByCategory() {
                 className="group block focus:outline-none"
               >
                 {/* Image Frame */}
-                <div className="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-[#EBE7DF] border border-[#DEDAD1] shadow-2xs group-hover:border-[#2C2926]/30 group-hover:shadow-sm transition-all duration-300">
+                <div className="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-surface border border-border shadow-2xs group-hover:border-primary/40 group-hover:shadow-sm transition-all duration-300">
                   <Image
                     src={cat.image}
                     alt={cat.name}
@@ -110,10 +110,10 @@ export default function ShopByCategory() {
 
                 {/* Title & Short Link */}
                 <div className="mt-3 text-left">
-                  <h3 className="font-serif font-medium text-sm sm:text-base text-[#2C2926] group-hover:text-[#7A6B5D] transition-colors leading-snug">
+                  <h3 className="font-serif font-medium text-sm sm:text-base text-primary group-hover:text-accent transition-colors leading-snug">
                     {cat.name}
                   </h3>
-                  <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-medium text-[#6B6962] group-hover:text-[#2C2926] transition-colors mt-1">
+                  <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-medium text-content-muted group-hover:text-primary transition-colors mt-1">
                     <span>Explore</span>
                     <ArrowRight className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-1" />
                   </span>

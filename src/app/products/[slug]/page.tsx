@@ -8,9 +8,7 @@ import ProductInfo from '@/components/product/ProductInfo';
 import ProductSpecs from '@/components/product/ProductSpecs';
 import FrequentlyBoughtTogether from '@/components/product/FrequentlyBoughtTogether';
 import ProductFAQ from '@/components/product/ProductFAQ';
-import RoomFitGuide from '@/components/product/RoomFitGuide';
 import WoodCareGuide from '@/components/product/WoodCareGuide';
-import ImageComparisonSlider from '@/components/product/ImageComparisonSlider';
 import RelatedProducts from '@/components/product/RelatedProducts';
 import StickyMobileBuyBar from '@/components/product/StickyMobileBuyBar';
 import WhatsAppFloatingButton from '@/components/layout/WhatsAppFloatingButton';
@@ -130,12 +128,6 @@ export default function ProductDetailPage({ params }: Props) {
 
         {/* 5-Section Technical Specifications Accordion (with Line Diagram) */}
         <ProductSpecs product={product} />
-
-        {/* "Will It Fit in Your Room?" Sizing & Doorway Clearance Guide */}
-        <RoomFitGuide product={product} />
-
-        {/* Interactive Before-and-After Comparison Slider (Finishes, Ambience & Craft) */}
-        <ImageComparisonSlider />
 
         {/* "Complete the Look" / Frequently Bought Together Bundle Builder */}
         <FrequentlyBoughtTogether product={product} />

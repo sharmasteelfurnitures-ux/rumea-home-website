@@ -7,38 +7,39 @@
   --text-primary: #2C2926;
   --text-secondary: #6B6962;
   --border-subtle: #DEDAD1;
-  --accent-soft: #78806A;
+  --accent-soft: #7A6B5D;
   --bg-dark: #2C2926;
   --bg-white: #FFFFFF;
 
   --color-espresso: #2C2926;
   --color-sand: #D8C9B5;
   --color-ivory: #F7F4EE;
+  --color-dark-ivory: #F0EBE2;
   --color-olive: #78806A;
   --color-taupe: #A69B8C;
   --color-brand-taupe: #7A6B5D;
-  --color-logobrown: #3D2212;
+  --color-brand-brown: #7A6B5D;
+  --color-logobrown: #2C2926;
 
   --charcoal: #2C2926;
   --espresso: #2C2926;
   --warm-offwhite: #F7F4EE;
   --warm-alabaster: #F7F4EE;
   --terracotta: #7A6B5D;
-  --antique-gold: #8A684A;
   --warm-sand: #D8C9B5;
   --mid-gray: #6B6962;
   --soft-taupe: #A69B8C;
   --border-sand: #DEDAD1;
 
   --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-serif: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', Inter, system-ui, -apple-system, sans-serif;
 
-  --radius-card: 18px;
+  --radius-card: 16px;
   --radius-btn: 9999px;
 
-  --shadow-card: 0 2px 14px -2px rgba(44, 41, 38, 0.05);
-  --shadow-hover: 0 14px 34px -4px rgba(44, 41, 38, 0.11);
+  --shadow-card: 0 1px 3px rgba(44, 41, 38, 0.04), 0 4px 14px rgba(44, 41, 38, 0.04);
+  --shadow-hover: 0 8px 24px rgba(44, 41, 38, 0.08);
 }
 
 * {
@@ -57,15 +58,16 @@ body {
   background-color: #F7F4EE;
   color: #2C2926;
   font-family: var(--font-body);
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.65;
   min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   color: #2C2926;
-  letter-spacing: -0.025em;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 /* Silky smooth card hover interaction */

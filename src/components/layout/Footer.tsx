@@ -1,135 +1,260 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { MessageCircle, ExternalLink, ArrowRight } from 'lucide-react';
+import { 
+  MessageCircle, 
+  Instagram, 
+  ShoppingBag, 
+  Mail, 
+  ArrowRight,
+  ExternalLink,
+  ChevronDown
+} from 'lucide-react';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
-import BrandLogo from '@/components/ui/BrandLogo';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [email, setEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
+
+  const whatsappUrl = buildWhatsAppUrl(
+    "Hi Rumea Home! I'd like help choosing the right size for my space."
+  );
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      setSubscribed(true);
+      setEmail('');
+      setTimeout(() => setSubscribed(false), 4000);
+    }
+  };
 
   const shopLinks = [
     { label: 'Shop all', href: '/products' },
-    { label: 'Entryway', href: '/products?category=shoe-rack' },
-    { label: 'Tables', href: '/products?category=folding-table' },
-    { label: 'Seating', href: '/products?category=seating' },
+    { label: 'Shoe Racks', href: '/products?category=shoe-rack' },
+    { label: 'Folding Tables', href: '/products?category=folding-table' },
+    { label: 'Coat Stands', href: '/products?category=coat-stand' },
+    { label: 'Seating & Benches', href: '/products?category=seating' },
     { label: 'Rooms Hub', href: '/rooms' },
-    { label: 'Collections', href: '/collections' },
   ];
 
   const helpLinks = [
-    { label: 'Room-fit assistance', href: '/#fit-assistance' },
-    { label: 'Shipping', href: '/terms' },
-    { label: 'Returns', href: '/terms' },
-    { label: 'Assembly', href: '/contact' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Room-Fit Assistance', href: '/#fit-assistance' },
+    { label: 'Sizing & Dimensions', href: '/contact' },
+    { label: 'Assembly & Care', href: '/contact' },
+    { label: 'Shipping & Delivery', href: '/terms' },
+    { label: 'Amazon India Store', href: 'https://www.amazon.in', external: true },
   ];
 
   const companyLinks = [
-    { label: 'About Rumea', href: '/about' },
-    { label: 'Design Journal & Blog', href: '/blog' },
-    { label: 'Customization', href: '/customization' },
-    { label: 'Privacy policy', href: '/privacy-policy' },
-    { label: 'Terms', href: '/terms' },
+    { label: 'Our Story', href: '/about' },
+    { label: 'Design Journal', href: '/blog' },
+    { label: 'Customization Studio', href: '/customization' },
+    { label: 'Contact us', href: '/contact' },
   ];
 
   return (
-    <footer className="bg-[#2C2926] text-[#F7F4EE] border-t border-[#3D3632] pt-16 pb-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="w-full bg-[#F7F4EE] border-t border-[#DEDAD1] pt-16 sm:pt-20 lg:pt-24 pb-10 sm:pb-14 px-5 sm:px-8 lg:px-12 text-[#2C2926] overflow-hidden">
+      <div className="max-w-7xl mx-auto">
         
-        {/* Main 4-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b border-[#3D3632]">
+        {/* Top Grid: Lead Title & Newsletter (Left) + Nav Columns (Right) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pb-14">
           
-          {/* Column 1: Brand & Sizing Mission (4 cols on lg) */}
-          <div className="lg:col-span-4 space-y-4">
-            <BrandLogo variant="light" size="md" />
-            <p className="text-xs text-[#D8C9B5]/85 font-sans leading-relaxed max-w-sm pt-1">
-              Thoughtful, well-built furniture for everyday Indian homes. Sized for real apartments — narrow hallways, compact rooms, and modern living routines.
-            </p>
+          {/* Left Column: Clean Architectural Lead Statement & Single-Underline Input */}
+          <div className="lg:col-span-5 space-y-7">
+            <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl leading-[1.08] tracking-tight text-[#2C2926]">
+              Thoughtful furniture. <span className="block text-[#7A6B5D] font-medium">Built for real homes.</span>
+            </h2>
 
-            <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center gap-3">
+            {/* Newsletter: Single underline field matching brand minimalism */}
+            <div className="pt-1 max-w-sm">
+              <label htmlFor="footer-newsletter-email" className="block text-xs font-sans text-[#6B6962] leading-relaxed mb-3">
+                New pieces, dimensions &amp; apartment layouts in your inbox.
+              </label>
+              
+              <form onSubmit={handleNewsletterSubmit} className="flex items-center border-b border-[#2C2926]/30 focus-within:border-[#2C2926] transition-colors pb-2">
+                <input
+                  id="footer-newsletter-email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email address"
+                  className="flex-1 bg-transparent border-0 outline-none text-sm text-[#2C2926] placeholder-[#A69B8C] py-1 font-sans"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="group inline-flex items-center gap-1.5 text-xs font-sans font-semibold text-[#2C2926] hover:text-[#7A6B5D] transition-colors pl-3 shrink-0 uppercase tracking-wider"
+                >
+                  <span>Sign up</span>
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
+                </button>
+              </form>
+
+              {subscribed && (
+                <p className="mt-2 text-xs text-[#78806A] font-semibold">
+                  Thank you! You are now subscribed to apartment sizing updates.
+                </p>
+              )}
+            </div>
+
+            {/* Sizing Help Badge */}
+            <div className="pt-2">
               <a
-                href="https://www.amazon.in"
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 hover:bg-[#78806A] text-[#F7F4EE] text-xs font-semibold transition-colors border border-white/10"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#78806A]/15 text-[#585E4D] hover:bg-[#78806A] hover:text-white transition-all duration-200 text-xs font-semibold"
               >
-                <span>Store on Amazon India</span>
-                <ExternalLink className="w-3 h-3 text-[#D8C9B5]" />
-              </a>
-
-              <a
-                href={buildWhatsAppUrl("Hi Rumea Home! I'd like help choosing the right size for my space.")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs text-[#D8C9B5] hover:text-white transition-colors py-2 font-medium"
-              >
-                <MessageCircle className="w-3.5 h-3.5 text-[#78806A]" />
-                <span>WhatsApp: +91 72919 62356</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#78806A] animate-pulse" />
+                <span>WhatsApp Sizing Help: +91 72919 62356</span>
               </a>
             </div>
           </div>
 
-          {/* Column 2: Shop (2.5 cols on lg) */}
-          <div className="lg:col-span-2 space-y-3.5">
-            <h4 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#D8C9B5]">
-              Shop
-            </h4>
-            <ul className="space-y-2.5 text-xs text-[#D8C9B5]/75">
-              {shopLinks.map((item) => (
-                <li key={item.label}>
-                  <Link href={item.href} className="hover:text-white transition-colors">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Right Navigation Columns (Shop / Help / Company) */}
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 lg:gap-8 pt-2">
+            
+            {/* Column 1: Shop */}
+            <div>
+              <p className="text-[11px] font-sans font-semibold uppercase tracking-[0.14em] text-[#6B6962] mb-4 sm:mb-5">
+                Shop
+              </p>
+              <ul className="space-y-3 text-sm font-sans text-[#2C2926]/80">
+                {shopLinks.map((item) => (
+                  <li key={item.label}>
+                    <Link
+                      href={item.href}
+                      className="hover:text-[#2C2926] hover:underline underline-offset-4 transition-colors duration-150 block py-0.5"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Column 3: Help (2.5 cols on lg) */}
-          <div className="lg:col-span-3 space-y-3.5">
-            <h4 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#D8C9B5]">
-              Help
-            </h4>
-            <ul className="space-y-2.5 text-xs text-[#D8C9B5]/75">
-              {helpLinks.map((item) => (
-                <li key={item.label}>
-                  <Link href={item.href} className="hover:text-white transition-colors">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+            {/* Column 2: Help */}
+            <div>
+              <p className="text-[11px] font-sans font-semibold uppercase tracking-[0.14em] text-[#6B6962] mb-4 sm:mb-5">
+                Help
+              </p>
+              <ul className="space-y-3 text-sm font-sans text-[#2C2926]/80">
+                {helpLinks.map((item) => (
+                  <li key={item.label}>
+                    {item.external ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 hover:text-[#2C2926] hover:underline underline-offset-4 transition-colors duration-150 py-0.5"
+                      >
+                        <span>{item.label}</span>
+                        <ExternalLink className="w-3 h-3 text-[#A69B8C]" />
+                      </a>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="hover:text-[#2C2926] hover:underline underline-offset-4 transition-colors duration-150 block py-0.5"
+                      >
+                        {item.label}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Column 4: Company (3 cols on lg) */}
-          <div className="lg:col-span-3 space-y-3.5">
-            <h4 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#D8C9B5]">
-              Company
-            </h4>
-            <ul className="space-y-2.5 text-xs text-[#D8C9B5]/75">
-              {companyLinks.map((item) => (
-                <li key={item.label}>
-                  <Link href={item.href} className="hover:text-white transition-colors">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {/* Column 3: Company */}
+            <div>
+              <p className="text-[11px] font-sans font-semibold uppercase tracking-[0.14em] text-[#6B6962] mb-4 sm:mb-5">
+                Company
+              </p>
+              <ul className="space-y-3 text-sm font-sans text-[#2C2926]/80">
+                {companyLinks.map((item) => (
+                  <li key={item.label}>
+                    <Link
+                      href={item.href}
+                      className="hover:text-[#2C2926] hover:underline underline-offset-4 transition-colors duration-150 block py-0.5"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
           </div>
 
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#D8C9B5]/70">
-          <p>© {currentYear} Rumea Home. Practical furniture for Indian apartments.</p>
-          <div className="flex items-center gap-6">
-            <Link href="/privacy-policy" className="hover:text-white transition-colors">
-              Privacy policy
+        {/* Bottom Meta Bar: Socials + Legal Links */}
+        <div className="border-t border-[#DEDAD1] pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-xs text-[#6B6962]">
+          
+          {/* Social Channels Row */}
+          <div className="flex items-center gap-3">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="w-8 h-8 rounded-full bg-white hover:bg-[#7A6B5D] text-[#2C2926] hover:text-white transition-all duration-200 flex items-center justify-center border border-[#DEDAD1] hover:border-[#7A6B5D] hover:-translate-y-0.5"
+            >
+              <Instagram className="w-3.5 h-3.5" />
+            </a>
+
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp Support"
+              className="w-8 h-8 rounded-full bg-white hover:bg-[#78806A] text-[#2C2926] hover:text-white transition-all duration-200 flex items-center justify-center border border-[#DEDAD1] hover:border-[#78806A] hover:-translate-y-0.5"
+            >
+              <MessageCircle className="w-3.5 h-3.5" />
+            </a>
+
+            <a
+              href="https://www.amazon.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Amazon India Store"
+              className="w-8 h-8 rounded-full bg-white hover:bg-[#7A6B5D] text-[#2C2926] hover:text-white transition-all duration-200 flex items-center justify-center border border-[#DEDAD1] hover:border-[#7A6B5D] hover:-translate-y-0.5"
+            >
+              <ShoppingBag className="w-3.5 h-3.5" />
+            </a>
+
+            <a
+              href="mailto:support@rumeahome.com"
+              aria-label="Email Support"
+              className="w-8 h-8 rounded-full bg-white hover:bg-[#7A6B5D] text-[#2C2926] hover:text-white transition-all duration-200 flex items-center justify-center border border-[#DEDAD1] hover:border-[#7A6B5D] hover:-translate-y-0.5"
+            >
+              <Mail className="w-3.5 h-3.5" />
+            </a>
+
+            <span className="text-[11px] font-sans text-[#A69B8C] ml-2 hidden sm:inline-block">
+              India (INR ₹)
+            </span>
+          </div>
+
+          {/* Legal Links */}
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-sans">
+            <span>&copy; {currentYear}. All rights reserved.</span>
+            <Link href="/terms" className="hover:text-[#2C2926] transition-colors underline-offset-4 hover:underline">
+              Terms
             </Link>
-            <Link href="/terms" className="hover:text-white transition-colors">
-              Terms &amp; conditions
+            <Link href="/privacy-policy" className="hover:text-[#2C2926] transition-colors underline-offset-4 hover:underline">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-[#2C2926] transition-colors underline-offset-4 hover:underline">
+              Shipping &amp; Returns
+            </Link>
+            <Link href="/contact" className="hover:text-[#2C2926] transition-colors underline-offset-4 hover:underline">
+              Support
             </Link>
           </div>
+
         </div>
 
       </div>

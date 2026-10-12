@@ -11,9 +11,8 @@ type TabType = 'bestsellers' | 'new-arrivals' | 'all';
 
 export default function BestSellers() {
   const [activeTab, setActiveTab] = useState<TabType>('bestsellers');
-  const smoothEase = [0.16, 1, 0.3, 1];
 
-  // Filter out any coming-soon or unpurchasable products
+  // Filter available products
   const availableProducts = useMemo(() => {
     return products.filter((p) => p.conversion?.inStock && p.seo?.badge !== 'Coming Soon');
   }, []);
@@ -27,7 +26,6 @@ export default function BestSellers() {
       list = list.filter((p) => p.seo?.badge === 'New Arrival' || p.seo?.isNewArrival);
     }
 
-    // Fallback if filter returns less than 4 items: show available items
     if (list.length === 0) {
       list = availableProducts;
     }
@@ -42,38 +40,32 @@ export default function BestSellers() {
   ];
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-[#F7F4EE]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 sm:py-24 lg:py-28 bg-[#F7F4EE]">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
         
-        {/* Section Header & Simple Filter Tabs */}
-        <motion.div 
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.7, ease: smoothEase }}
-          className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-12"
-        >
+        {/* Section Header: Architectural headline with brand typography */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-14">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[#78806A] block mb-2">
-              CURATED CATALOGUE
-            </span>
-            <h2 className="font-heading text-3xl sm:text-4xl text-[#2C2926] font-bold tracking-tight">
-              Everyday pieces, thoughtfully designed.
+            <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-[#2C2926] tracking-tight">
+              Most Loved
             </h2>
+            <p className="text-sm text-[#7A746B] font-sans mt-2">
+              Practical, space-saving essentials for modern Indian apartments.
+            </p>
           </div>
 
-          {/* Simple Clean Tabs with Animated Underline */}
-          <div className="flex items-center gap-1.5 border-b border-[#DEDAD1] self-start sm:self-auto">
+          {/* Clean minimal tabs */}
+          <div className="flex items-center gap-1.5 border-b border-[#D8C9B5] self-start sm:self-auto">
             {tabs.map((tab) => {
               const isActive = activeTab === tab.id;
               return (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`pb-2.5 px-3 text-xs sm:text-sm font-sans transition-colors relative cursor-pointer ${
+                  className={`pb-3 px-3 text-xs sm:text-sm font-sans transition-colors relative cursor-pointer ${
                     isActive
                       ? 'text-[#2C2926] font-semibold'
-                      : 'text-[#6B6962] hover:text-[#2C2926] font-normal'
+                      : 'text-[#8C8479] hover:text-[#2C2926] font-normal'
                   }`}
                 >
                   <span>{tab.label}</span>
@@ -88,39 +80,32 @@ export default function BestSellers() {
               );
             })}
           </div>
-        </motion.div>
+        </div>
 
-        {/* 4 Products Grid with Staggered Entrance */}
+        {/* 4 Products Grid (2 cols mobile, 4 cols desktop) */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.4, ease: smoothEase }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            transition={{ duration: 0.35 }}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
           >
             {displayedProducts.map((product, idx) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.07, ease: smoothEase }}
-              >
-                <ProductCard product={product} />
-              </motion.div>
+              <ProductCard key={product.id} product={product} priority={idx < 2} />
             ))}
           </motion.div>
         </AnimatePresence>
 
-        {/* View All Products Button */}
-        <div className="mt-12 text-center">
+        {/* Bottom CTA Button */}
+        <div className="mt-12 sm:mt-16 text-center">
           <Link
             href="/products"
-            className="group inline-flex items-center gap-2 px-8 py-3.5 bg-transparent hover:bg-[#2C2926] border border-[#DEDAD1] hover:border-[#2C2926] text-[#2C2926] hover:text-[#F7F5F0] text-xs sm:text-sm font-semibold rounded-full transition-all duration-200 shadow-2xs hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-2 px-8 py-3.5 bg-transparent hover:bg-[#2C2926] text-[#2C2926] hover:text-[#F7F4EE] border border-[#2C2926] text-xs font-semibold uppercase tracking-[0.1em] rounded-full transition-all duration-200 shadow-2xs hover:-translate-y-0.5"
           >
-            <span>View all products</span>
-            <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+            <span>Shop all pieces</span>
+            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
           </Link>
         </div>
 

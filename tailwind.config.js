@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Official Brand Kit System (branding-kit.png)
+        // Official Brand Kit System
         espresso: {
           DEFAULT: '#2C2926',
           hover: '#3D3632',
@@ -37,35 +37,42 @@ module.exports = {
           muted: '#6B6962',
         },
 
-        // Backward-compatible color aliases
+        // Color aliases
         'warm-bg': '#F7F4EE',
         'warm-ivory': '#F7F4EE',
+        'dark-ivory': '#F0EBE2',
         'warm-sand': '#D8C9B5',
+        'border-warm': '#E8E4DA',
+        'border-sand': '#DEDAD1',
+        'brand-brown': '#7A6B5D',
+        'brand-olive': '#78806A',
+        'brand-taupe': '#7A6B5D',
         'muted-olive': '#78806A',
         'olive-hover': '#68705B',
-        'soft-taupe': '#A69B8C',
-        'brand-taupe': '#7A6B5D',
         'primary-dark': '#2C2926',
         'secondary-gray': '#6B6962',
-        'border-warm': '#DEDAD1',
-        'charcoal': '#2C2926',
+        'muted-grey': '#A69B8C',
+        charcoal: '#2C2926',
+      },
+      fontSize: {
+        base: ['16px', { lineHeight: '1.65' }],
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        body: ['Inter', '"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+        heading: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
         display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-        heading: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-        serif: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'], // Redirect any legacy font-serif to brand sans
-        body: ['Inter', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         btn: '9999px',
-        card: '18px',
+        card: '16px',
         sm: '6px',
         md: '10px',
         lg: '14px',
         xl: '18px',
-        '2xl': '22px',
-        '3xl': '28px',
+        '2xl': '24px',
+        '3xl': '32px',
       },
       boxShadow: {
         card: '0 2px 14px -2px rgba(44, 41, 38, 0.05)',

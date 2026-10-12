@@ -34,3 +34,5 @@ next-env.d.ts
 # local private state
 AI_STATE.md
 AI_STATE*.md
+*.log
+/rumea-home-redesign/

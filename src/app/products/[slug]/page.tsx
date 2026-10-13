@@ -8,9 +8,7 @@ import ProductInfo from '@/components/product/ProductInfo';
 import ProductSpecs from '@/components/product/ProductSpecs';
 import FrequentlyBoughtTogether from '@/components/product/FrequentlyBoughtTogether';
 import ProductFAQ from '@/components/product/ProductFAQ';
-import RoomFitGuide from '@/components/product/RoomFitGuide';
 import WoodCareGuide from '@/components/product/WoodCareGuide';
-import ImageComparisonSlider from '@/components/product/ImageComparisonSlider';
 import RelatedProducts from '@/components/product/RelatedProducts';
 import StickyMobileBuyBar from '@/components/product/StickyMobileBuyBar';
 import WhatsAppFloatingButton from '@/components/layout/WhatsAppFloatingButton';
@@ -95,7 +93,7 @@ export default function ProductDetailPage({ params }: Props) {
     : 'Catalogue';
 
   return (
-    <div className="bg-warm-ivory min-h-screen py-6 sm:py-10 pb-[110px] md:pb-12">
+    <div className="bg-surface-page min-h-screen py-6 sm:py-10 pb-[110px] md:pb-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -116,7 +114,7 @@ export default function ProductDetailPage({ params }: Props) {
         {/* Main Product View: 12-Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
-          {/* Left Column (7 cols): 4/3 Aspect Ratio Gallery with Hover Magnifier Zoom */}
+          {/* Left Column (7 cols): 4/3 Aspect Ratio Gallery with Hover Zoom */}
           <div className="lg:col-span-7">
             <AmazonImageGallery images={product.images} productName={product.name} />
           </div>
@@ -130,12 +128,6 @@ export default function ProductDetailPage({ params }: Props) {
 
         {/* 5-Section Technical Specifications Accordion (with Line Diagram) */}
         <ProductSpecs product={product} />
-
-        {/* "Will It Fit in Your Room?" Sizing & Doorway Clearance Guide */}
-        <RoomFitGuide product={product} />
-
-        {/* Interactive Before-and-After Comparison Slider (Finishes, Ambience & Craft) */}
-        <ImageComparisonSlider />
 
         {/* "Complete the Look" / Frequently Bought Together Bundle Builder */}
         <FrequentlyBoughtTogether product={product} />

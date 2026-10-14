@@ -93,15 +93,15 @@ export default function ProductInfo({ product }: ProductInfoProps) {
 
       {/* Pricing Block with Inclusive GST, Savings, & No-Cost EMI */}
       <div className="bg-surface rounded-card p-4 sm:p-5 border border-border space-y-3">
-        <div className="flex items-baseline gap-3">
+        <div className="flex flex-wrap items-baseline gap-2.5 sm:gap-3">
+          <span className="text-base sm:text-lg font-semibold text-accent">
+            -{product.pricing.discount}%
+          </span>
           <span className="font-sans font-bold text-2xl sm:text-3xl text-primary tracking-tight">
             ₹{product.pricing.offer.toLocaleString('en-IN')}
           </span>
-          <span className="text-sm text-content-muted line-through font-normal">
-            ₹{product.pricing.mrp.toLocaleString('en-IN')}
-          </span>
-          <span className="text-xs font-medium text-accent bg-accent-subtle px-2 py-0.5 rounded-btn">
-            {product.pricing.discount}% OFF
+          <span className="text-sm text-content-muted">
+            M.R.P.: <span className="line-through">₹{product.pricing.mrp.toLocaleString('en-IN')}.00</span>
           </span>
         </div>
 

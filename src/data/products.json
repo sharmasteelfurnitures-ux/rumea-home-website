@@ -12,11 +12,11 @@
     "collectionName": "Entryway & Shoe Storage",
     "tagline": "Double-decker wall mount shoe rack with independent locks and 18-pair capacity",
     "pricing": {
-      "mrp": 5999,
-      "offer": 3899,
-      "discount": 35,
+      "mrp": 9999,
+      "offer": 9400,
+      "discount": 6,
       "emi": {
-        "minAmount": 650,
+        "minAmount": 1567,
         "months": 6,
         "provider": "No Cost EMI"
       }

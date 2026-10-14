@@ -1,5 +1,118 @@
 [
   {
+    "id": "shoe-rack-3door-dark-brown",
+    "slug": "shoe-rack-3door-dark-brown",
+    "name": "3-Door Double-Decker Wall-Mount Metal Shoe Rack (Dark Brown)",
+    "category": "shoe-rack",
+    "room": [
+      "storage",
+      "living-room"
+    ],
+    "collection": "practical-storage",
+    "collectionName": "Entryway & Shoe Storage",
+    "tagline": "Double-decker wall mount shoe rack with independent locks and 18-pair capacity",
+    "pricing": {
+      "mrp": 5999,
+      "offer": 3899,
+      "discount": 35,
+      "emi": {
+        "minAmount": 650,
+        "months": 6,
+        "provider": "No Cost EMI"
+      }
+    },
+    "images": {
+      "primary": "/images/products/shoe-rack-3tier-dark-brown/1.png",
+      "hover": "/images/products/shoe-rack-3tier-dark-brown/8.png",
+      "gallery": [
+        "/images/products/shoe-rack-3tier-dark-brown/1.png",
+        "/images/products/shoe-rack-3tier-dark-brown/8.png",
+        "/images/products/shoe-rack-3tier-dark-brown/9.png",
+        "/images/products/shoe-rack-3tier-dark-brown/2.png",
+        "/images/products/shoe-rack-3tier-dark-brown/3.png",
+        "/images/products/shoe-rack-3tier-dark-brown/4.png",
+        "/images/products/shoe-rack-3tier-dark-brown/5.png",
+        "/images/products/shoe-rack-3tier-dark-brown/6.png",
+        "/images/products/shoe-rack-3tier-dark-brown/7.png",
+        "/images/products/shoe-rack-3tier-dark-brown/10.png"
+      ],
+      "lifestyle": [
+        "/images/products/shoe-rack-3tier-dark-brown/8.png",
+        "/images/products/shoe-rack-3tier-dark-brown/9.png"
+      ],
+      "detail": [
+        "/images/products/shoe-rack-3tier-dark-brown/4.png",
+        "/images/products/shoe-rack-3tier-dark-brown/6.png"
+      ],
+      "dimensions": "/images/products/shoe-rack-3tier-dark-brown/2.png"
+    },
+    "dimensions": {
+      "width": {
+        "cm": 66,
+        "ft": "2'2\""
+      },
+      "depth": {
+        "cm": 23,
+        "ft": "0'9\""
+      },
+      "height": {
+        "cm": 105,
+        "ft": "3'5\""
+      },
+      "weight": 15.9,
+      "assemblyRequired": false,
+      "recommendedRoomSize": "Apartment Entryway / Shared Living / Mudroom"
+    },
+    "materials": {
+      "frame": "Heavy-Duty 0.8mm CRCA Steel Body",
+      "finish": [
+        "Dark Brown & Classic White",
+        "Matte Black",
+        "Classic Ivory"
+      ],
+      "selectedFinish": "Dark Brown & Classic White",
+      "joinery": "Precision Laser-Cut Ventilation & 4 Pre-Drilled Keyhole Mounting Slots",
+      "coating": "Anti-Rust & Corrosion-Resistant Powder Coat"
+    },
+    "features": [
+      "Double-decker interior design stores up to 18 pairs of footwear within a compact 23 cm depth",
+      "Independent locking mechanism with separate lock and key for each door (6 keys included)",
+      "Built with heavy-duty 0.8mm CRCA steel with anti-rust, corrosion-resistant powder coating",
+      "24/7 cross-air ventilation louvers prevent trapped odours, humidity, and fungus",
+      "Dual mounting: 4 pre-drilled keyholes for secure wall mounting or freestanding floor placement",
+      "100% pre-assembled straight out of the box — zero assembly or tools required"
+    ],
+    "meta": {
+      "title": "3-Door Double-Decker Wall-Mount Metal Shoe Rack (Dark Brown) | Rumea Home",
+      "description": "Heavy-duty 0.8mm CRCA steel 3-door shoe rack holding 18 pairs. Features independent locks per compartment, 24/7 cross air ventilation, and wall-mount design.",
+      "keywords": [
+        "3 door shoe rack",
+        "metal shoe rack dark brown",
+        "wall mounted shoe rack with lock",
+        "double decker shoe cabinet",
+        "rumea home shoe storage"
+      ]
+    },
+    "conversion": {
+      "amazonUrl": "https://amzn.in/d/02p17JDj",
+      "amazonAsin": "B0HLLBDT3N",
+      "whatsappMessage": "Hi Rumea Home! I'm interested in the 3-Door Double-Decker Metal Shoe Rack (Dark Brown). Could you help me with delivery & order details?",
+      "inStock": true,
+      "deliveryDays": {
+        "metro": "3-5 Days",
+        "tier2": "5-7 Days",
+        "tier3": "7-10 Days"
+      }
+    },
+    "seo": {
+      "badge": "New Arrival",
+      "rating": 4.9,
+      "reviewCount": 96,
+      "isFeatured": true,
+      "isNewArrival": true
+    }
+  },
+  {
     "id": "shoe-rack-3slab",
     "slug": "shoe-rack-3slab",
     "name": "Wall-Mounted Metal Shoe Rack (3 Slab)",

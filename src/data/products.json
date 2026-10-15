@@ -113,6 +113,125 @@
     }
   },
   {
+    "id": "bar-stool-chair-black",
+    "slug": "bar-stool-chair-black",
+    "name": "Rumea Home Kitchen & Bar Stool Chair (Black)",
+    "category": "seating",
+    "room": [
+      "dining-room",
+      "living-room",
+      "outdoor"
+    ],
+    "collection": "modern",
+    "collectionName": "Modern Seating & Stools",
+    "tagline": "Height-adjustable 360° swivel kitchen & bar stool with ergonomic curved shell and chrome pedestal base",
+    "pricing": {
+      "mrp": 4999,
+      "offer": 2999,
+      "discount": 40,
+      "emi": {
+        "minAmount": 500,
+        "months": 6,
+        "provider": "No Cost EMI"
+      }
+    },
+    "images": {
+      "primary": "/images/products/bar-stool-chair-black/1.png",
+      "hover": "/images/products/bar-stool-chair-black/3.png",
+      "gallery": [
+        "/images/products/bar-stool-chair-black/1.png",
+        "/images/products/bar-stool-chair-black/3.png",
+        "/images/products/bar-stool-chair-black/4.png",
+        "/images/products/bar-stool-chair-black/2.png",
+        "/images/products/bar-stool-chair-black/5.png",
+        "/images/products/bar-stool-chair-black/6.png",
+        "/images/products/bar-stool-chair-black/7.png",
+        "/images/products/bar-stool-chair-black/8.png",
+        "/images/products/bar-stool-chair-black/9.png"
+      ],
+      "lifestyle": [
+        "/images/products/bar-stool-chair-black/7.png",
+        "/images/products/bar-stool-chair-black/8.png",
+        "/images/products/bar-stool-chair-black/9.png"
+      ],
+      "detail": [
+        "/images/products/bar-stool-chair-black/5.png",
+        "/images/products/bar-stool-chair-black/6.png"
+      ],
+      "dimensions": "/images/products/bar-stool-chair-black/2.png"
+    },
+    "dimensions": {
+      "width": {
+        "cm": 43,
+        "ft": "1'5\""
+      },
+      "depth": {
+        "cm": 37,
+        "ft": "1'2.5\""
+      },
+      "height": {
+        "cm": 89,
+        "ft": "2'11\""
+      },
+      "seatHeight": {
+        "cm": 56,
+        "ft": "1'10\""
+      },
+      "weight": 5.7,
+      "assemblyRequired": true,
+      "recommendedRoomSize": "Kitchen Island / Breakfast Counter / Home Bar"
+    },
+    "materials": {
+      "frame": "Heavy-Duty Chrome-Plated Steel Pedestal Base & Footrest",
+      "upholstery": "Premium Water-Resistant Leatherette",
+      "foamDensity": "High-Density Resilient Molded Foam",
+      "finish": [
+        "Matte Black with Chrome Base",
+        "Classic White"
+      ],
+      "selectedFinish": "Matte Black with Chrome Base",
+      "joinery": "SGS-Certified Class 3 Pneumatic Gas Lift with 360° Bearing",
+      "coating": "High-Gloss Anti-Corrosion Electroplated Chrome"
+    },
+    "features": [
+      "Full 360-degree friction-free swivel rotation for effortless turning and seating",
+      "Smooth hydraulic gas-lift lever adjusting seat height effortlessly from 24″ to 32″",
+      "Ergonomic curved backrest designed for natural spinal contour and all-day lumbar comfort",
+      "High-density cushioned leatherette seat that wipes clean easily with a damp cloth",
+      "Wide circular chrome base with anti-scratch rubber-rimmed floor protector ring",
+      "Integrated teardrop footrest providing stable, ergonomic support for your legs"
+    ],
+    "meta": {
+      "title": "Rumea Home Kitchen & Bar Stool Chair (Black) | Adjustable Swivel Stool",
+      "description": "Modern height-adjustable 360° swivel kitchen & bar stool chair. Features ergonomic curved backrest, padded leatherette seat, and polished chrome base.",
+      "keywords": [
+        "bar stool chair",
+        "kitchen stool",
+        "swivel bar chair",
+        "adjustable height chair",
+        "rumea home bar stool"
+      ]
+    },
+    "conversion": {
+      "amazonUrl": "https://www.amazon.in",
+      "amazonAsin": "B0BARSTOOL1",
+      "whatsappMessage": "Hi Rumea Home! I'm interested in the Kitchen & Bar Stool Chair (Matte Black, ₹2,999). Could you share order & delivery details?",
+      "inStock": true,
+      "deliveryDays": {
+        "metro": "2-3 Days",
+        "tier2": "4-5 Days",
+        "tier3": "5-7 Days"
+      }
+    },
+    "seo": {
+      "badge": "Trending",
+      "rating": 4.9,
+      "reviewCount": 78,
+      "isFeatured": true,
+      "isNewArrival": true
+    }
+  },
+  {
     "id": "shoe-rack-3slab",
     "slug": "shoe-rack-3slab",
     "name": "Wall-Mounted Metal Shoe Rack (3 Slab)",
